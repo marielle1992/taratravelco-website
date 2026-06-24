@@ -983,7 +983,7 @@ video.hero-bg {
   .review-row-outer {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     cursor: auto;
     /* Base rule above sets touch-action:pan-y for the desktop drag
        simulation, which blocks native horizontal touch panning — allow both
@@ -991,6 +991,11 @@ video.hero-bg {
        page vertically. */
     touch-action: pan-x pan-y;
   }
+  /* "Plan my trip" button under The Proof's heading is redundant on mobile
+     (the same CTA already lives in the mobile nav bar / hero), and it was
+     crowding the heading above the review cards — hide it here only; the
+     similar button in the Experience section above is untouched. */
+  .reviews-head-col .reviews-plan-link { display: none; }
 }
 
 /* ===== HOW IT WORKS — VERTICAL STEPS ===== */
@@ -1899,7 +1904,10 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   .lux-h2 { font-size: 1.675rem !important; line-height: 1.2 !important; white-space: normal !important; }
   h1, h2, h3 { max-width: 100%; word-break: break-word; }
   .steps-lux { padding-top: 60px !important; padding-bottom: 40px !important; }
-  .step-v { padding-bottom: 20px; }
+  /* More breathing room between stacked steps on mobile — at 20px the next
+     step's graphic started almost immediately after the previous step's
+     text, reading as one jumbled block instead of three distinct steps. */
+  .step-v { padding-bottom: 48px; }
   .step-v:last-child { padding-bottom: 0; }
   .steps-vertical { margin-top: 20px; }
   .process-cta { margin-top: 28px !important; }
