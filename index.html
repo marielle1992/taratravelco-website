@@ -4803,7 +4803,13 @@ function updateTabs(n) {
      through the form, slide the active tab into view so they can see where
      they are in the process without having to swipe the tab bar themselves. */
   if (activeTab) {
-    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const tabsContainer = document.getElementById('stepTabs');
+        if (tabsContainer) {
+                const cRect = tabsContainer.getBoundingClientRect();
+                const tRect = activeTab.getBoundingClientRect();
+                const delta = (tRect.left + tRect.width / 2) - (cRect.left + cRect.width / 2);
+                if (Math.abs(delta) > 1) tabsContainer.scrollBy({ left: delta, behavior: 'smooth' });
+        }
   }
 }
 
