@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tará Travel Co. — Tailor-made Trips in Vietnam</title>
-  <script>
-    /* Browsers (Chrome especially) remember the scroll position you left a page
-       at and silently restore it on the next load/reload of that same history
-          entry — so after scrolling down to "What You Get" and reloading (or even
-             just retyping the URL in some cases), the page was opening already
-                scrolled down instead of at the Hero banner. Turning off automatic scroll
-                   restoration and forcing the page to start at the very top (unless the URL
-                      explicitly points at an anchor like #planner) fixes that. Must run before
-                         the browser gets a chance to restore scroll, so it's the very first thing
-                            in <head>. */
-    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-    if (!window.location.hash) {
-        window.scrollTo(0, 0);
-        window.addEventListener('load', function() {
-              if (!window.location.hash) window.scrollTo(0, 0);
-        });
-    }
-      </script>
+<script>
+/* Browsers (Chrome especially) remember the scroll position you left a page
+   at and silently restore it on the next load/reload of that same history
+   entry — so after scrolling down to "What You Get" and reloading (or even
+   just retyping the URL in some cases), the page was opening already
+   scrolled down instead of at the Hero banner. Turning off automatic scroll
+   restoration and forcing the page to start at the very top (unless the URL
+   explicitly points at an anchor like #planner) fixes that. Must run before
+   the browser gets a chance to restore scroll, so it's the very first thing
+   in <head>. */
+if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+if (!window.location.hash) {
+  window.scrollTo(0, 0);
+  window.addEventListener('load', function() {
+    if (!window.location.hash) window.scrollTo(0, 0);
+  });
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -1765,14 +1765,14 @@ video.hero-bg {
   justify-content: center;
 }
 .planner-vietnam-map {
-  width: 100%;
-  max-width: 100%;
+  width: 80%;
+  max-width: 80%;
   /* Cap the rendered height directly instead of letting it scale off the
      source file's own aspect ratio — a tall portrait map (like Vietnam's)
      would otherwise blow up to ~600px+ tall at this column's width and
      dominate the step. object-fit:contain keeps it from distorting/cropping
-     once it's boxed into this height. */
-  height: min(48vh, 460px);
+     once it's boxed into this height. Sized at 80% (20% smaller) per request. */
+  height: min(38.4vh, 368px);
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -1789,7 +1789,7 @@ video.hero-bg {
   .step1-with-map { flex-direction: column; gap: 16px; align-items: stretch; }
   .step1-map-col { flex: 1 1 auto; width: 100%; }
   .step1-form-col { flex: 1 1 auto; min-width: 0; }
-  .planner-vietnam-map { max-width: 100%; margin: 0 auto; }
+  .planner-vietnam-map { max-width: 80%; margin: 0 auto; }
   /* Vietnam's outline is naturally tall and narrow — give the mobile
      placeholder a portrait shape instead of a short, wide strip. */
   .planner-vietnam-map[src="vietnam-map.png"]:not([src=""]) {
@@ -2045,8 +2045,11 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   .idx-card { width: 92%; margin-right: 0 !important; }
   .idx-angled { transform: rotate(-2deg); z-index: 2; margin-bottom: -14px; }
   .idx-straight { transform: rotate(1.5deg); z-index: 1; margin-top: 0; }
-  .pain-cta-line1 { font-size: clamp(1.8rem, 8vw, 2.8rem); white-space: nowrap; }
-  .pain-cta-line2 { font-size: clamp(1.05rem, 4vw, 1.35rem); }
+  /* Match the same heading/description scale used by every other section
+     on mobile (.lux-h2 = 1.675rem, .lux-p = 1rem/1.8) instead of the
+     hero-banner-sized type this was previously using. */
+  .pain-cta-line1 { font-size: 1.675rem; line-height: 1.2; white-space: normal; }
+  .pain-cta-line2 { font-size: 1rem; line-height: 1.8; }
   .planner-lux h3 { font-size: 1.05rem; }
 
   /* Left-align every section header/description on mobile — except
@@ -2257,8 +2260,8 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   .three-col { grid-template-columns: 1fr; }
   .opt-grid-lux { grid-template-columns: 1fr; }
   .check-item-grid-lux { grid-template-columns: 1fr; }
-  .pain-cta-line1 { font-size: clamp(1.8rem, 8vw, 2.8rem); white-space: nowrap; }
-  .pain-cta-line2 { font-size: 1.1rem; }
+  .pain-cta-line1 { font-size: 1.675rem; line-height: 1.2; white-space: normal; }
+  .pain-cta-line2 { font-size: 1rem; line-height: 1.8; }
   .counter-row-lux { flex-wrap: wrap; }
 }
 </style>
@@ -2273,15 +2276,21 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <button class="nav-back" id="navBack" aria-label="Back" onclick="history.back()"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <nav class="nav-links" id="navLinks">
         <a href="#how" data-text="How it works">How it works</a>
-        <a href="#guide" data-text="Travel Guide">Travel Guide</a>
+        <a href="taratravelco-travelguidelist.html" data-text="Travel Guide">Travel Guide</a>
         <div class="nav-dropdown">
-          <a href="#destinations" data-text="Destinations" class="nav-dropdown-trigger">Destinations <span class="nav-dropdown-arrow">▾</span></a>
+          <a href="taratravel-destinations-list.html" data-text="Destinations" class="nav-dropdown-trigger">Destinations <span class="nav-dropdown-arrow">▾</span></a>
           <div class="nav-dropdown-menu">
             <!-- Destination links go here -->
           </div>
         </div>
-        <a href="#who" data-text="About Us">About Us</a>
-        <a href="#contact" data-text="Contact">Contact</a>
+        <a href="taratravelco-about.html" data-text="About Us">About Us</a>
+        <div class="nav-dropdown">
+          <a href="#contact" data-text="Contact" class="nav-dropdown-trigger">Contact <span class="nav-dropdown-arrow">▾</span></a>
+          <div class="nav-dropdown-menu nav-contact-menu">
+            <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a>
+            <a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
       </nav>
       <a href="#planner" class="nav-cta"><span>Plan my trip</span></a>
     </div>
@@ -2294,10 +2303,11 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
 <div class="nav-overlay" id="navOverlay" onclick="closeNavMenu()"></div>
 <nav class="mobile-nav-panel" id="mobileNavPanel">
   <a href="#how">How it works</a>
-  <a href="#guide">Travel Guide</a>
-  <a href="#destinations">Destinations</a>
-  <a href="#who">About Us</a>
-  <a href="#contact">Contact</a>
+  <a href="taratravelco-travelguidelist.html">Travel Guide</a>
+  <a href="taratravel-destinations-list.html">Destinations</a>
+  <a href="taratravelco-about.html">About Us</a>
+  <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a>
+  <a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a>
   <a href="#planner" class="mobile-nav-cta">Plan my trip</a>
 </nav>
 
@@ -2441,7 +2451,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   <div class="pain-cta-inner">
     <p class="pain-cta-line1" id="painCtaLine1" aria-label="We Know This Feeling."></p>
     <p class="pain-cta-line2" id="painCtaLine2">This is exactly why we build tailor-made trips.</p>
-    <a href="#who" class="btn-lux btn-lux-light pain-cta-btn" id="painCtaBtn"><span>See how it works</span><svg class="pain-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+    <a href="#who" class="btn-lux btn-lux-light pain-cta-btn" id="painCtaBtn"><span>How it works</span><svg class="pain-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
   </div>
   </div>
 </section>
@@ -2655,7 +2665,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <div class="benefit-card lux-reveal">
         <div class="benefit-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
         <div class="benefit-title">24/7 Support</div>
-        <p class="benefit-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</p>
+        <p class="benefit-desc">Reach us directly on Messenger or WhatsApp, any time before or during your trip.</p>
       </div>
     </div>
   </div>
@@ -3096,7 +3106,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
         <p>We create tailor-made trips in Vietnam — designed around the way you love to travel.</p>
         <div class="socials-lux">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.3s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.3-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+          <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
           <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 01-1-2.8h-3v12.3a2.5 2.5 0 11-2.5-2.5c.2 0 .5 0 .7.1V9.8a5.6 5.6 0 00-.7 0 5.6 5.6 0 105.6 5.6V9.3a7.3 7.3 0 004.3 1.4V7.7a4.3 4.3 0 01-3.4-1.9z"/></svg></a>
         </div>
       </div>
@@ -3104,18 +3114,17 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
         <h4>Explore</h4>
         <ul>
           <li><a href="#how">How it works</a></li>
-          <li><a href="#guide">Travel Guide</a></li>
-          <li><a href="#who">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="taratravelco-travelguidelist.html">Travel Guide</a></li>
+          <li><a href="taratravel-destinations-list.html">Destinations</a></li>
+          <li><a href="taratravelco-about.html">About Us</a></li>
+          <li><a href="taratravelco-terms.html">Terms</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="#">WhatsApp</a></li>
-          <li><a href="#">Email Us</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Facebook</a></li>
+          <li><a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a></li>
         </ul>
       </div>
     </div>
@@ -3298,7 +3307,7 @@ revealEls.forEach(el => {
     { name: "Maricel", html: "I have no time to plan our family trip. I need a trusted expert to handle it so I can <em>focus entirely on my loved ones</em>." },
     { name: "Trish", html: "I want a vacation where I’m <em>treated like a guest, not the tour guide</em> for my own group." },
     { name: "Migs", html: "I’m looking for a vacation where I can actually <em>unplug and just enjoy the experience</em> with my friends." },
-    { name: "Joy", html: "We want seamless logistics so our team needs to stay focused on business beforehand, and simply <em>show up ready to enjoy the trip</em>." }
+    { name: "Joy", html: "We need seamless planning so our team needs to stay focused on business, and simply <em>show up to enjoy the trip</em>." }
   ];
   var quoteEl = document.getElementById('realityTeamQuote');
   var sectionEl = document.getElementById('pain');
@@ -3801,12 +3810,12 @@ if (whoSide) {
 /* ---- Reviews — editorial card row ---- */
 (function () {
   var reviewData = [
+    { text: 'Every detail, from accommodations to excursions, was handled with great care, ensuring a fantastic experience.', name: 'Justin Abogado', trip: 'Travelled with family', bg: '#e8dcd5', photo: 'Media/Proof-Photos/justin-abogado.webp' },
     { text: 'I love their tailored tours you can really choose where and what you like to do.', name: 'Jer Cristobal', trip: 'Travelled with family', bg: '#e8e0d0', photo: 'Media/Proof-Photos/jerome-cristobal.webp' },
     { text: 'The whole trip was smooth, fun, and super comfortable, especially with the very comfy ride they provided.', name: 'Aivann Michaela Kris', trip: 'Travelled with colleagues', bg: '#d5e8e0', photo: 'Media/Proof-Photos/aivann-michaela-kris.webp' },
     { text: 'Very professional and very prompt in replying to all inquiries. What they promised is far more better than what you expect.', name: 'Maridette Moreno', trip: 'Travelled with friends and family', bg: '#e8e5d5', photo: 'Media/Proof-Photos/maridette-moreno.webp' },
     { text: 'They were incredibly helpful and accommodating to all our requests, making the entire process enjoyable.', name: 'Ruby Rosario', trip: 'Travelled with friends and family', bg: '#e8e0d5', photo: 'Media/Proof-Photos/ruby-rosario.webp' },
     { text: 'From airport pickup to drop off we were taken care of. We had fun-filled tours and activities, and had enough time to enjoy ourselves.', name: 'Christalle Umali', trip: 'Gifted an anniversary trip to parents', bg: '#d5dde8', photo: 'Media/Proof-Photos/christalle-umali.webp' },
-    { text: 'Every detail, from accommodations to excursions, was handled with great care, ensuring a fantastic experience.', name: 'Justin Abogado', trip: 'Travelled with family', bg: '#e8dcd5', photo: 'Media/Proof-Photos/justin-abogado.webp' },
     { text: 'They were with us every step of the way, making sure we felt comfortable and confident, even as first-timers.', name: 'Kristoffer Castro', trip: 'First time traveler', bg: '#dde8d5', photo: 'Media/Proof-Photos/kristoffer-castro.webp' },
     { text: 'Every accommodation, tour, and activity was top-notch, and we felt completely taken care of the entire time.', name: 'Ashley Ng', trip: 'Travelled with family and friends', bg: '#e0e8d5', photo: 'Media/Proof-Photos/ashley-ng.webp' },
     { text: 'Very hands on, well organized from land transfers to accommodations and tours.', name: 'Sonia Apilado-Eugenio', trip: 'Travelled with daughter', bg: '#d5e0e8', photo: 'Media/Proof-Photos/sonia-apilado-eugenio.webp' },
@@ -4801,15 +4810,24 @@ function updateTabs(n) {
   });
   /* .step-tabs-lux scrolls horizontally on mobile — as the user moves forward
      through the form, slide the active tab into view so they can see where
-     they are in the process without having to swipe the tab bar themselves. */
+     they are in the process without having to swipe the tab bar themselves.
+     IMPORTANT: this must only scroll the tab strip itself, never the page.
+     activeTab.scrollIntoView({block:'nearest'}) looks page-safe but isn't —
+     during the very first render (showStep(1) on load) the tab strip's
+     layout isn't settled yet, so the browser decides the tab "isn't in
+     view" and scrolls the whole document down to it, landing on the
+     planner/What-You-Get section instead of the hero. Scrolling the tab
+     strip's own scrollLeft directly avoids touching page scroll at all. */
   if (activeTab) {
-        const tabsContainer = document.getElementById('stepTabs');
-        if (tabsContainer) {
-                const cRect = tabsContainer.getBoundingClientRect();
-                const tRect = activeTab.getBoundingClientRect();
-                const delta = (tRect.left + tRect.width / 2) - (cRect.left + cRect.width / 2);
-                if (Math.abs(delta) > 1) tabsContainer.scrollBy({ left: delta, behavior: 'smooth' });
-        }
+    const tabsContainer = document.getElementById('stepTabs');
+    if (tabsContainer) {
+      const cRect = tabsContainer.getBoundingClientRect();
+      const tRect = activeTab.getBoundingClientRect();
+      const delta = (tRect.left + tRect.width / 2) - (cRect.left + cRect.width / 2);
+      if (Math.abs(delta) > 1) {
+        tabsContainer.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+    }
   }
 }
 
