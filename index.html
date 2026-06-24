@@ -3413,6 +3413,49 @@ revealEls.forEach(el => {
   centerCarousel(0);
 })();
 
+/* ---- Mobile: collapse 3-column wall into 2 columns ----
+   On mobile, a 3rd column is too narrow to read and its items end up so
+   short (aspect-ratio is width-driven) that columns 1/2 fall well short of
+   filling the pinned 100vh section, leaving blank space at the bottom.
+   Folding column 3's items into columns 1 and 2 fixes both: only 2 (wider)
+   columns render, and the added items give columns 1/2 enough combined
+   height to reach (or scroll past) the bottom of the screen. This runs
+   before the "Wall movement" script below so it sees the final 2-column
+   DOM. Items are moved (not cloned) so existing data-src/data-bg/video
+   state and listeners attached elsewhere keep working; on resize back to
+   desktop width the original 3-column order is restored exactly. */
+(function () {
+  var col1 = document.querySelector('.wall-col-1');
+  var col2 = document.querySelector('.wall-col-2');
+  var col3 = document.querySelector('.wall-col-3');
+  if (!col1 || !col2 || !col3) return;
+  var mobileMQ = window.matchMedia('(max-width: 840px)');
+  var col3Items = Array.prototype.slice.call(col3.children);
+  var merged = false;
+
+  function mergeForMobile() {
+    if (merged) return;
+    col3Items.forEach(function (item, i) {
+      (i % 2 === 0 ? col2 : col1).appendChild(item);
+    });
+    col3.style.display = 'none';
+    merged = true;
+  }
+  function restoreForDesktop() {
+    if (!merged) return;
+    col3Items.forEach(function (item) { col3.appendChild(item); });
+    col3.style.display = '';
+    merged = false;
+  }
+  function applyWallColumnLayout() {
+    if (mobileMQ.matches) mergeForMobile();
+    else restoreForDesktop();
+  }
+  applyWallColumnLayout();
+  if (mobileMQ.addEventListener) mobileMQ.addEventListener('change', applyWallColumnLayout);
+  else if (mobileMQ.addListener) mobileMQ.addListener(applyWallColumnLayout);
+})();
+
 /* ---- Wall movement ----
    Desktop (>840px): the section is pinned (position:sticky) for 3 viewport-
    heights of scroll; the columns' position is driven directly by scroll
