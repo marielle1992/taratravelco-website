@@ -287,15 +287,14 @@ video.hero-bg {
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  /* Darkened from .35/.1/.55/.9 — the 30% stop in particular was only a
-     10% wash, which let busy/bright parts of the video footage fight with
-     the gold italic "tailor-made" in the headline that sits around there. */
+  /* Darkened again from .5/.32/.68/.92 — the text was still fighting with
+     bright/busy parts of the new video for legibility. */
   background: linear-gradient(
     to bottom,
-    rgba(8,28,24,.5) 0%,
-    rgba(8,28,24,.32) 30%,
-    rgba(8,28,24,.68) 65%,
-    rgba(8,28,24,.92) 100%
+    rgba(8,28,24,.62) 0%,
+    rgba(8,28,24,.46) 30%,
+    rgba(8,28,24,.78) 65%,
+    rgba(8,28,24,.95) 100%
   );
 }
 .hero-content { position: relative; z-index: 2; color: var(--white); }
@@ -549,6 +548,10 @@ video.hero-bg {
   object-fit: cover;
   display: block;
 }
+/* TRISH.webp's subject sits left-of-center in the source file, so the
+   default centered crop leaves visible empty space on the right side of
+   her circle — shift the crop left to actually center her. */
+.reality-team-photo img[alt="Trish"] { object-position: 35% center; }
 .reality-team-person--active .reality-team-photo {
   filter: grayscale(0%);
   opacity: 1;
@@ -764,6 +767,19 @@ video.hero-bg {
   gap: 20px;
   overflow: hidden;
 }
+/* Desktop-only: the gallery's mix of bright photo colors reads as busy at
+   this larger size — a soft dark wash calms it down without touching the
+   mobile layout, where the same colors read fine at the smaller scale. */
+@media (min-width: 841px) {
+  .who-wall-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,12,10,.16);
+    pointer-events: none;
+    z-index: 5;
+  }
+}
 .wall-col {
   display: flex;
   flex-direction: column;
@@ -819,6 +835,13 @@ video.hero-bg {
   object-fit: cover;
   display: block;
 }
+/* Gallery items fade in once their real media is actually ready, instead of
+   popping in abruptly — any remaining load delay then reads as part of the
+   reveal animation rather than a stall. */
+.wall-item[data-bg] { opacity: 0; transition: opacity .6s ease; }
+.wall-item[data-bg].media-loaded { opacity: 1; }
+.wall-item video { opacity: 0; transition: opacity .6s ease; }
+.wall-item video.media-loaded { opacity: 1; }
 .who-stats-side {
   position: absolute;
   top: 270px;
@@ -1056,6 +1079,10 @@ video.hero-bg {
   padding: 16px;
   box-sizing: border-box;
   width: 100%;
+  /* Title/description ("Step X" + heading) should read before the
+     graphic, not after — DOM order still has the graphic markup first
+     (so it has no JS dependency), so flip the visual order here. */
+  order: 2;
 }
 .step-v {
   display: flex;
@@ -1073,6 +1100,7 @@ video.hero-bg {
 .step-v-body {
   min-width: 0;
   padding-top: 8px;
+  order: 1;
 }
 
 /* Chat mockup — Step 3 */
@@ -1974,9 +2002,9 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
     margin-right: auto;
   }
   .step-v-eyebrow { order: -1; margin-top: 0; margin-bottom: 10px; }
-  .step-v-graphic { order: 0; }
-  .step-v-label { order: 1; }
-  .step-v h3 { order: 2; }
+  .step-v-label { order: 0; }
+  .step-v h3 { order: 1; }
+  .step-v-graphic { order: 2; }
   .who-text-side .lux-p { font-size: .95rem; line-height: 1.7; }
   .pain-cta-banner { min-height: auto; aspect-ratio: unset; flex-direction: column; overflow: visible; padding: 72px 0 0; }
   .pain-cta-subject-desktop { display: none; }
@@ -2127,6 +2155,15 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
     display: inline-flex !important;
     align-self: center !important;
   }
+  /* 6. Stats + "Plan my trip" sit inside the pinned screen the whole time
+     the gallery is scrolling (see who-wall-sticky), so the button used to
+     be visible the entire time the gallery was still mid-scroll. Hide it
+     until the gallery's scroll-through is basically finished, then fade it
+     in (toggled via the .stats-visible class set by the wall-scroll script
+     below based on scroll progress) — so it only appears once the user has
+     effectively scrolled past the gallery, not while it's still playing. */
+  .who-stats-side { opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+  .who-wall.stats-visible .who-stats-side { opacity: 1; pointer-events: auto; }
   .wall-col { flex: 1; gap: 4px; }
   .steps-vertical::before { display: none; }
   .foot-lux-grid { grid-template-columns: 1fr; gap: 44px; }
@@ -2501,7 +2538,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
           <div class="step-v-text">
           <div class="step-v-eyebrow">Step 01</div>
           <div class="step-v-label">Request</div>
-          <h3>Tell us where you'd like to go<br>and what you <em>love to do</em></h3>
+          <h3>Tell us where you'd like to go <br>and what you <em>love to do</em></h3>
           </div>
         </div>
       </div>
@@ -2517,7 +2554,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
           <div class="step-v-text">
           <div class="step-v-eyebrow">Step 02</div>
           <div class="step-v-label">Refine</div>
-          <h3>Receive your tailor-made itinerary,<br><em>and tweak until it's perfect</em></h3>
+          <h3>Receive your tailor-made itinerary, <br><em>and tweak until it's perfect</em></h3>
           </div>
         </div>
       </div>
@@ -3546,6 +3583,15 @@ revealEls.forEach(el => {
     cols.forEach(function (col, i) {
       target[i] = progress * maxScroll[i];
     });
+    // Mobile only: reveal the stats/"Plan my trip" block (hidden by default,
+    // see .who-stats-side in the mobile media query) once the gallery's
+    // scroll-through is nearly done, instead of having it visible the whole
+    // time the gallery is still pinned/scrolling.
+    if (!isDesktop()) {
+      wallSection.classList.toggle('stats-visible', progress > 0.92);
+    } else {
+      wallSection.classList.remove('stats-visible');
+    }
   }
 
   function onScroll() {
@@ -3620,6 +3666,7 @@ revealEls.forEach(el => {
   function loadVideo(v) {
     if (v.dataset.loaded) return;
     v.dataset.loaded = '1';
+    v.addEventListener('loadeddata', function () { v.classList.add('media-loaded'); }, { once: true });
     if (v.dataset.poster) v.poster = v.dataset.poster;
     if (v.dataset.src) {
       var src = document.createElement('source');
@@ -3674,8 +3721,14 @@ revealEls.forEach(el => {
   var wallPhotosObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting && e.target.dataset.bg) {
-        e.target.style.backgroundImage = "url('" + e.target.dataset.bg + "')";
         wallPhotosObs.unobserve(e.target);
+        var el = e.target;
+        var preload = new Image();
+        preload.onload = function () {
+          el.style.backgroundImage = "url('" + el.dataset.bg + "')";
+          requestAnimationFrame(function () { el.classList.add('media-loaded'); });
+        };
+        preload.src = el.dataset.bg;
       }
     });
   }, { threshold: 0.01, rootMargin: '600px 0px' });
