@@ -5011,24 +5011,55 @@ backBtn.addEventListener('click', () => {
   // Do NOT scroll — card stays exactly where it is
 });
 
+function generateBookingNo() {
+  const year = new Date().getFullYear();
+  const rand = Math.floor(10000 + Math.random() * 89999);
+  return `${year}${rand}`;
+}
+
 function submitPlan() {
   document.getElementById('successName').textContent = form.firstName.value.trim() || 'traveler';
+
+  const hotelTypeLabel = { '4-star': '4-star Hotel', '5-star': '5-star Hotel' }[form.hotelType.value] || form.hotelType.value;
+  const toursLabel = { yes: 'Fully arranged — every day planned.', no: 'A mix of guided days and free time.' }[data.tours] || '';
+  const hasDatesLabel = { yes: 'Has specific dates in mind.', no: 'Not sure yet / flexible.' }[data.hasDates] || '';
+  const flightsLabel = { yes: "Yes, help me book my flights.", no: "No, I'll book my own flights." }[form.flights.value] || '';
+  const luggageMap = { both: 'Both flights', onward: 'Onward only', return: 'Return only', none: 'Not needed' };
+  const luggageLabel = luggageMap[form.luggage.value] || '';
+
   const payload = {
-    want: data.want, destinations: data.destinations, days: data.days,
-    startDate: form.startDate.value, endDate: form.endDate.value,
+    bookingNo: generateBookingNo(),
+    timestamp: new Date().toString(),
+    firstName: form.firstName.value, lastName: form.lastName.value,
+    email: form.email.value, phone: form.phoneCode.value + form.phone.value,
+    source: form.source.value,
+    want: data.want, destinations: data.destinations.join(', '), days: data.days,
+    hasDates: hasDatesLabel, startDate: form.startDate.value, endDate: form.endDate.value,
+    tours: toursLabel, freeDays: data.tours === 'no' ? data.freeDays : '',
     groupType: form.groupType.value, nationality: form.nationality.value,
     travelers: data.travelers, children: data.children, infants: data.infants,
-    firstName: form.firstName.value, lastName: form.lastName.value,
-    email: form.email.value, phone: form.phone.value
+    groupNotes: form.groupNotes.value,
+    activitiesWant: form.activitiesWant ? form.activitiesWant.value : '',
+    activitiesAvoid: form.activitiesAvoid ? form.activitiesAvoid.value : '',
+    hotelType: hotelTypeLabel, roomConfig: form.roomConfig.value, hotelNotes: form.hotelNotes.value,
+    flights: flightsLabel, flyFrom: form.flyFrom.value, flyTo: form.flyTo.value,
+    luggage: luggageLabel, arrivalTime: form.arrivalTime.value, departureTime: form.departureTime.value,
+    flightNotes: form.flightNotes.value
   };
+
   /* ── Where form submissions go ──────────────────────────────────────
-     This used to post to '/api/lead', which doesn't exist anywhere in
-     this project — every submission was silently going nowhere.
-     FORMSPREE_SETUP: sign up free at https://formspree.io, create a form,
-     and it gives you a URL like https://formspree.io/f/abcd1234.
-     Replace the placeholder below with that exact URL and submissions
-     will land in your email inbox. See GUIDE.md, Phase 5. */
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+     1) FORMSPREE_ENDPOINT — emails the full lead to bookings@taratravel.co.
+        Sign up free at https://formspree.io, create a form, and it gives
+        you a URL like https://formspree.io/f/abcd1234. Replace the
+        placeholder below with that exact URL.
+     2) SHEETS_WEBAPP_URL — writes the same lead directly into the
+        Leads_and_Sales_Hub Google Sheet via an Apps Script Web App,
+        replacing the old Zapier email-parsing step. Replace the
+        placeholder below with the deployed Web App URL.
+     Both fire independently — if one fails, the other still goes through. */
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvdvlvv';
+  const SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxzBsYYxAHwQ7yN0Ok8tsKu-0Eg10kQ9S_J0ev_A8GW0onlD6wsHH7S9wkENEDSIGvo/exec';
+
   try {
     fetch(FORMSPREE_ENDPOINT, {
       method: 'POST',
@@ -5036,6 +5067,15 @@ function submitPlan() {
       body: JSON.stringify(payload)
     }).catch(() => {});
   } catch (e) {}
+
+  try {
+    fetch(SHEETS_WEBAPP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  } catch (e) {}
+
   showStep(7);
 }
 
