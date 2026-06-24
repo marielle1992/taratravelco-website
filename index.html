@@ -548,10 +548,10 @@ video.hero-bg {
   object-fit: cover;
   display: block;
 }
-/* TRISH.webp's subject sits left-of-center in the source file, so the
-   default centered crop leaves visible empty space on the right side of
-   her circle — shift the crop left to actually center her. */
-.reality-team-photo img[alt="Trish"] { object-position: 35% center; }
+/* TRISH.webp's subject actually sits right-of-center in the source file
+   (bbox center ~58% of width) — the earlier 35% fix shifted the crop the
+   wrong way. 75% pulls the visible window right so she lands centered. */
+.reality-team-photo img[alt="Trish"] { object-position: 75% center; }
 .reality-team-person--active .reality-team-photo {
   filter: grayscale(0%);
   opacity: 1;
@@ -767,19 +767,6 @@ video.hero-bg {
   gap: 20px;
   overflow: hidden;
 }
-/* Desktop-only: the gallery's mix of bright photo colors reads as busy at
-   this larger size — a soft dark wash calms it down without touching the
-   mobile layout, where the same colors read fine at the smaller scale. */
-@media (min-width: 841px) {
-  .who-wall-media::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(10,12,10,.16);
-    pointer-events: none;
-    z-index: 5;
-  }
-}
 .wall-col {
   display: flex;
   flex-direction: column;
@@ -891,7 +878,7 @@ video.hero-bg {
 }
 
 /* ===== REVIEWS — editorial card row ===== */
-.reviews-lux { background: var(--cream); padding: 70px 0 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+.reviews-lux { background: rgba(20,20,20,.0175); padding: 70px 0 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 .reviews-lux .wrap { max-width: none; margin: 0; }
 .reviews-head-row {
   display: flex;
@@ -1540,6 +1527,16 @@ video.hero-bg {
 .phone-field-lux select { width: auto; min-width: 110px; flex-shrink: 0; padding: 13px 10px; border: 1px solid rgba(0,0,0,.16); border-radius: 0; font-family: 'DM Sans', sans-serif; font-size: .8rem; color: var(--ink); background: #fff; -webkit-appearance: none; cursor: pointer; }
 .phone-field-lux select:focus { outline: none; border-color: var(--gold); }
 .phone-field-lux input { flex: 1; }
+/* iOS/Android zoom the whole page in on focus when a text input's font-size
+   is under 16px — these fields sit at .8rem (12.8px) for the desktop look,
+   which triggers that zoom on mobile and reads as a confusing jump. Bump to
+   16px only at mobile widths; desktop keeps the smaller size untouched. */
+@media (max-width: 760px) {
+  .field-lux input, .field-lux textarea, .field-lux select,
+  .phone-field-lux select, .phone-field-lux input {
+    font-size: 16px;
+  }
+}
 
 .opt-lux {
   border: 1px solid rgba(0,0,0,.16);
@@ -2209,8 +2206,10 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   }
   .mobile-nav-panel a.mobile-nav-cta:hover { background: var(--ink); color: #fff; }
   .nav-cta { display: none !important; }
-  .hamburger { display: block !important; flex-shrink: 0; min-width: 40px; min-height: 40px; }
-  .nav-back, .nav-share-btn { display: flex !important; flex-shrink: 0; }
+  .hamburger { display: block !important; flex-shrink: 0; min-width: 28px; min-height: 28px; padding: 6px; }
+  .hamburger span { width: 15px; margin: 4px 0; }
+  .nav-back, .nav-share-btn { display: flex !important; flex-shrink: 0; padding: 6px; }
+  .nav-back svg, .nav-share-btn svg { width: 14px; height: 14px; }
   .nav-link-right { display: none !important; }
   .nav-right { flex-wrap: nowrap; }
   .nav-share-btn { margin-right: 2px; }
@@ -2220,8 +2219,13 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
      instead of the desktop's centered-logo 3-column grid. */
   .nav-inner { display: flex !important; align-items: center; justify-content: flex-start !important; }
   .nav-left { order: 1; }
-  .nav-logo-center { order: 2; text-align: left !important; font-size: 1.2rem !important; letter-spacing: 5px !important; margin-left: 4px; }
+  .nav-logo-center { order: 2; text-align: left !important; font-size: .84rem !important; letter-spacing: 3.5px !important; margin-left: 4px; }
   .nav-right { order: 3; margin-left: auto !important; }
+  /* Whole header bar ~30% smaller on mobile: less vertical padding and a
+     smaller logo image, so the bar takes up noticeably less screen height. */
+  header.nav { padding: 21px 0; }
+  header.nav.scrolled { padding: 11px 0; }
+  .logo-lux .nav-logo-img { height: 27px; }
   .lux-sec { padding: 56px 0; }
   .wrap { padding: 0 20px; }
   .scroll-line { left: 20px; }
@@ -3907,7 +3911,7 @@ if (whoSide) {
         mobileStopAuto();
         var card = reviewRow.children[i];
         if (card) rowOuter.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
-        mobileStartAuto();
+        mobileRestartAutoAfterManual();
       });
     });
 
@@ -3921,13 +3925,28 @@ if (whoSide) {
       rowOuter.scrollTo({ left: next > maxScroll + 4 ? 0 : next, behavior: 'smooth' });
     }
     function mobileStartAuto() { if (!mobileAutoTimer) mobileAutoTimer = setInterval(mobileAdvance, 5000); }
-    function mobileStopAuto() { if (mobileAutoTimer) { clearInterval(mobileAutoTimer); mobileAutoTimer = null; } }
+    function mobileStopAuto() {
+      if (mobileAutoTimer) { clearInterval(mobileAutoTimer); mobileAutoTimer = null; }
+      if (mobileAutoRestartTimeout) { clearTimeout(mobileAutoRestartTimeout); mobileAutoRestartTimeout = null; }
+    }
+    /* After the visitor swipes by hand, give them longer than the normal 5s
+       cadence to actually read the card they just swiped to before
+       auto-advance kicks back in — then resume the normal pace. */
+    var mobileAutoRestartTimeout = null;
+    function mobileRestartAutoAfterManual() {
+      mobileStopAuto();
+      mobileAutoRestartTimeout = setTimeout(function () {
+        mobileAutoRestartTimeout = null;
+        mobileStartAuto();
+      }, 15000);
+    }
 
     rowOuter.addEventListener('touchstart', function () { mobilePaused = true; }, { passive: true });
     var mobileTouchResumeTimer = null;
     rowOuter.addEventListener('touchend', function () {
       clearTimeout(mobileTouchResumeTimer);
       mobileTouchResumeTimer = setTimeout(function () { mobilePaused = false; }, 600);
+      mobileRestartAutoAfterManual();
     }, { passive: true });
 
     /* The first time the section scrolls into view, immediately nudge the
@@ -3973,6 +3992,7 @@ if (whoSide) {
       mobileDragging = false;
       mobilePaused = false;
       rowOuter.classList.remove('is-dragging');
+      mobileRestartAutoAfterManual();
     }
     window.addEventListener('pointerup', mobileEndDrag);
     window.addEventListener('pointercancel', mobileEndDrag);
@@ -4084,6 +4104,18 @@ if (whoSide) {
   }
   function stopAuto() {
     if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    if (autoRestartTimeout) { clearTimeout(autoRestartTimeout); autoRestartTimeout = null; }
+  }
+  /* After a manual swipe/drag/dot-click, give the visitor longer than the
+     normal 5s cadence to read the card they just moved to before
+     auto-advance resumes at its normal pace. */
+  var autoRestartTimeout = null;
+  function restartAutoAfterManual() {
+    stopAuto();
+    autoRestartTimeout = setTimeout(function () {
+      autoRestartTimeout = null;
+      startAuto();
+    }, 15000);
   }
 
   dashes.forEach(function (d, i) {
@@ -4091,7 +4123,7 @@ if (whoSide) {
     d.addEventListener('click', function () {
       stopAuto();
       goToIndex(i);
-      startAuto();
+      restartAutoAfterManual();
     });
   });
 
@@ -4105,6 +4137,7 @@ if (whoSide) {
   rowOuter.addEventListener('touchend', function () {
     clearTimeout(touchScrollResumeTimer);
     touchScrollResumeTimer = setTimeout(function () { paused = false; }, 600);
+    restartAutoAfterManual();
   }, { passive: true });
 
   /* One-card-per-gesture swipe/drag for MOUSE input only (desktop click-drag).
@@ -4137,7 +4170,7 @@ if (whoSide) {
     var deltaX = e.clientX - gestureStartX;
     if (Math.abs(deltaX) > 30) {
       stopAuto();
-      doStep(deltaX < 0 ? 'forward' : 'back', startAuto);
+      doStep(deltaX < 0 ? 'forward' : 'back', restartAutoAfterManual);
     }
     paused = false;
   });
@@ -4735,12 +4768,19 @@ makeCounter('plusC', 'minusC', 'childrenVal', 'children', 0);
 makeCounter('plusI', 'minusI', 'infantsVal', 'infants', 0);
 
 function updateTabs(n) {
+  let activeTab = null;
   tabs.forEach((t, i) => {
     const tabStep = i + 1;
     t.classList.remove('active', 'done');
-    if (tabStep === n) t.classList.add('active');
+    if (tabStep === n) { t.classList.add('active'); activeTab = t; }
     else if (tabStep <= maxStep) t.classList.add('done');
   });
+  /* .step-tabs-lux scrolls horizontally on mobile — as the user moves forward
+     through the form, slide the active tab into view so they can see where
+     they are in the process without having to swipe the tab bar themselves. */
+  if (activeTab) {
+    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
 }
 
 function setNextVisible(complete) {
