@@ -878,7 +878,13 @@ video.hero-bg {
 }
 
 /* ===== REVIEWS — editorial card row ===== */
-.reviews-lux { background: rgba(20,20,20,.0175); padding: 70px 0 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+.reviews-lux { background: var(--cream); padding: 70px 0 60px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+/* The faint rgba tint matched to What You Get reads as basically white on
+   desktop (1.75% black is imperceptible against a mostly-white layout) —
+   keep desktop as-is and use a clearly visible light grey on mobile only. */
+@media (max-width: 760px) {
+  .reviews-lux { background: #fbfaf8; }
+}
 .reviews-lux .wrap { max-width: none; margin: 0; }
 .reviews-head-row {
   display: flex;
@@ -2336,7 +2342,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
     </div>
 
     <div class="reality-team-quote-wrap">
-      <h2 class="lux-h2 reality-team-quote" id="realityTeamQuote">I don&rsquo;t have the time to plan our family trip. I want to hand it over to someone I can trust so I can <em>focus entirely on my loved ones</em>.</h2>
+      <h2 class="lux-h2 reality-team-quote" id="realityTeamQuote">I have no time to plan our family trip. I need a trusted expert to handle it so I can <em>focus entirely on my loved ones</em>.</h2>
       <!-- initial quote matches data[0] in the script below; JS keeps it in sync on auto-advance/click -->
     </div>
 
@@ -3271,7 +3277,7 @@ revealEls.forEach(el => {
    and resumes auto-advance after a 10s pause ---- */
 (function () {
   var data = [
-    { name: "Maricel", html: "I don’t have the time to plan our family trip. I want to hand it over to someone I can trust so I can <em>focus entirely on my loved ones</em>." },
+    { name: "Maricel", html: "I have no time to plan our family trip. I need a trusted expert to handle it so I can <em>focus entirely on my loved ones</em>." },
     { name: "Trish", html: "I want a vacation where I’m <em>treated like a guest, not the tour guide</em> for my own group." },
     { name: "Migs", html: "I’m looking for a vacation where I can actually <em>unplug and just enjoy the experience</em> with my friends." },
     { name: "Joy", html: "We want seamless logistics so our team needs to stay focused on business beforehand, and simply <em>show up ready to enjoy the trip</em>." }
