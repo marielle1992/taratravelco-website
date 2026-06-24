@@ -4,6 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tará Travel Co. — Tailor-made Trips in Vietnam</title>
+  <script>
+    /* Browsers (Chrome especially) remember the scroll position you left a page
+       at and silently restore it on the next load/reload of that same history
+          entry — so after scrolling down to "What You Get" and reloading (or even
+             just retyping the URL in some cases), the page was opening already
+                scrolled down instead of at the Hero banner. Turning off automatic scroll
+                   restoration and forcing the page to start at the very top (unless the URL
+                      explicitly points at an anchor like #planner) fixes that. Must run before
+                         the browser gets a chance to restore scroll, so it's the very first thing
+                            in <head>. */
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    if (!window.location.hash) {
+        window.scrollTo(0, 0);
+        window.addEventListener('load', function() {
+              if (!window.location.hash) window.scrollTo(0, 0);
+        });
+    }
+      </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
