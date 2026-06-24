@@ -4801,9 +4801,24 @@ function updateTabs(n) {
   });
   /* .step-tabs-lux scrolls horizontally on mobile — as the user moves forward
      through the form, slide the active tab into view so they can see where
-     they are in the process without having to swipe the tab bar themselves. */
+     they are in the process without having to swipe the tab bar themselves.
+     IMPORTANT: this must only scroll the tab strip itself, never the page.
+     activeTab.scrollIntoView({block:'nearest'}) looks page-safe but isn't —
+     during the very first render (showStep(1) on load) the tab strip's
+     layout isn't settled yet, so the browser decides the tab "isn't in
+     view" and scrolls the whole document down to it, landing on the
+     planner/What-You-Get section instead of the hero. Scrolling the tab
+     strip's own scrollLeft directly avoids touching page scroll at all. */
   if (activeTab) {
-    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const tabsContainer = document.getElementById('stepTabs');
+    if (tabsContainer) {
+      const cRect = tabsContainer.getBoundingClientRect();
+      const tRect = activeTab.getBoundingClientRect();
+      const delta = (tRect.left + tRect.width / 2) - (cRect.left + cRect.width / 2);
+      if (Math.abs(delta) > 1) {
+        tabsContainer.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+    }
   }
 }
 
