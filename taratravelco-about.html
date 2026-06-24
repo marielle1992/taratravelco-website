@@ -70,6 +70,15 @@ header.nav.scrolled .nav-cta:hover { color:var(--ink); border-color:var(--gold);
 .hamburger span { display:block; width:22px; height:1px; background:var(--white); margin:6px 0; transition:.3s; }
 header.nav.scrolled .hamburger span { background:var(--ink); }
 
+/* This page has no dark hero banner, so the nav should read in its
+   dark-on-light "scrolled" state from the very first frame. */
+header.nav { background:var(--cream); padding:16px 0; }
+.logo-lux { color:var(--ink); }
+.nav-links a { color:var(--ink-soft); }
+.nav-links a:hover, .nav-links a.active { color:var(--ink); }
+.nav-cta { color:var(--ink); border-color:rgba(20,20,20,.4); }
+.hamburger span { background:var(--ink); }
+
 /* SECTION HELPERS */
 .sec-label { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
 .sec-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.675rem; line-height:1.1; color:var(--navy); margin-bottom:16px; }
@@ -95,17 +104,25 @@ header.nav.scrolled .hamburger span { background:var(--ink); }
 /* STORY SPLIT */
 .about-story { padding:80px 0; }
 .about-story-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-.about-story-img { width:100%; height:480px; background:url('https://taratravel.co/wp-content/uploads/2026/05/Hoi-An-by-Night-by-Tara-Travel-Co.-1.webp') center/cover; }
+.about-story-imgs { display:grid; grid-template-columns:1.2fr 1fr; grid-template-rows:1fr 1fr; gap:12px; height:480px; }
+.img-ph { background:rgba(20,20,20,.03); border:1px dashed rgba(20,20,20,.18); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:rgba(20,20,20,.35); }
+.img-ph span:first-child { font-family:'Playfair Display',serif; font-size:1.8rem; line-height:1; }
+.img-ph-label { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:.05em; text-transform:uppercase; }
+.img-ph-1 { grid-row:1 / 3; }
+.img-ph-2 { grid-column:2; grid-row:1; }
+.img-ph-3 { grid-column:2; grid-row:2; }
 .about-story-text p { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1rem; line-height:1.85; color:var(--ink-soft); margin-bottom:18px; }
 .about-story-text p:last-child { margin-bottom:0; }
 @media(max-width:1024px) { .about-story-inner { padding:0 36px; } }
 @media(max-width:860px) {
   .about-story-inner { grid-template-columns:1fr; gap:32px; }
-  .about-story-img { height:320px; order:-1; }
+  .about-story-imgs { height:320px; order:-1; }
 }
 @media(max-width:640px) {
   .about-story { padding:48px 0; }
   .about-story-inner { padding:0 16px; }
+  .about-story-imgs { height:240px; gap:8px; }
+  .img-ph span:first-child { font-size:1.4rem; }
 }
 
 /* VALUES */
@@ -132,15 +149,16 @@ header.nav.scrolled .hamburger span { background:var(--ink); }
 .about-process-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; text-align:center; }
 .about-process-inner .sec-label, .about-process-inner .sec-title { margin-left:auto; margin-right:auto; }
 .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:40px; text-align:left; }
+.process-steps.steps-3 { grid-template-columns:repeat(3,1fr); }
 .process-step { position:relative; padding:0 18px 0 0; }
 .process-num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold-soft); margin-bottom:10px; }
 .process-step-title { font-size:1.05rem; font-weight:400; color:var(--ink); margin-bottom:6px; }
 .process-step-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); }
-@media(max-width:1024px) { .about-process-inner { padding:0 36px; } process-steps { grid-template-columns:1fr 1fr; } .process-steps { grid-template-columns:1fr 1fr; } }
+@media(max-width:1024px) { .about-process-inner { padding:0 36px; } .process-steps { grid-template-columns:1fr 1fr; } }
 @media(max-width:640px) {
   .about-process { padding:48px 0; }
   .about-process-inner { padding:0 16px; }
-  .process-steps { grid-template-columns:1fr 1fr; gap:24px; margin-top:28px; }
+  .process-steps, .process-steps.steps-3 { grid-template-columns:1fr; gap:24px; margin-top:28px; }
 }
 
 /* WORK WITH US CTA */
@@ -155,14 +173,19 @@ header.nav.scrolled .hamburger span { background:var(--ink); }
 .about-cta .btn-lux:hover span { color:var(--ink); }
 @media(max-width:640px) { .about-cta { padding:56px 0; } }
 
-/* WHEN YOU BOOK WITH US (trust cards, reused style) */
+/* WHAT YOU GET (trust cards, reused style) */
 .trust-sec { background:#fff; padding:70px 0; }
 .trust-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
 .trust-sec .sec-label { color:var(--gold); }
 .trust-sec .sec-title { color:var(--ink); }
 .trust-sec .sec-title em { color:var(--gold); }
-@media(max-width:1024px) { .trust-inner { padding:0 36px; } }
-@media(max-width:640px) { .trust-sec { padding:48px 0; } .trust-inner { padding:0 16px; } }
+.trust-cards-8 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px; text-align:left; }
+.trust-cards-8 .trust-card { background:rgba(20,20,20,.0175); padding:28px 22px 26px; }
+.trust-icon img { width:34px; height:34px; object-fit:contain; margin-bottom:14px; }
+.trust-cards-8 .trust-title { font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:6px; color:var(--ink); }
+.trust-cards-8 .trust-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); }
+@media(max-width:1024px) { .trust-inner { padding:0 36px; } .trust-cards-8 { grid-template-columns:1fr 1fr; } }
+@media(max-width:640px) { .trust-sec { padding:48px 0; } .trust-inner { padding:0 16px; } .trust-cards-8 { grid-template-columns:1fr 1fr; gap:10px; margin-top:24px; } .trust-cards-8 .trust-card { padding:18px; } }
 
 /* FOOTER */
 footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top:1px solid rgba(0,0,0,.12); }
@@ -252,6 +275,394 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   .foot-grid { grid-template-columns:1fr; gap:36px; }
   .foot-bottom { flex-direction:column; gap:4px; }
 }
+/* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
+.contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); cursor: pointer; transition: transform .2s; }
+.contact-fab-btn:hover { transform: scale(1.06); }
+.contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
+.contact-fab-menu.open { display: flex; }
+.contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
+.contact-fab-link:hover { background: rgba(215,154,61,.1); }
+.contact-fab-link svg { flex-shrink: 0; }
+@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 50px; height: 50px; } }
+
+/* ===== TRIP PLANNER (ported from index.html) ===== */
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 52px; }
+.btn-lux-solid { background: var(--gold); color: #fff; border-color: var(--gold); }
+.btn-lux-solid span { color: #fff; }
+.btn-lux-solid::after { background: var(--gold); }
+.btn-lux-solid:hover span { color: #fff; }
+.lux-sec { padding: 80px 0; }
+.lux-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.lux-label-light { color: var(--gold); }
+.lux-h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -.5px;
+}
+.lux-h2 em { font-style: italic; color: var(--gold); }
+.lux-h2-light { color: #141414; }
+.lux-h2-light em { color: var(--gold); }
+.lux-p {
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.lux-p-light { color: rgba(20,20,20,.7); }
+.planner-lux .lux-h2 { font-size: 1.675rem; line-height: 1.2; }
+.planner-lux > .wrap > .lux-reveal .lux-p { font-size: .925rem; line-height: 1.5; }
+.planner-lux .hint { font-size: .9rem; }
+.q-label, label.q-label { font-size: .9rem; }
+.field-lux label { font-size: .9rem; }
+.planner-lux h3 { font-size: 1.05rem; }
+
+.planner-lux { background: #FFFFFF; padding-top: 0; }
+.planner-lux-card {
+  background: #ffffff;
+  max-width: 860px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+.step-tabs-lux {
+  display: flex;
+  justify-content: space-evenly;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: var(--header-h, 0px);
+  z-index: 90;
+  background: #fff;
+}
+.step-tabs-lux::-webkit-scrollbar { display: none; }
+.step-tab-lux {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .76rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(27,42,48,.22);
+  padding: 16px 28px;
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: default;
+  transition: color .2s, border-color .2s;
+}
+.step-tab-lux.done { color: rgba(27,42,48,.38); border-bottom-color: var(--gold); cursor: pointer; margin-bottom: -1px; }
+.step-tab-lux.active { color: var(--gold); border-bottom-color: var(--gold); cursor: default; margin-bottom: -1px; }
+.planner-body-lux { padding: 32px clamp(24px,5.5vw,60px) 36px; }
+
+.fstep { display: none; }
+.fstep.active { display: block; }
+.fstep.fade-out { display: block; opacity: 0; transition: opacity .4s ease; }
+#datesSection { opacity: 1; pointer-events: auto; }
+.fstep.fade-in  { display: block; opacity: 0; }
+.fstep.fade-in.visible { opacity: 1; transition: opacity .5s ease; }
+
+.planner-lux h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.45rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.planner-lux .hint { font-family: 'DM Sans', sans-serif; font-size: .95rem; color: var(--ink); font-weight: 500; margin-bottom: 24px; }
+.q-label, label.q-label { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: .95rem; color: var(--ink); display: block; margin-bottom: 8px; text-transform: none !important; letter-spacing: 0 !important; }
+.date-box-full { display: none; }
+.drc-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-top: 1px solid rgba(0,0,0,.16); }
+.drc-hint { font-family: 'DM Sans', sans-serif; font-size: .92rem; font-weight: 300; color: var(--ink); }
+.drc-select-btn { font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .01em; text-transform: none; background: #ccc; color: #fff; border: none; border-radius: 0; padding: 10px 22px; cursor: not-allowed; position: relative; overflow: hidden; transition: background .35s, color .35s; }
+.drc-select-btn::after { content: ''; position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.77,0,.175,1); z-index: 0; }
+.drc-select-btn span { position: relative; z-index: 1; }
+.drc-select-btn.is-ready { background: var(--gold); cursor: pointer; }
+.drc-select-btn.is-ready:hover::after { transform: scaleX(1); }
+
+.field-lux { margin-bottom: 14px; }
+.field-lux label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+.fstep label:not(.q-label) { font-weight: 500; }
+.field-lux input, .field-lux textarea, .field-lux select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid rgba(0,0,0,.16);
+  border-radius: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  font-weight: 300;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+}
+.field-lux input:focus, .field-lux textarea:focus, .field-lux select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.field-lux textarea { resize: vertical; min-height: 90px; }
+.phone-field-lux { display: flex; gap: 8px; }
+.phone-field-lux select { width: auto; min-width: 110px; flex-shrink: 0; padding: 13px 10px; border: 1px solid rgba(0,0,0,.16); border-radius: 0; font-family: 'DM Sans', sans-serif; font-size: .8rem; color: var(--ink); background: #fff; -webkit-appearance: none; cursor: pointer; }
+.phone-field-lux select:focus { outline: none; border-color: var(--gold); }
+.phone-field-lux input { flex: 1; }
+@media (max-width: 760px) {
+  .field-lux input, .field-lux textarea, .field-lux select,
+  .phone-field-lux select, .phone-field-lux input {
+    font-size: 16px;
+  }
+}
+
+.opt-lux {
+  border: 1px solid rgba(0,0,0,.16);
+  border-radius: 0;
+  padding: 13px 16px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: border-color .2s, background .2s;
+  background: #fff;
+}
+.opt-lux:hover { border-color: var(--gold); }
+.opt-lux.sel { border-color: var(--gold); background: #fffdf7; }
+.opt-lux .oi { font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.opt-lux .ot { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: .88rem; color: #141414; }
+.opt-lux .od { font-size: .8rem; color: var(--ink); font-weight: 300; margin-top: 3px; }
+.opt-lux .check { display: none; }
+.opt-grid-lux { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+.chip-lux {
+  border: 1px solid rgba(0,0,0,.16);
+  border-radius: 0;
+  background: #fff;
+  padding: 9px 20px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  letter-spacing: .5px;
+  color: #6b6b6b;
+  transition: .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip-lux:hover { border-color: var(--gold); }
+.chip-lux.sel { background: #fffdf7; border-color: var(--gold); color: #141414; }
+.dest-grid-lux { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.counter-lux { display: inline-flex; align-items: center; gap: 16px; }
+.counter-lux button {
+  background: none;
+  border: none;
+  color: var(--gold);
+  opacity: 0.4;
+  font-size: 1.2rem;
+  font-weight: 300;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1;
+  padding: 0;
+  transition: opacity .2s;
+}
+.counter-lux button:hover { opacity: 1; }
+.counter-lux .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  font-weight: 400;
+  min-width: 24px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.counter-row-lux {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.counter-row-lux .clabel { font-size: .8rem; color: var(--ink); font-weight: 300; min-width: 190px; }
+
+.planner-nav-lux {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 38px;
+  padding-top: 0;
+  gap: 12px;
+}
+.planner-nav-lux .btn-lux { border-radius: 0; overflow: hidden; }
+.btn-back-lux {
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  letter-spacing: .01em;
+  text-transform: none;
+  color: #6b6b6b;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+.btn-back-lux:hover { color: #6b6b6b; }
+.btn-back-lux[hidden] { display: inline-flex; visibility: hidden; }
+.err-lux { color: #c0392b; font-size: .92rem; margin-top: 8px; min-height: 16px; font-weight: 300; }
+
+/* Date range picker */
+.daterange-cal { border: 1px solid rgba(0,0,0,.16); border-radius: 0; overflow: hidden; background: #fff; opacity: 0; animation: calFadeIn .45s ease forwards; }
+@keyframes calFadeIn { to { opacity: 1; } }
+.drc-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,.16); }
+.drc-nav { background: none; border: 1px solid rgba(0,0,0,.2); border-radius: 0; width: 32px; height: 32px; cursor: pointer; color: var(--gold); font-size: 1rem; transition: .2s; flex-shrink: 0; }
+.drc-nav:hover { background: var(--gold); color: #fff; }
+.drc-months { display: flex; gap: 40px; flex: 1; justify-content: center; }
+.drc-month-title { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); text-align: center; }
+.drc-grids { display: flex; gap: 0; }
+.drc-grid { flex: 1; padding: 16px 20px 20px; }
+.drc-grid:first-child { border-right: 1px solid rgba(0,0,0,.16); }
+.drc-dow { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 6px; }
+.drc-dow span { font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 400; color: var(--ink); text-align: center; padding: 4px 0; letter-spacing: .5px; }
+.drc-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.drc-day { font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 300; text-align: center; padding: 7px 2px; cursor: pointer; border-radius: 0; color: var(--ink); transition: background .15s, color .15s; position: relative; }
+.drc-day:hover:not(.drc-empty):not(.drc-past) { background: rgba(215,154,61,.15); }
+.drc-day.drc-empty { cursor: default; }
+.drc-day.drc-past { color: rgba(26,58,82,.25); cursor: default; }
+.drc-day.drc-start, .drc-day.drc-end { background: var(--gold); color: #fff; font-weight: 500; border-radius: 0; }
+.drc-day.drc-in-range { background: rgba(215,154,61,.15); border-radius: 0; color: var(--ink); }
+.drc-day.drc-start { border-radius: 0; }
+.drc-day.drc-end { border-radius: 0; }
+.drc-day.drc-start.drc-end { border-radius: 0; }
+.daterange-summary { font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 400; color: var(--ink); margin-bottom: 12px; }
+.daterange-summary strong { color: var(--gold); font-weight: 500; }
+@media (max-width: 640px) {
+  .drc-grids { flex-direction: column; }
+  .drc-grid:first-child { border-right: none; border-bottom: 1px solid rgba(0,0,0,.16); }
+  .drc-months { gap: 0; }
+}
+
+/* Itinerary compact grid */
+.itin-grid { display: flex; flex-direction: column; gap: 0; }
+.itin-region { margin-bottom: 20px; }
+.itin-region-label { font-family: 'DM Sans', sans-serif; font-size: .7rem; letter-spacing: 1.5px; text-transform: uppercase; color: #999; margin-bottom: 10px; }
+.dest-region { margin-bottom: 16px; }
+.dest-region-label { font-family: 'DM Sans', sans-serif; font-size: .7rem; letter-spacing: 1.5px; text-transform: uppercase; color: #999; margin-bottom: 10px; }
+.itin-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.itin-chip { padding: 7px 16px !important; border-radius: 0 !important; gap: 6px; align-items: center; }
+.itin-chip .oi { display: none; }
+.itin-chip .ot { font-size: .82rem; }
+.itin-chip .itin-days { font-size: .82rem; color: var(--gold); font-weight: 500; margin-bottom: 2px; display: block; }
+.itin-chip .itin-dest { font-size: .82rem; color: #6b6b6b; display: block; }
+.itin-chip.sel .itin-dest { color: #141414; }
+.itin-chip.sel .itin-days { color: var(--gold); }
+
+/* Step 1 two-column layout with map */
+.step1-with-map {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+}
+.step1-form-col {
+  flex: 0 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.step1-form-col .planner-nav-lux {
+  margin-top: 0;
+}
+.step1-map-col {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.planner-vietnam-map {
+  width: 80%;
+  max-width: 80%;
+  height: min(38.4vh, 368px);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+.planner-vietnam-map[src="vietnam-map.png"]:not([src=""]) {
+  min-height: 380px;
+  background: rgba(215,154,61,.06);
+  border: 1px dashed rgba(0,0,0,.2);
+  border-radius: 0;
+}
+@media (max-width: 640px) {
+  .step1-with-map { flex-direction: column; gap: 16px; align-items: stretch; }
+  .step1-map-col { flex: 1 1 auto; width: 100%; }
+  .step1-form-col { flex: 1 1 auto; min-width: 0; }
+  .planner-vietnam-map { max-width: 80%; margin: 0 auto; }
+  .planner-vietnam-map[src="vietnam-map.png"]:not([src=""]) {
+    width: min(72vw, 280px);
+    aspect-ratio: 9 / 16;
+    min-height: 420px;
+    height: auto;
+  }
+}
+
+.success-lux { text-align: center; padding: 28px 0; }
+.success-lux .tick {
+  width: 72px; height: 72px;
+  border: 1px solid rgba(0,0,0,.16);
+  display: grid; place-items: center;
+  margin: 0 auto 28px;
+  font-size: 1.8rem;
+}
+.success-lux h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #141414;
+  margin-bottom: 12px;
+}
+
+/* ===== STEP 2 GROUPS ===== */
+.step2-group { border: 1px solid rgba(0,0,0,.16); border-radius: 0; padding: 20px 22px; margin-bottom: 16px; }
+.step2-group-label { font-family: 'DM Sans', sans-serif; font-size: .72rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+/* ===== UTILITIES (planner) ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+@media (max-width: 760px) {
+  .lux-label { font-size: .68rem; letter-spacing: 3.5px; }
+  .lux-h2 { font-size: 1.675rem !important; line-height: 1.2 !important; white-space: normal !important; }
+  .lux-p { font-size: 1rem; line-height: 1.8; }
+  .planner-lux h3 { font-size: 1.05rem; }
+  .planner-lux > .wrap > .lux-reveal:not(.planner-lux-card) {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 640px) {
+  .two-col { grid-template-columns: 1fr; }
+  .opt-grid-lux { grid-template-columns: 1fr; }
+  .counter-row-lux { flex-wrap: wrap; }
+}
 </style>
 </head>
 <body>
@@ -266,8 +677,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
         <a href="taratravelco-travelguidelist.html" data-text="Travel Guide">Travel Guide</a>
         <a href="taratravel-destinations-list.html" data-text="Destinations">Destinations</a>
         <a href="taratravelco-about.html" data-text="About Us" class="active">About Us</a>
-        <a href="https://www.facebook.com/taratravelco" data-text="Messenger" target="_blank" rel="noopener">Messenger</a>
-        <a href="https://wa.me/84394093181" data-text="WhatsApp" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
       <a href="#" class="nav-cta"><span>Plan my trip</span></a>
     </div>
@@ -282,108 +691,109 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   <a href="taratravelco-travelguidelist.html">Travel Guide</a>
   <a href="taratravel-destinations-list.html">Destinations</a>
   <a href="taratravelco-about.html">About Us</a>
-  <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a>
-  <a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="#" onclick="toggleContactFab(event)">Contact</a>
   <a href="#" class="mobile-nav-cta">Plan my trip</a>
 </nav>
 
-<!-- HERO -->
-<section class="about-hero">
-  <div class="about-hero-img"></div>
-  <div class="about-hero-content">
-    <div class="sec-label">About Tará Travel Co.</div>
-    <h1>Tara na! <em>Let's go</em> — together.</h1>
-    <p>We're a Da Nang-based travel concierge building tailor-made trips across Vietnam, one itinerary at a time.</p>
+<!-- CONTACT POPUP -->
+<div class="contact-fab-wrap" id="contactFabWrap">
+  <div class="contact-fab-menu" id="contactFabMenu">
+    <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+      Messenger
+    </a>
+    <a href="https://wa.me/84394093181" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
   </div>
-</section>
+  <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </button>
+</div>
 
 <!-- OUR STORY -->
-<section class="about-story lux-reveal">
+<section class="about-story lux-reveal" style="margin-top:120px;">
   <div class="about-story-inner">
-    <div class="about-story-img"></div>
+    <div class="about-story-imgs">
+      <div class="img-ph img-ph-1"><span>+</span><span class="img-ph-label">Photo 1</span></div>
+      <div class="img-ph img-ph-2"><span>+</span><span class="img-ph-label">Photo 2</span></div>
+      <div class="img-ph img-ph-3"><span>+</span><span class="img-ph-label">Photo 3</span></div>
+    </div>
     <div class="about-story-text">
       <div class="sec-label">Our Story</div>
       <h2 class="sec-title">Why we started <em>Tará</em></h2>
-      <p>"Tara na!" is something every Filipino has said a hundred times — it means "let's go," said the moment before an adventure actually happens. That's the feeling we wanted to build a business around.</p>
-      <p>We're based in Da Nang, Vietnam, and we plan trips for travelers who want more than a hotel booking and a printed itinerary. Most of our guests are Filipino families, or visitors from the US and Australia, who want someone on the ground who actually knows the roads, the guides, and the places worth stopping for.</p>
-      <p>So we built Tará around one idea: you tell us what kind of trip you want, and we handle everything else — private cars, licensed local guides, hotel picks, and a plan that flexes when your plans do. You show up. We've already taken care of the rest.</p>
+      <p>In Filipino, "Tara!" means "Let's go!" — and we added the accent to give it a little Vietnamese twist. It's the perfect reflection of who we are.</p>
+      <p>Founded in 2023 by Filipina expat Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment. Marielle has lived in Vietnam for nearly a decade and knows it by heart. Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
+      <p>We believe your vacation should actually feel like a vacation.</p>
+      <p>We know how much time and energy goes into planning a trip. Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost.</p>
+      <p>Our mission is to shift that focus. We handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to. When you book with us, your only job is to share your priorities, customize your dream itinerary with our team, and just show up.</p>
     </div>
   </div>
 </section>
 
-<!-- VALUES -->
-<section class="about-values lux-reveal">
-  <div class="about-values-inner">
-    <div class="sec-label">What We Believe</div>
-    <h2 class="sec-title">The way we work <em>with you</em></h2>
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-title">Warm, not pushy</div>
-        <div class="value-desc">We plan trips the way we'd want one planned for our own family — no hard sell, no pressure, just honest suggestions.</div>
-      </div>
-      <div class="value-card">
-        <div class="value-title">Real local insight</div>
-        <div class="value-desc">Our guides and drivers live here. The plan you get is built from people who actually know the place, not a script.</div>
-      </div>
-      <div class="value-card">
-        <div class="value-title">Built to bend</div>
-        <div class="value-desc">Plans change. Your itinerary should be able to change with them — without losing what you already booked.</div>
-      </div>
-      <div class="value-card">
-        <div class="value-title">Trust, every step</div>
-        <div class="value-desc">From your first message to the last day of your trip, we're reachable, responsive, and accountable.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW WE WORK -->
+<!-- THE PROCESS -->
 <section class="about-process lux-reveal">
   <div class="about-process-inner">
-    <div class="sec-label">How We Work</div>
-    <h2 class="sec-title">Tailor-made in <em>4 steps</em></h2>
-    <div class="process-steps">
+    <div class="sec-label">The Process</div>
+    <h2 class="sec-title">How we make it <em>hassle-free</em> for you</h2>
+    <div class="process-steps steps-3">
       <div class="process-step">
         <div class="process-num">01</div>
         <div class="process-step-title">Request</div>
-        <div class="process-step-desc">Tell us your dates, your travel style, and who's coming along.</div>
+        <div class="process-step-desc">Tell us where you'd like to go and what you love to do.</div>
       </div>
       <div class="process-step">
         <div class="process-num">02</div>
-        <div class="process-step-title">Review</div>
-        <div class="process-step-desc">We build a draft itinerary and walk you through it together.</div>
+        <div class="process-step-title">Refine</div>
+        <div class="process-step-desc">Receive your tailor-made itinerary, and tweak until it's perfect.</div>
       </div>
       <div class="process-step">
         <div class="process-num">03</div>
-        <div class="process-step-title">Receive</div>
-        <div class="process-step-desc">Once you're happy, we lock in your hotels, guides, and transport.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-num">04</div>
-        <div class="process-step-title">Ready to go!</div>
-        <div class="process-step-desc">You show up — we've already taken care of the rest. Tara na!</div>
+        <div class="process-step-title">Ready to Go</div>
+        <div class="process-step-desc">Pack, fly, and live the experience.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHEN YOU BOOK WITH US -->
+<!-- WHAT YOU GET -->
 <section class="trust-sec lux-reveal">
   <div class="trust-inner">
-    <div class="sec-label">When You Book With Us</div>
+    <div class="sec-label">What You Get</div>
     <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
-    <div class="trust-cards" style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px;">
-      <div class="trust-card" style="background:rgba(20,20,20,.0175); padding:28px 22px 26px;">
-        <div class="trust-text"><div class="trust-title" style="font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:6px;">Flexible Itineraries</div><div class="trust-desc" style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6);">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you.</div></div>
+    <div class="trust-cards trust-cards-8">
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.webp" alt="Flexible Itineraries" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Flexible Itineraries</div><div class="trust-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</div></div>
       </div>
-      <div class="trust-card" style="background:rgba(20,20,20,.0175); padding:28px 22px 26px;">
-        <div class="trust-text"><div class="trust-title" style="font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:6px;">Private Car &amp; Driver</div><div class="trust-desc" style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6);">Skip the taxis and bus transfers. Every day moves at your pace.</div></div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.webp" alt="Group Perks" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Group Perks</div><div class="trust-desc">Travelling with family or friends? The more of you, the more we can tailor.</div></div>
       </div>
-      <div class="trust-card" style="background:rgba(20,20,20,.0175); padding:28px 22px 26px;">
-        <div class="trust-text"><div class="trust-title" style="font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:6px;">Licensed Local Guide</div><div class="trust-desc" style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6);">Real insight from people who live here — not a script, not a rush.</div></div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.webp" alt="Free Rebooking" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Free Rebooking</div><div class="trust-desc">Plans change. Move your dates without losing your itinerary or starting over.</div></div>
       </div>
-      <div class="trust-card" style="background:rgba(20,20,20,.0175); padding:28px 22px 26px;">
-        <div class="trust-text"><div class="trust-title" style="font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:6px;">24/7 Support</div><div class="trust-desc" style="font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6);">Reach us directly on Messenger or WhatsApp, any time before or during your trip.</div></div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.webp" alt="Private Car &amp; Driver" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Private Car &amp; Driver</div><div class="trust-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.webp" alt="Licensed Local Guide" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Licensed Local Guide</div><div class="trust-desc">Real insight from people who live here — not a script, not a rush.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.webp" alt="Complimentary Breakfast" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Complimentary Breakfast</div><div class="trust-desc">Every stay we book starts the day right — breakfast is always included.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.webp" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Flexible Check-in &amp; Out</div><div class="trust-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly any time before or during your trip.</div></div>
       </div>
     </div>
   </div>
@@ -395,7 +805,433 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
     <div class="sec-label">Plan With Us</div>
     <h2>Ready for your own <em>"tara na"</em> moment?</h2>
     <p>Tell us where you want to go, and we'll send back a tailor-made plan — no pressure, no payment required to start.</p>
-    <a href="index.html#plan" class="btn-lux"><span>I'm ready to plan</span></a>
+    <a href="#planner" class="btn-lux"><span>I'm ready to plan</span></a>
+  </div>
+</section>
+
+<!-- TRIP PLANNER -->
+<section class="lux-sec planner-lux" id="planner">
+  <div class="wrap">
+    <div class="lux-reveal" style="text-align:center;max-width:560px;margin:0 auto 52px;">
+      <div class="lux-label lux-label-light">Begin Planning</div>
+      <h2 class="lux-h2 lux-h2-light" style="white-space:nowrap;">Let's talk about <em>your trip</em></h2>
+      <p class="lux-p lux-p-light" style="margin-top:18px;">Five minutes. No payment, no pressure — just the start of something good.</p>
+    </div>
+
+    <div class="planner-lux-card lux-reveal">
+      <div class="step-tabs-lux" id="stepTabs">
+        <div class="step-tab-lux" data-tab="1">Trip Type</div>
+        <div class="step-tab-lux" data-tab="2">The Trip</div>
+        <div class="step-tab-lux" data-tab="3">Travelers</div>
+        <div class="step-tab-lux" data-tab="4">Hotel</div>
+        <div class="step-tab-lux" data-tab="5">Flights</div>
+        <div class="step-tab-lux" data-tab="6">Submit</div>
+      </div>
+      <!-- Mobile: progress bar + step title -->
+      <div class="planner-body-lux">
+        <form id="plannerForm" novalidate>
+
+          <!-- STEP 1 -->
+          <div class="fstep active" data-step="1">
+            <div class="step1-with-map">
+              <div class="step1-map-col">
+                <img src="Media/Vietnam Map.png" alt="Map of Vietnam" class="planner-vietnam-map" id="plannerVietnamMap" loading="lazy" decoding="async" />
+              </div>
+              <div class="step1-form-col">
+                <div class="step1-form-content">
+                  <p class="hint" style="margin-bottom:14px;">Select the experience that fits you best.</p>
+                  <div class="opt-grid-lux" data-single="want">
+                    <div class="opt-lux" data-value="100% Tailor-made trip">
+                      <div><div class="ot">A tailor-made trip</div><div class="od">Built around your interests.</div></div>
+                      <div class="check"></div>
+                    </div>
+                    <div class="opt-lux" data-value="Curated ready-made trip">
+                      <div><div class="ot">A ready-made itinerary</div><div class="od">Pick a proven route and tweak it.</div></div>
+                      <div class="check"></div>
+                    </div>
+                  </div>
+                  <div class="err-lux" id="err1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="fstep" data-step="2">
+
+            <!-- GROUP 1: DESTINATIONS -->
+            <div class="step2-group">
+              <div class="step2-group-label">Destinations</div>
+
+              <!-- Tailor-made: destination chips -->
+              <div id="step2-tailor">
+                <label class="q-label">Where do you want to go?</label>
+                <div id="destGrid">
+                  <div class="dest-region">
+                    <div class="dest-region-label">North</div>
+                    <div class="dest-grid-lux dest-chips-row">
+                      <div class="chip-lux" data-value="Hanoi">Hanoi</div>
+                      <div class="chip-lux" data-value="Sapa">Sapa</div>
+                      <div class="chip-lux" data-value="Ninh Binh">Ninh Binh</div>
+                      <div class="chip-lux" data-value="Ha Long">Ha Long</div>
+                    </div>
+                  </div>
+                  <div class="dest-region">
+                    <div class="dest-region-label">Central</div>
+                    <div class="dest-grid-lux dest-chips-row">
+                      <div class="chip-lux" data-value="Da Nang">Da Nang</div>
+                      <div class="chip-lux" data-value="Hoi An">Hoi An</div>
+                      <div class="chip-lux" data-value="Hue">Hue</div>
+                    </div>
+                  </div>
+                  <div class="dest-region" style="margin-bottom:0;">
+                    <div class="dest-region-label">South</div>
+                    <div class="dest-grid-lux dest-chips-row">
+                      <div class="chip-lux" data-value="Ho Chi Minh">Ho Chi Minh</div>
+                      <div class="chip-lux" data-value="Phu Quoc Island">Phu Quoc Island</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ready-made: itinerary options -->
+              <div id="step2-ready" style="display:none;">
+                <label class="q-label">Select your itinerary</label>
+                <div class="itin-grid" id="itineraryGrid">
+                  <div class="itin-region">
+                    <div class="itin-region-label">North</div>
+                    <div class="itin-chips">
+                      <div class="itin-chip opt-lux" data-value="5 days: Sapa, Hanoi"><span class="itin-days">5 days</span><span class="itin-dest">Sapa, Hanoi</span></div>
+                      <div class="itin-chip opt-lux" data-value="6 days: Sapa, Hanoi, Ninh Binh"><span class="itin-days">6 days</span><span class="itin-dest">Sapa, Hanoi, Ninh Binh</span></div>
+                      <div class="itin-chip opt-lux" data-value="6 days: Sapa, Hanoi, Ha Long"><span class="itin-days">6 days</span><span class="itin-dest">Sapa, Hanoi, Ha Long</span></div>
+                    </div>
+                  </div>
+                  <div class="itin-region">
+                    <div class="itin-region-label">Central</div>
+                    <div class="itin-chips">
+                      <div class="itin-chip opt-lux" data-value="4 days: Da Nang, Hoi An"><span class="itin-days">4 days</span><span class="itin-dest">Da Nang, Hoi An</span></div>
+                      <div class="itin-chip opt-lux" data-value="5 days: Da Nang, Hoi An, Hue"><span class="itin-days">5 days</span><span class="itin-dest">Da Nang, Hoi An, Hue</span></div>
+                    </div>
+                  </div>
+                  <div class="itin-region" style="margin-bottom:0;">
+                    <div class="itin-region-label">South</div>
+                    <div class="itin-chips">
+                      <div class="itin-chip opt-lux" data-value="4 days: Ho Chi Minh"><span class="itin-days">4 days</span><span class="itin-dest">Ho Chi Minh</span></div>
+                      <div class="itin-chip opt-lux" data-value="5 days: Phu Quoc"><span class="itin-days">5 days</span><span class="itin-dest">Phu Quoc</span></div>
+                      <div class="itin-chip opt-lux" data-value="7 days: Phu Quoc, Ho Chi Minh"><span class="itin-days">7 days</span><span class="itin-dest">Phu Quoc, Ho Chi Minh</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GROUP 2: SCHEDULE -->
+            <div class="step2-group" id="datesSection">
+              <div class="step2-group-label">Schedule</div>
+
+              <div class="field-lux" id="daysCounterWrap" style="margin-bottom:14px;">
+                <label class="q-label">Number of days</label>
+                <div class="counter-lux" style="margin-top:8px;">
+                  <button type="button" id="minusDays" aria-label="fewer">−</button>
+                  <span class="val" id="daysVal">4</span>
+                  <button type="button" id="plusDays" aria-label="more">+</button>
+                </div>
+                <div id="daysMinHint" style="display:none;"></div>
+                <div id="daysMinMsg" style="display:none; margin-top:8px; font-family:'DM Sans',sans-serif; font-size:.78rem; color:var(--ink); font-weight:300;"></div>
+              </div>
+
+              <!-- Total days display -->
+              <div id="itinTotalWrap" style="margin-top:0; max-height:0; overflow:hidden; transition:max-height .4s ease, margin-top .4s ease; display:block; margin-bottom:14px;">
+                <label class="q-label" style="display:block;">Total travel days</label>
+                <div style="margin-top:10px;">
+                  <div class="chip-lux sel" style="pointer-events:none;"><span id="itinTotalDays"></span></div>
+                </div>
+              </div>
+
+              <div id="hasDatesField">
+                <label class="q-label">When are you thinking of traveling?</label>
+                <div class="dest-grid-lux" data-single="hasDates" style="margin-top:10px;">
+                  <div class="chip-lux" data-value="yes" id="hasDatesYes">I have dates in mind.</div>
+                  <div class="chip-lux" data-value="no" id="hasDatesNo">Not sure yet.</div>
+                </div>
+                <div id="dateChosen" style="display:none; margin-top:14px;">
+                  <div style="font-family:'DM Sans',sans-serif; font-size:.82rem; font-weight:400; color:var(--ink); margin-bottom:8px; display:block;">Travel dates</div>
+                  <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid var(--gold); border-radius: 0; padding:7px 16px; font-family:'DM Sans',sans-serif; font-size:.82rem; color:var(--ink); background:#fffdf7;">
+                    <span id="chosenStartDay">—</span>
+                    <span style="color:var(--gold); font-size:.75rem;">→</span>
+                    <span id="chosenEndDay">—</span>
+                    <button type="button" id="dateChosenChange" aria-label="Edit dates" style="background:none;border:none;cursor:pointer;color:var(--gold);font-size:.85rem;padding:0;margin-left:4px;line-height:1;">✎</button>
+                  </div>
+                  <div class="date-box-full" id="chosenStart" style="display:none;"></div>
+                  <div class="date-box-full" id="chosenEnd" style="display:none;"></div>
+                </div>
+                <input type="hidden" name="hasDates" id="hasDatesVal">
+              </div>
+
+              <!-- Preferred months — fades in on "Not sure yet" -->
+              <div id="prefMonthsWrap" style="display:none; margin-top:14px;">
+                <div class="field-lux">
+                  <label class="q-label">Preferred months <span style="font-weight:300;color:var(--ink);">— pick all that apply</span></label>
+                  <div class="dest-grid-lux" style="margin-top:10px;" id="prefMonthGrid">
+                    <div class="chip-lux" data-month="January">Jan</div>
+                    <div class="chip-lux" data-month="February">Feb</div>
+                    <div class="chip-lux" data-month="March">Mar</div>
+                    <div class="chip-lux" data-month="April">Apr</div>
+                    <div class="chip-lux" data-month="May">May</div>
+                    <div class="chip-lux" data-month="June">Jun</div>
+                    <div class="chip-lux" data-month="July">Jul</div>
+                    <div class="chip-lux" data-month="August">Aug</div>
+                    <div class="chip-lux" data-month="September">Sep</div>
+                    <div class="chip-lux" data-month="October">Oct</div>
+                    <div class="chip-lux" data-month="November">Nov</div>
+                    <div class="chip-lux" data-month="December">Dec</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date picker — fades in on "I have dates in mind" -->
+              <div id="datePickerWrap" style="display:none; margin-top:16px;">
+                <div class="field-lux">
+                  <div class="daterange-cal" id="daterangeCal">
+                    <div class="drc-header">
+                      <button type="button" class="drc-nav" id="drcPrev">&#8592;</button>
+                      <div class="drc-months" id="drcMonths"></div>
+                      <button type="button" class="drc-nav" id="drcNext">&#8594;</button>
+                    </div>
+                    <div class="drc-grids" id="drcGrids"></div>
+                    <div class="drc-footer">
+                      <button type="button" class="drc-select-btn" id="drcSelectDates" style="margin-left:auto;">Confirm Dates</button>
+                    </div>
+                  </div>
+                  <input type="hidden" name="startDate" id="startDateVal" />
+                  <input type="hidden" name="endDate" id="endDateVal" />
+                </div>
+              </div>
+            </div>
+
+            <!-- GROUP 3: PREFERENCES -->
+            <div class="step2-group">
+              <div class="step2-group-label">Preferences</div>
+
+              <div class="field-lux" id="toursWrap" style="margin-bottom:14px;">
+                <label class="q-label" id="toursLabel">How would you like your days structured?</label>
+                <div class="dest-grid-lux" style="margin-top:10px;" data-single="tours">
+                  <div class="chip-lux" data-value="yes" id="toursYes">Fully arranged — every day planned.</div>
+                  <div class="chip-lux" data-value="no" id="toursNo">A mix of guided days and free time.</div>
+                </div>
+                <input type="hidden" name="tours" id="toursVal">
+              </div>
+
+              <!-- Free days counter — fades in on "mix" -->
+              <div id="freeDaysWrap" style="margin-top:0; max-height:0; overflow:hidden; opacity:0; pointer-events:none; transition:opacity .4s ease, max-height .4s ease, margin-top .4s ease; margin-bottom:14px;">
+                <div>
+                  <label class="q-label">How many free days?</label>
+                  <div class="counter-lux" style="margin-top:8px;">
+                    <button type="button" id="minusFreeDays" aria-label="fewer">−</button>
+                    <span class="val" id="freeDaysVal">1</span>
+                    <button type="button" id="plusFreeDays" aria-label="more">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="field-lux">
+                  <label class="q-label">What experiences matter most to you?</label>
+                  <textarea name="activitiesWant" placeholder="e.g. cooking classes, lantern festivals, off-the-beaten-path villages…" rows="4" style="margin-top:8px;"></textarea>
+                </div>
+                <div class="field-lux">
+                  <label class="q-label">Anything you'd prefer to skip?</label>
+                  <textarea name="activitiesAvoid" placeholder="e.g. crowded tourist spots, long bus rides, early morning departures…" rows="4" style="margin-top:8px;"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="err-lux" id="err2"></div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="fstep" data-step="3">
+            <div class="two-col">
+              <div class="field-lux">
+                <label>Group type</label>
+                <select name="groupType">
+                  <option value="">Select...</option>
+                  <option>Family</option><option>Couple</option><option>Friends</option>
+                  <option>Corporate / Team</option>
+                </select>
+              </div>
+              <div class="field-lux"><label>Nationality</label><input type="text" name="nationality" placeholder="e.g. Filipino" /></div>
+            </div>
+            <div class="field-lux">
+              <label>Number of travelers</label>
+              <div style="margin-top:10px;">
+                <div class="counter-row-lux">
+                  <span class="clabel">Adults</span>
+                  <div class="counter-lux"><button type="button" id="minusA">−</button><span class="val" id="adultsVal">2</span><button type="button" id="plusA">+</button></div>
+                  <span id="adultsMinMsg" style="display:none;font-size:.78rem;color:var(--ink);font-weight:300;margin-left:8px;">2 adults minimum</span>
+                </div>
+                <div class="counter-row-lux">
+                  <span class="clabel">Children (below 9 y.o.)</span>
+                  <div class="counter-lux"><button type="button" id="minusC">−</button><span class="val" id="childrenVal">0</span><button type="button" id="plusC">+</button></div>
+                </div>
+                <div class="counter-row-lux">
+                  <span class="clabel">Infants (below 1 y.o.)</span>
+                  <div class="counter-lux"><button type="button" id="minusI">−</button><span class="val" id="infantsVal">0</span><button type="button" id="plusI">+</button></div>
+                </div>
+              </div>
+            </div>
+            <div class="field-lux"><label>Special requests?</label><textarea name="groupNotes" placeholder="Dietary needs, mobility requirements, celebrating something special..."></textarea></div>
+            <div class="err-lux" id="err3"></div>
+          </div>
+
+          <!-- STEP 4: HOTEL -->
+          <div class="fstep" data-step="4">
+            <div style="margin-bottom:14px;">
+              <label class="q-label">Preferred hotel type</label>
+              <div class="dest-grid-lux" data-single="hotelType" style="margin-top:10px;">
+                <div class="chip-lux" data-value="4-star">4-star Hotel</div>
+                <div class="chip-lux" data-value="5-star">5-star Hotel</div>
+              </div>
+              <input type="hidden" name="hotelType" id="hotelTypeVal">
+            </div>
+            <div style="margin-bottom:14px;">
+              <label class="q-label">Room configuration preference</label>
+              <div class="dest-grid-lux" style="margin-top:10px;" id="roomConfigChips">
+                <div class="chip-lux" data-value="double">Double <span style="opacity:.6;font-size:.78rem;">— 1 queen bed</span></div>
+                <div class="chip-lux" data-value="twin">Twin <span style="opacity:.6;font-size:.78rem;">— 2 single beds</span></div>
+                <div class="chip-lux" data-value="triple">Triple <span style="opacity:.6;font-size:.78rem;">— queen + single</span></div>
+                <div class="chip-lux" data-value="family">Family <span style="opacity:.6;font-size:.78rem;">— 2 queen beds</span></div>
+                <div class="chip-lux" data-value="mix">Mix it up <span style="opacity:.6;font-size:.78rem;">— we'll sort it</span></div>
+              </div>
+              <input type="hidden" name="roomConfig" id="roomConfigVal">
+            </div>
+            <div class="field-lux">
+              <label class="q-label">Any special hotel preferences?</label>
+              <textarea name="hotelNotes" placeholder="e.g. High floor, sea view, early check-in, connecting rooms..." style="margin-top:10px;"></textarea>
+            </div>
+            <div class="err-lux" id="err4"></div>
+          </div>
+
+          <!-- STEP 5: FLIGHTS -->
+          <div class="fstep" data-step="5">
+            <label class="q-label">Include roundtrip international flights?</label>
+            <div class="dest-grid-lux" data-single="flights" style="margin-top:10px;">
+              <div class="chip-lux" data-value="yes" id="flightsYes">Yes, help me book my flights.</div>
+              <div class="chip-lux" data-value="no" id="flightsNo">No, I'll book my own flights.</div>
+            </div>
+            <input type="hidden" name="flights" id="flightsVal">
+            <!-- Yes: book flights for me -->
+            <div id="flightDetails" style="margin-top:14px; display:none;">
+              <div class="two-col" style="margin-bottom:14px;">
+                <div class="field-lux" style="margin-bottom:0;"><label>Flying from</label><input type="text" name="flyFrom" placeholder="Country or City" /></div>
+                <div class="field-lux" style="margin-bottom:0;"><label>Return / onward destination</label><input type="text" name="flyTo" placeholder="Country or City" /></div>
+              </div>
+              <div>
+                <label class="q-label">Checked luggage?</label>
+                <div class="dest-grid-lux" style="margin-top:10px;" id="luggageChips">
+                  <div class="chip-lux" data-value="both">Both flights</div>
+                  <div class="chip-lux" data-value="onward">Onward only</div>
+                  <div class="chip-lux" data-value="return">Return only</div>
+                  <div class="chip-lux" data-value="none">Not needed</div>
+                </div>
+                <input type="hidden" name="luggage" id="luggageVal">
+              </div>
+            </div>
+            <!-- No: booking own flights — need arrival/departure times for pickups -->
+            <div id="ownFlightDetails" style="margin-top:14px; display:none;">
+              <div class="two-col">
+                <div class="field-lux" style="margin-bottom:0;">
+                  <label>Arrival time (first day)</label>
+                  <input type="text" name="arrivalTime" placeholder="e.g. 14:30 on 12 Mar" />
+                </div>
+                <div class="field-lux" style="margin-bottom:0;">
+                  <label>Departure time (last day)</label>
+                  <input type="text" name="departureTime" placeholder="e.g. 09:00 on 22 Mar" />
+                </div>
+              </div>
+            </div>
+            <div class="field-lux" style="margin-top:14px;">
+              <label class="q-label">Any special flight requests?</label>
+              <textarea name="flightNotes" placeholder="e.g. preferred airline, seat preference, extra baggage, special assistance…" style="margin-top:8px;"></textarea>
+            </div>
+            <div class="err-lux" id="err5"></div>
+          </div>
+
+          <!-- STEP 6 -->
+          <div class="fstep" data-step="6">
+            <div class="two-col">
+              <div class="field-lux"><label>First name</label><input type="text" name="firstName" placeholder="First name" /></div>
+              <div class="field-lux"><label>Last name</label><input type="text" name="lastName" placeholder="Last name" /></div>
+            </div>
+            <div class="two-col">
+              <div class="field-lux">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="you@email.com" />
+                <div id="emailError" style="display:none; font-family:'DM Sans',sans-serif; font-size:.78rem; color:#c0392b; margin-top:6px;">Please enter a valid email address.</div>
+              </div>
+              <div class="field-lux">
+                <label>Contact number</label>
+                <div class="phone-field-lux">
+                  <select name="phoneCode" id="phoneCode">
+                    <option value="+63">🇵🇭 +63</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+64">🇳🇿 +64</option>
+                    <option value="+65">🇸🇬 +65</option>
+                    <option value="+60">🇲🇾 +60</option>
+                    <option value="+62">🇮🇩 +62</option>
+                    <option value="+66">🇹🇭 +66</option>
+                    <option value="+84">🇻🇳 +84</option>
+                    <option value="+852">🇭🇰 +852</option>
+                    <option value="+81">🇯🇵 +81</option>
+                    <option value="+82">🇰🇷 +82</option>
+                    <option value="+86">🇨🇳 +86</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+34">🇪🇸 +34</option>
+                  </select>
+                  <input type="tel" name="phone" placeholder="XXX XXX XXXX" />
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:14px;">
+              <label class="q-label">How did you hear about us?</label>
+              <div class="dest-grid-lux" style="margin-top:10px;" id="sourceChips">
+                <div class="chip-lux" data-value="Facebook">Facebook</div>
+                <div class="chip-lux" data-value="Instagram">Instagram</div>
+                <div class="chip-lux" data-value="TikTok">TikTok</div>
+                <div class="chip-lux" data-value="Google">Google</div>
+                <div class="chip-lux" data-value="Recommendation">Recommendation</div>
+                <div class="chip-lux" data-value="Returning">Returning traveler</div>
+                <div class="chip-lux" data-value="Blog">Blog</div>
+              </div>
+              <input type="hidden" name="source" id="sourceVal">
+            </div>
+            <div class="err-lux" id="err6"></div>
+          </div>
+
+          <!-- SUCCESS -->
+          <div class="fstep" data-step="7">
+            <div class="success-lux">
+              <div class="tick">🎉</div>
+              <h3>Exciting things are coming, <span id="successName">traveler</span>!</h3>
+              <p style="color:var(--ink);font-weight:300;margin-bottom:32px;">We've got your request — our team will reach out via <strong>Email</strong> and <strong>WhatsApp</strong> within 24 hours. Check your inbox soon.</p>
+              <a href="#top" class="btn-lux btn-lux-solid"><span>Back to Top</span></a>
+            </div>
+          </div>
+
+          <div class="planner-nav-lux" id="plannerNav" style="display:none;">
+            <button type="button" class="btn-back-lux" id="backBtn" hidden><span>&lt; Back</span></button>
+            <button type="button" class="btn-lux btn-lux-solid" id="nextBtn"><span>Next</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -425,8 +1261,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a></li>
+          <li><a href="#" onclick="toggleContactFab(event)">Message us</a></li>
         </ul>
       </div>
     </div>
@@ -499,6 +1334,905 @@ function closeNavMenu() {
   if (isMobileNav()) unlockBodyScroll();
 }
 document.getElementById('mobileNavPanel').addEventListener('click', closeNavMenu);
+
+/* Contact popup (floating Messenger/WhatsApp widget) */
+function toggleContactFab(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const menu = document.getElementById('contactFabMenu');
+  if (menu) menu.classList.toggle('open');
+}
+document.addEventListener('click', function (e) {
+  const wrap = document.getElementById('contactFabWrap');
+  const menu = document.getElementById('contactFabMenu');
+  if (wrap && menu && menu.classList.contains('open') && !wrap.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+
+
+/* ===== TRIP PLANNER LOGIC (ported from index.html) ===== */
+/* ---- Hotel / Flight chip toggles ---- */
+document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(c => c.classList.remove('sel'));
+    chip.classList.add('sel');
+    const val = chip.dataset.value;
+    document.getElementById('flightsVal').value = val;
+    data.flights = val;
+    document.getElementById('flightDetails').style.display = val === 'yes' ? 'block' : 'none';
+    document.getElementById('ownFlightDetails').style.display = val === 'no' ? 'block' : 'none';
+    checkStepComplete(5);
+  });
+});
+/* Hotel type chips */
+document.querySelectorAll('[data-single="hotelType"] .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('[data-single="hotelType"] .chip-lux').forEach(c => c.classList.remove('sel'));
+    chip.classList.add('sel');
+    document.getElementById('hotelTypeVal').value = chip.dataset.value;
+    checkStepComplete(4);
+  });
+});
+/* Luggage multi-select chips */
+document.querySelectorAll('#luggageChips .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('sel');
+    const sel = [...document.querySelectorAll('#luggageChips .chip-lux.sel')].map(c => c.dataset.value);
+    document.getElementById('luggageVal').value = sel.join(',');
+    checkStepComplete(5);
+  });
+});
+/* ---- Room config chips (multi-select) ---- */
+document.querySelectorAll('#roomConfigChips .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('sel');
+    const selected = [...document.querySelectorAll('#roomConfigChips .chip-lux.sel')].map(c => c.getAttribute('data-value'));
+    document.getElementById('roomConfigVal').value = selected.join(',');
+    checkStepComplete(4);
+  });
+});
+
+/* ---- Multi-step form ---- */
+const form = document.getElementById('plannerForm');
+const fsteps = [...form.querySelectorAll('.fstep')];
+const nextBtn = document.getElementById('nextBtn');
+const backBtn = document.getElementById('backBtn');
+const plannerNav = document.getElementById('plannerNav');
+const tabs = document.querySelectorAll('.step-tab-lux');
+let current = 1;
+let maxStep = 1;
+
+/* Step 1's Next button lives in the shared #plannerNav row, which by
+   default sits after every .fstep as the last child of the form. On
+   step 1 specifically, the design calls for that row's bottom edge to
+   line up with the map's bottom edge. Rather than guess at margins,
+   physically move #plannerNav inside .step1-form-col (which is
+   stretched to the map's full height via align-items:stretch on
+   .step1-with-map) and let `justify-content:space-between` push it
+   flush to the bottom there — a CSS layout fact, not a measurement
+   that can drift out of sync. Moving back out to the form's end for
+   every other step restores the normal flow. */
+const step1FormCol = document.querySelector('.step1-form-col');
+function placeNavForStep(n) {
+  if (n === 1 && step1FormCol) {
+    if (plannerNav.parentElement !== step1FormCol) step1FormCol.appendChild(plannerNav);
+  } else {
+    if (plannerNav.parentElement !== form) form.appendChild(plannerNav);
+  }
+}
+placeNavForStep(current);
+
+/* Allow clicking any tab the user has already reached — whether that's
+   stepping back, or stepping forward again to a tab they'd previously
+   completed before navigating back to make changes. */
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = +tab.getAttribute('data-tab');
+    if (target !== current && target <= maxStep) showStep(target);
+  });
+});
+const data = { want: '', destinations: [], travelers: 2, children: 0, infants: 0, startDate: '', endDate: '' };
+
+/* Single-select options */
+document.querySelectorAll('[data-single="want"] .opt-lux').forEach(opt => {
+  opt.addEventListener('click', () => {
+    opt.parentElement.querySelectorAll('.opt-lux').forEach(o => o.classList.remove('sel'));
+    opt.classList.add('sel');
+    data.want = opt.getAttribute('data-value');
+    document.getElementById('err1').textContent = '';
+    if (current === 1) checkStepComplete(1);
+  });
+});
+
+/* Destination chips (tailor-made) */
+document.querySelectorAll('#destGrid .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('sel');
+    const v = chip.getAttribute('data-value');
+    if (chip.classList.contains('sel')) data.destinations.push(v);
+    else data.destinations = data.destinations.filter(d => d !== v);
+    document.getElementById('err2').textContent = '';
+    updateMinDays();
+  });
+});
+
+/* Itinerary options (ready-made) */
+document.querySelectorAll('#itineraryGrid .opt-lux').forEach(opt => {
+  opt.addEventListener('click', () => {
+    // Single-select within the same region (itin-chips div)
+    const regionChips = opt.closest('.itin-chips');
+    const wasSelected = opt.classList.contains('sel');
+    regionChips.querySelectorAll('.opt-lux').forEach(o => o.classList.remove('sel'));
+    if (!wasSelected) opt.classList.add('sel');
+
+    // Collect all selected itineraries across regions
+    const selected = [...document.querySelectorAll('#itineraryGrid .opt-lux.sel')];
+    data.destinations = selected.map(o => o.getAttribute('data-value'));
+
+    // Sum days
+    const totalDays = selected.reduce((sum, o) => {
+      const m = o.getAttribute('data-value').match(/^(\d+)/);
+      return sum + (m ? parseInt(m[1]) : 0);
+    }, 0);
+    data.days = totalDays;
+
+    updateItinTotal();
+
+    document.getElementById('daysCounterWrap').style.display = 'none';
+
+    // Swap tours question for ready-made context
+    document.getElementById('toursWrap').style.display = 'block';
+    document.getElementById('toursLabel').textContent = 'Do you want to add extra free days?';
+    document.getElementById('toursYes').textContent = 'Yes, please.';
+    document.getElementById('toursNo').textContent = 'No, keep it as is.';
+    document.getElementById('freeDaysWrap').style.opacity = '0';
+    document.getElementById('freeDaysWrap').style.pointerEvents = 'none';
+    document.getElementById('freeDaysWrap').style.maxHeight = '0';
+    document.getElementById('freeDaysWrap').style.marginTop = '0';
+    document.querySelectorAll('[data-single="tours"] .chip-lux').forEach(c => c.classList.remove('sel'));
+    data.tours = null; document.getElementById('toursVal').value = '';
+    document.getElementById('err2').textContent = '';
+    checkStepComplete(2);
+  });
+});
+
+
+/* Step completion watchers */
+/* Step 2 — destination chips */
+document.querySelectorAll('#destGrid .chip-lux, #itineraryGrid .opt-lux').forEach(el => {
+  el.addEventListener('click', () => checkStepComplete(2));
+});
+
+/* Step 2 — hasDates/tours opt-lux */
+document.querySelectorAll('[data-single="hasDates"] .chip-lux, [data-single="tours"] .chip-lux').forEach(opt => {
+  opt.addEventListener('click', () => setTimeout(() => checkStepComplete(2), 50));
+});
+
+/* Step 2 — calendar date selection */
+document.addEventListener('drcDateChange', () => checkStepComplete(2));
+
+/* Step 2 — activity text areas */
+['activitiesWant', 'activitiesAvoid'].forEach(name => {
+  const el = form[name];
+  if (el) el.addEventListener('input', () => checkStepComplete(2));
+});
+
+/* Step 3 — group type, nationality, special requests */
+['groupType', 'nationality', 'groupNotes'].forEach(name => {
+  const el = form[name];
+  if (el) el.addEventListener('input', () => checkStepComplete(3));
+  if (el) el.addEventListener('change', () => checkStepComplete(3));
+});
+
+/* Step 4 — hotel notes textarea */
+const hotelNotesEl = form['hotelNotes'];
+if (hotelNotesEl) hotelNotesEl.addEventListener('input', () => checkStepComplete(4));
+
+/* Source chips (single-select, no deselect) */
+document.querySelectorAll('#sourceChips .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#sourceChips .chip-lux').forEach(c => c.classList.remove('sel'));
+    chip.classList.add('sel');
+    document.getElementById('sourceVal').value = chip.dataset.value;
+  });
+});
+
+/* Step 5 — flight detail fields */
+['flyFrom', 'flyTo', 'arrivalTime', 'departureTime', 'flightNotes'].forEach(name => {
+  const el = form[name];
+  if (el) el.addEventListener('input', () => checkStepComplete(5));
+});
+
+/* Step 5 — name, email, phone */
+['firstName', 'email', 'phone'].forEach(name => {
+  const el = form[name];
+  if (el) el.addEventListener('input', () => checkStepComplete(6));
+});
+
+function showDestSummary() {
+  // Note: no element with id="destSummary" currently exists in the markup,
+  // so this is a no-op (early return below). Left in place since it's
+  // referenced elsewhere and harmless; remove if/when destSummary UI returns.
+  const el = document.getElementById('destSummary');
+  if (!el) return;
+  el.textContent = '📍 ' + data.destinations.join(' · ');
+  el.style.display = 'block';
+}
+
+/* Show correct Step 2 variant */
+let lastWant = null;
+function applyStep2Mode() {
+  const isReady = data.want === 'Curated ready-made trip';
+  document.getElementById('step2-tailor').style.display = isReady ? 'none' : 'block';
+  document.getElementById('step2-ready').style.display  = isReady ? 'block' : 'none';
+  document.getElementById('daysCounterWrap').style.display = isReady ? 'none' : 'block';
+
+  /* Swap tours question labels per mode */
+  if (isReady) {
+    document.getElementById('toursLabel').textContent = 'Do you want to add extra free days?';
+    document.getElementById('toursYes').textContent   = 'Yes, please.';
+    document.getElementById('toursNo').textContent    = 'No, keep it as is.';
+  } else {
+    document.getElementById('toursLabel').textContent = 'Do you want your days fully arranged?';
+    document.getElementById('toursYes').textContent   = 'Yes, every day.';
+    document.getElementById('toursNo').textContent    = 'No, some free days too.';
+  }
+
+  /* Clear everything when trip type changes */
+  if (data.want !== lastWant) {
+    data.destinations = [];
+    data.days = 4;
+    data.hasDates = null;
+    data.startDate = null;
+    data.endDate = null;
+    data.tours = null;
+    data.prefMonths = [];
+    document.querySelectorAll('#destGrid .chip-lux, #itineraryGrid .opt-lux').forEach(el => el.classList.remove('sel'));
+    document.querySelectorAll('[data-single="hasDates"] .chip-lux').forEach(c => c.classList.remove('sel'));
+    document.querySelectorAll('[data-single="tours"] .chip-lux').forEach(c => c.classList.remove('sel'));
+    document.querySelectorAll('#prefMonthGrid .chip-lux').forEach(c => c.classList.remove('sel'));
+    document.getElementById('hasDatesVal').value = '';
+    document.getElementById('toursVal').value = '';
+    document.getElementById('datePickerWrap').style.display = 'none';
+    document.getElementById('prefMonthsWrap').style.display = 'none';
+    document.getElementById('dateChosen').style.display = 'none';
+    document.getElementById('freeDaysWrap').style.opacity = '0';
+    document.getElementById('freeDaysWrap').style.pointerEvents = 'none';
+    document.getElementById('freeDaysWrap').style.maxHeight = '0';
+    document.getElementById('freeDaysWrap').style.marginTop = '0';
+    document.getElementById('itinTotalWrap').style.maxHeight = '0'; document.getElementById('itinTotalWrap').style.marginTop = '0';
+    document.getElementById('daysVal').textContent = 4;
+    document.getElementById('startDateVal').value = '';
+    document.getElementById('endDateVal').value = '';
+    if (typeof resetCalendar === 'function') resetCalendar();
+    lastWant = data.want;
+  } else {
+    /* Restore selections from saved data */
+    document.querySelectorAll('#destGrid .chip-lux').forEach(el => {
+      el.classList.toggle('sel', data.destinations.includes(el.dataset.value));
+    });
+    document.querySelectorAll('#itineraryGrid .opt-lux').forEach(el => {
+      el.classList.toggle('sel', data.destinations.includes(el.dataset.value));
+    });
+  }
+}
+
+/* Restore step UI state from data */
+function restoreStep(n) {
+  if (n === 2) {
+    if (data.destinations.length > 0) {
+      updateMinDays();
+      document.getElementById('daysVal').textContent = data.days || getMinDays();
+    }
+    /* Restore hasDates selection */
+    const hasDatesVal = data.hasDates;
+    document.querySelectorAll('[data-single="hasDates"] .chip-lux').forEach(opt => {
+      opt.classList.toggle('sel', opt.dataset.value === hasDatesVal);
+    });
+    document.getElementById('datePickerWrap').style.display = hasDatesVal === 'yes' ? 'block' : 'none';
+    document.getElementById('prefMonthsWrap').style.display = hasDatesVal === 'no' ? 'block' : 'none';
+
+    /* Restore preferred months */
+    document.querySelectorAll('#prefMonthGrid .chip-lux').forEach(chip => {
+      chip.classList.toggle('sel', (data.prefMonths || []).includes(chip.dataset.month));
+    });
+
+    /* Restore calendar/date boxes */
+    if (hasDatesVal === 'yes' && data.startDate && data.endDate) {
+      document.getElementById('dateChosen').style.display = 'block';
+      document.getElementById('daterangeCal').style.display = 'none';
+    }
+
+    /* Restore tours selection */
+    document.querySelectorAll('[data-single="tours"] .chip-lux').forEach(opt => {
+      opt.classList.toggle('sel', opt.dataset.value === data.tours);
+    });
+    const fdw = document.getElementById('freeDaysWrap');
+    if (data.tours === 'no') { fdw.style.opacity = '1'; fdw.style.pointerEvents = 'auto'; fdw.style.maxHeight = '120px'; fdw.style.marginTop = '20px'; }
+    else { fdw.style.opacity = '0'; fdw.style.pointerEvents = 'none'; fdw.style.maxHeight = '0'; fdw.style.marginTop = '0'; }
+    if (data.freeDays) document.getElementById('freeDaysVal').textContent = data.freeDays;
+  } else if (n === 4) {
+    const hotelType = document.getElementById('hotelTypeVal').value;
+    if (hotelType) {
+      document.querySelectorAll('[data-single="hotelType"] .chip-lux').forEach(c => c.classList.toggle('sel', c.dataset.value === hotelType));
+    }
+  } else if (n === 5) {
+    if (data.flights) {
+      document.getElementById('flightsVal').value = data.flights;
+      document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(c => c.classList.toggle('sel', c.dataset.value === data.flights));
+      document.getElementById('flightDetails').style.display = data.flights === 'yes' ? 'block' : 'none';
+      document.getElementById('ownFlightDetails').style.display = data.flights === 'no' ? 'block' : 'none';
+    }
+  }
+}
+
+/* Auto-min days logic based on destination count */
+function getMinDays() {
+  const d = data.destinations;
+  if (d.length === 0) return 4;
+  const centralDests = ['Da Nang', 'Hoi An', 'Hue'];
+  const hasCentral = d.includes('Da Nang') || d.includes('Hoi An');
+  const hasHue = d.includes('Hue');
+  const otherDests = d.filter(x => !centralDests.includes(x));
+  /* Central cluster: Da Nang/Hoi An = 4 days, add Hue = 5 days */
+  let centralDays = 0;
+  if (hasCentral || hasHue) centralDays = (hasCentral && hasHue) ? 5 : 4;
+  /* Other destinations: 4 for first, +2 each additional */
+  const otherDays = otherDests.length > 0 ? 4 + (otherDests.length - 1) * 2 : 0;
+  if (centralDays > 0 && otherDays > 0) return otherDays + (centralDays - 2);
+  return Math.max(centralDays, otherDays, 4);
+}
+function updateMinDays() {
+  const min = getMinDays();
+  data.days = min;
+  document.getElementById('daysVal').textContent = data.days;
+  document.getElementById('daysMinMsg').style.display = 'none';
+}
+
+/* Counters */
+/* Days counter */
+document.getElementById('plusDays').addEventListener('click', () => { data.days = (data.days || getMinDays()) + 1; document.getElementById('daysVal').textContent = data.days; document.getElementById('daysMinMsg').style.display = 'none'; });
+document.getElementById('minusDays').addEventListener('click', () => {
+  const min = getMinDays();
+  const msg = document.getElementById('daysMinMsg');
+  if (data.days <= min) {
+    msg.textContent = `${min} days minimum for your selection.`;
+    msg.style.display = 'block';
+  } else {
+    data.days--;
+    document.getElementById('daysVal').textContent = data.days;
+    msg.style.display = 'none';
+  }
+});
+data.days = 4;
+document.getElementById('daysVal').textContent = 4;
+
+/* Preferred months chips */
+data.prefMonths = [];
+document.querySelectorAll('#prefMonthGrid .chip-lux').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('sel');
+    const m = chip.dataset.month;
+    if (chip.classList.contains('sel')) data.prefMonths.push(m);
+    else data.prefMonths = data.prefMonths.filter(x => x !== m);
+  });
+});
+
+/* Show/hide date picker vs preferred months */
+document.querySelectorAll('[data-single="hasDates"] .chip-lux').forEach(opt => {
+  opt.addEventListener('click', () => {
+    opt.parentElement.querySelectorAll('.chip-lux').forEach(o => o.classList.remove('sel'));
+    opt.classList.add('sel');
+    const val = opt.dataset.value;
+    document.getElementById('hasDatesVal').value = val;
+    data.hasDates = val;
+    document.getElementById('datePickerWrap').style.display = val === 'yes' ? 'block' : 'none';
+    document.getElementById('prefMonthsWrap').style.display = val === 'no' ? 'block' : 'none';
+    if (val === 'no') {
+      document.getElementById('dateChosen').style.display = 'none';
+      data.startDate = null; data.endDate = null;
+    }
+    if (val === 'yes') {
+      document.getElementById('daterangeCal').style.display = 'block';
+      const sb = document.getElementById('drcSelectDates');
+      sb.style.opacity = '1'; sb.style.pointerEvents = 'none'; sb.classList.remove('is-ready');
+      setTimeout(buildGrids, 50);
+    }
+  });
+});
+
+/* Tours selection */
+document.querySelectorAll('[data-single="tours"] .chip-lux').forEach(opt => {
+  opt.addEventListener('click', () => {
+    opt.parentElement.querySelectorAll('.chip-lux').forEach(o => o.classList.remove('sel'));
+    opt.classList.add('sel');
+    const toursVal = opt.dataset.value;
+    document.getElementById('toursVal').value = toursVal;
+    data.tours = toursVal;
+    const fdw = document.getElementById('freeDaysWrap');
+    const isReadyMade = document.getElementById('step2-ready').style.display !== 'none';
+    const showFreeDays = isReadyMade ? (toursVal === 'yes') : (toursVal === 'no');
+    if (showFreeDays) { fdw.style.opacity = '1'; fdw.style.pointerEvents = 'auto'; fdw.style.maxHeight = '120px'; fdw.style.marginTop = '20px'; }
+    else { fdw.style.opacity = '0'; fdw.style.pointerEvents = 'none'; fdw.style.maxHeight = '0'; fdw.style.marginTop = '0'; }
+  });
+});
+
+data.freeDays = 1;
+
+function updateItinTotal() {
+  const selected = [...document.querySelectorAll('#itineraryGrid .opt-lux.sel')];
+  if (selected.length === 0) { document.getElementById('itinTotalWrap').style.maxHeight = '0'; document.getElementById('itinTotalWrap').style.marginTop = '0'; return; }
+  const itinDays = selected.reduce((sum, o) => {
+    const m = o.getAttribute('data-value').match(/^(\d+)/);
+    return sum + (m ? parseInt(m[1]) : 0);
+  }, 0);
+  const freeDaysVisible = document.getElementById('freeDaysWrap').style.opacity === '1';
+  const free = freeDaysVisible ? (data.freeDays || 0) : 0;
+  const total = itinDays + free;
+  document.getElementById('itinTotalDays').textContent = total + ' days';
+  const showTotal = selected.length >= 2 || free > 0; document.getElementById('itinTotalWrap').style.maxHeight = showTotal ? '80px' : '0'; document.getElementById('itinTotalWrap').style.marginTop = showTotal ? '20px' : '0';
+}
+
+document.getElementById('plusFreeDays').addEventListener('click', () => { data.freeDays++; document.getElementById('freeDaysVal').textContent = data.freeDays; updateItinTotal(); });
+document.getElementById('minusFreeDays').addEventListener('click', () => { if (data.freeDays > 1) { data.freeDays--; document.getElementById('freeDaysVal').textContent = data.freeDays; updateItinTotal(); } });
+
+/* Date range picker — fixed hover/click */
+let buildGrids;
+let resetCalendar;
+(function() {
+  const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  let viewYear, viewMonth, rangeStart = null, rangeEnd = null, hoverDate = null;
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  viewYear = today.getFullYear();
+  viewMonth = today.getMonth();
+
+  function fmt(d) { return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+  function isoFmt(d) { return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+  function ts(d) { return d ? d.getTime() : null; }
+
+  function updateCells() {
+    const hint = document.getElementById('drcHint');
+    // hint removed — no element with id="drcHint" exists in markup; this is a harmless no-op, kept for safety
+    const effStart = rangeStart;
+    const effEnd = rangeEnd ? rangeEnd : (hoverDate && rangeStart && hoverDate > rangeStart ? hoverDate : null);
+    document.querySelectorAll('#drcGrids .drc-day:not(.drc-empty):not(.drc-past)').forEach(cell => {
+      const t = +cell.dataset.ts;
+      cell.classList.remove('drc-start','drc-end','drc-in-range');
+      if (effStart && t === ts(effStart)) cell.classList.add('drc-start');
+      if (effEnd && t === ts(effEnd)) cell.classList.add('drc-end');
+      if (effStart && effEnd && t > ts(effStart) && t < ts(effEnd)) cell.classList.add('drc-in-range');
+    });
+    const summary = document.getElementById('daterangeSummary');
+    const selectBtn = document.getElementById('drcSelectDates');
+    if (rangeStart && rangeEnd) {
+      const nights = Math.round((rangeEnd - rangeStart) / 86400000);
+      if (summary) { summary.innerHTML = '<strong>' + fmt(rangeStart) + '</strong> → <strong>' + fmt(rangeEnd) + '</strong> &nbsp;·&nbsp; ' + nights + ' travel day' + (nights !== 1 ? 's' : ''); summary.style.display = 'block'; }
+      document.getElementById('startDateVal').value = isoFmt(rangeStart);
+      document.getElementById('endDateVal').value = isoFmt(rangeEnd);
+      data.startDate = isoFmt(rangeStart); data.endDate = isoFmt(rangeEnd);
+      selectBtn.style.opacity = '1'; selectBtn.style.pointerEvents = 'auto'; selectBtn.classList.add('is-ready');
+    } else if (rangeStart) {
+      if (summary) { summary.innerHTML = '<strong>' + fmt(rangeStart) + '</strong> → pick your end date'; summary.style.display = 'block'; }
+      selectBtn.style.opacity = '1'; selectBtn.style.pointerEvents = 'none'; selectBtn.classList.remove('is-ready');
+    } else {
+      if (summary) summary.style.display = 'none';
+      selectBtn.style.opacity = '1'; selectBtn.style.pointerEvents = 'none'; selectBtn.classList.remove('is-ready');
+    }
+  }
+
+  resetCalendar = function() {
+    rangeStart = null; rangeEnd = null; hoverDate = null;
+    viewYear = today.getFullYear();
+    viewMonth = today.getMonth();
+    buildGrids();
+  };
+
+  buildGrids = function() {
+    const grids = document.getElementById('drcGrids');
+    const monthsEl = document.getElementById('drcMonths');
+    if (!grids || !monthsEl) return;
+    grids.innerHTML = ''; monthsEl.innerHTML = '';
+    const pairs = [[viewYear, viewMonth]];
+    const nd = new Date(viewYear, viewMonth + 1, 1);
+    pairs.push([nd.getFullYear(), nd.getMonth()]);
+    pairs.forEach(([y, m]) => {
+      const t = document.createElement('div'); t.className = 'drc-month-title'; t.textContent = MONTHS[m] + ' ' + y; monthsEl.appendChild(t);
+      const g = document.createElement('div'); g.className = 'drc-grid';
+      const dow = document.createElement('div'); dow.className = 'drc-dow';
+      DAYS.forEach(d => { const s = document.createElement('span'); s.textContent = d; dow.appendChild(s); });
+      g.appendChild(dow);
+      const grid = document.createElement('div'); grid.className = 'drc-days';
+      const first = new Date(y, m, 1).getDay();
+      const total = new Date(y, m + 1, 0).getDate();
+      for (let i = 0; i < first; i++) { const e = document.createElement('div'); e.className = 'drc-day drc-empty'; grid.appendChild(e); }
+      for (let d = 1; d <= total; d++) {
+        const date = new Date(y, m, d);
+        const cell = document.createElement('div'); cell.className = 'drc-day'; cell.textContent = d; cell.dataset.ts = date.getTime();
+        if (date < today) { cell.classList.add('drc-past'); }
+        else {
+          cell.addEventListener('click', () => {
+            rangeStart = new Date(date);
+            const days = data.days || 7;
+            rangeEnd = new Date(date);
+            rangeEnd.setDate(rangeEnd.getDate() + days - 1);
+            hoverDate = null;
+            updateCells();
+          });
+        }
+        grid.appendChild(cell);
+      }
+      g.appendChild(grid);
+      grids.appendChild(g);
+    });
+    updateCells();
+  }
+
+  document.getElementById('drcPrev').addEventListener('click', () => { viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } buildGrids(); });
+  document.getElementById('drcNext').addEventListener('click', () => { viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } buildGrids(); });
+  function confirmDates() {
+    const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    document.getElementById('chosenStartDay').textContent = rangeStart.getDate() + ' ' + MONTHS_SHORT[rangeStart.getMonth()] + ' ' + rangeStart.getFullYear();
+    document.getElementById('chosenEndDay').textContent = rangeEnd.getDate() + ' ' + MONTHS_SHORT[rangeEnd.getMonth()] + ' ' + rangeEnd.getFullYear();
+    document.getElementById('dateChosen').style.display = 'block';
+    document.getElementById('daterangeCal').style.display = 'none';
+    if (typeof checkStepComplete === 'function') checkStepComplete(2);
+  }
+
+  document.getElementById('drcSelectDates').addEventListener('click', confirmDates);
+
+  document.getElementById('dateChosenChange').addEventListener('click', () => {
+    rangeStart = null; rangeEnd = null;
+    data.startDate = ''; data.endDate = '';
+    document.getElementById('dateChosen').style.display = 'none';
+    document.getElementById('daterangeCal').style.display = 'block';
+    document.getElementById('drcSelectDates').style.opacity = '1';
+    document.getElementById('drcSelectDates').style.pointerEvents = 'none';
+    document.getElementById('drcSelectDates').classList.remove('is-ready');
+    buildGrids();
+    if (typeof checkStepComplete === 'function') checkStepComplete(2);
+  });
+
+})();
+function makeCounter(plusId, minusId, valId, key, min) {
+  min = min || 0;
+  document.getElementById(plusId).addEventListener('click', () => { data[key]++; document.getElementById(valId).textContent = data[key]; });
+  document.getElementById(minusId).addEventListener('click', () => { if (data[key] > min) { data[key]--; document.getElementById(valId).textContent = data[key]; } });
+}
+(function() {
+  const min = 2;
+  document.getElementById('plusA').addEventListener('click', () => { data.travelers++; document.getElementById('adultsVal').textContent = data.travelers; document.getElementById('adultsMinMsg').style.display = 'none'; });
+  document.getElementById('minusA').addEventListener('click', () => {
+    if (data.travelers > min) { data.travelers--; document.getElementById('adultsVal').textContent = data.travelers; document.getElementById('adultsMinMsg').style.display = 'none'; }
+    else { document.getElementById('adultsMinMsg').style.display = 'inline'; }
+  });
+})();
+makeCounter('plusC', 'minusC', 'childrenVal', 'children', 0);
+makeCounter('plusI', 'minusI', 'infantsVal', 'infants', 0);
+
+function updateTabs(n) {
+  let activeTab = null;
+  tabs.forEach((t, i) => {
+    const tabStep = i + 1;
+    t.classList.remove('active', 'done');
+    if (tabStep === n) { t.classList.add('active'); activeTab = t; }
+    else if (tabStep <= maxStep) t.classList.add('done');
+  });
+  /* .step-tabs-lux scrolls horizontally on mobile — as the user moves forward
+     through the form, slide the active tab into view so they can see where
+     they are in the process without having to swipe the tab bar themselves.
+     IMPORTANT: this must only scroll the tab strip itself, never the page.
+     activeTab.scrollIntoView({block:'nearest'}) looks page-safe but isn't —
+     during the very first render (showStep(1) on load) the tab strip's
+     layout isn't settled yet, so the browser decides the tab "isn't in
+     view" and scrolls the whole document down to it, landing on the
+     planner/What-You-Get section instead of the hero. Scrolling the tab
+     strip's own scrollLeft directly avoids touching page scroll at all. */
+  if (activeTab) {
+    const tabsContainer = document.getElementById('stepTabs');
+    if (tabsContainer) {
+      const cRect = tabsContainer.getBoundingClientRect();
+      const tRect = activeTab.getBoundingClientRect();
+      const delta = (tRect.left + tRect.width / 2) - (cRect.left + cRect.width / 2);
+      if (Math.abs(delta) > 1) {
+        tabsContainer.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+    }
+  }
+}
+
+function setNextVisible(complete) {
+  if (complete) {
+    nextBtn.classList.remove('btn-disabled');
+  } else {
+    nextBtn.classList.add('btn-disabled');
+  }
+}
+
+function highlightMissing(n) {
+  /* clear previous highlights */
+  document.querySelectorAll('.field-missing').forEach(el => el.classList.remove('field-missing'));
+
+  if (n === 2) {
+    if (data.destinations.length === 0) {
+      document.getElementById('destGrid').classList.add('field-missing');
+    }
+    if (!document.querySelector('[data-single="hasDates"] .chip-lux.sel')) {
+      document.getElementById('hasDatesField').classList.add('field-missing');
+    }
+    if (!document.querySelector('[data-single="tours"] .chip-lux.sel')) {
+      document.getElementById('toursWrap').classList.add('field-missing');
+    }
+    if (!form.activitiesWant || !form.activitiesWant.value.trim()) {
+      form.activitiesWant && form.activitiesWant.closest('.field-lux') && form.activitiesWant.closest('.field-lux').classList.add('field-missing');
+    }
+    if (!form.activitiesAvoid || !form.activitiesAvoid.value.trim()) {
+      form.activitiesAvoid && form.activitiesAvoid.closest('.field-lux') && form.activitiesAvoid.closest('.field-lux').classList.add('field-missing');
+    }
+  } else if (n === 3) {
+    if (!form.groupType || !form.groupType.value) {
+      form.groupType && form.groupType.closest('.field-lux') && form.groupType.closest('.field-lux').classList.add('field-missing');
+    }
+    if (!form.nationality || !form.nationality.value.trim()) {
+      form.nationality && form.nationality.closest('.field-lux') && form.nationality.closest('.field-lux').classList.add('field-missing');
+    }
+    if (!form.groupNotes || !form.groupNotes.value.trim()) {
+      form.groupNotes && form.groupNotes.closest('.field-lux') && form.groupNotes.closest('.field-lux').classList.add('field-missing');
+    }
+  } else if (n === 4) {
+    if (!document.getElementById('hotelTypeVal').value) {
+      document.querySelector('[data-single="hotelType"]') && document.querySelector('[data-single="hotelType"]').closest('div') && document.querySelector('[data-single="hotelType"]').parentElement.classList.add('field-missing');
+    }
+    if (!document.getElementById('roomConfigVal').value) {
+      document.getElementById('roomConfigChips') && document.getElementById('roomConfigChips').parentElement.classList.add('field-missing');
+    }
+    if (!form.hotelNotes || !form.hotelNotes.value.trim()) {
+      form.hotelNotes && form.hotelNotes.closest('div') && form.hotelNotes.closest('div').classList.add('field-missing');
+    }
+  } else if (n === 5) {
+    const flights = document.getElementById('flightsVal').value;
+    if (!flights) {
+      document.querySelector('[data-single="flights"]') && document.querySelector('[data-single="flights"]').parentElement.classList.add('field-missing');
+    }
+    if (flights === 'yes') {
+      if (!form.flyFrom || !form.flyFrom.value.trim()) form.flyFrom && form.flyFrom.closest('.field-lux') && form.flyFrom.closest('.field-lux').classList.add('field-missing');
+      if (!form.flyTo || !form.flyTo.value.trim()) form.flyTo && form.flyTo.closest('.field-lux') && form.flyTo.closest('.field-lux').classList.add('field-missing');
+      if (!document.getElementById('luggageVal').value) document.getElementById('luggageChips') && document.getElementById('luggageChips').parentElement.classList.add('field-missing');
+    } else if (flights === 'no') {
+      if (!form.arrivalTime || !form.arrivalTime.value.trim()) form.arrivalTime && form.arrivalTime.closest('.field-lux') && form.arrivalTime.closest('.field-lux').classList.add('field-missing');
+      if (!form.departureTime || !form.departureTime.value.trim()) form.departureTime && form.departureTime.closest('.field-lux') && form.departureTime.closest('.field-lux').classList.add('field-missing');
+    }
+    if (!form.flightNotes || !form.flightNotes.value.trim()) form.flightNotes && form.flightNotes.closest('.field-lux') && form.flightNotes.closest('.field-lux').classList.add('field-missing');
+  } else if (n === 6) {
+    if (!form.firstName || !form.firstName.value.trim()) form.firstName && form.firstName.closest('.field-lux') && form.firstName.closest('.field-lux').classList.add('field-missing');
+    if (!form.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.value)) form.email && form.email.closest('.field-lux') && form.email.closest('.field-lux').classList.add('field-missing');
+    if (!form.phone || !form.phone.value.trim()) form.phone && form.phone.closest('.field-lux') && form.phone.closest('.field-lux').classList.add('field-missing');
+  }
+
+  /* clear highlights as user fills them in */
+  document.querySelectorAll('.field-missing input, .field-missing textarea, .field-missing select').forEach(el => {
+    el.addEventListener('input', () => {
+      if (el.value.trim()) el.closest('.field-missing') && el.closest('.field-missing').classList.remove('field-missing');
+    }, { once: true });
+  });
+}
+
+function checkStepComplete(n) {
+  if (n === 1) {
+    setNextVisible(!!data.want);
+  } else if (n === 2) {
+    if (data.destinations.length === 0) { setNextVisible(false); return; }
+    const hasDatesEl = document.querySelector('[data-single="hasDates"] .chip-lux.sel');
+    const toursEl = document.querySelector('[data-single="tours"] .chip-lux.sel');
+    const datesOk = hasDatesEl && (hasDatesEl.dataset.value === 'no' ||
+      (hasDatesEl.dataset.value === 'yes' && data.startDate && data.endDate));
+    const wantText = form.activitiesWant ? form.activitiesWant.value.trim() : '';
+    const avoidText = form.activitiesAvoid ? form.activitiesAvoid.value.trim() : '';
+    const allDone = !!(hasDatesEl && toursEl && datesOk && wantText && avoidText);
+    setNextVisible(allDone);
+  } else if (n === 3) {
+    const gt = form.groupType ? form.groupType.value : '';
+    const nat = form.nationality ? form.nationality.value.trim() : '';
+    const notes = form.groupNotes ? form.groupNotes.value.trim() : '';
+    setNextVisible(!!(gt && nat && notes));
+  } else if (n === 4) {
+    const hotelType = document.getElementById('hotelTypeVal') ? document.getElementById('hotelTypeVal').value : '';
+    const roomConfig = document.getElementById('roomConfigVal') ? document.getElementById('roomConfigVal').value : '';
+    const hotelNotes = form.hotelNotes ? form.hotelNotes.value.trim() : '';
+    setNextVisible(!!(hotelType && roomConfig && hotelNotes));
+  } else if (n === 5) {
+    const flights = document.getElementById('flightsVal') ? document.getElementById('flightsVal').value : '';
+    const flightNotes = form.flightNotes ? form.flightNotes.value.trim() : '';
+    if (!flights) { setNextVisible(false); return; }
+    if (flights === 'yes') {
+      const from = form.flyFrom ? form.flyFrom.value.trim() : '';
+      const to = form.flyTo ? form.flyTo.value.trim() : '';
+      const luggage = document.getElementById('luggageVal') ? document.getElementById('luggageVal').value : '';
+      setNextVisible(!!(from && to && luggage && flightNotes));
+    } else {
+      const arrival = form.arrivalTime ? form.arrivalTime.value.trim() : '';
+      const departure = form.departureTime ? form.departureTime.value.trim() : '';
+      setNextVisible(!!(arrival && departure && flightNotes));
+    }
+  } else if (n === 6) {
+    const fn = form.firstName ? form.firstName.value.trim() : '';
+    const em = form.email ? form.email.value.trim() : '';
+    const ph = form.phone ? form.phone.value.trim() : '';
+    const emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
+    const emailErr = document.getElementById('emailError');
+    if (emailErr) emailErr.style.display = (em && !emailOk) ? 'block' : 'none';
+    setNextVisible(!!(fn && emailOk && ph));
+  } else {
+    setNextVisible(true);
+  }
+}
+
+function showStep(n) {
+  const outStep = fsteps.find(s => s.classList.contains('active'));
+
+  function applyStep(n) {
+    if (n === 2) applyStep2Mode(); if (n === 5) checkStepComplete(5); if (n === 6) checkStepComplete(6);
+    fsteps.forEach(s => {
+      s.classList.remove('active', 'fade-out', 'fade-in', 'visible');
+    });
+    const inStep = fsteps.find(s => +s.dataset.step === n);
+    if (inStep) {
+      inStep.classList.add('fade-in');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { inStep.classList.add('visible'); });
+      });
+      setTimeout(() => {
+        inStep.classList.remove('fade-in', 'visible');
+        inStep.classList.add('active');
+      }, 550);
+    }
+    backBtn.hidden = n === 1;
+    const span = nextBtn.querySelector('span');
+    if (span) span.textContent = n === 6 ? 'Send My Request' : (n === 2 || n === 3 || n === 4 || n === 5) ? 'Continue →' : 'Next';
+    plannerNav.style.display = (n === 7) ? 'none' : 'flex';
+    setNextVisible(false);
+    if (n > 2) restoreStep(n);
+    setTimeout(() => checkStepComplete(n), 50);
+    if (n > maxStep) maxStep = n;
+    if (n <= 6) updateTabs(n);
+    document.getElementById('stepTabs').style.display = (n === 7) ? 'none' : '';
+    current = n;
+    placeNavForStep(n);
+  }
+
+  if (outStep && !outStep.classList.contains('fade-out')) {
+    outStep.classList.add('fade-out');
+    setTimeout(() => { applyStep(n); }, 420);
+  } else {
+    applyStep(n);
+  }
+}
+
+function validate(n) {
+  if (n === 1 && !data.want) { document.getElementById('err1').textContent = 'Please choose one option.'; return false; }
+  if (n === 2) {
+    if (data.destinations.length === 0) { document.getElementById('err2').textContent = 'Please make a selection to continue.'; return false; }
+    const hasDates = document.querySelector('[data-single="hasDates"] .chip-lux.sel');
+    const tours = document.querySelector('[data-single="tours"] .chip-lux.sel');
+    if (!hasDates || !tours) { document.getElementById('err2').textContent = 'Please complete all sections above.'; return false; }
+    if (hasDates.dataset.value === 'yes' && (!data.startDate || !data.endDate)) { document.getElementById('err2').textContent = 'Please confirm your travel dates.'; return false; }
+  }
+  if (n === 3) {
+    if (!form.groupType.value || !form.nationality.value.trim() || !form.groupNotes.value.trim()) { document.getElementById('err3').textContent = 'Please fill in all fields.'; return false; }
+  }
+  if (n === 4) {
+    const hotelType = document.getElementById('hotelTypeVal').value;
+    if (!hotelType) { document.getElementById('err4').textContent = 'Please select a hotel type.'; return false; }
+  }
+  if (n === 5) {
+    const flightsV = document.getElementById('flightsVal').value;
+    if (!flightsV) { document.getElementById('err5').textContent = 'Please answer the flights question.'; return false; }
+  }
+  if (n === 6) {
+    const fn = form.firstName.value.trim();
+    const em = form.email.value.trim();
+    const ph = form.phone.value.trim();
+    if (!fn || !em || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em) || !ph) {
+      document.getElementById('err6').textContent = 'Please fill in your name, email and contact number.'; return false;
+    }
+  }
+  return true;
+}
+
+function scrollToCardTop() {
+  const card = document.querySelector('.planner-lux-card');
+  if (!card) return;
+  const top = card.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+nextBtn.addEventListener('click', () => {
+  if (nextBtn.classList.contains('btn-disabled')) {
+    highlightMissing(current);
+    return;
+  }
+  if (!validate(current)) return;
+  scrollToCardTop();
+  if (current === 6) { submitPlan(); return; }
+  if (current === 2) showDestSummary();
+  showStep(current + 1);
+  // Do NOT scroll — card stays exactly where it is
+});
+backBtn.addEventListener('click', () => {
+  if (current > 1) { scrollToCardTop(); showStep(current - 1); }
+  // Do NOT scroll — card stays exactly where it is
+});
+
+function generateBookingNo() {
+  const year = new Date().getFullYear();
+  const rand = Math.floor(10000 + Math.random() * 89999);
+  return `${year}${rand}`;
+}
+
+function submitPlan() {
+  document.getElementById('successName').textContent = form.firstName.value.trim() || 'traveler';
+
+  const hotelTypeLabel = { '4-star': '4-star Hotel', '5-star': '5-star Hotel' }[form.hotelType.value] || form.hotelType.value;
+  const toursLabel = { yes: 'Fully arranged — every day planned.', no: 'A mix of guided days and free time.' }[data.tours] || '';
+  const hasDatesLabel = { yes: 'Has specific dates in mind.', no: 'Not sure yet / flexible.' }[data.hasDates] || '';
+  const flightsLabel = { yes: "Yes, help me book my flights.", no: "No, I'll book my own flights." }[form.flights.value] || '';
+  const luggageMap = { both: 'Both flights', onward: 'Onward only', return: 'Return only', none: 'Not needed' };
+  const luggageLabel = luggageMap[form.luggage.value] || '';
+
+  const payload = {
+    bookingNo: generateBookingNo(),
+    timestamp: new Date().toString(),
+    firstName: form.firstName.value, lastName: form.lastName.value,
+    email: form.email.value, phone: form.phoneCode.value + form.phone.value,
+    source: form.source.value,
+    want: data.want, destinations: data.destinations.join(', '), days: data.days,
+    hasDates: hasDatesLabel, startDate: form.startDate.value, endDate: form.endDate.value,
+    tours: toursLabel, freeDays: data.tours === 'no' ? data.freeDays : '',
+    groupType: form.groupType.value, nationality: form.nationality.value,
+    travelers: data.travelers, children: data.children, infants: data.infants,
+    groupNotes: form.groupNotes.value,
+    activitiesWant: form.activitiesWant ? form.activitiesWant.value : '',
+    activitiesAvoid: form.activitiesAvoid ? form.activitiesAvoid.value : '',
+    hotelType: hotelTypeLabel, roomConfig: form.roomConfig.value, hotelNotes: form.hotelNotes.value,
+    flights: flightsLabel, flyFrom: form.flyFrom.value, flyTo: form.flyTo.value,
+    luggage: luggageLabel, arrivalTime: form.arrivalTime.value, departureTime: form.departureTime.value,
+    flightNotes: form.flightNotes.value
+  };
+
+  /* ── Where form submissions go ──────────────────────────────────────
+     1) FORMSPREE_ENDPOINT — emails the full lead to bookings@taratravel.co.
+        Sign up free at https://formspree.io, create a form, and it gives
+        you a URL like https://formspree.io/f/abcd1234. Replace the
+        placeholder below with that exact URL.
+     2) SHEETS_WEBAPP_URL — writes the same lead directly into the
+        Leads_and_Sales_Hub Google Sheet via an Apps Script Web App,
+        replacing the old Zapier email-parsing step. Replace the
+        placeholder below with the deployed Web App URL.
+     Both fire independently — if one fails, the other still goes through. */
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvdvlvv';
+  const SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxzBsYYxAHwQ7yN0Ok8tsKu-0Eg10kQ9S_J0ev_A8GW0onlD6wsHH7S9wkENEDSIGvo/exec';
+
+  try {
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  } catch (e) {}
+
+  try {
+    fetch(SHEETS_WEBAPP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  } catch (e) {}
+
+  showStep(7);
+}
+
+showStep(1);
 
 /* Reveal on scroll */
 const reveals = document.querySelectorAll('.lux-reveal');

@@ -277,6 +277,17 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   .foot-grid { grid-template-columns:1fr; gap:36px; }
   .foot-bottom { flex-direction:column; gap:4px; }
 }
+/* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
+.contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); cursor: pointer; transition: transform .2s; }
+.contact-fab-btn:hover { transform: scale(1.06); }
+.contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
+.contact-fab-menu.open { display: flex; }
+.contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
+.contact-fab-link:hover { background: rgba(215,154,61,.1); }
+.contact-fab-link svg { flex-shrink: 0; }
+@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 50px; height: 50px; } }
 </style>
 </head>
 <body>
@@ -291,8 +302,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
         <a href="taratravelco-travelguidelist.html" data-text="Travel Guide" class="active">Travel Guide</a>
         <a href="taratravel-destinations-list.html" data-text="Destinations">Destinations</a>
         <a href="taratravelco-about.html" data-text="About Us">About Us</a>
-        <a href="https://www.facebook.com/taratravelco" data-text="Messenger" target="_blank" rel="noopener">Messenger</a>
-        <a href="https://wa.me/84394093181" data-text="WhatsApp" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
       <a href="#" class="nav-cta"><span>Plan my trip</span></a>
     </div>
@@ -307,10 +316,26 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   <a href="taratravelco-travelguidelist.html">Travel Guide</a>
   <a href="taratravel-destinations-list.html">Destinations</a>
   <a href="taratravelco-about.html">About Us</a>
-  <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a>
-  <a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="#" onclick="toggleContactFab(event)">Contact</a>
   <a href="#" class="mobile-nav-cta">Plan my trip</a>
 </nav>
+
+<!-- CONTACT POPUP -->
+<div class="contact-fab-wrap" id="contactFabWrap">
+  <div class="contact-fab-menu" id="contactFabMenu">
+    <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+      Messenger
+    </a>
+    <a href="https://wa.me/84394093181" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+  <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </button>
+</div>
 
 <!-- HERO SLIDER — 3 featured travel guides -->
 <section class="bloglist-hero">
@@ -457,7 +482,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       </div>
       <div class="trust-card">
         <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.svg" alt="24/7 Support" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly on Messenger or WhatsApp, any time before or during your trip.</div></div>
+        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly any time before or during your trip.</div></div>
       </div>
     </div>
   </div>
@@ -483,15 +508,13 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
           <li><a href="taratravelco-travelguidelist.html">Travel Guide</a></li>
           <li><a href="taratravel-destinations-list.html">Destinations</a></li>
           <li><a href="taratravelco-about.html">About Us</a></li>
-          <li><a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a>
-  <a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="taratravelco-terms.html">Terms</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="https://wa.me/84394093181" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener">Messenger</a></li>
+          <li><a href="#" onclick="toggleContactFab(event)">Message us</a></li>
         </ul>
       </div>
     </div>
@@ -565,6 +588,20 @@ function closeNavMenu() {
   if (isMobileNav()) unlockBodyScroll();
 }
 document.getElementById('mobileNavPanel').addEventListener('click', closeNavMenu);
+
+/* Contact popup (floating Messenger/WhatsApp widget) */
+function toggleContactFab(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const menu = document.getElementById('contactFabMenu');
+  if (menu) menu.classList.toggle('open');
+}
+document.addEventListener('click', function (e) {
+  const wrap = document.getElementById('contactFabWrap');
+  const menu = document.getElementById('contactFabMenu');
+  if (wrap && menu && menu.classList.contains('open') && !wrap.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
 
 /* Hero slider — auto-rotate + dot nav */
 (function(){
