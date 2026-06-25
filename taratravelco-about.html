@@ -114,8 +114,8 @@ header.nav { background:var(--cream); padding:16px 0; }
 .img-ph-3 { grid-column:2; grid-row:2; }
 .story-quote { grid-area:quote; }
 .about-story-text { grid-area:text; }
-.story-sent { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1rem; line-height:1.85; color:var(--ink-soft); display:inline; margin:0; }
-.story-sent::after { content:" "; }
+.story-para { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1rem; line-height:1.85; color:var(--ink-soft); display:block; margin:0 0 18px; }
+.story-para:last-child { margin-bottom:0; }
 @media(max-width:1024px) { .about-story-inner { padding:0 36px; } }
 @media(max-width:860px) {
   .about-story-inner { grid-template-columns:1fr; grid-template-areas:"quote" "imgs" "text"; gap:24px; }
@@ -126,9 +126,8 @@ header.nav { background:var(--cream); padding:16px 0; }
   .about-story-inner { padding:0 16px; }
   .about-story-imgs { height:240px; gap:8px; }
   .story-quote { font-size:1.4rem; }
-  .story-sent { display:block; margin-bottom:14px; }
-  .story-sent::after { content:none; }
-  .story-sent:last-child { margin-bottom:0; }
+  .story-para { margin-bottom:14px; }
+  .story-para:last-child { margin-bottom:0; }
 }
 
 /* VALUES */
@@ -818,14 +817,12 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
     </div>
     <p class="story-quote">&ldquo;Tara!&rdquo; means &ldquo;Let&rsquo;s go!&rdquo; in Filipino &mdash; and we added the acute accent to give it a little Vietnamese twist.</p>
     <div class="about-story-text">
-      <p class="story-sent">Founded in 2023 by Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment.</p>
-      <p class="story-sent">Marielle has lived in Vietnam for nearly a decade and knows it by heart.</p>
-      <p class="story-sent">Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
-      <p class="story-sent"><strong>We believe your vacation should actually feel like a vacation.</strong></p>
-      <p class="story-sent">Our team knows how much time and energy goes into planning a trip.</p>
-      <p class="story-sent">Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost.</p>
-      <p class="story-sent">Our mission is to shift that focus &mdash; we handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to.</p>
-      <p class="story-sent">Your only task is to share your travel interests with our team, and just show up.</p>
+      <p class="story-para">Founded in 2023 by Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment.</p>
+      <p class="story-para">Marielle has lived in Vietnam for nearly a decade and knows it by heart. Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
+      <p class="story-para"><strong>We believe your vacation should actually feel like a vacation.</strong></p>
+      <p class="story-para">Our team knows how much time and energy goes into planning a trip. Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost.</p>
+      <p class="story-para">Our mission is to shift that focus &mdash; we handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to.</p>
+      <p class="story-para">Your only task is to share your travel interests with our team, and just show up.</p>
     </div>
   </div>
 </section>
