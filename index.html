@@ -219,7 +219,8 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
 .nav-dropdown-menu a::before, .nav-dropdown-menu a::after { display: none; }
 /* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
 .contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(215,154,61,.45); cursor: pointer; transition: transform .2s; animation: contactFabVibrate 6s ease-in-out infinite; }
+.contact-fab-btn { width: 60px; height: 48px; border-radius: 22px 22px 22px 6px; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: none; cursor: pointer; transition: transform .2s; animation: contactFabVibrate 3s ease-in-out infinite; position: relative; }
+.contact-fab-btn::after { content: ''; position: absolute; left: 13px; bottom: -6px; width: 0; height: 0; border-style: solid; border-width: 8px 9px 0 0; border-color: var(--gold) transparent transparent transparent; }
 .contact-fab-btn:hover { transform: scale(1.06); }
 .contact-fab-btn svg { width: 24px; height: 24px; }
 .contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
@@ -228,14 +229,14 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
 .contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
 @keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
 @keyframes contactFabVibrate {
-  0%, 92%, 100% { transform: translateX(0); }
-  93% { transform: translateX(-3px) rotate(-4deg); }
-  94% { transform: translateX(3px) rotate(4deg); }
-  95% { transform: translateX(-3px) rotate(-4deg); }
-  96% { transform: translateX(3px) rotate(4deg); }
-  97% { transform: translateX(-2px) rotate(-2deg); }
-  98% { transform: translateX(2px) rotate(2deg); }
-  99% { transform: translateX(0) rotate(0); }
+  0%, 85%, 100% { transform: translateX(0); }
+  86% { transform: translateX(-3px) rotate(-4deg); }
+  87% { transform: translateX(3px) rotate(4deg); }
+  88% { transform: translateX(-3px) rotate(-4deg); }
+  89% { transform: translateX(3px) rotate(4deg); }
+  90% { transform: translateX(-2px) rotate(-2deg); }
+  91% { transform: translateX(2px) rotate(2deg); }
+  92% { transform: translateX(0) rotate(0); }
 }
 .contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
 .contact-fab-menu.open { display: flex; }
@@ -243,7 +244,7 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
 .contact-fab-link:hover { background: rgba(215,154,61,.1); }
 .contact-fab-link svg { flex-shrink: 0; }
 .contact-fab-link::before, .contact-fab-link::after { display: none; }
-@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 50px; height: 50px; } }
+@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 54px; height: 42px; } }
 .nav-cta {
   font-family: 'DM Sans', sans-serif;
   font-size: .8rem;
@@ -2334,7 +2335,6 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
 </header>
 <div class="nav-overlay" id="navOverlay" onclick="closeNavMenu()"></div>
 <nav class="mobile-nav-panel" id="mobileNavPanel">
-  <a href="#how">How it works</a>
   <a href="taratravelco-travelguidelist.html">Travel Guide</a>
   <a href="taratravel-destinations-list.html">Destinations</a>
   <a href="taratravelco-about.html">About Us</a>

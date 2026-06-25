@@ -84,6 +84,7 @@ header.nav { background:var(--cream); padding:16px 0; }
 .sec-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.675rem; line-height:1.1; color:var(--navy); margin-bottom:16px; }
 .sec-title em { font-style:italic; color:var(--gold); }
 .story-accent { font-family:'Playfair Display',serif; font-style:italic; font-size:1.25rem; line-height:1.5; color:var(--navy); margin-bottom:18px; }
+.story-quote { font-family:'Playfair Display',serif; font-weight:400; font-size:1.675rem; line-height:1.25; color:var(--navy); margin:0; }
 .lux-reveal { opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.215,.61,.355,1),transform .9s cubic-bezier(.215,.61,.355,1); }
 .lux-reveal.in { opacity:1; transform:none; }
 
@@ -104,26 +105,30 @@ header.nav { background:var(--cream); padding:16px 0; }
 
 /* STORY SPLIT */
 .about-story { padding:80px 0; }
-.about-story-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-.about-story-imgs { display:grid; grid-template-columns:1.2fr 1fr; grid-template-rows:1fr 1fr; gap:12px; height:480px; }
-.img-ph { background:rgba(20,20,20,.03); border:1px dashed rgba(20,20,20,.18); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:rgba(20,20,20,.35); }
-.img-ph span:first-child { font-family:'Playfair Display',serif; font-size:1.8rem; line-height:1; }
-.img-ph-label { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:.05em; text-transform:uppercase; }
+.about-story-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; display:grid; grid-template-columns:1fr 1fr; grid-template-areas:"imgs quote" "imgs text"; gap:20px 64px; align-items:start; }
+.about-story-imgs { grid-area:imgs; display:grid; grid-template-columns:1.2fr 1fr; grid-template-rows:1fr 1fr; gap:12px; height:480px; align-self:center; }
+.img-ph { background:rgba(20,20,20,.03); border-radius:6px; overflow:hidden; }
+.img-ph img { width:100%; height:100%; object-fit:cover; display:block; }
 .img-ph-1 { grid-row:1 / 3; }
 .img-ph-2 { grid-column:2; grid-row:1; }
 .img-ph-3 { grid-column:2; grid-row:2; }
-.about-story-text p { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1rem; line-height:1.85; color:var(--ink-soft); margin-bottom:18px; }
-.about-story-text p:last-child { margin-bottom:0; }
+.story-quote { grid-area:quote; }
+.about-story-text { grid-area:text; }
+.story-sent { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1rem; line-height:1.85; color:var(--ink-soft); display:inline; margin:0; }
+.story-sent::after { content:" "; }
 @media(max-width:1024px) { .about-story-inner { padding:0 36px; } }
 @media(max-width:860px) {
-  .about-story-inner { grid-template-columns:1fr; gap:32px; }
-  .about-story-imgs { height:320px; order:-1; }
+  .about-story-inner { grid-template-columns:1fr; grid-template-areas:"quote" "imgs" "text"; gap:24px; }
+  .about-story-imgs { height:320px; align-self:stretch; }
 }
 @media(max-width:640px) {
   .about-story { padding:48px 0; }
   .about-story-inner { padding:0 16px; }
   .about-story-imgs { height:240px; gap:8px; }
-  .img-ph span:first-child { font-size:1.4rem; }
+  .story-quote { font-size:1.4rem; }
+  .story-sent { display:block; margin-bottom:14px; }
+  .story-sent::after { content:none; }
+  .story-sent:last-child { margin-bottom:0; }
 }
 
 /* VALUES */
@@ -252,7 +257,7 @@ header.nav { background:var(--cream); padding:16px 0; }
 .trust-sec .sec-title { color:var(--ink); }
 .trust-sec .sec-title em { color:var(--gold); }
 .trust-cards-8 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px; text-align:left; }
-.trust-cards-8 .trust-card { background:rgba(20,20,20,.0175); padding:28px 22px 26px; }
+.trust-cards-8 .trust-card { background:#fff; padding:28px 22px 26px; border-radius:10px; box-shadow:0 4px 16px rgba(20,20,20,.05); }
 .trust-icon img { width:34px; height:34px; object-fit:contain; margin-bottom:14px; }
 .trust-cards-8 .trust-title { font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:6px; color:var(--ink); }
 .trust-cards-8 .trust-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); }
@@ -349,7 +354,8 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 }
 /* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
 .contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(215,154,61,.45); cursor: pointer; transition: transform .2s; animation: contactFabVibrate 6s ease-in-out infinite; }
+.contact-fab-btn { width: 60px; height: 48px; border-radius: 22px 22px 22px 6px; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: none; cursor: pointer; transition: transform .2s; animation: contactFabVibrate 3s ease-in-out infinite; position: relative; }
+.contact-fab-btn::after { content: ''; position: absolute; left: 13px; bottom: -6px; width: 0; height: 0; border-style: solid; border-width: 8px 9px 0 0; border-color: var(--gold) transparent transparent transparent; }
 .contact-fab-btn:hover { transform: scale(1.06); }
 .contact-fab-btn svg { width: 24px; height: 24px; }
 .contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
@@ -358,21 +364,21 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 .contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
 @keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
 @keyframes contactFabVibrate {
-  0%, 92%, 100% { transform: translateX(0); }
-  93% { transform: translateX(-3px) rotate(-4deg); }
-  94% { transform: translateX(3px) rotate(4deg); }
-  95% { transform: translateX(-3px) rotate(-4deg); }
-  96% { transform: translateX(3px) rotate(4deg); }
-  97% { transform: translateX(-2px) rotate(-2deg); }
-  98% { transform: translateX(2px) rotate(2deg); }
-  99% { transform: translateX(0) rotate(0); }
+  0%, 85%, 100% { transform: translateX(0); }
+  86% { transform: translateX(-3px) rotate(-4deg); }
+  87% { transform: translateX(3px) rotate(4deg); }
+  88% { transform: translateX(-3px) rotate(-4deg); }
+  89% { transform: translateX(3px) rotate(4deg); }
+  90% { transform: translateX(-2px) rotate(-2deg); }
+  91% { transform: translateX(2px) rotate(2deg); }
+  92% { transform: translateX(0) rotate(0); }
 }
 .contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
 .contact-fab-menu.open { display: flex; }
 .contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
 .contact-fab-link:hover { background: rgba(215,154,61,.1); }
 .contact-fab-link svg { flex-shrink: 0; }
-@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 50px; height: 50px; } }
+@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 54px; height: 42px; } }
 
 /* ===== TRIP PLANNER (ported from index.html) ===== */
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 52px; }
@@ -774,7 +780,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 </header>
 <div class="nav-overlay" id="navOverlay" onclick="closeNavMenu()"></div>
 <nav class="mobile-nav-panel" id="mobileNavPanel">
-  <a href="index.html#how">How it works</a>
   <a href="taratravelco-travelguidelist.html">Travel Guide</a>
   <a href="taratravel-destinations-list.html">Destinations</a>
   <a href="taratravelco-about.html">About Us</a>
@@ -807,15 +812,20 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 <section class="about-story lux-reveal" style="margin-top:120px;">
   <div class="about-story-inner">
     <div class="about-story-imgs">
-      <div class="img-ph img-ph-1"><span>+</span><span class="img-ph-label">Photo 1</span></div>
-      <div class="img-ph img-ph-2"><span>+</span><span class="img-ph-label">Photo 2</span></div>
-      <div class="img-ph img-ph-3"><span>+</span><span class="img-ph-label">Photo 3</span></div>
+      <div class="img-ph img-ph-1"><img src="Media/About Us/Photo 1.webp" alt="Tará Travel Co. - Photo 1" loading="lazy"></div>
+      <div class="img-ph img-ph-2"><img src="Media/About Us/Photo 2.webp" alt="Tará Travel Co. - Photo 2" loading="lazy"></div>
+      <div class="img-ph img-ph-3"><img src="Media/About Us/Photo 3.webp" alt="Tará Travel Co. - Photo 3" loading="lazy"></div>
     </div>
+    <p class="story-quote">&ldquo;Tara!&rdquo; means &ldquo;Let&rsquo;s go!&rdquo; in Filipino &mdash; and we added the acute accent to give it a little Vietnamese twist.</p>
     <div class="about-story-text">
-      <p class="story-accent">&ldquo;Tara!&rdquo; means &ldquo;Let&rsquo;s go!&rdquo; in Filipino &mdash; and we added the acute accent to give it a little Vietnamese twist.</p>
-      <p>Founded in 2023 by Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment. Marielle has lived in Vietnam for nearly a decade and knows it by heart. Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
-      <p class="story-accent">We believe your vacation should actually feel like a vacation.</p>
-      <p>Our team knows how much time and energy goes into planning a trip. Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost. Our mission is to shift that focus. We handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to. Your only task is to share your travel interests with our team, and just show up.</p>
+      <p class="story-sent">Founded in 2023 by Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment.</p>
+      <p class="story-sent">Marielle has lived in Vietnam for nearly a decade and knows it by heart.</p>
+      <p class="story-sent">Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
+      <p class="story-sent"><strong>We believe your vacation should actually feel like a vacation.</strong></p>
+      <p class="story-sent">Our team knows how much time and energy goes into planning a trip.</p>
+      <p class="story-sent">Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost.</p>
+      <p class="story-sent">Our mission is to shift that focus &mdash; we handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to.</p>
+      <p class="story-sent">Your only task is to share your travel interests with our team, and just show up.</p>
     </div>
   </div>
 </section>
