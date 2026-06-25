@@ -6,7 +6,7 @@
 <title>About Us — Tará Travel Co.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
 <style>
 :root {
   --gold:      #d79a3d;
@@ -83,6 +83,7 @@ header.nav { background:var(--cream); padding:16px 0; }
 .sec-label { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
 .sec-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.675rem; line-height:1.1; color:var(--navy); margin-bottom:16px; }
 .sec-title em { font-style:italic; color:var(--gold); }
+.story-accent { font-family:'Playfair Display',serif; font-style:italic; font-size:1.25rem; line-height:1.5; color:var(--navy); margin-bottom:18px; }
 .lux-reveal { opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.215,.61,.355,1),transform .9s cubic-bezier(.215,.61,.355,1); }
 .lux-reveal.in { opacity:1; transform:none; }
 
@@ -144,21 +145,92 @@ header.nav { background:var(--cream); padding:16px 0; }
   .value-desc { font-size:.925rem; }
 }
 
-/* HOW WE WORK */
-.about-process { padding:80px 0; }
-.about-process-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; text-align:center; }
-.about-process-inner .sec-label, .about-process-inner .sec-title { margin-left:auto; margin-right:auto; }
-.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:40px; text-align:left; }
-.process-steps.steps-3 { grid-template-columns:repeat(3,1fr); }
-.process-step { position:relative; padding:0 18px 0 0; }
-.process-num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold-soft); margin-bottom:10px; }
-.process-step-title { font-size:1.05rem; font-weight:400; color:var(--ink); margin-bottom:6px; }
-.process-step-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); }
-@media(max-width:1024px) { .about-process-inner { padding:0 36px; } .process-steps { grid-template-columns:1fr 1fr; } }
+/* THE PROCESS — ported from homepage "How It Works" (same graphics) */
+.about-process { padding:80px 0; background:#fff; }
+.about-process-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
+.process-head-col { text-align:center; max-width:640px; margin:0 auto 8px; }
+.process-head-col .sec-label, .process-head-col .sec-title { margin-left:auto; margin-right:auto; }
+.steps-vertical { max-width:700px; margin:0 auto; position:relative; padding-left:0; }
+.step-v-body { display:flex; flex-direction:column; align-items:stretch; min-width:0; padding-top:8px; order:1; }
+.step-v-text { text-align:left; }
+.step-v-text h3, .step-v-text .step-v-label { text-align:left; }
+.step-v-eyebrow { font-family:'DM Sans',sans-serif; font-size:.72rem; font-weight:400; letter-spacing:3px; text-transform:uppercase; color:rgba(20,20,20,.4); text-align:left; margin-bottom:10px; }
+.step-v-graphic { display:flex; justify-content:center; align-items:center; margin-bottom:20px; background:rgba(20,20,20,.0175); border-radius:0; padding:16px; box-sizing:border-box; width:100%; order:2; }
+.step-v { display:flex; flex-direction:column; align-items:flex-start; padding-bottom:32px; opacity:1; transform:none; position:relative; }
+.step-v:last-child { padding-bottom:0; }
+.step-v-label { font-family:'Playfair Display',serif; font-weight:400; font-size:1.15rem; letter-spacing:normal; text-transform:none; color:#141414; margin-bottom:12px; }
+.step-v h3 { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; color:rgba(20,20,20,.6); line-height:1.6; margin-bottom:14px; }
+.step-v h3 em { font-style:normal; }
+.step-v p { font-weight:300; font-size:1.1rem; color:var(--ink); line-height:1.9; max-width:520px; }
+
+/* Chat mockup bubbles — Step 2 / Step 3 */
+.step-chat-bubbles { display:flex; flex-direction:column; gap:6px; width:100%; max-width:260px; background:transparent; border-radius:0; padding:18px 16px; }
+.convo-set { display:none; flex-direction:column; gap:6px; width:100%; }
+.convo-set.active-convo { display:flex; }
+.step3-bubble { position:relative; max-width:80%; font-size:13px; line-height:1.55; text-align:left; border-radius:4px; flex-shrink:0; overflow:visible; opacity:0; padding:8px 11px; margin-bottom:10px; transform:translateY(16px); transition:opacity .4s ease, transform .45s ease; }
+.step3-bubble.s3show { opacity:1; transform:translateY(0); }
+.step3-client { background:#fff; color:#1a1a1a; border:0.9px solid rgba(26,26,26,.55); align-self:flex-start; }
+.step3-tara { background:rgba(26,26,26,.04); color:#1a1a1a; border:0.9px solid rgba(26,26,26,.55); align-self:flex-end; }
+.step4-bubble { position:relative; max-width:82%; font-size:13px; line-height:1.55; text-align:left; border-radius:4px; flex-shrink:0; overflow:visible; opacity:0; padding:8px 11px; margin-bottom:10px; transform:translateY(16px); transition:opacity .4s ease, transform .45s ease; }
+.step4-bubble.s4show { opacity:1; transform:translateY(0); }
+.step4-tara { background:rgba(26,26,26,.04); color:#1a1a1a; border:0.9px solid rgba(26,26,26,.55); align-self:flex-end; }
+.step4-client { background:#fff; color:#1a1a1a; border:0.9px solid rgba(26,26,26,.55); align-self:flex-start; }
+
+/* Phone simulation — hand-drawn doodle style (Step 1) */
+.sim-phone { margin-top:24px; width:min(260px, 80%); background:transparent; border-radius:0; padding:14px 16px 14px; position:relative; }
+.sim-screen { background:transparent; border-radius:0; padding:0; min-height:unset; display:flex; flex-direction:column; align-items:flex-start; text-align:left; width:100%; }
+.sim-days-row { margin-top:10px; padding-top:14px; border-top:1px dashed rgba(26,26,26,.25); width:100%; display:flex; flex-direction:column; align-items:stretch; }
+.sim-days-box { background:#fff; border:0.9px solid rgba(26,26,26,.55); border-radius:4px; padding:8px 10px 14px; width:100%; box-sizing:border-box; margin-bottom:6px; height:64px; overflow:hidden; }
+.sim-days-label { font-family:'DM Sans', sans-serif; font-size:11.6px; font-weight:300; line-height:1.5; color:#1a1a1a; text-align:left; display:inline; }
+.sim-days-cursor { display:inline-block; width:1px; height:11px; background:#1a1a1a; margin-left:1px; vertical-align:-1px; animation:simCursorBlink 1s step-end infinite; }
+@keyframes simCursorBlink { 0%,50% { opacity:1; } 50.01%,100% { opacity:0; } }
+.step-tap-demo { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:6px; width:100%; }
+.tap-chip { font-family:'DM Sans', sans-serif; font-size:.68rem; font-weight:400; color:#1a1a1a; background:#fff; border:0.9px solid rgba(26,26,26,.55); border-radius:4px; padding:5px 9px; cursor:default; transition:background .2s, color .2s, border-color .2s, transform .12s; user-select:none; }
+.tap-chip.tapped { background:#8d8d8d; border-color:#8d8d8d; color:#fff; transform:scale(1.08); }
+.tap-chip.selected { background:rgba(26,26,26,.04); border-color:#1a1a1a; color:#1a1a1a; transform:scale(1); }
+
+@media (min-width:901px) {
+  .steps-vertical { display:flex; flex-direction:row; align-items:flex-start; justify-content:center; gap:64px; max-width:1496px; padding-top:0; }
+  .process-head-col { margin-bottom:44px; }
+  .step-v { display:flex; flex-direction:column; align-items:flex-start; text-align:left; flex:0 1 300px; max-width:300px; min-width:0; padding-bottom:0; }
+  .step-v-text, .step-v-text h3, .step-v-text .step-v-label { text-align:left; }
+  .step-v h3 { margin-bottom:8px; }
+  .step-v-label { margin-bottom:8px; font-size:1.15rem; letter-spacing:normal; }
+  .step-v p { display:none; }
+  .step-v-graphic { width:100%; justify-content:center; align-items:center; margin-top:0; margin-bottom:20px; height:260px; overflow:visible; position:relative; background:#fbfaf8; border-radius:0; padding:16px; box-sizing:border-box; }
+  .step-v-graphic .sim-phone { width:215px; margin-top:14px; }
+  .step-v-graphic .step3-bubble, .step-v-graphic .step4-bubble { font-size:11.5px; }
+}
+
+@media(max-width:1024px) { .about-process-inner { padding:0 36px; } }
 @media(max-width:640px) {
   .about-process { padding:48px 0; }
   .about-process-inner { padding:0 16px; }
-  .process-steps, .process-steps.steps-3 { grid-template-columns:1fr; gap:24px; margin-top:28px; }
+}
+@media (max-width:760px) {
+  .about-process { padding-top:60px; padding-bottom:40px; }
+  .step-v { padding-bottom:48px; }
+  .step-v:last-child { padding-bottom:0; }
+  .steps-vertical { margin-top:20px; }
+  .step-v h3 { font-size:.88rem; }
+  .step-v-text h3 br { display:none; }
+  .step-v p { font-size:1rem; line-height:1.8; }
+  .step-v-graphic { width:min(280px, 80vw); aspect-ratio:1/1; height:auto; margin:0 auto 10px; padding:14px; }
+  .step-v-graphic .sim-phone { width:170px; margin-top:6px; }
+  .step-v-graphic .step3-bubble, .step-v-graphic .step4-bubble { font-size:10.5px; }
+  .step-v-graphic .step-tap-demo, .step-v-graphic .step-chat-bubbles { max-width:100%; }
+  .step-v-eyebrow { margin-bottom:6px; }
+  .step-v-label { margin-bottom:4px; }
+  .step-v h3 { line-height:1.4; margin-bottom:4px; }
+  .step-v { display:flex; flex-direction:column; }
+  .step-v-body, .step-v-text { display:contents; }
+  .step-v-eyebrow, .step-v-label, .step-v h3 { width:min(280px, 80vw); margin-left:auto; margin-right:auto; }
+  .step-v-eyebrow { order:-1; margin-top:0; margin-bottom:10px; }
+  .step-v-label { order:0; }
+  .step-v h3 { order:1; }
+  .step-v-graphic { order:2; }
+  .process-head-col { text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
+  .process-head-col .sec-label, .process-head-col .sec-title { text-align:center !important; }
 }
 
 /* WORK WITH US CTA */
@@ -174,7 +246,7 @@ header.nav { background:var(--cream); padding:16px 0; }
 @media(max-width:640px) { .about-cta { padding:56px 0; } }
 
 /* WHAT YOU GET (trust cards, reused style) */
-.trust-sec { background:#fff; padding:70px 0; }
+.trust-sec { background:rgba(20,20,20,.0175); padding:70px 0; }
 .trust-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
 .trust-sec .sec-label { color:var(--gold); }
 .trust-sec .sec-title { color:var(--ink); }
@@ -190,7 +262,7 @@ header.nav { background:var(--cream); padding:16px 0; }
 /* FOOTER */
 footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top:1px solid rgba(0,0,0,.12); }
 .foot-wrap { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
-.foot-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:64px; margin-bottom:64px; }
+.foot-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:64px; margin-bottom:64px; }
 .foot-logo { font-family:'Playfair Display',serif; font-size:1.7rem; letter-spacing:8px; text-transform:uppercase; font-weight:400; color:#141414; margin-bottom:22px; display:block; height:34px; width:auto; }
 .foot-p { font-weight:300; font-size:.94rem; color:rgba(20,20,20,.6); line-height:1.85; max-width:290px; }
 .foot h4 { font-family:'DM Sans',sans-serif; font-size:.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:26px; font-weight:500; }
@@ -277,9 +349,24 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 }
 /* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
 .contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); cursor: pointer; transition: transform .2s; }
+.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(215,154,61,.45); cursor: pointer; transition: transform .2s; animation: contactFabVibrate 6s ease-in-out infinite; }
 .contact-fab-btn:hover { transform: scale(1.06); }
 .contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.contact-fab-typing span { width: 6px; height: 6px; border-radius: 50%; background: #fff; display: inline-block; animation: contactFabDot 1.2s infinite ease-in-out; }
+.contact-fab-typing span:nth-child(2) { animation-delay: .2s; }
+.contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
+@keyframes contactFabVibrate {
+  0%, 92%, 100% { transform: translateX(0); }
+  93% { transform: translateX(-3px) rotate(-4deg); }
+  94% { transform: translateX(3px) rotate(4deg); }
+  95% { transform: translateX(-3px) rotate(-4deg); }
+  96% { transform: translateX(3px) rotate(4deg); }
+  97% { transform: translateX(-2px) rotate(-2deg); }
+  98% { transform: translateX(2px) rotate(2deg); }
+  99% { transform: translateX(0) rotate(0); }
+}
 .contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
 .contact-fab-menu.open { display: flex; }
 .contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
@@ -706,9 +793,13 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
+    <a href="mailto:bookings@taratravel.co" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email
+    </a>
   </div>
   <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="contact-fab-typing"><span></span><span></span><span></span></span>
   </button>
 </div>
 
@@ -721,38 +812,94 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <div class="img-ph img-ph-3"><span>+</span><span class="img-ph-label">Photo 3</span></div>
     </div>
     <div class="about-story-text">
-      <div class="sec-label">Our Story</div>
-      <h2 class="sec-title">Why we started <em>Tará</em></h2>
-      <p>In Filipino, "Tara!" means "Let's go!" — and we added the accent to give it a little Vietnamese twist. It's the perfect reflection of who we are.</p>
-      <p>Founded in 2023 by Filipina expat Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment. Marielle has lived in Vietnam for nearly a decade and knows it by heart. Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
-      <p>We believe your vacation should actually feel like a vacation.</p>
-      <p>We know how much time and energy goes into planning a trip. Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost.</p>
-      <p>Our mission is to shift that focus. We handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to. When you book with us, your only job is to share your priorities, customize your dream itinerary with our team, and just show up.</p>
+      <p class="story-accent">&ldquo;Tara!&rdquo; means &ldquo;Let&rsquo;s go!&rdquo; in Filipino &mdash; and we added the acute accent to give it a little Vietnamese twist.</p>
+      <p>Founded in 2023 by Marielle Catral, Tará Travel Co. was born out of a desire to eliminate the stress of travel planning so you can focus on simply living in the moment. Marielle has lived in Vietnam for nearly a decade and knows it by heart. Partnering with a trusted local network, her team creates hassle-free and customized private trips tailored exactly to how you want to travel.</p>
+      <p class="story-accent">We believe your vacation should actually feel like a vacation.</p>
+      <p>Our team knows how much time and energy goes into planning a trip. Between researching logistics, booking transportation, and figuring out what to do, the joy of anticipation can easily get lost. Our mission is to shift that focus. We handle all the heavy lifting, complex logistics, and meticulous planning so you don't have to. Your only task is to share your travel interests with our team, and just show up.</p>
     </div>
   </div>
 </section>
 
 <!-- THE PROCESS -->
-<section class="about-process lux-reveal">
+<section class="about-process steps-lux">
   <div class="about-process-inner">
-    <div class="sec-label">The Process</div>
-    <h2 class="sec-title">How we make it <em>hassle-free</em> for you</h2>
-    <div class="process-steps steps-3">
-      <div class="process-step">
-        <div class="process-num">01</div>
-        <div class="process-step-title">Request</div>
-        <div class="process-step-desc">Tell us where you'd like to go and what you love to do.</div>
+    <div class="process-head-col lux-reveal">
+      <div class="sec-label">The Process</div>
+      <h2 class="sec-title">How we make it <em>hassle-free</em> for you</h2>
+    </div>
+
+    <div class="steps-vertical" id="stepsVerticalAbout">
+
+      <div class="step-v lux-reveal">
+        <div class="step-v-graphic">
+          <div class="sim-phone">
+            <div class="sim-screen">
+              <div class="step-tap-demo" id="stepTapDemoAbout">
+                <div class="tap-chip">Hanoi</div>
+                <div class="tap-chip">Sapa</div>
+                <div class="tap-chip">Da Nang</div>
+                <div class="tap-chip">Ho Chi Minh</div>
+                <div class="tap-chip">Phu Quoc</div>
+              </div>
+              <div class="sim-days-row">
+                <div class="sim-days-box">
+                  <span class="sim-days-label" data-typetext="Train Street, Ha Long Bay Day Cruise, Fansipan, Glass Bridge"></span><span class="sim-days-cursor"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-v-body">
+          <div class="step-v-text">
+          <div class="step-v-eyebrow">Step 01</div>
+          <div class="step-v-label">Request</div>
+          <h3>Tell us where you'd like to go <br>and what you <em>love to do</em></h3>
+          </div>
+        </div>
       </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
-        <div class="process-step-title">Refine</div>
-        <div class="process-step-desc">Receive your tailor-made itinerary, and tweak until it's perfect.</div>
+
+      <div class="step-v lux-reveal">
+        <div class="step-v-graphic">
+          <div class="step-chat-bubbles">
+            <div class="convo-set active-convo">
+              <div class="step3-bubble step3-tara">Ha Long Bay is 3 hrs away from Hanoi, so we recommend staying overnight instead of a day trip.</div>
+              <div class="step3-bubble step3-client">Good idea, let&rsquo;s do overnight!</div>
+            </div>
+            <div class="convo-set">
+              <div class="step3-bubble step3-client">Can you decorate our parent&rsquo;s room for their anniversary?</div>
+              <div class="step3-bubble step3-tara">Of course! We got you!</div>
+            </div>
+            <div class="convo-set">
+              <div class="step3-bubble step3-client">Please remove our Day 3 tour, we just want to relax on that day.</div>
+              <div class="step3-bubble step3-tara">Sure! And let us know anytime if you wish to replace it with another activity.</div>
+            </div>
+          </div>
+        </div>
+        <div class="step-v-body">
+          <div class="step-v-text">
+          <div class="step-v-eyebrow">Step 02</div>
+          <div class="step-v-label">Refine</div>
+          <h3>Receive your tailor-made itinerary, <br><em>and tweak until it's perfect</em></h3>
+          </div>
+        </div>
       </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
-        <div class="process-step-title">Ready to Go</div>
-        <div class="process-step-desc">Pack, fly, and live the experience.</div>
+
+      <div class="step-v lux-reveal">
+        <div class="step-v-graphic">
+          <div class="step-chat-bubbles">
+            <div class="step4-bubble step4-tara">We are always here to support you on-ground and online during your trip!</div>
+            <div class="step4-bubble step4-client">We feel so taken care of already!</div>
+          </div>
+        </div>
+        <div class="step-v-body">
+          <div class="step-v-text">
+          <div class="step-v-eyebrow">Step 03</div>
+          <div class="step-v-label">Ready to Go</div>
+          <h3>Pack, fly, and <em>live the experience</em></h3>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -796,16 +943,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
         <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly any time before or during your trip.</div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- WORK WITH US / CTA -->
-<section class="about-cta lux-reveal">
-  <div class="about-cta-inner">
-    <div class="sec-label">Plan With Us</div>
-    <h2>Ready for your own <em>"tara na"</em> moment?</h2>
-    <p>Tell us where you want to go, and we'll send back a tailor-made plan — no pressure, no payment required to start.</p>
-    <a href="#planner" class="btn-lux"><span>I'm ready to plan</span></a>
   </div>
 </section>
 
@@ -1256,12 +1393,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
           <li><a href="taratravel-destinations-list.html">Destinations</a></li>
           <li><a href="taratravelco-about.html">About Us</a></li>
           <li><a href="taratravelco-terms.html">Terms</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="#" onclick="toggleContactFab(event)">Message us</a></li>
         </ul>
       </div>
     </div>
@@ -2242,6 +2373,136 @@ const revealObs = new IntersectionObserver(entries => {
 reveals.forEach(r => revealObs.observe(r));
 setTimeout(() => { reveals.forEach(r => r.classList.add('in')); }, 800);
 setTimeout(() => { reveals.forEach(r => r.classList.add('in')); }, 2500);
+
+/* ---- The Process: Step 1 tap demo animation (ported from homepage) ---- */
+(function () {
+  var demo = document.getElementById('stepTapDemoAbout');
+  if (!demo) return;
+  var allChips = Array.prototype.slice.call(demo.querySelectorAll('.tap-chip'));
+  var typeLabel = demo.closest('.step-v-graphic').querySelector('.sim-days-label[data-typetext]');
+  var typeFull = typeLabel ? (typeLabel.getAttribute('data-typetext') || '') : '';
+  var typeTimer = null;
+  var timers = [];
+
+  function clearAll() { timers.forEach(clearTimeout); timers = []; }
+  function after(fn, delay) { timers.push(setTimeout(fn, delay)); }
+  function typeClear() { if (typeTimer) { clearInterval(typeTimer); typeTimer = null; } }
+  function typeReset() { typeClear(); if (typeLabel) typeLabel.textContent = ''; }
+  function typeRun() {
+    if (!typeLabel) return;
+    typeClear();
+    var i = 0;
+    typeLabel.textContent = '';
+    typeTimer = setInterval(function () {
+      i++;
+      typeLabel.textContent = typeFull.slice(0, i);
+      if (i >= typeFull.length) { typeClear(); }
+    }, 28);
+  }
+  function resetAll() {
+    clearAll();
+    allChips.forEach(function (c) { c.classList.remove('selected', 'tapped'); });
+    typeReset();
+  }
+  function tapChip(chipIdx, delay) {
+    after(function () {
+      var chip = allChips[chipIdx];
+      chip.classList.add('tapped');
+      after(function () {
+        chip.classList.remove('tapped');
+        chip.classList.add('selected');
+      }, 300);
+    }, delay);
+  }
+  function run() {
+    resetAll();
+    tapChip(0, 500);
+    tapChip(1, 1300);
+    after(typeRun, 1900);
+    after(function () {
+      resetAll();
+      after(run, 600);
+    }, 4800);
+  }
+
+  var obs = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) { run(); }
+    else { resetAll(); }
+  }, { threshold: 0.3 });
+  obs.observe(demo);
+})();
+
+/* ---- The Process: chat bubbles "sent from bottom" reveal/cycle (ported from homepage) ---- */
+(function () {
+  var groups = Array.prototype.slice.call(document.querySelectorAll('#stepsVerticalAbout .step-chat-bubbles'));
+  groups.forEach(function (group) {
+    var convoSets = Array.prototype.slice.call(group.querySelectorAll('.convo-set'));
+    var timers = [];
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+
+    if (convoSets.length) {
+      var idx = 0;
+      function resetSet(set) {
+        Array.prototype.slice.call(set.querySelectorAll('.step3-bubble, .step4-bubble')).forEach(function (b) {
+          b.classList.remove('s3show', 's4show');
+        });
+      }
+      function showSet(i) {
+        convoSets.forEach(function (set, si) {
+          if (si === i) { set.classList.add('active-convo'); }
+          else { set.classList.remove('active-convo'); resetSet(set); }
+        });
+        var set = convoSets[i];
+        var bubbles = Array.prototype.slice.call(set.querySelectorAll('.step3-bubble, .step4-bubble'));
+        resetSet(set);
+        bubbles.forEach(function (b, bi) {
+          var cls = b.classList.contains('step4-bubble') ? 's4show' : 's3show';
+          timers.push(setTimeout(function () { b.classList.add(cls); }, 400 + bi * 750));
+        });
+        var total = 400 + bubbles.length * 750 + 2600;
+        timers.push(setTimeout(function () {
+          idx = (i + 1) % convoSets.length;
+          showSet(idx);
+        }, total));
+      }
+      function run() { clear(); idx = 0; showSet(idx); }
+      function reset() {
+        clear();
+        convoSets.forEach(function (set, si) {
+          if (si === 0) { set.classList.add('active-convo'); } else { set.classList.remove('active-convo'); }
+          resetSet(set);
+        });
+      }
+      var wrap = group.closest('.step-v') || group;
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { run(); }
+        else { clear(); reset(); }
+      }, { threshold: 0.35 });
+      obs.observe(wrap);
+      return;
+    }
+
+    var bubbles = Array.prototype.slice.call(group.querySelectorAll('.step3-bubble, .step4-bubble'));
+    if (!bubbles.length) return;
+    function reset() { bubbles.forEach(function (b) { b.classList.remove('s3show', 's4show'); }); }
+    function run() {
+      clear();
+      reset();
+      bubbles.forEach(function (b, i) {
+        var cls = b.classList.contains('step4-bubble') ? 's4show' : 's3show';
+        timers.push(setTimeout(function () { b.classList.add(cls); }, 400 + i * 750));
+      });
+      var total = 400 + bubbles.length * 750 + 3000;
+      timers.push(setTimeout(run, total));
+    }
+    var wrap = group.closest('.step-v') || group;
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { run(); }
+      else { clear(); reset(); }
+    }, { threshold: 0.35 });
+    obs.observe(wrap);
+  });
+})();
 </script>
 </body>
 </html>

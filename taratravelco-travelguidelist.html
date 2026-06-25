@@ -185,7 +185,7 @@ header.nav.scrolled .hamburger span { background:var(--ink); }
 /* FOOTER */
 footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top:1px solid rgba(0,0,0,.12); }
 .foot-wrap { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
-.foot-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:64px; margin-bottom:64px; }
+.foot-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:64px; margin-bottom:64px; }
 .foot-logo { font-family:'Playfair Display',serif; font-size:1.7rem; letter-spacing:8px; text-transform:uppercase; font-weight:400; color:#141414; margin-bottom:22px; display:block; height:34px; width:auto; }
 .foot-p { font-weight:300; font-size:.94rem; color:rgba(20,20,20,.6); line-height:1.85; max-width:290px; }
 .foot h4 { font-family:'DM Sans',sans-serif; font-size:.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:26px; font-weight:500; }
@@ -279,9 +279,24 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 }
 /* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
 .contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); cursor: pointer; transition: transform .2s; }
+.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(215,154,61,.45); cursor: pointer; transition: transform .2s; animation: contactFabVibrate 6s ease-in-out infinite; }
 .contact-fab-btn:hover { transform: scale(1.06); }
 .contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.contact-fab-typing span { width: 6px; height: 6px; border-radius: 50%; background: #fff; display: inline-block; animation: contactFabDot 1.2s infinite ease-in-out; }
+.contact-fab-typing span:nth-child(2) { animation-delay: .2s; }
+.contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
+@keyframes contactFabVibrate {
+  0%, 92%, 100% { transform: translateX(0); }
+  93% { transform: translateX(-3px) rotate(-4deg); }
+  94% { transform: translateX(3px) rotate(4deg); }
+  95% { transform: translateX(-3px) rotate(-4deg); }
+  96% { transform: translateX(3px) rotate(4deg); }
+  97% { transform: translateX(-2px) rotate(-2deg); }
+  98% { transform: translateX(2px) rotate(2deg); }
+  99% { transform: translateX(0) rotate(0); }
+}
 .contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
 .contact-fab-menu.open { display: flex; }
 .contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
@@ -331,9 +346,13 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
+    <a href="mailto:bookings@taratravel.co" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email
+    </a>
   </div>
   <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="contact-fab-typing"><span></span><span></span><span></span></span>
   </button>
 </div>
 
@@ -453,35 +472,35 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
     <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
     <div class="trust-cards">
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.svg" alt="Flexible Itineraries" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.webp" alt="Flexible Itineraries" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Flexible Itineraries</div><div class="trust-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.svg" alt="Group Perks" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.webp" alt="Group Perks" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Group Perks</div><div class="trust-desc">Travelling with family or friends? The more of you, the more we can tailor.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.svg" alt="Free Rebooking" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.webp" alt="Free Rebooking" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Free Rebooking</div><div class="trust-desc">Plans change. Move your dates without losing your itinerary or starting over.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.svg" alt="Private Car &amp; Driver" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.webp" alt="Private Car &amp; Driver" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Private Car &amp; Driver</div><div class="trust-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.svg" alt="Licensed Local Guide" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.webp" alt="Licensed Local Guide" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Licensed Local Guide</div><div class="trust-desc">Real insight from people who live here — not a script, not a rush.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.svg" alt="Complimentary Breakfast" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.webp" alt="Complimentary Breakfast" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Complimentary Breakfast</div><div class="trust-desc">Every stay we book starts the day right — breakfast is always included.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.svg" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.webp" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Flexible Check-in &amp; Out</div><div class="trust-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.svg" alt="24/7 Support" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly any time before or during your trip.</div></div>
       </div>
     </div>
@@ -509,12 +528,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
           <li><a href="taratravel-destinations-list.html">Destinations</a></li>
           <li><a href="taratravelco-about.html">About Us</a></li>
           <li><a href="taratravelco-terms.html">Terms</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="#" onclick="toggleContactFab(event)">Message us</a></li>
         </ul>
       </div>
     </div>

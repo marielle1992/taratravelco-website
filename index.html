@@ -219,9 +219,24 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
 .nav-dropdown-menu a::before, .nav-dropdown-menu a::after { display: none; }
 /* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
 .contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); cursor: pointer; transition: transform .2s; }
+.contact-fab-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(215,154,61,.45); cursor: pointer; transition: transform .2s; animation: contactFabVibrate 6s ease-in-out infinite; }
 .contact-fab-btn:hover { transform: scale(1.06); }
 .contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.contact-fab-typing span { width: 6px; height: 6px; border-radius: 50%; background: #fff; display: inline-block; animation: contactFabDot 1.2s infinite ease-in-out; }
+.contact-fab-typing span:nth-child(2) { animation-delay: .2s; }
+.contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
+@keyframes contactFabVibrate {
+  0%, 92%, 100% { transform: translateX(0); }
+  93% { transform: translateX(-3px) rotate(-4deg); }
+  94% { transform: translateX(3px) rotate(4deg); }
+  95% { transform: translateX(-3px) rotate(-4deg); }
+  96% { transform: translateX(3px) rotate(4deg); }
+  97% { transform: translateX(-2px) rotate(-2deg); }
+  98% { transform: translateX(2px) rotate(2deg); }
+  99% { transform: translateX(0) rotate(0); }
+}
 .contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
 .contact-fab-menu.open { display: flex; }
 .contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
@@ -245,9 +260,9 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
   flex-shrink: 0;
 }
 header.nav.scrolled .nav-cta { color: var(--ink); border-color: rgba(20,20,20,.4); }
-.nav-cta::after { content: ''; position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.77,0,.175,1); z-index: 0; }
+.nav-cta::after { content: ''; position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.77,0,.175,1); z-index: 0; }
 .nav-cta span { position: relative; z-index: 1; }
-.nav-cta:hover { color: #fff; border-color: var(--ink); }
+.nav-cta:hover { color: #fff; border-color: var(--gold); }
 .nav-cta:hover::after { transform: scaleX(1); }
 .hamburger { display: block; background: none; border: none; cursor: pointer; padding: 8px; z-index: 120; }
 .hamburger span { display: block; width: 22px; height: 1px; background: var(--white); margin: 6px 0; transition: .3s; }
@@ -1139,6 +1154,8 @@ video.hero-bg {
 .step3-dot { width:5px; height:5px; border-radius:50%; background:#1a1a1a; display:inline-block; flex-shrink:0; }
 .step3-body { padding:12px 12px 14px; display:flex; flex-direction:column; justify-content:flex-end; height:260px; overflow:hidden; }
 .step-chat-bubbles { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 260px; background:transparent; border-radius: 0; padding: 18px 16px; }
+.convo-set { display:none; flex-direction:column; gap:6px; width:100%; }
+.convo-set.active-convo { display:flex; }
 .step3-bubble { position:relative; max-width:80%; font-size:13px; line-height:1.55; text-align:left; border-radius:4px; flex-shrink:0; overflow:visible; opacity:0; padding:8px 11px; margin-bottom:10px; transform:translateY(16px); transition:opacity .4s ease, transform .45s ease; }
 .step3-bubble.s3show { opacity:1; transform:translateY(0); }
 .step3-client { background:#fff; color:#1a1a1a; border:0.9px solid rgba(26,26,26,.55); align-self:flex-start; }
@@ -1478,6 +1495,16 @@ video.hero-bg {
 .step-tab-lux.done { color: rgba(27,42,48,.38); border-bottom-color: var(--gold); cursor: pointer; margin-bottom: -1px; }
 .step-tab-lux.active { color: var(--gold); border-bottom-color: var(--gold); cursor: default; margin-bottom: -1px; }
 .planner-body-lux { padding: 32px clamp(24px,5.5vw,60px) 36px; }
+/* Mobile: .step-tabs-lux has overflow-x:auto, which forces the UA to compute
+   overflow-y as auto too — this clips the gold progress underline that sits
+   on the bottom edge of the tab row. Add a touch of bottom padding inside the
+   scroll box so the underline always renders fully, and pull the body back up
+   by the same amount so spacing is unaffected. */
+@media (max-width: 760px) {
+  .step-tabs-lux { padding-bottom: 4px; }
+  .step-tab-lux.done, .step-tab-lux.active { margin-bottom: 0; }
+  .planner-body-lux { padding-top: 28px; }
+}
 
 .fstep { display: none; }
 .fstep.active { display: block; }
@@ -1848,7 +1875,7 @@ video.hero-bg {
 
 /* ===== FOOTER ===== */
 footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; border-top: 1px solid rgba(0,0,0,.12); }
-.foot-lux-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 64px; margin-bottom: 64px; }
+.foot-lux-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; margin-bottom: 64px; }
 .foot-lux-logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.7rem;
@@ -2326,9 +2353,13 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
+    <a href="mailto:bookings@taratravel.co" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email
+    </a>
   </div>
   <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="contact-fab-typing"><span></span><span></span><span></span></span>
   </button>
 </div>
 
@@ -2605,8 +2636,18 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <div class="step-v lux-reveal">
         <div class="step-v-graphic">
           <div class="step-chat-bubbles">
-            <div class="step3-bubble step3-tara">Ha Long Bay is 3 hrs away from Hanoi, so we recommend staying overnight instead of a day trip.</div>
-            <div class="step3-bubble step3-client">Good idea, let&rsquo;s do overnight!</div>
+            <div class="convo-set active-convo">
+              <div class="step3-bubble step3-tara">Ha Long Bay is 3 hrs away from Hanoi, so we recommend staying overnight instead of a day trip.</div>
+              <div class="step3-bubble step3-client">Good idea, let&rsquo;s do overnight!</div>
+            </div>
+            <div class="convo-set">
+              <div class="step3-bubble step3-client">Can you decorate our parent&rsquo;s room for their anniversary?</div>
+              <div class="step3-bubble step3-tara">Of course! We got you!</div>
+            </div>
+            <div class="convo-set">
+              <div class="step3-bubble step3-client">Please remove our Day 3 tour, we just want to relax on that day.</div>
+              <div class="step3-bubble step3-tara">Sure! And let us know anytime if you wish to replace it with another activity.</div>
+            </div>
           </div>
         </div>
         <div class="step-v-body">
@@ -3139,12 +3180,6 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
           <li><a href="taratravel-destinations-list.html">Destinations</a></li>
           <li><a href="taratravelco-about.html">About Us</a></li>
           <li><a href="taratravelco-terms.html">Terms</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="#" onclick="toggleContactFab(event)">Message us</a></li>
         </ul>
       </div>
     </div>
@@ -5397,10 +5432,55 @@ showStep(1);
 (function () {
   var groups = Array.prototype.slice.call(document.querySelectorAll('.step-chat-bubbles'));
   groups.forEach(function (group) {
-    var bubbles = Array.prototype.slice.call(group.querySelectorAll('.step3-bubble, .step4-bubble'));
-    if (!bubbles.length) return;
+    var convoSets = Array.prototype.slice.call(group.querySelectorAll('.convo-set'));
     var timers = [];
     function clear() { timers.forEach(clearTimeout); timers = []; }
+
+    if (convoSets.length) {
+      /* Multiple conversation sets: cycle through them in sequence, looping forever */
+      var idx = 0;
+      function resetSet(set) {
+        Array.prototype.slice.call(set.querySelectorAll('.step3-bubble, .step4-bubble')).forEach(function (b) {
+          b.classList.remove('s3show', 's4show');
+        });
+      }
+      function showSet(i) {
+        convoSets.forEach(function (set, si) {
+          if (si === i) { set.classList.add('active-convo'); }
+          else { set.classList.remove('active-convo'); resetSet(set); }
+        });
+        var set = convoSets[i];
+        var bubbles = Array.prototype.slice.call(set.querySelectorAll('.step3-bubble, .step4-bubble'));
+        resetSet(set);
+        bubbles.forEach(function (b, bi) {
+          var cls = b.classList.contains('step4-bubble') ? 's4show' : 's3show';
+          timers.push(setTimeout(function () { b.classList.add(cls); }, 400 + bi * 750));
+        });
+        var total = 400 + bubbles.length * 750 + 2600;
+        timers.push(setTimeout(function () {
+          idx = (i + 1) % convoSets.length;
+          showSet(idx);
+        }, total));
+      }
+      function run() { clear(); idx = 0; showSet(idx); }
+      function reset() {
+        clear();
+        convoSets.forEach(function (set, si) {
+          if (si === 0) { set.classList.add('active-convo'); } else { set.classList.remove('active-convo'); }
+          resetSet(set);
+        });
+      }
+      var wrap = group.closest('.step-v') || group;
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { run(); }
+        else { clear(); reset(); }
+      }, { threshold: 0.35 });
+      obs.observe(wrap);
+      return;
+    }
+
+    var bubbles = Array.prototype.slice.call(group.querySelectorAll('.step3-bubble, .step4-bubble'));
+    if (!bubbles.length) return;
     function reset() { bubbles.forEach(function (b) { b.classList.remove('s3show', 's4show'); }); }
     function run() {
       clear();
