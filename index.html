@@ -217,6 +217,34 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
 }
 .nav-dropdown-menu a:hover { background: rgba(215,154,61,.1); color: var(--ink) !important; }
 .nav-dropdown-menu a::before, .nav-dropdown-menu a::after { display: none; }
+/* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
+.contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.contact-fab-btn { width: 60px; height: 48px; border-radius: 22px 22px 22px 6px; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: none; cursor: pointer; transition: transform .2s; animation: contactFabVibrate 3s ease-in-out infinite; position: relative; }
+.contact-fab-btn::after { content: ''; position: absolute; left: 13px; bottom: -6px; width: 0; height: 0; border-style: solid; border-width: 8px 9px 0 0; border-color: var(--gold) transparent transparent transparent; }
+.contact-fab-btn:hover { transform: scale(1.06); }
+.contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.contact-fab-typing span { width: 6px; height: 6px; border-radius: 50%; background: #fff; display: inline-block; animation: contactFabDot 1.2s infinite ease-in-out; }
+.contact-fab-typing span:nth-child(2) { animation-delay: .2s; }
+.contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
+@keyframes contactFabVibrate {
+  0%, 85%, 100% { transform: translateX(0); }
+  86% { transform: translateX(-3px) rotate(-4deg); }
+  87% { transform: translateX(3px) rotate(4deg); }
+  88% { transform: translateX(-3px) rotate(-4deg); }
+  89% { transform: translateX(3px) rotate(4deg); }
+  90% { transform: translateX(-2px) rotate(-2deg); }
+  91% { transform: translateX(2px) rotate(2deg); }
+  92% { transform: translateX(0) rotate(0); }
+}
+.contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
+.contact-fab-menu.open { display: flex; }
+.contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
+.contact-fab-link:hover { background: rgba(215,154,61,.1); }
+.contact-fab-link svg { flex-shrink: 0; }
+.contact-fab-link::before, .contact-fab-link::after { display: none; }
+@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 54px; height: 42px; } }
 .nav-cta {
   font-family: 'DM Sans', sans-serif;
   font-size: .8rem;
@@ -233,9 +261,9 @@ header.nav.scrolled .nav-links a:hover { color: var(--ink); }
   flex-shrink: 0;
 }
 header.nav.scrolled .nav-cta { color: var(--ink); border-color: rgba(20,20,20,.4); }
-.nav-cta::after { content: ''; position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.77,0,.175,1); z-index: 0; }
+.nav-cta::after { content: ''; position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.77,0,.175,1); z-index: 0; }
 .nav-cta span { position: relative; z-index: 1; }
-.nav-cta:hover { color: #fff; border-color: var(--ink); }
+.nav-cta:hover { color: #fff; border-color: var(--gold); }
 .nav-cta:hover::after { transform: scaleX(1); }
 .hamburger { display: block; background: none; border: none; cursor: pointer; padding: 8px; z-index: 120; }
 .hamburger span { display: block; width: 22px; height: 1px; background: var(--white); margin: 6px 0; transition: .3s; }
@@ -1127,6 +1155,8 @@ video.hero-bg {
 .step3-dot { width:5px; height:5px; border-radius:50%; background:#1a1a1a; display:inline-block; flex-shrink:0; }
 .step3-body { padding:12px 12px 14px; display:flex; flex-direction:column; justify-content:flex-end; height:260px; overflow:hidden; }
 .step-chat-bubbles { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 260px; background:transparent; border-radius: 0; padding: 18px 16px; }
+.convo-set { display:none; flex-direction:column; gap:6px; width:100%; }
+.convo-set.active-convo { display:flex; }
 .step3-bubble { position:relative; max-width:80%; font-size:13px; line-height:1.55; text-align:left; border-radius:4px; flex-shrink:0; overflow:visible; opacity:0; padding:8px 11px; margin-bottom:10px; transform:translateY(16px); transition:opacity .4s ease, transform .45s ease; }
 .step3-bubble.s3show { opacity:1; transform:translateY(0); }
 .step3-client { background:#fff; color:#1a1a1a; border:0.9px solid rgba(26,26,26,.55); align-self:flex-start; }
@@ -1466,6 +1496,16 @@ video.hero-bg {
 .step-tab-lux.done { color: rgba(27,42,48,.38); border-bottom-color: var(--gold); cursor: pointer; margin-bottom: -1px; }
 .step-tab-lux.active { color: var(--gold); border-bottom-color: var(--gold); cursor: default; margin-bottom: -1px; }
 .planner-body-lux { padding: 32px clamp(24px,5.5vw,60px) 36px; }
+/* Mobile: .step-tabs-lux has overflow-x:auto, which forces the UA to compute
+   overflow-y as auto too — this clips the gold progress underline that sits
+   on the bottom edge of the tab row. Add a touch of bottom padding inside the
+   scroll box so the underline always renders fully, and pull the body back up
+   by the same amount so spacing is unaffected. */
+@media (max-width: 760px) {
+  .step-tabs-lux { padding-bottom: 4px; }
+  .step-tab-lux.done, .step-tab-lux.active { margin-bottom: 0; }
+  .planner-body-lux { padding-top: 28px; }
+}
 
 .fstep { display: none; }
 .fstep.active { display: block; }
@@ -1765,14 +1805,14 @@ video.hero-bg {
   justify-content: center;
 }
 .planner-vietnam-map {
-  width: 100%;
-  max-width: 100%;
+  width: 80%;
+  max-width: 80%;
   /* Cap the rendered height directly instead of letting it scale off the
      source file's own aspect ratio — a tall portrait map (like Vietnam's)
      would otherwise blow up to ~600px+ tall at this column's width and
      dominate the step. object-fit:contain keeps it from distorting/cropping
-     once it's boxed into this height. */
-  height: min(48vh, 460px);
+     once it's boxed into this height. Sized at 80% (20% smaller) per request. */
+  height: min(38.4vh, 368px);
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -1789,7 +1829,7 @@ video.hero-bg {
   .step1-with-map { flex-direction: column; gap: 16px; align-items: stretch; }
   .step1-map-col { flex: 1 1 auto; width: 100%; }
   .step1-form-col { flex: 1 1 auto; min-width: 0; }
-  .planner-vietnam-map { max-width: 100%; margin: 0 auto; }
+  .planner-vietnam-map { max-width: 80%; margin: 0 auto; }
   /* Vietnam's outline is naturally tall and narrow — give the mobile
      placeholder a portrait shape instead of a short, wide strip. */
   .planner-vietnam-map[src="vietnam-map.png"]:not([src=""]) {
@@ -1836,7 +1876,7 @@ video.hero-bg {
 
 /* ===== FOOTER ===== */
 footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; border-top: 1px solid rgba(0,0,0,.12); }
-.foot-lux-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 64px; margin-bottom: 64px; }
+.foot-lux-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; margin-bottom: 64px; }
 .foot-lux-logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.7rem;
@@ -2045,8 +2085,11 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   .idx-card { width: 92%; margin-right: 0 !important; }
   .idx-angled { transform: rotate(-2deg); z-index: 2; margin-bottom: -14px; }
   .idx-straight { transform: rotate(1.5deg); z-index: 1; margin-top: 0; }
-  .pain-cta-line1 { font-size: clamp(1.8rem, 8vw, 2.8rem); white-space: nowrap; }
-  .pain-cta-line2 { font-size: clamp(1.05rem, 4vw, 1.35rem); }
+  /* Match the same heading/description scale used by every other section
+     on mobile (.lux-h2 = 1.675rem, .lux-p = 1rem/1.8) instead of the
+     hero-banner-sized type this was previously using. */
+  .pain-cta-line1 { font-size: 1.675rem; line-height: 1.2; white-space: normal; }
+  .pain-cta-line2 { font-size: 1rem; line-height: 1.8; }
   .planner-lux h3 { font-size: 1.05rem; }
 
   /* Left-align every section header/description on mobile — except
@@ -2257,8 +2300,8 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   .three-col { grid-template-columns: 1fr; }
   .opt-grid-lux { grid-template-columns: 1fr; }
   .check-item-grid-lux { grid-template-columns: 1fr; }
-  .pain-cta-line1 { font-size: clamp(1.8rem, 8vw, 2.8rem); white-space: nowrap; }
-  .pain-cta-line2 { font-size: 1.1rem; }
+  .pain-cta-line1 { font-size: 1.675rem; line-height: 1.2; white-space: normal; }
+  .pain-cta-line2 { font-size: 1rem; line-height: 1.8; }
   .counter-row-lux { flex-wrap: wrap; }
 }
 </style>
@@ -2272,16 +2315,14 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
     <div class="nav-left">
       <button class="nav-back" id="navBack" aria-label="Back" onclick="history.back()"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <nav class="nav-links" id="navLinks">
-        <a href="#how" data-text="How it works">How it works</a>
-        <a href="#guide" data-text="Travel Guide">Travel Guide</a>
+        <a href="/travelguides" data-text="Travel Guide">Travel Guide</a>
         <div class="nav-dropdown">
-          <a href="#destinations" data-text="Destinations" class="nav-dropdown-trigger">Destinations <span class="nav-dropdown-arrow">▾</span></a>
+          <a href="/destinations" data-text="Destinations" class="nav-dropdown-trigger">Destinations <span class="nav-dropdown-arrow">▾</span></a>
           <div class="nav-dropdown-menu">
             <!-- Destination links go here -->
           </div>
         </div>
-        <a href="#who" data-text="About Us">About Us</a>
-        <a href="#contact" data-text="Contact">Contact</a>
+        <a href="/aboutus" data-text="About Us">About Us</a>
       </nav>
       <a href="#planner" class="nav-cta"><span>Plan my trip</span></a>
     </div>
@@ -2293,13 +2334,32 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
 </header>
 <div class="nav-overlay" id="navOverlay" onclick="closeNavMenu()"></div>
 <nav class="mobile-nav-panel" id="mobileNavPanel">
-  <a href="#how">How it works</a>
-  <a href="#guide">Travel Guide</a>
-  <a href="#destinations">Destinations</a>
-  <a href="#who">About Us</a>
-  <a href="#contact">Contact</a>
+  <a href="/travelguides">Travel Guide</a>
+  <a href="/destinations">Destinations</a>
+  <a href="/aboutus">About Us</a>
   <a href="#planner" class="mobile-nav-cta">Plan my trip</a>
 </nav>
+
+<!-- CONTACT POPUP -->
+<div class="contact-fab-wrap" id="contactFabWrap">
+  <div class="contact-fab-menu" id="contactFabMenu">
+    <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+      Messenger
+    </a>
+    <a href="https://wa.me/84394093181" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="mailto:bookings@taratravel.co" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email
+    </a>
+  </div>
+  <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
+    <span class="contact-fab-typing"><span></span><span></span><span></span></span>
+  </button>
+</div>
 
 <!-- MOBILE SHARE SHEET -->
 <div class="mshare-overlay" id="mshareOverlay" onclick="closeMobileSharePanel()"></div>
@@ -2441,7 +2501,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
   <div class="pain-cta-inner">
     <p class="pain-cta-line1" id="painCtaLine1" aria-label="We Know This Feeling."></p>
     <p class="pain-cta-line2" id="painCtaLine2">This is exactly why we build tailor-made trips.</p>
-    <a href="#who" class="btn-lux btn-lux-light pain-cta-btn" id="painCtaBtn"><span>See how it works</span><svg class="pain-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+    <a href="#who" class="btn-lux btn-lux-light pain-cta-btn" id="painCtaBtn"><span>How it works</span><svg class="pain-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
   </div>
   </div>
 </section>
@@ -2574,8 +2634,18 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <div class="step-v lux-reveal">
         <div class="step-v-graphic">
           <div class="step-chat-bubbles">
-            <div class="step3-bubble step3-tara">Ha Long Bay is 3 hrs away from Hanoi, so we recommend staying overnight instead of a day trip.</div>
-            <div class="step3-bubble step3-client">Good idea, let&rsquo;s do overnight!</div>
+            <div class="convo-set active-convo">
+              <div class="step3-bubble step3-tara">Ha Long Bay is 3 hrs away from Hanoi, so we recommend staying overnight instead of a day trip.</div>
+              <div class="step3-bubble step3-client">Good idea, let&rsquo;s do overnight!</div>
+            </div>
+            <div class="convo-set">
+              <div class="step3-bubble step3-client">Can you decorate our parent&rsquo;s room for their anniversary?</div>
+              <div class="step3-bubble step3-tara">Of course! We got you!</div>
+            </div>
+            <div class="convo-set">
+              <div class="step3-bubble step3-client">Please remove our Day 3 tour, we just want to relax on that day.</div>
+              <div class="step3-bubble step3-tara">Sure! And let us know anytime if you wish to replace it with another activity.</div>
+            </div>
           </div>
         </div>
         <div class="step-v-body">
@@ -2655,7 +2725,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <div class="benefit-card lux-reveal">
         <div class="benefit-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
         <div class="benefit-title">24/7 Support</div>
-        <p class="benefit-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</p>
+        <p class="benefit-desc">Reach us directly any time before or during your trip.</p>
       </div>
     </div>
   </div>
@@ -3096,26 +3166,17 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
         <p>We create tailor-made trips in Vietnam — designed around the way you love to travel.</p>
         <div class="socials-lux">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.3s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.3-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+          <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
           <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 01-1-2.8h-3v12.3a2.5 2.5 0 11-2.5-2.5c.2 0 .5 0 .7.1V9.8a5.6 5.6 0 00-.7 0 5.6 5.6 0 105.6 5.6V9.3a7.3 7.3 0 004.3 1.4V7.7a4.3 4.3 0 01-3.4-1.9z"/></svg></a>
         </div>
       </div>
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#guide">Travel Guide</a></li>
-          <li><a href="#who">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="#">WhatsApp</a></li>
-          <li><a href="#">Email Us</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Facebook</a></li>
+          <li><a href="/travelguides">Travel Guide</a></li>
+          <li><a href="/destinations">Destinations</a></li>
+          <li><a href="/aboutus">About Us</a></li>
+          <li><a href="taratravelco-terms.html">Terms</a></li>
         </ul>
       </div>
     </div>
@@ -3237,6 +3298,20 @@ function closeNavMenu() {
    via hamburger, 2nd tap anywhere on the panel = close). */
 document.getElementById('mobileNavPanel').addEventListener('click', closeNavMenu);
 
+/* ---- Contact popup (floating Messenger/WhatsApp widget) ---- */
+function toggleContactFab(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const menu = document.getElementById('contactFabMenu');
+  if (menu) menu.classList.toggle('open');
+}
+document.addEventListener('click', function (e) {
+  const wrap = document.getElementById('contactFabWrap');
+  const menu = document.getElementById('contactFabMenu');
+  if (wrap && menu && menu.classList.contains('open') && !wrap.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+
 /* ---- Mobile share sheet ---- */
 function mobileShare(e) {
   if (e) e.preventDefault();
@@ -3298,7 +3373,7 @@ revealEls.forEach(el => {
     { name: "Maricel", html: "I have no time to plan our family trip. I need a trusted expert to handle it so I can <em>focus entirely on my loved ones</em>." },
     { name: "Trish", html: "I want a vacation where I’m <em>treated like a guest, not the tour guide</em> for my own group." },
     { name: "Migs", html: "I’m looking for a vacation where I can actually <em>unplug and just enjoy the experience</em> with my friends." },
-    { name: "Joy", html: "We want seamless logistics so our team needs to stay focused on business beforehand, and simply <em>show up ready to enjoy the trip</em>." }
+    { name: "Joy", html: "We need seamless planning so our team needs to stay focused on business, and simply <em>show up to enjoy the trip</em>." }
   ];
   var quoteEl = document.getElementById('realityTeamQuote');
   var sectionEl = document.getElementById('pain');
@@ -3801,12 +3876,12 @@ if (whoSide) {
 /* ---- Reviews — editorial card row ---- */
 (function () {
   var reviewData = [
+    { text: 'Every detail, from accommodations to excursions, was handled with great care, ensuring a fantastic experience.', name: 'Justin Abogado', trip: 'Travelled with family', bg: '#e8dcd5', photo: 'Media/Proof-Photos/justin-abogado.webp' },
     { text: 'I love their tailored tours you can really choose where and what you like to do.', name: 'Jer Cristobal', trip: 'Travelled with family', bg: '#e8e0d0', photo: 'Media/Proof-Photos/jerome-cristobal.webp' },
     { text: 'The whole trip was smooth, fun, and super comfortable, especially with the very comfy ride they provided.', name: 'Aivann Michaela Kris', trip: 'Travelled with colleagues', bg: '#d5e8e0', photo: 'Media/Proof-Photos/aivann-michaela-kris.webp' },
     { text: 'Very professional and very prompt in replying to all inquiries. What they promised is far more better than what you expect.', name: 'Maridette Moreno', trip: 'Travelled with friends and family', bg: '#e8e5d5', photo: 'Media/Proof-Photos/maridette-moreno.webp' },
     { text: 'They were incredibly helpful and accommodating to all our requests, making the entire process enjoyable.', name: 'Ruby Rosario', trip: 'Travelled with friends and family', bg: '#e8e0d5', photo: 'Media/Proof-Photos/ruby-rosario.webp' },
     { text: 'From airport pickup to drop off we were taken care of. We had fun-filled tours and activities, and had enough time to enjoy ourselves.', name: 'Christalle Umali', trip: 'Gifted an anniversary trip to parents', bg: '#d5dde8', photo: 'Media/Proof-Photos/christalle-umali.webp' },
-    { text: 'Every detail, from accommodations to excursions, was handled with great care, ensuring a fantastic experience.', name: 'Justin Abogado', trip: 'Travelled with family', bg: '#e8dcd5', photo: 'Media/Proof-Photos/justin-abogado.webp' },
     { text: 'They were with us every step of the way, making sure we felt comfortable and confident, even as first-timers.', name: 'Kristoffer Castro', trip: 'First time traveler', bg: '#dde8d5', photo: 'Media/Proof-Photos/kristoffer-castro.webp' },
     { text: 'Every accommodation, tour, and activity was top-notch, and we felt completely taken care of the entire time.', name: 'Ashley Ng', trip: 'Travelled with family and friends', bg: '#e0e8d5', photo: 'Media/Proof-Photos/ashley-ng.webp' },
     { text: 'Very hands on, well organized from land transfers to accommodations and tours.', name: 'Sonia Apilado-Eugenio', trip: 'Travelled with daughter', bg: '#d5e0e8', photo: 'Media/Proof-Photos/sonia-apilado-eugenio.webp' },
@@ -5354,10 +5429,55 @@ showStep(1);
 (function () {
   var groups = Array.prototype.slice.call(document.querySelectorAll('.step-chat-bubbles'));
   groups.forEach(function (group) {
-    var bubbles = Array.prototype.slice.call(group.querySelectorAll('.step3-bubble, .step4-bubble'));
-    if (!bubbles.length) return;
+    var convoSets = Array.prototype.slice.call(group.querySelectorAll('.convo-set'));
     var timers = [];
     function clear() { timers.forEach(clearTimeout); timers = []; }
+
+    if (convoSets.length) {
+      /* Multiple conversation sets: cycle through them in sequence, looping forever */
+      var idx = 0;
+      function resetSet(set) {
+        Array.prototype.slice.call(set.querySelectorAll('.step3-bubble, .step4-bubble')).forEach(function (b) {
+          b.classList.remove('s3show', 's4show');
+        });
+      }
+      function showSet(i) {
+        convoSets.forEach(function (set, si) {
+          if (si === i) { set.classList.add('active-convo'); }
+          else { set.classList.remove('active-convo'); resetSet(set); }
+        });
+        var set = convoSets[i];
+        var bubbles = Array.prototype.slice.call(set.querySelectorAll('.step3-bubble, .step4-bubble'));
+        resetSet(set);
+        bubbles.forEach(function (b, bi) {
+          var cls = b.classList.contains('step4-bubble') ? 's4show' : 's3show';
+          timers.push(setTimeout(function () { b.classList.add(cls); }, 400 + bi * 750));
+        });
+        var total = 400 + bubbles.length * 750 + 2600;
+        timers.push(setTimeout(function () {
+          idx = (i + 1) % convoSets.length;
+          showSet(idx);
+        }, total));
+      }
+      function run() { clear(); idx = 0; showSet(idx); }
+      function reset() {
+        clear();
+        convoSets.forEach(function (set, si) {
+          if (si === 0) { set.classList.add('active-convo'); } else { set.classList.remove('active-convo'); }
+          resetSet(set);
+        });
+      }
+      var wrap = group.closest('.step-v') || group;
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { run(); }
+        else { clear(); reset(); }
+      }, { threshold: 0.35 });
+      obs.observe(wrap);
+      return;
+    }
+
+    var bubbles = Array.prototype.slice.call(group.querySelectorAll('.step3-bubble, .step4-bubble'));
+    if (!bubbles.length) return;
     function reset() { bubbles.forEach(function (b) { b.classList.remove('s3show', 's4show'); }); }
     function run() {
       clear();

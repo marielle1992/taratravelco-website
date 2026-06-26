@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/taratravelco-terms.html", "destination": "/terms", "permanent": true },
+    { "source": "/taratravelco-about.html", "destination": "/aboutus", "permanent": true },
+    { "source": "/taratravelco-travelguidelist.html", "destination": "/travelguides", "permanent": true },
+    { "source": "/taratravel-destinations-list.html", "destination": "/destinations", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/terms", "destination": "/taratravelco-terms.html" },
+    { "source": "/aboutus", "destination": "/taratravelco-about.html" },
+    { "source": "/travelguides", "destination": "/taratravelco-travelguidelist.html" },
+    { "source": "/destinations", "destination": "/taratravel-destinations-list.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

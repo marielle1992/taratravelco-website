@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Travel Guides — Tará Travel Co.</title>
+<title>Terms and Conditions — Tará Travel Co.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -29,7 +29,7 @@ body.nav-locked { position:fixed; width:100%; overflow:hidden; touch-action:none
 h1,h2,h3,h4 { font-family:'Playfair Display',serif; color:var(--navy); }
 img { max-width:100%; display:block; }
 a { color:inherit; text-decoration:none; }
-ul { list-style:none; }
+ul, ol { list-style:none; }
 
 /* BUTTONS */
 .btn-lux { display:inline-flex; align-items:center; gap:10px; font-family:'DM Sans',sans-serif; font-weight:400; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; padding:15px 36px; border:1px solid rgba(20,20,20,.4); background:transparent; color:var(--ink); cursor:pointer; position:relative; overflow:hidden; transition:color .35s, border-color .35s; }
@@ -77,110 +77,29 @@ header.nav.scrolled .hamburger span { background:var(--ink); }
 .lux-reveal { opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.215,.61,.355,1),transform .9s cubic-bezier(.215,.61,.355,1); }
 .lux-reveal.in { opacity:1; transform:none; }
 
-/* HERO SLIDER (full-bleed, 3 featured guides) */
-.bloglist-hero { position:relative; height:600px; overflow:hidden; margin-top:0; }
-.hero-slide { position:absolute; inset:0; opacity:0; transition:opacity 1.1s ease; background-size:cover; background-position:center; }
-.hero-slide.is-active { opacity:1; }
-.hero-slide::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,20,20,.38) 0%, rgba(20,20,20,0) 18%, rgba(20,20,20,0) 35%, rgba(20,20,20,.7) 100%); }
-.hero-slide-content { position:absolute; left:0; right:0; bottom:0; padding:0 52px 60px; max-width:1120px; margin:0 auto; z-index:2; }
-.hero-slide-eyebrow { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:4px; text-transform:uppercase; color:#fff; margin-bottom:12px; }
-.hero-slide-title { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(1.8rem,3.4vw,2.85rem); line-height:1.18; color:#fff; max-width:620px; margin-bottom:18px; }
-.hero-slide-title em { font-style:normal; color:#fff; }
-.hero-slide-link { display:inline-flex; align-items:center; gap:8px; font-family:'DM Sans',sans-serif; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:#fff; border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:4px; }
-.hero-dots { display:flex; gap:10px; justify-content:center; margin-top:28px; }
-.hero-dot { width:16px; height:1px; background:rgba(20,20,20,.2); cursor:pointer; transition:background .25s, width .25s; }
-.hero-dot.is-active { background:rgba(20,20,20,.5); width:24px; }
-@media(max-width:1024px) { .bloglist-hero, .hero-slide-content { padding-left:36px; padding-right:36px; } }
+/* TERMS HERO/TITLE */
+.terms-title-sec { text-align:center; padding:150px 52px 40px; max-width:900px; margin:0 auto; }
+.terms-title-sec h1 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(2rem,3.6vw,2.9rem); color:var(--navy); margin-bottom:14px; }
+.terms-title-sec h1 em { font-style:italic; color:var(--gold); }
+.terms-title-sec p { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.95rem; line-height:1.75; color:var(--ink-soft); max-width:560px; margin:0 auto; }
+.terms-updated { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:.05em; color:rgba(20,20,20,.45); margin-top:18px; }
+@media(max-width:640px) { .terms-title-sec { padding:120px 16px 28px; } }
+
+/* TERMS BODY */
+.terms-wrap { max-width:760px; margin:0 auto; padding:0 52px 90px; }
+.terms-intro { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.98rem; line-height:1.85; color:var(--ink-soft); margin-bottom:48px; padding-bottom:32px; border-bottom:1px solid rgba(20,20,20,.1); }
+.terms-section { margin-bottom:38px; }
+.terms-section h2 { font-family:'Playfair Display',serif; font-weight:500; font-size:1.15rem; color:var(--navy); margin-bottom:14px; letter-spacing:.01em; }
+.terms-section p { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.92rem; line-height:1.8; color:var(--ink-soft); margin-bottom:10px; }
+.terms-section p:last-child { margin-bottom:0; }
+.terms-section .terms-sub { padding-left:22px; }
+.terms-closing { margin-top:56px; padding-top:32px; border-top:1px solid rgba(20,20,20,.1); font-family:'DM Sans',sans-serif; font-weight:300; font-size:.92rem; line-height:1.8; color:var(--ink-soft); }
+@media(max-width:1024px) { .terms-wrap { padding:0 36px 70px; } }
 @media(max-width:640px) {
-  .bloglist-hero { height:440px; }
-  .hero-slide-content { padding:0 16px 38px; }
-  .hero-slide-title { font-size:clamp(1.5rem,6vw,2rem); max-width:100%; }
-  .hero-dots { margin-top:20px; }
+  .terms-wrap { padding:0 16px 60px; }
+  .terms-section h2 { font-size:1.05rem; }
+  .terms-section p, .terms-intro, .terms-closing { font-size:.925rem; }
 }
-
-/* TITLE SECTION */
-.bloglist-title-sec { text-align:center; padding:64px 52px 6px; max-width:1120px; margin:0 auto; }
-.bloglist-title-sec .sec-label { text-align:center; }
-.bloglist-title-sec h1 { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(2rem,3.6vw,2.9rem); color:var(--navy); margin-bottom:14px; }
-.bloglist-title-sec h1 em { font-style:italic; color:var(--gold); }
-.bloglist-title-sec p { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.975rem; line-height:1.75; color:var(--ink-soft); max-width:520px; margin:0 auto; }
-@media(max-width:640px) { .bloglist-title-sec { padding:44px 16px 4px; } }
-
-/* ARTICLE LISTING */
-.bloglist-wrap { max-width:1120px; margin:0 auto; padding:0 52px; }
-
-/* MORE GUIDES GRID */
-.bloglist-more-sec { padding:44px 0 58px; }
-.bloglist-more-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:6px; }
-.more-card { display:block; text-decoration:none; overflow:hidden; }
-.more-img { width:100%; height:260px; background-size:cover; background-position:center; transition:transform .5s cubic-bezier(.215,.61,.355,1); }
-.more-card:hover .more-img { transform:scale(1.06); }
-.more-body { padding:16px 0 20px; }
-.more-eyebrow { font-family:'DM Sans',sans-serif; font-size:.68rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
-.more-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.1rem; line-height:1.32; color:var(--navy); }
-.bloglist-more-cta { text-align:center; margin-top:36px; }
-
-/* show 3 cards at a time on desktop — "Load more" reveals the next 3 */
-.bloglist-more-grid .more-card:nth-child(n+4) { display:none; }
-.bloglist-more-grid.is-expanded .more-card:nth-child(n+4) { display:block; }
-
-@media(max-width:1024px) { .bloglist-wrap { padding:0 36px; } }
-@media(max-width:860px) {
-  .bloglist-more-grid { grid-template-columns:1fr 1fr; }
-}
-@media(max-width:640px) {
-  .bloglist-wrap { padding:0 16px; }
-  .bloglist-more-grid { grid-template-columns:1fr; gap:16px; }
-  .more-img { height:220px; }
-  /* mobile: start with 2 cards, "Load more" reveals 3 more */
-  .bloglist-more-grid .more-card:nth-child(n+3) { display:none; }
-  .bloglist-more-grid.is-expanded .more-card:nth-child(n+3) { display:block; }
-  .bloglist-more-grid.is-expanded .more-card:nth-child(n+6) { display:none; }
-}
-
-/* POPULAR DESTINATIONS (itineraries) — swipeable carousel on desktop and mobile */
-.dest-sec { background:#F7F7F6; padding:64px 0; }
-.dest-inner { max-width:1200px; margin:0 auto; padding:0 52px; }
-.dest-inner .sec-label { color:var(--gold); }
-.pdest-list { display:flex; gap:18px; margin-top:24px; overflow-x:auto; scroll-snap-type:x proximity; scroll-behavior:smooth; -webkit-overflow-scrolling:touch; padding-bottom:4px; scrollbar-width:none; cursor:grab; will-change:scroll-position; }
-.pdest-list::-webkit-scrollbar { display:none; }
-.pdest-list.is-dragging { cursor:grabbing; scroll-snap-type:none; scroll-behavior:auto; user-select:none; }
-.pdest-list.is-dragging .pdest-card { pointer-events:none; }
-.pdest-card { display:block; text-decoration:none; background:transparent; opacity:1; filter:none; overflow:hidden; transition:opacity .25s, filter .25s; flex:0 0 29%; scroll-snap-align:start; }
-.pdest-img { width:100%; height:240px; background-size:cover; background-position:center; transition:transform .5s cubic-bezier(.215,.61,.355,1); }
-.pdest-card:hover .pdest-img { transform:scale(1.06); }
-.pdest-body { padding:14px 0 18px; }
-.pdest-eyebrow { font-family:'DM Sans',sans-serif; font-size:.68rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-.pdest-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.1rem; line-height:1.3; color:var(--navy); margin:0; }
-.pdest-card.is-dim { opacity:.45; filter:grayscale(60%); }
-.pdest-nav { display:flex; justify-content:flex-start; margin-top:22px; }
-.pdest-nav-track { position:relative; width:29%; height:1px; background:rgba(20,20,20,.15); cursor:pointer; }
-.pdest-nav-thumb { position:absolute; top:0; left:0; height:1px; background:rgba(20,20,20,.45); }
-.pdest-nav-track.is-dragging .pdest-nav-thumb { transition:none; }
-@media(max-width:1024px) { .dest-inner { padding:0 36px; } }
-@media(max-width:640px) {
-  .dest-sec { padding:48px 0; }
-  .dest-inner { padding:0 16px; }
-  .pdest-list { gap:12px; }
-  .pdest-card { flex:0 0 78%; }
-  .pdest-img { height:210px; }
-  .pdest-nav-track { width:78%; }
-}
-
-/* WHEN YOU BOOK WITH US */
-.trust-sec { background:rgba(20,20,20,.0175); padding:70px 0; }
-.trust-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
-.trust-sec .sec-label { color:var(--gold); }
-.trust-sec .sec-title { color:var(--ink); }
-.trust-sec .sec-title em { color:var(--gold); }
-.trust-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px; }
-.trust-card { background:#fff; border-radius:0; padding:28px 22px 26px; display:flex; flex-direction:column; align-items:flex-start; gap:0; transition:transform .25s ease; }
-.trust-card:hover { transform:translateY(-3px); }
-.trust-icon { width:44px; height:44px; margin:0 0 14px; display:grid; place-items:center; flex-shrink:0; }
-.trust-icon img { width:100%; height:100%; object-fit:contain; }
-.trust-text { display:flex; flex-direction:column; gap:6px; }
-.trust-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.15rem; color:var(--ink); margin:0; }
-.trust-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); margin:0; }
 
 /* FOOTER */
 footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top:1px solid rgba(0,0,0,.12); }
@@ -217,17 +136,10 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 
 /* RESPONSIVE — NAV */
 @media(max-width:1024px) {
-  .nav-inner, .trust-inner, .foot-wrap { padding-left:36px; padding-right:36px; }
-  .trust-cards { grid-template-columns:1fr 1fr; }
+  .nav-inner, .foot-wrap { padding-left:36px; padding-right:36px; }
 }
 @media(max-width:640px) {
-  .nav-inner, .trust-inner, .foot-wrap { padding-left:16px; padding-right:16px; }
-  .trust-sec { padding:48px 0; }
-  .trust-cards { grid-template-columns:1fr 1fr; gap:10px; margin-top:22px; }
-  .trust-card { padding:16px; gap:10px; }
-  .trust-text { gap:0; }
-  .trust-title { font-size:1rem; }
-  .trust-desc { font-size:.925rem; line-height:1.5; }
+  .nav-inner, .foot-wrap { padding-left:16px; padding-right:16px; }
   img, video, iframe { max-width:100%; height:auto; }
 
   .nav-links { display:none !important; }
@@ -272,7 +184,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   .nav-right { order:3; margin-left:auto !important; }
 
   .lux-reveal { opacity:1 !important; transform:none !important; }
-  .sec-title { word-break:break-word; font-size:1.675rem; }
+  .sec-title { word-break:break-word; font-size:1.675rem; line-height:1.2; white-space:normal; }
 
   .foot-grid { grid-template-columns:1fr; gap:36px; }
   .foot-bottom { flex-direction:column; gap:4px; }
@@ -314,7 +226,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
     <a href="index.html#top" class="logo-lux nav-logo-center"><svg class="nav-logo-img" width="348" height="171" viewBox="11 96 348 171" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tará Travel Co."><g transform="matrix(1, 0, 0, 1, 11, 96)"><g fill="currentColor" fill-opacity="1"><g transform="translate(0.919477, 137.54365)"><path d="M 78.890625 -100.703125 L 78.890625 -97.96875 L 47.78125 -97.96875 L 47.78125 0.15625 L 36.390625 0.15625 L 36.390625 -97.96875 L 5.296875 -97.96875 L 5.296875 -100.703125 Z M 78.890625 -100.703125 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(78.196356, 137.54365)"><path d="M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(173.269628, 137.54365)"><path d="M 78.25 0.15625 L 63.8125 0.15625 L 26.609375 -46.65625 L 19.234375 -46.65625 L 19.234375 0.15625 L 7.703125 0.15625 L 7.703125 -100.703125 C 7.703125 -100.703125 8.898438 -100.703125 11.296875 -100.703125 C 13.703125 -100.703125 16.613281 -100.703125 20.03125 -100.703125 C 23.457031 -100.703125 26.851562 -100.703125 30.21875 -100.703125 C 33.59375 -100.703125 36.238281 -100.703125 38.15625 -100.703125 C 40.1875 -100.703125 42.992188 -100.40625 46.578125 -99.8125 C 50.160156 -99.226562 53.769531 -98.078125 57.40625 -96.359375 C 61.039062 -94.648438 64.113281 -92.113281 66.625 -88.75 C 69.132812 -85.382812 70.390625 -80.972656 70.390625 -75.515625 C 70.390625 -70.285156 69.425781 -65.957031 67.5 -62.53125 C 65.582031 -59.113281 63.070312 -56.363281 59.96875 -54.28125 C 56.863281 -52.195312 53.601562 -50.617188 50.1875 -49.546875 C 46.769531 -48.472656 43.5625 -47.722656 40.5625 -47.296875 Z M 19.234375 -97.96875 L 19.234375 -49.390625 L 27.90625 -49.390625 C 37.3125 -49.390625 44.738281 -51.207031 50.1875 -54.84375 C 55.632812 -58.476562 58.359375 -64.726562 58.359375 -73.59375 C 58.359375 -82.46875 56.035156 -88.75 51.390625 -92.4375 C 46.742188 -96.125 40.300781 -97.96875 32.0625 -97.96875 Z M 19.234375 -97.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(250.065536, 137.54365)"><path d="M 53.078125 -112.234375 L 73.4375 -137.25 L 62.859375 -137.25 L 50.828125 -112.234375 Z M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g></g></svg></a>
     <div class="nav-left">
       <nav class="nav-links" id="navLinks">
-        <a href="/travelguides" data-text="Travel Guide" class="active">Travel Guide</a>
+        <a href="/travelguides" data-text="Travel Guide">Travel Guide</a>
         <a href="/destinations" data-text="Destinations">Destinations</a>
         <a href="/aboutus" data-text="About Us">About Us</a>
       </nav>
@@ -354,156 +266,288 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   </button>
 </div>
 
-<!-- HERO SLIDER — 3 featured travel guides -->
-<section class="bloglist-hero">
-  <a class="hero-slide is-active" href="#" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/07/Ha-Long-Bay-by-Tara-Travel-Co.webp')">
-    <div class="hero-slide-content">
-      <div class="hero-slide-eyebrow">Featured Guide</div>
-      <h2 class="hero-slide-title">Replace with featured guide <em>title one</em></h2>
-      <span class="hero-slide-link">Read the guide</span>
-    </div>
-  </a>
-  <a class="hero-slide" href="#" style="background-image:url('https://taratravel.co/wp-content/uploads/2026/05/Hoi-An-by-Night-by-Tara-Travel-Co.-1.webp')">
-    <div class="hero-slide-content">
-      <div class="hero-slide-eyebrow">Featured Guide</div>
-      <h2 class="hero-slide-title">Replace with featured guide <em>title two</em></h2>
-      <span class="hero-slide-link">Read the guide</span>
-    </div>
-  </a>
-  <a class="hero-slide" href="#" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/06/Hai-Van-Pass-Train-Hue-Imperial-City-by-Tara-Travel-Co-2.webp')">
-    <div class="hero-slide-content">
-      <div class="hero-slide-eyebrow">Featured Guide</div>
-      <h2 class="hero-slide-title">Replace with featured guide <em>title three</em></h2>
-      <span class="hero-slide-link">Read the guide</span>
-    </div>
-  </a>
-</section>
-<div class="hero-dots" id="heroDots"></div>
-
 <!-- TITLE -->
-<div class="bloglist-title-sec lux-reveal">
-  <div class="sec-label">Our Journal</div>
-  <h1>Travel <em>Guides</em></h1>
-  <p>Stories, tips, and itinerary ideas from the team that plans every trip — written from the road, not a desk.</p>
+<div class="terms-title-sec lux-reveal">
+  <div class="sec-label" style="text-align:center;">Legal</div>
+  <h1>Terms and <em>Conditions</em></h1>
+  <p>Tará Travel Co. online travel concierge services — terms governing your booking with us.</p>
+  <div class="terms-updated">© 2026 Tará Travel Co. All rights reserved.</div>
 </div>
 
-<!-- ARTICLE LISTING -->
-<div class="bloglist-wrap">
+<!-- BODY -->
+<div class="terms-wrap lux-reveal">
+  <p class="terms-intro">These Terms and Conditions ("Terms") govern the engagement of Tará Travel Co. (the "Company") by individual travelers or private groups (the "Traveler" or "Client").</p>
 
-  <!-- MORE GUIDES -->
-  <section class="bloglist-more-sec lux-reveal">
-    <div class="bloglist-more-grid" id="moreGuidesGrid">
-      <a class="more-card" href="#">
-        <div class="more-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/07/Ha-Long-Bay-by-Tara-Travel-Co.webp')"></div>
-        <div class="more-body"><div class="more-eyebrow">Travel Guide</div><div class="more-title">Replace with article title</div></div>
-      </a>
-      <a class="more-card" href="#">
-        <div class="more-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2026/05/Hoi-An-by-Night-by-Tara-Travel-Co.-1.webp')"></div>
-        <div class="more-body"><div class="more-eyebrow">Travel Guide</div><div class="more-title">Replace with article title</div></div>
-      </a>
-      <a class="more-card" href="#">
-        <div class="more-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/06/Hai-Van-Pass-Train-Hue-Imperial-City-by-Tara-Travel-Co-2.webp')"></div>
-        <div class="more-body"><div class="more-eyebrow">Travel Guide</div><div class="more-title">Replace with article title</div></div>
-      </a>
-      <a class="more-card" href="#">
-        <div class="more-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2026/05/Marble-Mountains-by-Tara-Travel-Co.webp')"></div>
-        <div class="more-body"><div class="more-eyebrow">Travel Guide</div><div class="more-title">Replace with article title</div></div>
-      </a>
-      <a class="more-card" href="#">
-        <div class="more-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/06/Hoi-An-by-Night-by-Tara-Travel-Co-2.webp')"></div>
-        <div class="more-body"><div class="more-eyebrow">Travel Guide</div><div class="more-title">Replace with article title</div></div>
-      </a>
-      <a class="more-card" href="#">
-        <div class="more-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/07/Ha-Long-Bay-by-Tara-Travel-Co.webp')"></div>
-        <div class="more-body"><div class="more-eyebrow">Travel Guide</div><div class="more-title">Replace with article title</div></div>
-      </a>
-    </div>
-    <div class="bloglist-more-cta" id="moreGuidesCta">
-      <button type="button" class="btn-lux" id="loadMoreGuides"><span>Load more guides</span></button>
-    </div>
-  </section>
+  <div class="terms-section">
+    <h2>1. Commitment</h2>
+    <p>1.1 The Company commits to treating all customers fairly, honestly, and professionally.</p>
+    <p>1.2 The Company shall perform its services in good faith and with reasonable care, professionalism, and diligence consistent with industry standards.</p>
+    <p>1.3 The Company is committed to transparent pricing. All prices presented in approved proposals or quotations reflect the full cost of the services described, with no hidden charges. Any changes to pricing or itinerary will be clearly communicated in writing and require the Traveler's agreement before proceeding.</p>
+    <p>1.4 Travelers are strongly encouraged to read and fully understand these Terms prior to confirming any booking.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>2. Nature of Services — Online Travel Concierge</h2>
+    <p>2.1 The Company operates as an online travel concierge and coordinator, providing professional travel planning and coordination services to individual travelers and private groups.</p>
+    <p>2.2 Services provided by the Company may include, but are not limited to:</p>
+    <p class="terms-sub">2.2.1 Travel planning and tailor-made trip itinerary design</p>
+    <p class="terms-sub">2.2.2 Coordination of flights, accommodations, transportation, tours, activities, and related travel services</p>
+    <p class="terms-sub">2.2.3 Liaison and communication with airlines, hotels, transport providers, tour operators, venues, and other third-party suppliers</p>
+    <p class="terms-sub">2.2.4 On-ground and remote operational coordination through accredited partner suppliers and service providers</p>
+    <p>2.3 The Company does not own, operate, manage, or control airlines, hotels, transport providers, tour operators, venues, or other travel service providers.</p>
+    <p>2.4 The Company does not act as the principal provider of transportation, accommodation, tours, or other travel services.</p>
+    <p>2.5 All services are arranged on behalf of the Traveler and are subject to supplier availability, operational constraints, and the individual terms and conditions of third-party suppliers.</p>
+    <p>2.6 Any timelines, schedules, or services proposed by the Company are estimates only until confirmed by the relevant suppliers.</p>
+    <p>2.7 The Company's role is limited to coordination, facilitation, and support and does not extend to assuming liability for supplier performance or service delivery.</p>
+    <p>2.8 The Company works with a curated network of trusted and experienced suppliers selected based on service quality, reliability, safety standards, and prior performance.</p>
+    <p>2.9 While the Company exercises reasonable care in selecting and recommending suppliers, actual service delivery remains the responsibility of the respective third-party providers and is subject to their individual terms and conditions.</p>
+    <p>2.10 The Company commits to keeping Travelers reasonably informed of material changes, disruptions, or issues affecting confirmed arrangements when such information becomes available.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>3. Data Privacy</h2>
+    <p>3.1 The Company respects and protects the privacy and confidentiality of all clients and travelers.</p>
+    <p>3.2 Personal information collected is used solely for travel planning, booking, coordination, and concierge services.</p>
+    <p>3.3 Personal data may be shared only with relevant third-party service providers (including airlines, hotels, transport providers, tour operators, and insurance partners) as necessary to complete bookings and deliver services.</p>
+    <p>3.4 The Company does not sell, trade, or misuse personal information for marketing or unauthorized purposes.</p>
+    <p>3.5 All personal data is handled in accordance with the Data Privacy Act of 2012 (Philippines Republic Act No. 10173) and its implementing rules.</p>
+    <p>3.6 Travelers consent to the collection, use, storage, and processing of personal data upon submitting booking requests or confirmations.</p>
+    <p>3.7 Travelers acknowledge that international travel may require cross-border transfer of personal data.</p>
+    <p>3.8 Reasonable administrative, technical, and organizational safeguards are implemented to protect personal data.</p>
+    <p>3.9 Requests for access, correction, or deletion of personal data are subject to legal and operational requirements.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>4. Traveler Responsibilities</h2>
+    <p>4.1 Travelers are responsible for:</p>
+    <p class="terms-sub">4.1.1 Ensuring accuracy and completeness of all personal and booking details</p>
+    <p class="terms-sub">4.1.2 Promptly reviewing and confirming itineraries and quotations</p>
+    <p class="terms-sub">4.1.3 Adhering to confirmed schedules, pick-up times, and itineraries</p>
+    <p class="terms-sub">4.1.4 Arriving on time for flights, transfers, tours, and activities</p>
+    <p class="terms-sub">4.1.5 Complying with local laws, customs, and regulations</p>
+    <p class="terms-sub">4.1.6 Following instructions and safety guidelines from suppliers</p>
+    <p class="terms-sub">4.1.7 Maintaining appropriate behavior toward all parties</p>
+    <p class="terms-sub">4.1.8 Complying with airline, immigration, and health requirements</p>
+    <p class="terms-sub">4.1.9 Safeguarding personal belongings and documents</p>
+    <p class="terms-sub">4.1.10 Declaring special needs or medical conditions in advance</p>
+    <p class="terms-sub">4.1.11 Securing adequate travel insurance</p>
+    <p class="terms-sub">4.1.12 Settling charges, penalties, or damages caused by personal actions</p>
+    <p>4.2 The Company shall not be liable for losses, delays, or additional costs arising from non-compliance with the above responsibilities.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>5. Payment Terms</h2>
+    <p>5.1 A non-refundable reservation payment is required to secure supplier bookings and the Company's professional travel planning and concierge services.</p>
+    <p class="terms-sub">5.1.1 For bookings that include airfare arranged by the Company, a seventy percent (70%) reservation payment of the total trip cost is required.</p>
+    <p class="terms-sub">5.1.2 For bookings that do not include airfare arranged by the Company, a fifty percent (50%) reservation payment of the total trip cost is required.</p>
+    <p class="terms-sub">5.1.3 The applicable reservation payment shall be determined based on the confirmed scope of services at the time of booking.</p>
+    <p class="terms-sub">5.1.4 Reservation payments are non-refundable, as they secure supplier commitments and cover professional services already rendered.</p>
+    <p>5.2 The remaining balance must be paid at least 30 days prior to travel; bookings within 30 days require full payment immediately.</p>
+    <p>5.3 Payments must be made only through official Company channels.</p>
+    <p>5.4 Prices are dynamic and subject to availability until fully paid and issued.</p>
+    <p>5.5 Bookings are not confirmed until payment is received and written confirmation is issued.</p>
+    <p>5.6 Airline tickets and final itineraries are released only after required payments are received.</p>
+    <p>5.7 Pricing Transparency &amp; No Hidden Charges</p>
+    <p class="terms-sub">5.7.1 All prices, inclusions, and fees stated in the approved proposal or quotation represent the full and final cost of the services described therein, with no hidden charges.</p>
+    <p class="terms-sub">5.7.2 The Company confirms that all known supplier costs, service fees, and applicable charges have been included in the quoted price at the time of proposal issuance.</p>
+    <p class="terms-sub">5.7.3 Any additional charges arising from itinerary changes, upgrades, added services, or supplier-imposed adjustments shall be clearly communicated in writing and shall require the Traveler's prior approval before proceeding.</p>
+    <p class="terms-sub">5.7.4 The Company shall not implement any pricing or itinerary changes without first informing the Traveler and obtaining written confirmation of acceptance.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>6. Payment Channels</h2>
+    <p>6.1 Payments are accepted only through official Company accounts under TARATRAVEL.CO Travel and Tours Agency.</p>
+    <p>6.2 Payment requests and payment links shall be issued only through the Company's official email address bookings@taratravel.co</p>
+    <p>6.3 The Company is not liable for payments made outside official channels.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>7. Itinerary Modification After Payment</h2>
+    <p>7.1 Once an itinerary has been reviewed, confirmed, and payment has been made, any request to modify destinations, accommodations, activities, services, travel dates, or travel sequence is subject to supplier availability and approval.</p>
+    <p>7.2 All itinerary modification requests must be submitted in writing to the Company.</p>
+    <p>7.3 The Company will make reasonable efforts to accommodate requested changes but does not guarantee availability or pricing.</p>
+    <p>7.4 Any modification may result in additional costs, repricing, or supplier penalties, all of which shall be borne by the Traveler.</p>
+    <p>7.5 Airline, hotel, and supplier rates are dynamic and may increase at any time after payment.</p>
+    <p>7.6 Changes requested close to the travel date may result in limited options or no availability.</p>
+    <p>7.7 An updated quotation reflecting revised arrangements, additional charges, or penalties will be issued for approval.</p>
+    <p>7.8 All additional charges must be fully settled before revised arrangements are confirmed.</p>
+    <p>7.9 The Company shall not be liable for losses, forfeited services, or penalties resulting from late or voluntary itinerary changes.</p>
+    <p>7.10 Minor operational adjustments made for safety, weather, or supplier availability do not constitute a change request and do not entitle the Traveler to a refund.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>8. Travelling With Minors</h2>
+    <p>8.1 Minors under eighteen (18) years of age must be accompanied by a parent or legal guardian.</p>
+    <p>8.2 If a minor is accompanied by a guardian other than a parent, the required travel clearance issued by the appropriate government authority must be obtained and presented for immigration and border control purposes.</p>
+    <p>8.3 The Company shall not be liable for denied boarding, immigration refusal, or penalties arising from incomplete or invalid documentation for minors.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>9. Health Conditions</h2>
+    <p>9.1 Travelers must disclose in advance any medical conditions, allergies, disabilities, mobility limitations, pregnancy, or other health concerns that may affect participation in travel or activities.</p>
+    <p>9.2 Any change in health condition occurring before or during the trip must be promptly communicated to the Company or relevant supplier.</p>
+    <p>9.3 Travelers are responsible for bringing sufficient personal medication, prescriptions, and medical supplies for the duration of the trip, including extras in case of delays.</p>
+    <p>9.4 Travelers must ensure that medications are legal and permitted in all destinations visited and comply with airline and customs regulations.</p>
+    <p>9.5 The Company does not provide medical advice and shall not be responsible for medical decisions made during the trip.</p>
+    <p>9.6 Participation in tours and activities is at the Traveler's own risk, particularly for physically demanding or adventure activities.</p>
+    <p>9.7 The Company reserves the right to decline or limit participation in activities if a Traveler's health condition poses a safety risk.</p>
+    <p>9.8 The Company will make reasonable efforts to communicate declared special needs to suppliers; however, accommodation remains subject to supplier capability and approval.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>10. Liability and Insurance</h2>
+    <p>10.1 The Company is not liable for any injury, illness, death, loss, theft, or damage to personal belongings occurring before, during, or after the trip.</p>
+    <p>10.2 The Company acts solely as a travel coordinator and intermediary and does not assume responsibility for acts or omissions of third-party suppliers.</p>
+    <p>10.3 Travel insurance is strongly recommended and should cover, at minimum, medical emergencies, accidents, evacuation, trip cancellation or interruption, delays, and loss of personal belongings.</p>
+    <p>10.4 The Company does not provide travel insurance by default unless expressly agreed in writing.</p>
+    <p>10.5 The Company shall not be liable for any claim, expense, or loss that would otherwise have been covered by travel insurance.</p>
+    <p>10.6 Any costs arising from medical treatment, evacuation, quarantine, or emergency situations shall be borne solely by the Traveler.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>11. Flights and Immigration</h2>
+    <p>11.1 Travelers must arrive at the airport at least two (2) hours before domestic flights and three (3) hours before international flights unless otherwise advised.</p>
+    <p>11.2 Travelers are solely responsible for ensuring that passports, visas, transit visas, and travel documents are valid and compliant.</p>
+    <p>11.3 Passports must be valid for at least six (6) months, undamaged, and contain sufficient blank pages.</p>
+    <p>11.4 The Company is not liable for immigration decisions, denied boarding, refused entry, or deportation.</p>
+    <p>11.5 No refunds shall be issued where travel is denied due to immigration or documentation issues.</p>
+    <p>11.6 Airline schedules, routes, aircraft types, seat assignments, and baggage allowances are controlled solely by the airline and may change without notice.</p>
+    <p>11.7 Airline-imposed delays, cancellations, re-routing, or fare changes are beyond the Company's control and may incur additional costs. Full details are outlined in our Flight Booking &amp; Travel Support Policy: <a href="https://taratravel.co/flight-booking-payments-airline-policies/" target="_blank" rel="noopener" style="text-decoration:underline;">taratravel.co/flight-booking-payments-airline-policies</a>.</p>
+    <p>11.8 The Company may assist with rebooking subject to airline rules and additional charges.</p>
+    <p>11.9 Travelers are responsible for complying with airline baggage policies and fees.</p>
+    <p>11.10 Missed flights resulting from personal delays or documentation issues are the Traveler's responsibility.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>12. Hotel Policy</h2>
+    <p>12.1 Rooms are typically arranged for two (2) guests per room, unless a triple or family room category is selected, and subject to hotel availability.</p>
+    <p>12.2 Children under eight (8) years old may share rooms with parents or guardians, subject to hotel policy.</p>
+    <p>12.3 Children aged nine (9) years and above are generally charged adult rates.</p>
+    <p>12.4 Hotel bookings are confirmed only upon full payment and subject to hotel terms.</p>
+    <p>12.5 If the confirmed hotel becomes unavailable, a comparable hotel of similar class will be arranged when possible.</p>
+    <p>12.6 Room views, bedding, floor level, and special requests are subject to availability and not guaranteed unless confirmed in writing.</p>
+    <p>12.7 An incidental or security deposit may be required upon check-in and is refundable subject to hotel policy.</p>
+    <p>12.8 Standard check-in is from 2:00 PM onwards; check-out is between 11:30 AM and 12:00 PM.</p>
+    <p>12.9 Early check-in and late check-out are subject to availability and may incur charges.</p>
+    <p>12.10 Hotels may conduct renovations without prior notice; the Company is not liable for inconvenience.</p>
+    <p>12.11 Maximum occupancy limits are strictly enforced.</p>
+    <p>12.12 Early check-out, shortened stays, or no-shows are non-refundable.</p>
+    <p>12.13 Any damages or penalties incurred during the stay are the Traveler's responsibility.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>13. Tour Policy</h2>
+    <p>13.1 Travelers must arrive on time at all confirmed meeting points.</p>
+    <p>13.2 Failure to join scheduled services on time constitutes a no-show with no refund.</p>
+    <p>13.3 Private tours may allow limited flexibility for late arrivals; however, any resulting loss of tour time, missed activities, or shortened itineraries shall be the sole responsibility of the Traveler, and no refunds or compensation shall apply.</p>
+    <p>13.4 Disruptive or unsafe behavior may result in removal without refund.</p>
+    <p>13.5 Itineraries may be adjusted for safety, weather, traffic, or operational reasons.</p>
+    <p>13.6 Operational adjustments do not constitute grounds for refunds.</p>
+    <p>13.7 No refunds are provided for unused or voluntarily skipped services.</p>
+    <p>13.8 Local laws and customs must be followed at all times.</p>
+    <p>13.9 Tour guide decisions are final during tours.</p>
+    <p>13.10 Participation in activities is at the Traveler's own risk.</p>
+    <p>13.11 Photography, drone use, or restricted access is subject to local laws.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>14. Cancellation, Refund &amp; Force Majeure</h2>
+    <p>14.1 All cancellations, changes, refunds, and credits, including those arising from pandemics, epidemics, public health emergencies, government regulations, travel advisories, border closures, or other events beyond the Company's control, are governed by the terms and conditions of third-party suppliers, including but not limited to airlines, hotels, transport providers, tour operators, and venues.</p>
+    <p>14.2 The Company acts solely as an intermediary and does not control supplier decisions regarding refund eligibility, approval, amount, form (cash or credit), or processing timelines.</p>
+    <p>14.3 Any refund, credit, or rebooking shall be limited to the amounts approved and released by suppliers, net of applicable penalties, service charges, administrative fees, and any non-refundable components.</p>
+    <p>14.4 The Company's professional service, consultation, and concierge fees are non-refundable once services have commenced or bookings have been confirmed.</p>
+    <p>14.5 In the event of cancellation or change, the Company shall use reasonable efforts to assist the Traveler by coordinating with suppliers to: a) request refunds, credits, or rebooking options; b) communicate applicable penalties, restrictions, or conditions; and c) facilitate required documentation or correspondence.</p>
+    <p>14.6 Such coordination is provided as a courtesy and does not guarantee approval, refund amount, credit issuance, or processing time, as all final determinations rest solely with the suppliers.</p>
+    <p>14.7 The Company shall not be liable for supplier refusal, delay, partial refunds, issuance of credits in lieu of refunds, or any losses arising therefrom.</p>
+    <p>14.8 No refunds shall be provided for unused, partially used, shortened, or voluntarily skipped services.</p>
+    <p>14.9 Any refunds received by the Company from suppliers shall be remitted to the Traveler within a reasonable period after receipt, less applicable fees.</p>
+    <p>14.10 Travelers are strongly advised to obtain comprehensive travel insurance covering force majeure, pandemic-related, and other unforeseen disruptions prior to departure.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>15. Professional Service Fee &amp; Planning Services</h2>
+    <p>15.1 A portion of the total amount paid covers professional planning and concierge services.</p>
+    <p>15.2 Service fees are earned upon confirmation and are non-refundable.</p>
+    <p>15.3 Supplier refunds do not affect earned service fees.</p>
+    <p>15.4 Fees compensate for expertise, coordination, and operational support.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>16. Taxation and Official Receipts</h2>
+    <p>16.1 The Company earns income solely through professional service fees.</p>
+    <p>16.2 Official Receipts are issued only for service fees.</p>
+    <p>16.3 Third-party payments do not constitute Company income.</p>
+    <p>16.4 Supplier-related taxes and fees are borne by the Traveler.</p>
+    <p>16.5 Foreign exchange and processing fees are the Traveler's responsibility.</p>
+    <p>16.6 The Company is not liable for post-booking tax or regulatory changes.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>17. Expectations &amp; Experience</h2>
+    <p>17.1 The Company designs and curates each itinerary with care, expertise, and attention to detail to create a smooth, enjoyable, and memorable travel experience. However, travel experiences are inherently personal and may naturally vary from expectations, despite careful planning and coordination.</p>
+    <p>17.2 All itineraries, descriptions, visuals, and recommendations are provided for guidance and planning purposes and may be subject to change.</p>
+    <p>17.3 Travel experiences may vary due to factors beyond the Company's control, including weather conditions, operational constraints, local regulations, or supplier circumstances.</p>
+    <p>17.4 While the Company carefully selects and coordinates with reputable third-party suppliers, their performance, services, and actions remain the responsibility of the respective suppliers.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>18. Complaints, Issues &amp; Claims</h2>
+    <p>18.1 Issues must be reported immediately during service delivery.</p>
+    <p>18.2 Post-trip complaints must be submitted within seven (7) calendar days.</p>
+    <p>18.3 Failure to report timely constitutes waiver of claims.</p>
+    <p>18.4 Resolution depends on supplier policies and recoverable amounts.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>19. Self-Booked &amp; Third-Party Services</h2>
+    <p>19.1 The Company is not responsible for independently booked services.</p>
+    <p>19.2 No liability is assumed for disruptions caused by self-booked components.</p>
+    <p>19.3 Coordination for self-booked services is excluded unless agreed in writing.</p>
+    <p>19.4 Any itinerary impact from self-booked services is the Traveler's responsibility.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>20. Use of Photos, Content &amp; Testimonials</h2>
+    <p>20.1 Travelers grant permission to use non-sensitive content for marketing.</p>
+    <p>20.2 No sensitive data will be disclosed without consent.</p>
+    <p>20.3 Opt-out requests must be submitted in writing.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>21. Non-Transferability &amp; Assignment</h2>
+    <p>21.1 Bookings are non-transferable without written approval.</p>
+    <p>21.2 Approved transfers are subject to supplier fees and restrictions.</p>
+    <p>21.3 The Company may decline transfer requests.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>22. Acceptance &amp; Binding Agreement</h2>
+    <p>22.1 These Terms and Conditions are provided to the Traveler together with the tailor-made trip request, quotation, or booking documentation and are made available for review prior to any payment.</p>
+    <p>22.2 By proceeding with a reservation payment or downpayment, the Traveler confirms that they have reviewed, understood, and agreed to these Terms and Conditions, including policies relating to payment, cancellations, refunds, supplier arrangements, and traveler responsibilities.</p>
+    <p>22.3 The individual making payment or confirming the booking represents that they are authorized to accept these Terms on behalf of all travelers included in the booking and that all participants have been informed of and agree to be bound by these Terms.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>23. Severability</h2>
+    <p>23.1 Invalid provisions do not affect remaining enforceable terms.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>24. Language &amp; Interpretation</h2>
+    <p>24.1 These Terms are written in English.</p>
+    <p>24.2 The English version shall prevail in interpretation.</p>
+  </div>
+
+  <div class="terms-section">
+    <h2>25. Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of the Philippines.</p>
+  </div>
+
+  <div class="terms-closing">
+    <p>These Terms are intended to provide clarity, transparency, and mutual understanding between the Company and the Traveler.</p>
+    <p>The Company remains committed to delivering thoughtful planning, reliable coordination, and responsive support throughout the travel journey, while Travelers acknowledge the shared responsibilities involved in international and domestic travel.</p>
+  </div>
 </div>
-
-<!-- POPULAR DESTINATIONS -->
-<section class="dest-sec lux-reveal">
-  <div class="dest-inner">
-    <div class="sec-label">Itineraries</div>
-    <h2 class="sec-title">Popular <em>Destinations</em></h2>
-    <div class="pdest-list">
-      <a class="pdest-card" href="#">
-        <div class="pdest-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/07/Ha-Long-Bay-by-Tara-Travel-Co.webp')"></div>
-        <div class="pdest-body"><div class="pdest-eyebrow">3 Days 2 Nights</div><div class="pdest-title">Replace with itinerary title</div></div>
-      </a>
-      <a class="pdest-card" href="#">
-        <div class="pdest-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2026/05/Hoi-An-by-Night-by-Tara-Travel-Co.-1.webp')"></div>
-        <div class="pdest-body"><div class="pdest-eyebrow">5 Days 4 Nights</div><div class="pdest-title">Replace with itinerary title</div></div>
-      </a>
-      <a class="pdest-card" href="#">
-        <div class="pdest-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/06/Hai-Van-Pass-Train-Hue-Imperial-City-by-Tara-Travel-Co-2.webp')"></div>
-        <div class="pdest-body"><div class="pdest-eyebrow">4 Days 3 Nights</div><div class="pdest-title">Replace with itinerary title</div></div>
-      </a>
-      <a class="pdest-card" href="#">
-        <div class="pdest-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2026/05/Marble-Mountains-by-Tara-Travel-Co.webp')"></div>
-        <div class="pdest-body"><div class="pdest-eyebrow">6 Days 5 Nights</div><div class="pdest-title">Replace with itinerary title</div></div>
-      </a>
-      <a class="pdest-card" href="#">
-        <div class="pdest-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/06/Hoi-An-by-Night-by-Tara-Travel-Co-2.webp')"></div>
-        <div class="pdest-body"><div class="pdest-eyebrow">4 Days 3 Nights</div><div class="pdest-title">Replace with itinerary title</div></div>
-      </a>
-      <a class="pdest-card" href="#">
-        <div class="pdest-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/07/Ha-Long-Bay-by-Tara-Travel-Co.webp')"></div>
-        <div class="pdest-body"><div class="pdest-eyebrow">7 Days 6 Nights</div><div class="pdest-title">Replace with itinerary title</div></div>
-      </a>
-    </div>
-    <div class="pdest-nav">
-      <div class="pdest-nav-track" id="pdestNavTrack">
-        <div class="pdest-nav-thumb" id="pdestNavThumb"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHEN YOU BOOK WITH US -->
-<section class="trust-sec lux-reveal">
-  <div class="trust-inner">
-    <div class="sec-label">When You Book With Us</div>
-    <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
-    <div class="trust-cards">
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.webp" alt="Flexible Itineraries" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Flexible Itineraries</div><div class="trust-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.webp" alt="Group Perks" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Group Perks</div><div class="trust-desc">Travelling with family or friends? The more of you, the more we can tailor.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.webp" alt="Free Rebooking" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Free Rebooking</div><div class="trust-desc">Plans change. Move your dates without losing your itinerary or starting over.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.webp" alt="Private Car &amp; Driver" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Private Car &amp; Driver</div><div class="trust-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.webp" alt="Licensed Local Guide" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Licensed Local Guide</div><div class="trust-desc">Real insight from people who live here — not a script, not a rush.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.webp" alt="Complimentary Breakfast" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Complimentary Breakfast</div><div class="trust-desc">Every stay we book starts the day right — breakfast is always included.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.webp" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Flexible Check-in &amp; Out</div><div class="trust-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</div></div>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly any time before or during your trip.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="foot">
@@ -553,14 +597,11 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 </footer>
 
 <script>
-
-/* NAV scroll */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* Hamburger */
 let navScrollY = 0;
 function lockBodyScroll() {
   if (isMobileNav()) {
@@ -613,32 +654,6 @@ document.addEventListener('click', function (e) {
   }
 });
 
-/* Hero slider — auto-rotate + dot nav */
-(function(){
-  const slides = document.querySelectorAll('.hero-slide');
-  const dotsWrap = document.getElementById('heroDots');
-  if (!slides.length || !dotsWrap) return;
-  slides.forEach((s, i) => {
-    const d = document.createElement('div');
-    d.className = 'hero-dot' + (i === 0 ? ' is-active' : '');
-    d.addEventListener('click', () => { goToSlide(i); restartTimer(); });
-    dotsWrap.appendChild(d);
-  });
-  const dots = dotsWrap.querySelectorAll('.hero-dot');
-  let idx = 0, timer;
-  function goToSlide(i) {
-    slides[idx].classList.remove('is-active');
-    dots[idx].classList.remove('is-active');
-    idx = i;
-    slides[idx].classList.add('is-active');
-    dots[idx].classList.add('is-active');
-  }
-  function nextSlide() { goToSlide((idx + 1) % slides.length); }
-  function restartTimer() { clearInterval(timer); timer = setInterval(nextSlide, 6000); }
-  restartTimer();
-})();
-
-/* Reveal on scroll */
 const reveals = document.querySelectorAll('.lux-reveal');
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
@@ -646,155 +661,6 @@ const revealObs = new IntersectionObserver(entries => {
 reveals.forEach(r => revealObs.observe(r));
 setTimeout(() => { reveals.forEach(r => r.classList.add('in')); }, 800);
 setTimeout(() => { reveals.forEach(r => r.classList.add('in')); }, 2500);
-
-/* Dim peeking "Popular Destinations" cards until scrolled into full view (mobile) */
-const pdestCards = document.querySelectorAll('.pdest-card');
-if (pdestCards.length) {
-  const pdestObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      e.target.classList.toggle('is-dim', e.intersectionRatio < 0.85);
-    });
-  }, { root: document.querySelector('.pdest-list'), threshold: [0, 0.25, 0.5, 0.75, 0.85, 1] });
-  pdestCards.forEach(c => pdestObs.observe(c));
-}
-
-/* Single-line scroll indicator for "Popular Destinations" — auto-advances every 5s, draggable to jump further */
-const pdestListEl = document.querySelector('.pdest-list');
-const pdestTrack = document.getElementById('pdestNavTrack');
-const pdestThumb = document.getElementById('pdestNavThumb');
-let pdestAutoTimer = null;
-
-if (pdestListEl && pdestTrack && pdestThumb && pdestCards.length) {
-  function pdestMaxScroll() {
-    return Math.max(1, pdestListEl.scrollWidth - pdestListEl.clientWidth);
-  }
-  function updatePdestThumb() {
-    const max = pdestMaxScroll();
-    const visibleRatio = pdestListEl.clientWidth / pdestListEl.scrollWidth;
-    const thumbWidthPct = Math.max(visibleRatio * 100, 12);
-    const progress = Math.min(1, pdestListEl.scrollLeft / max);
-    const thumbLeftPct = progress * (100 - thumbWidthPct);
-    pdestThumb.style.width = thumbWidthPct + '%';
-    pdestThumb.style.left = thumbLeftPct + '%';
-  }
-  updatePdestThumb();
-  pdestListEl.addEventListener('scroll', updatePdestThumb, { passive: true });
-  window.addEventListener('resize', updatePdestThumb);
-
-  /* auto-advance the carousel every 5s, looping back to the start at the end */
-  function pdestAutoAdvance() {
-    const max = pdestMaxScroll();
-    const step = pdestListEl.clientWidth * 0.6;
-    const next = pdestListEl.scrollLeft + step;
-    pdestListEl.scrollTo({ left: next >= max - 4 ? 0 : next, behavior: 'smooth' });
-  }
-  function restartPdestAuto() {
-    clearInterval(pdestAutoTimer);
-    pdestAutoTimer = setInterval(pdestAutoAdvance, 5000);
-  }
-  /* start the auto-advance once the section actually scrolls into view */
-  const pdestSectionObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        pdestAutoAdvance();
-        restartPdestAuto();
-        pdestSectionObs.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  pdestSectionObs.observe(pdestListEl.closest('.dest-sec') || pdestListEl);
-
-  /* manual drag on the track — jumps as far as you drag, not card-by-card */
-  let trackDown = false;
-  function trackPointToScroll(clientX) {
-    const rect = pdestTrack.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-    return ratio * pdestMaxScroll();
-  }
-  pdestTrack.addEventListener('mousedown', (e) => {
-    trackDown = true;
-    pdestTrack.classList.add('is-dragging');
-    clearInterval(pdestAutoTimer);
-    pdestListEl.scrollLeft = trackPointToScroll(e.clientX);
-  });
-  window.addEventListener('mousemove', (e) => {
-    if (!trackDown) return;
-    pdestListEl.scrollLeft = trackPointToScroll(e.clientX);
-  });
-  window.addEventListener('mouseup', () => {
-    if (!trackDown) return;
-    trackDown = false;
-    pdestTrack.classList.remove('is-dragging');
-    restartPdestAuto();
-  });
-
-  /* pause auto-advance while the user interacts with the cards, resume after */
-  pdestListEl.addEventListener('mousedown', () => clearInterval(pdestAutoTimer));
-  pdestListEl.addEventListener('touchstart', () => clearInterval(pdestAutoTimer), { passive: true });
-  window.addEventListener('mouseup', restartPdestAuto);
-  pdestListEl.addEventListener('touchend', restartPdestAuto);
-}
-
-/* Click-and-drag swipe for "Popular Destinations" carousel (desktop mouse), with momentum */
-if (pdestListEl) {
-  let isDown = false, dragStartX = 0, dragStartScroll = 0, dragMoved = false;
-  let lastX = 0, lastT = 0, velocity = 0, momentumId = null;
-
-  function stopMomentum() {
-    if (momentumId) { cancelAnimationFrame(momentumId); momentumId = null; }
-  }
-
-  function runMomentum() {
-    if (Math.abs(velocity) < 0.05) { momentumId = null; return; }
-    pdestListEl.scrollLeft -= velocity;
-    velocity *= 0.94;
-    momentumId = requestAnimationFrame(runMomentum);
-  }
-
-  pdestListEl.addEventListener('mousedown', (e) => {
-    stopMomentum();
-    isDown = true; dragMoved = false;
-    dragStartX = e.pageX;
-    dragStartScroll = pdestListEl.scrollLeft;
-    lastX = e.pageX; lastT = performance.now(); velocity = 0;
-    pdestListEl.classList.add('is-dragging');
-  });
-  function endDrag() {
-    if (!isDown) return;
-    isDown = false;
-    pdestListEl.classList.remove('is-dragging');
-    if (Math.abs(velocity) > 0.4) runMomentum();
-  }
-  window.addEventListener('mouseup', endDrag);
-  pdestListEl.addEventListener('mouseleave', endDrag);
-  pdestListEl.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const delta = e.pageX - dragStartX;
-    if (Math.abs(delta) > 4) dragMoved = true;
-    pdestListEl.scrollLeft = dragStartScroll - delta;
-    const now = performance.now();
-    const dt = now - lastT;
-    if (dt > 0) velocity = (e.pageX - lastX) / dt * 16;
-    lastX = e.pageX; lastT = now;
-  });
-  pdestListEl.addEventListener('click', (e) => {
-    if (dragMoved) { e.preventDefault(); dragMoved = false; }
-  });
-}
-
-/* Show 3 travel guides at a time on desktop (2 on mobile), reveal more on "Load more" */
-const loadMoreGuidesBtn = document.getElementById('loadMoreGuides');
-const moreGuidesGrid = document.getElementById('moreGuidesGrid');
-const moreGuidesCta = document.getElementById('moreGuidesCta');
-if (loadMoreGuidesBtn && moreGuidesGrid) {
-  loadMoreGuidesBtn.addEventListener('click', function() {
-    moreGuidesGrid.classList.add('is-expanded');
-    if (isMobileNav()) return; /* keep the button visible on mobile */
-    if (moreGuidesCta) moreGuidesCta.style.display = 'none';
-  });
-}
 </script>
-
 </body>
 </html>

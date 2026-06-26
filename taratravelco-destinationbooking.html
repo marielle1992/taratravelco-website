@@ -350,7 +350,7 @@ header.nav.scrolled .nav-back, header.nav.scrolled .nav-share-btn { color:var(--
 /* FOOTER */
 footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top:1px solid rgba(0,0,0,.12); }
 .foot-wrap { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
-.foot-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:64px; margin-bottom:64px; }
+.foot-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:64px; margin-bottom:64px; }
 .foot-logo { font-family:'Playfair Display',serif; font-size:1.7rem; letter-spacing:8px; text-transform:uppercase; font-weight:400; color:#141414; margin-bottom:22px; display:block; height:34px; width:auto; }
 .foot-p { font-weight:300; font-size:.94rem; color:rgba(20,20,20,.6); line-height:1.85; max-width:290px; }
 .foot h4 { font-family:'DM Sans',sans-serif; font-size:.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:26px; font-weight:500; }
@@ -401,6 +401,8 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   .trust-cards { grid-template-columns:1fr 1fr; }
   .private-inner { grid-template-columns:1fr; gap:32px; }
   .private-img { height:220px; }
+  /* Float CTA bar is visible at this width — keep the contact bubble clear of it */
+  .contact-fab-wrap { bottom: calc(118px + env(safe-area-inset-bottom)) !important; }
 }
 @media(max-width:640px) {
   /* === GLOBAL MOBILE CONTAINMENT === */
@@ -544,6 +546,33 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   #float-cta .cta-secondary-row { margin-top:0 !important; padding-top:8px !important; }
   #enquire-menu { left:16px !important; right:16px !important; transform:none !important; min-width:unset !important; }
 }
+/* CONTACT POPUP (floating chat-style widget, replaces Messenger/WhatsApp links in header & footer) */
+.contact-fab-wrap { position: fixed; bottom: 24px; right: 24px; z-index: 500; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.contact-fab-btn { width: 60px; height: 48px; border-radius: 22px 22px 22px 6px; background: var(--gold); color: #fff; border: none; display: flex; align-items: center; justify-content: center; box-shadow: none; cursor: pointer; transition: transform .2s; animation: contactFabVibrate 3s ease-in-out infinite; position: relative; }
+.contact-fab-btn::after { content: ''; position: absolute; left: 13px; bottom: -6px; width: 0; height: 0; border-style: solid; border-width: 8px 9px 0 0; border-color: var(--gold) transparent transparent transparent; }
+.contact-fab-btn:hover { transform: scale(1.06); }
+.contact-fab-btn svg { width: 24px; height: 24px; }
+.contact-fab-typing { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.contact-fab-typing span { width: 6px; height: 6px; border-radius: 50%; background: #fff; display: inline-block; animation: contactFabDot 1.2s infinite ease-in-out; }
+.contact-fab-typing span:nth-child(2) { animation-delay: .2s; }
+.contact-fab-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes contactFabDot { 0%, 80%, 100% { transform: scale(.7); opacity: .4; } 40% { transform: scale(1.15); opacity: 1; } }
+@keyframes contactFabVibrate {
+  0%, 85%, 100% { transform: translateX(0); }
+  86% { transform: translateX(-3px) rotate(-4deg); }
+  87% { transform: translateX(3px) rotate(4deg); }
+  88% { transform: translateX(-3px) rotate(-4deg); }
+  89% { transform: translateX(3px) rotate(4deg); }
+  90% { transform: translateX(-2px) rotate(-2deg); }
+  91% { transform: translateX(2px) rotate(2deg); }
+  92% { transform: translateX(0) rotate(0); }
+}
+.contact-fab-menu { display: none; flex-direction: column; gap: 8px; background: rgba(250,245,240,.97); backdrop-filter: blur(14px); border: 1px solid rgba(215,154,61,.25); border-radius: 14px; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.18); min-width: 180px; }
+.contact-fab-menu.open { display: flex; }
+.contact-fab-link { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--ink) !important; font-size: .92rem; transition: background .15s; }
+.contact-fab-link:hover { background: rgba(215,154,61,.1); }
+.contact-fab-link svg { flex-shrink: 0; }
+@media (max-width: 640px) { .contact-fab-wrap { bottom: 18px; right: 16px; } .contact-fab-btn { width: 54px; height: 42px; } }
 </style>
 </head>
 <body>
@@ -551,15 +580,13 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="taratravelco-homepage.html#top" class="logo-lux nav-logo-center"><svg class="nav-logo-img" width="348" height="171" viewBox="11 96 348 171" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tará Travel Co."><g transform="matrix(1, 0, 0, 1, 11, 96)"><g fill="currentColor" fill-opacity="1"><g transform="translate(0.919477, 137.54365)"><path d="M 78.890625 -100.703125 L 78.890625 -97.96875 L 47.78125 -97.96875 L 47.78125 0.15625 L 36.390625 0.15625 L 36.390625 -97.96875 L 5.296875 -97.96875 L 5.296875 -100.703125 Z M 78.890625 -100.703125 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(78.196356, 137.54365)"><path d="M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(173.269628, 137.54365)"><path d="M 78.25 0.15625 L 63.8125 0.15625 L 26.609375 -46.65625 L 19.234375 -46.65625 L 19.234375 0.15625 L 7.703125 0.15625 L 7.703125 -100.703125 C 7.703125 -100.703125 8.898438 -100.703125 11.296875 -100.703125 C 13.703125 -100.703125 16.613281 -100.703125 20.03125 -100.703125 C 23.457031 -100.703125 26.851562 -100.703125 30.21875 -100.703125 C 33.59375 -100.703125 36.238281 -100.703125 38.15625 -100.703125 C 40.1875 -100.703125 42.992188 -100.40625 46.578125 -99.8125 C 50.160156 -99.226562 53.769531 -98.078125 57.40625 -96.359375 C 61.039062 -94.648438 64.113281 -92.113281 66.625 -88.75 C 69.132812 -85.382812 70.390625 -80.972656 70.390625 -75.515625 C 70.390625 -70.285156 69.425781 -65.957031 67.5 -62.53125 C 65.582031 -59.113281 63.070312 -56.363281 59.96875 -54.28125 C 56.863281 -52.195312 53.601562 -50.617188 50.1875 -49.546875 C 46.769531 -48.472656 43.5625 -47.722656 40.5625 -47.296875 Z M 19.234375 -97.96875 L 19.234375 -49.390625 L 27.90625 -49.390625 C 37.3125 -49.390625 44.738281 -51.207031 50.1875 -54.84375 C 55.632812 -58.476562 58.359375 -64.726562 58.359375 -73.59375 C 58.359375 -82.46875 56.035156 -88.75 51.390625 -92.4375 C 46.742188 -96.125 40.300781 -97.96875 32.0625 -97.96875 Z M 19.234375 -97.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(250.065536, 137.54365)"><path d="M 53.078125 -112.234375 L 73.4375 -137.25 L 62.859375 -137.25 L 50.828125 -112.234375 Z M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g></g></svg></a>
+    <a href="index.html#top" class="logo-lux nav-logo-center"><svg class="nav-logo-img" width="348" height="171" viewBox="11 96 348 171" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tará Travel Co."><g transform="matrix(1, 0, 0, 1, 11, 96)"><g fill="currentColor" fill-opacity="1"><g transform="translate(0.919477, 137.54365)"><path d="M 78.890625 -100.703125 L 78.890625 -97.96875 L 47.78125 -97.96875 L 47.78125 0.15625 L 36.390625 0.15625 L 36.390625 -97.96875 L 5.296875 -97.96875 L 5.296875 -100.703125 Z M 78.890625 -100.703125 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(78.196356, 137.54365)"><path d="M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(173.269628, 137.54365)"><path d="M 78.25 0.15625 L 63.8125 0.15625 L 26.609375 -46.65625 L 19.234375 -46.65625 L 19.234375 0.15625 L 7.703125 0.15625 L 7.703125 -100.703125 C 7.703125 -100.703125 8.898438 -100.703125 11.296875 -100.703125 C 13.703125 -100.703125 16.613281 -100.703125 20.03125 -100.703125 C 23.457031 -100.703125 26.851562 -100.703125 30.21875 -100.703125 C 33.59375 -100.703125 36.238281 -100.703125 38.15625 -100.703125 C 40.1875 -100.703125 42.992188 -100.40625 46.578125 -99.8125 C 50.160156 -99.226562 53.769531 -98.078125 57.40625 -96.359375 C 61.039062 -94.648438 64.113281 -92.113281 66.625 -88.75 C 69.132812 -85.382812 70.390625 -80.972656 70.390625 -75.515625 C 70.390625 -70.285156 69.425781 -65.957031 67.5 -62.53125 C 65.582031 -59.113281 63.070312 -56.363281 59.96875 -54.28125 C 56.863281 -52.195312 53.601562 -50.617188 50.1875 -49.546875 C 46.769531 -48.472656 43.5625 -47.722656 40.5625 -47.296875 Z M 19.234375 -97.96875 L 19.234375 -49.390625 L 27.90625 -49.390625 C 37.3125 -49.390625 44.738281 -51.207031 50.1875 -54.84375 C 55.632812 -58.476562 58.359375 -64.726562 58.359375 -73.59375 C 58.359375 -82.46875 56.035156 -88.75 51.390625 -92.4375 C 46.742188 -96.125 40.300781 -97.96875 32.0625 -97.96875 Z M 19.234375 -97.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(250.065536, 137.54365)"><path d="M 53.078125 -112.234375 L 73.4375 -137.25 L 62.859375 -137.25 L 50.828125 -112.234375 Z M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g></g></svg></a>
     <div class="nav-left">
       <button class="nav-back" id="navBack" aria-label="Back" onclick="history.back()"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
       <nav class="nav-links" id="navLinks">
-        <a href="taratravelco-homepage.html#how" data-text="How it works">How it works</a>
-        <a href="taratravelco-homepage.html#guide" data-text="Travel Guide">Travel Guide</a>
-        <a href="taratravelco-homepage.html#destinations" data-text="Destinations">Destinations</a>
-        <a href="taratravelco-homepage.html#who" data-text="About Us">About Us</a>
-        <a href="taratravelco-homepage.html#contact" data-text="Contact">Contact</a>
+        <a href="/travelguides" data-text="Travel Guide">Travel Guide</a>
+        <a href="/destinations" data-text="Destinations">Destinations</a>
+        <a href="/aboutus" data-text="About Us">About Us</a>
       </nav>
       <a href="#" onclick="openBookingModal(event)" class="nav-cta"><span>Plan my trip</span></a>
     </div>
@@ -571,13 +598,32 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 </header>
 <div class="nav-overlay" id="navOverlay" onclick="closeNavMenu()"></div>
 <nav class="mobile-nav-panel" id="mobileNavPanel">
-  <a href="taratravelco-homepage.html#how">How it works</a>
-  <a href="taratravelco-homepage.html#guide">Travel Guide</a>
-  <a href="taratravelco-homepage.html#destinations">Destinations</a>
-  <a href="taratravelco-homepage.html#who">About Us</a>
-  <a href="taratravelco-homepage.html#contact">Contact</a>
+  <a href="/travelguides">Travel Guide</a>
+  <a href="/destinations">Destinations</a>
+  <a href="/aboutus">About Us</a>
   <a href="#" onclick="openBookingModal(event)" class="mobile-nav-cta">Plan my trip</a>
 </nav>
+
+<!-- CONTACT POPUP -->
+<div class="contact-fab-wrap" id="contactFabWrap">
+  <div class="contact-fab-menu" id="contactFabMenu">
+    <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+      Messenger
+    </a>
+    <a href="https://wa.me/84394093181" target="_blank" rel="noopener" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="mailto:bookings@taratravel.co" class="contact-fab-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email
+    </a>
+  </div>
+  <button class="contact-fab-btn" id="contactFabBtn" aria-label="Contact us" onclick="toggleContactFab(event)">
+    <span class="contact-fab-typing"><span></span><span></span><span></span></span>
+  </button>
+</div>
 
 <!-- HERO GALLERY -->
 <div class="hero-gallery" id="heroGallery">
@@ -1201,36 +1247,36 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
     <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
     <div class="trust-cards">
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.svg" alt="Flexible Itineraries" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.webp" alt="Flexible Itineraries" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Flexible Itineraries</div><div class="trust-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.svg" alt="Group Perks" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.webp" alt="Group Perks" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Group Perks</div><div class="trust-desc">Travelling with family or friends? The more of you, the more we can tailor.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.svg" alt="Free Rebooking" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.webp" alt="Free Rebooking" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Free Rebooking</div><div class="trust-desc">Plans change. Move your dates without losing your itinerary or starting over.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.svg" alt="Private Car &amp; Driver" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.webp" alt="Private Car &amp; Driver" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Private Car &amp; Driver</div><div class="trust-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.svg" alt="Licensed Local Guide" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.webp" alt="Licensed Local Guide" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Licensed Local Guide</div><div class="trust-desc">Real insight from people who live here — not a script, not a rush.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.svg" alt="Complimentary Breakfast" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.webp" alt="Complimentary Breakfast" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Complimentary Breakfast</div><div class="trust-desc">Every stay we book starts the day right — breakfast is always included.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.svg" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.webp" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
         <div class="trust-text"><div class="trust-title">Flexible Check-in &amp; Out</div><div class="trust-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</div></div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.svg" alt="24/7 Support" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</div></div>
+        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly any time before or during your trip.</div></div>
       </div>
     </div>
   </div>
@@ -1258,26 +1304,17 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
         <p class="foot-p">We create tailor-made trips in Vietnam — designed around the way you love to travel.</p>
         <div class="foot-socials">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.3s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.3-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+          <a href="https://www.facebook.com/taratravelco" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
           <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 01-1-2.8h-3v12.3a2.5 2.5 0 11-2.5-2.5c.2 0 .5 0 .7.1V9.8a5.6 5.6 0 00-.7 0 5.6 5.6 0 105.6 5.6V9.3a7.3 7.3 0 004.3 1.4V7.7a4.3 4.3 0 01-3.4-1.9z"/></svg></a>
         </div>
       </div>
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="#">How it works</a></li>
-          <li><a href="#">Travel Guide</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="#">WhatsApp</a></li>
-          <li><a href="#">Email Us</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Facebook</a></li>
+          <li><a href="/travelguides">Travel Guide</a></li>
+          <li><a href="/destinations">Destinations</a></li>
+          <li><a href="/aboutus">About Us</a></li>
+          <li><a href="taratravelco-terms.html">Terms</a></li>
         </ul>
       </div>
     </div>
@@ -1402,6 +1439,20 @@ function closeNavMenu() {
    via hamburger, 2nd tap anywhere on the panel = close — no need for a
    fast double-tap). */
 document.getElementById('mobileNavPanel').addEventListener('click', closeNavMenu);
+
+/* Contact popup (floating Messenger/WhatsApp widget) */
+function toggleContactFab(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const menu = document.getElementById('contactFabMenu');
+  if (menu) menu.classList.toggle('open');
+}
+document.addEventListener('click', function (e) {
+  const wrap = document.getElementById('contactFabWrap');
+  const menu = document.getElementById('contactFabMenu');
+  if (wrap && menu && menu.classList.contains('open') && !wrap.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
 
 /* Hero gallery */
 let heroIdx = 0;
