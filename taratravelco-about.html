@@ -1198,7 +1198,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
                 <label>Group type</label>
                 <select name="groupType">
                   <option value="">Select...</option>
-                  <option>Family</option><option>Couple</option><option>Friends</option>
+                  <option>Family</option><option>Family & Friends</option><option>Friends</option>
                   <option>Corporate / Team</option>
                 </select>
               </div>
@@ -1209,8 +1209,8 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
               <div style="margin-top:10px;">
                 <div class="counter-row-lux">
                   <span class="clabel">Adults</span>
-                  <div class="counter-lux"><button type="button" id="minusA">−</button><span class="val" id="adultsVal">2</span><button type="button" id="plusA">+</button></div>
-                  <span id="adultsMinMsg" style="display:none;font-size:.78rem;color:var(--ink);font-weight:300;margin-left:8px;">2 adults minimum</span>
+                  <div class="counter-lux"><button type="button" id="minusA">−</button><span class="val" id="adultsVal">4</span><button type="button" id="plusA">+</button></div>
+                  <span id="adultsMinMsg" style="display:none;font-size:.78rem;color:var(--ink);font-weight:300;margin-left:8px;">4 adults minimum</span>
                 </div>
                 <div class="counter-row-lux">
                   <span class="clabel">Children (below 9 y.o.)</span>
@@ -1243,8 +1243,8 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
                 <div class="chip-lux" data-value="twin">Twin <span style="opacity:.6;font-size:.78rem;">— 2 single beds</span></div>
                 <div class="chip-lux" data-value="triple">Triple <span style="opacity:.6;font-size:.78rem;">— queen + single</span></div>
                 <div class="chip-lux" data-value="family">Family <span style="opacity:.6;font-size:.78rem;">— 2 queen beds</span></div>
-                <div class="chip-lux" data-value="mix">Mix it up <span style="opacity:.6;font-size:.78rem;">— we'll sort it</span></div>
               </div>
+              <div id="roomQtyWrap" style="margin-top:14px;"></div>
               <input type="hidden" name="roomConfig" id="roomConfigVal">
             </div>
             <div class="field-lux">
@@ -1517,12 +1517,48 @@ document.querySelectorAll('#luggageChips .chip-lux').forEach(chip => {
     checkStepComplete(5);
   });
 });
-/* ---- Room config chips (multi-select) ---- */
+/* ---- Room config chips (multi-select, with a quantity per selected room type) ---- */
+const roomTypeLabels = { double: 'Double', twin: 'Twin', triple: 'Triple', family: 'Family' };
+function renderRoomQty() {
+  const wrap = document.getElementById('roomQtyWrap');
+  const selected = Object.keys(data.roomQty);
+  wrap.innerHTML = selected.map(val => `
+    <div class="counter-row-lux" data-room-qty-row="${val}">
+      <span class="clabel">${roomTypeLabels[val]} room${data.roomQty[val] > 1 ? 's' : ''}</span>
+      <div class="counter-lux">
+        <button type="button" class="room-qty-minus" data-value="${val}">−</button>
+        <span class="val">${data.roomQty[val]}</span>
+        <button type="button" class="room-qty-plus" data-value="${val}">+</button>
+      </div>
+    </div>
+  `).join('');
+  wrap.querySelectorAll('.room-qty-plus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.value;
+      data.roomQty[val]++;
+      updateRoomConfigVal();
+      renderRoomQty();
+    });
+  });
+  wrap.querySelectorAll('.room-qty-minus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.value;
+      if (data.roomQty[val] > 1) { data.roomQty[val]--; updateRoomConfigVal(); renderRoomQty(); }
+    });
+  });
+}
+function updateRoomConfigVal() {
+  const parts = Object.keys(data.roomQty).map(val => `${val}:${data.roomQty[val]}`);
+  document.getElementById('roomConfigVal').value = parts.join(',');
+}
 document.querySelectorAll('#roomConfigChips .chip-lux').forEach(chip => {
   chip.addEventListener('click', () => {
     chip.classList.toggle('sel');
-    const selected = [...document.querySelectorAll('#roomConfigChips .chip-lux.sel')].map(c => c.getAttribute('data-value'));
-    document.getElementById('roomConfigVal').value = selected.join(',');
+    const val = chip.getAttribute('data-value');
+    if (chip.classList.contains('sel')) { data.roomQty[val] = 1; }
+    else { delete data.roomQty[val]; }
+    updateRoomConfigVal();
+    renderRoomQty();
     checkStepComplete(4);
   });
 });
@@ -1566,7 +1602,7 @@ tabs.forEach(tab => {
     if (target !== current && target <= maxStep) showStep(target);
   });
 });
-const data = { want: '', destinations: [], travelers: 2, children: 0, infants: 0, startDate: '', endDate: '' };
+const data = { want: '', destinations: [], travelers: 4, children: 0, infants: 0, startDate: '', endDate: '', roomQty: {} };
 
 /* Single-select options */
 document.querySelectorAll('[data-single="want"] .opt-lux').forEach(opt => {
@@ -2036,7 +2072,7 @@ function makeCounter(plusId, minusId, valId, key, min) {
   document.getElementById(minusId).addEventListener('click', () => { if (data[key] > min) { data[key]--; document.getElementById(valId).textContent = data[key]; } });
 }
 (function() {
-  const min = 2;
+  const min = 4;
   document.getElementById('plusA').addEventListener('click', () => { data.travelers++; document.getElementById('adultsVal').textContent = data.travelers; document.getElementById('adultsMinMsg').style.display = 'none'; });
   document.getElementById('minusA').addEventListener('click', () => {
     if (data.travelers > min) { data.travelers--; document.getElementById('adultsVal').textContent = data.travelers; document.getElementById('adultsMinMsg').style.display = 'none'; }
@@ -2309,6 +2345,7 @@ function submitPlan() {
   document.getElementById('successName').textContent = form.firstName.value.trim() || 'traveler';
 
   const hotelTypeLabel = { '4-star': '4-star Hotel', '5-star': '5-star Hotel' }[form.hotelType.value] || form.hotelType.value;
+  const roomConfigLabel = Object.keys(data.roomQty).map(val => `${roomTypeLabels[val]} x${data.roomQty[val]}`).join(', ');
   const toursLabel = { yes: 'Fully arranged — every day planned.', no: 'A mix of guided days and free time.' }[data.tours] || '';
   const hasDatesLabel = { yes: 'Has specific dates in mind.', no: 'Not sure yet / flexible.' }[data.hasDates] || '';
   const flightsLabel = { yes: "Yes, help me book my flights.", no: "No, I'll book my own flights." }[form.flights.value] || '';
@@ -2329,7 +2366,7 @@ function submitPlan() {
     groupNotes: form.groupNotes.value,
     activitiesWant: form.activitiesWant ? form.activitiesWant.value : '',
     activitiesAvoid: form.activitiesAvoid ? form.activitiesAvoid.value : '',
-    hotelType: hotelTypeLabel, roomConfig: form.roomConfig.value, hotelNotes: form.hotelNotes.value,
+    hotelType: hotelTypeLabel, roomConfig: roomConfigLabel, hotelNotes: form.hotelNotes.value,
     flights: flightsLabel, flyFrom: form.flyFrom.value, flyTo: form.flyTo.value,
     luggage: luggageLabel, arrivalTime: form.arrivalTime.value, departureTime: form.departureTime.value,
     flightNotes: form.flightNotes.value
