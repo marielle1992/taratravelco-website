@@ -2725,7 +2725,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
       <div class="benefit-card lux-reveal">
         <div class="benefit-icon"><img src="Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
         <div class="benefit-title">24/7 Support</div>
-        <p class="benefit-desc">Reach us directly any time before or during your trip.</p>
+        <p class="benefit-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</p>
       </div>
     </div>
   </div>
@@ -3072,7 +3072,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
                 </div>
               </div>
             </div>
-            <div class="field-lux" style="margin-top:14px;">
+            <div class="field-lux" id="flightNotesWrap" style="margin-top:14px; display:none;">
               <label class="q-label">Any special flight requests?</label>
               <textarea name="flightNotes" placeholder="e.g. preferred airline, seat preference, extra baggage, special assistance…" style="margin-top:8px;"></textarea>
             </div>
@@ -4316,6 +4316,7 @@ document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(chip => {
     data.flights = val;
     document.getElementById('flightDetails').style.display = val === 'yes' ? 'block' : 'none';
     document.getElementById('ownFlightDetails').style.display = val === 'no' ? 'block' : 'none';
+    document.getElementById('flightNotesWrap').style.display = val === 'yes' ? 'block' : 'none';
     checkStepComplete(5);
   });
 });
@@ -4617,6 +4618,7 @@ function restoreStep(n) {
       document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(c => c.classList.toggle('sel', c.dataset.value === data.flights));
       document.getElementById('flightDetails').style.display = data.flights === 'yes' ? 'block' : 'none';
       document.getElementById('ownFlightDetails').style.display = data.flights === 'no' ? 'block' : 'none';
+      document.getElementById('flightNotesWrap').style.display = data.flights === 'yes' ? 'block' : 'none';
     }
   }
 }
@@ -4958,7 +4960,7 @@ function highlightMissing(n) {
       if (!form.arrivalTime || !form.arrivalTime.value.trim()) form.arrivalTime && form.arrivalTime.closest('.field-lux') && form.arrivalTime.closest('.field-lux').classList.add('field-missing');
       if (!form.departureTime || !form.departureTime.value.trim()) form.departureTime && form.departureTime.closest('.field-lux') && form.departureTime.closest('.field-lux').classList.add('field-missing');
     }
-    if (!form.flightNotes || !form.flightNotes.value.trim()) form.flightNotes && form.flightNotes.closest('.field-lux') && form.flightNotes.closest('.field-lux').classList.add('field-missing');
+    if (flights === 'yes' && (!form.flightNotes || !form.flightNotes.value.trim())) form.flightNotes && form.flightNotes.closest('.field-lux') && form.flightNotes.closest('.field-lux').classList.add('field-missing');
   } else if (n === 6) {
     if (!form.firstName || !form.firstName.value.trim()) form.firstName && form.firstName.closest('.field-lux') && form.firstName.closest('.field-lux').classList.add('field-missing');
     if (!form.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.value)) form.email && form.email.closest('.field-lux') && form.email.closest('.field-lux').classList.add('field-missing');
@@ -5008,7 +5010,7 @@ function checkStepComplete(n) {
     } else {
       const arrival = form.arrivalTime ? form.arrivalTime.value.trim() : '';
       const departure = form.departureTime ? form.departureTime.value.trim() : '';
-      setNextVisible(!!(arrival && departure && flightNotes));
+      setNextVisible(!!(arrival && departure));
     }
   } else if (n === 6) {
     const fn = form.firstName ? form.firstName.value.trim() : '';
