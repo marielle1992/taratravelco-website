@@ -2809,7 +2809,7 @@ footer.foot-lux { background: #FFFFFF; color: #141414; padding: 88px 0 36px; bor
                 </div>
               </div>
             </div>
-            <div class="field-lux" style="margin-top:14px;">
+            <div class="field-lux" id="flightNotesWrap" style="margin-top:14px; display:none;">
               <label class="q-label">Any special flight requests?</label>
               <textarea name="flightNotes" placeholder="e.g. preferred airline, seat preference, extra baggage, special assistance…" style="margin-top:8px;"></textarea>
             </div>
@@ -3818,6 +3818,7 @@ document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(chip => {
     data.flights = val;
     document.getElementById('flightDetails').style.display = val === 'yes' ? 'block' : 'none';
     document.getElementById('ownFlightDetails').style.display = val === 'no' ? 'block' : 'none';
+    document.getElementById('flightNotesWrap').style.display = val === 'yes' ? 'block' : 'none';
     checkStepComplete(5);
   });
 });
@@ -4119,6 +4120,7 @@ function restoreStep(n) {
       document.querySelectorAll('[data-single="flights"] .chip-lux').forEach(c => c.classList.toggle('sel', c.dataset.value === data.flights));
       document.getElementById('flightDetails').style.display = data.flights === 'yes' ? 'block' : 'none';
       document.getElementById('ownFlightDetails').style.display = data.flights === 'no' ? 'block' : 'none';
+      document.getElementById('flightNotesWrap').style.display = data.flights === 'yes' ? 'block' : 'none';
     }
   }
 }
@@ -4434,11 +4436,11 @@ function highlightMissing(n) {
       if (!form.flyFrom || !form.flyFrom.value.trim()) form.flyFrom && form.flyFrom.closest('.field-lux') && form.flyFrom.closest('.field-lux').classList.add('field-missing');
       if (!form.flyTo || !form.flyTo.value.trim()) form.flyTo && form.flyTo.closest('.field-lux') && form.flyTo.closest('.field-lux').classList.add('field-missing');
       if (!document.getElementById('luggageVal').value) document.getElementById('luggageChips') && document.getElementById('luggageChips').parentElement.classList.add('field-missing');
+      if (!form.flightNotes || !form.flightNotes.value.trim()) form.flightNotes && form.flightNotes.closest('.field-lux') && form.flightNotes.closest('.field-lux').classList.add('field-missing');
     } else if (flights === 'no') {
       if (!form.arrivalTime || !form.arrivalTime.value.trim()) form.arrivalTime && form.arrivalTime.closest('.field-lux') && form.arrivalTime.closest('.field-lux').classList.add('field-missing');
       if (!form.departureTime || !form.departureTime.value.trim()) form.departureTime && form.departureTime.closest('.field-lux') && form.departureTime.closest('.field-lux').classList.add('field-missing');
     }
-    if (!form.flightNotes || !form.flightNotes.value.trim()) form.flightNotes && form.flightNotes.closest('.field-lux') && form.flightNotes.closest('.field-lux').classList.add('field-missing');
   } else if (n === 6) {
     if (!form.firstName || !form.firstName.value.trim()) form.firstName && form.firstName.closest('.field-lux') && form.firstName.closest('.field-lux').classList.add('field-missing');
     if (!form.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.value)) form.email && form.email.closest('.field-lux') && form.email.closest('.field-lux').classList.add('field-missing');
@@ -4478,17 +4480,17 @@ function checkStepComplete(n) {
     setNextVisible(!!(hotelType && roomConfig && hotelNotes));
   } else if (n === 5) {
     const flights = document.getElementById('flightsVal') ? document.getElementById('flightsVal').value : '';
-    const flightNotes = form.flightNotes ? form.flightNotes.value.trim() : '';
     if (!flights) { setNextVisible(false); return; }
     if (flights === 'yes') {
       const from = form.flyFrom ? form.flyFrom.value.trim() : '';
       const to = form.flyTo ? form.flyTo.value.trim() : '';
       const luggage = document.getElementById('luggageVal') ? document.getElementById('luggageVal').value : '';
+      const flightNotes = form.flightNotes ? form.flightNotes.value.trim() : '';
       setNextVisible(!!(from && to && luggage && flightNotes));
     } else {
       const arrival = form.arrivalTime ? form.arrivalTime.value.trim() : '';
       const departure = form.departureTime ? form.departureTime.value.trim() : '';
-      setNextVisible(!!(arrival && departure && flightNotes));
+      setNextVisible(!!(arrival && departure));
     }
   } else if (n === 6) {
     const fn = form.firstName ? form.firstName.value.trim() : '';
