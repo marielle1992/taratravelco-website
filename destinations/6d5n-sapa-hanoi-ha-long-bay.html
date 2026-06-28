@@ -49,7 +49,7 @@ ul { list-style:none; }
 header.nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:30px 0; transition:padding .4s, background .4s, border-color .4s; border-bottom:none; background:transparent; }
 /* Keep the top nav bar visible above the hotel panel's dark overlay (the
    overlay only darkens the page content behind it, not the header). */
-header.nav.above-modal { z-index:1020; }
+header.nav.above-modal { z-index:1200; }
 header.nav.scrolled { padding:16px 0; background:var(--cream); backdrop-filter:blur(14px); border-bottom:none; }
 .nav-inner { display:flex; align-items:center; max-width:1120px; margin:0 auto; padding:0 52px; }
 .nav-logo-center { text-align:left; flex-shrink:0; }
@@ -998,7 +998,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <h2 class="sec-title">Make it <em>more yours</em></h2>
       <div class="addon-list">
         <div class="addon-item">
-          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Renowned%20Golf.svg" alt=""></div>
+          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Renowned Golf.svg" alt=""></div>
           <div class="addon-title">A Round of Golf</div>
         </div>
         <div class="addon-item">
@@ -1975,7 +1975,7 @@ async function submitBookingForm(e) {
 </script>
 
 <!-- EMAIL CAPTURE MODAL -->
-<div id="email-modal-overlay" onclick="if(event.target===this)closeEmailModal()" style="position:fixed;inset:0;background:rgba(18,40,64,.45);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;">
+<div id="email-modal-overlay" onclick="if(event.target===this)closeEmailModal()" style="position:fixed;inset:0;background:rgba(18,40,64,.45);z-index:1100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;">
   <div style="background:#fff;border-radius:0;padding:36px 32px;max-width:420px;width:100%;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.15);">
     <button onclick="closeEmailModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;color:#5a5a5a;cursor:pointer;line-height:1;">✕</button>
     <div id="email-form-wrap">
@@ -2001,7 +2001,7 @@ async function submitBookingForm(e) {
 </div>
 
 <!-- BOOKING REQUEST MODAL -->
-<div id="booking-modal-overlay" onclick="if(event.target===this)closeBookingModal()" style="position:fixed;inset:0;background:rgba(18,40,64,.45);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;">
+<div id="booking-modal-overlay" onclick="if(event.target===this)closeBookingModal()" style="position:fixed;inset:0;background:rgba(18,40,64,.45);z-index:1100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;">
   <div style="background:#fff;border-radius:0;padding:26px 28px;max-width:460px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.15);">
     <button onclick="closeBookingModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;color:#5a5a5a;cursor:pointer;line-height:1;">✕</button>
     <div id="booking-form-wrap">
