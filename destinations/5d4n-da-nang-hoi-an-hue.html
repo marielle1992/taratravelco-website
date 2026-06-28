@@ -1895,6 +1895,56 @@ async function submitBookingForm(e) {
   try {
     const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
     if (res.ok) {
+      // Create lead in Supabase
+      try {
+        const fullName = (data.get('Name') || '').trim();
+        const nameParts = fullName.split(' ');
+        const firstName = nameParts[0] || fullName;
+        const lastName = nameParts.slice(1).join(' ') || '';
+        const pax = parseInt(data.get('Number of Pax') || '2', 10);
+        const dateVal = data.get('Travel Start Date') || null;
+        const tripTitle = data.get('Trip') || '';
+        await fetch('https://nwsphnyzoabmadftgmrw.supabase.co/rest/v1/leads', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53c3Bobnl6b2FibWFkZnRnbXJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5OTE5NzUsImV4cCI6MjA5NjU2Nzk3NX0.HPmELFGp9IOmsV0wAMh_ok6p1NwJFaA2rNoa6QAapTA',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53c3Bobnl6b2FibWFkZnRnbXJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5OTE5NzUsImV4cCI6MjA5NjU2Nzk3NX0.HPmELFGp9IOmsV0wAMh_ok6p1NwJFaA2rNoa6QAapTA',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            first_name: firstName,
+            last_name: lastName,
+            email: data.get('Email') || '',
+            contact_no: (data.get('Country Code') || '') + ' ' + (data.get('Contact Number') || ''),
+            adults: pax,
+            total_travelers: pax,
+            trip_start_date: dateVal || null,
+            hotel_type: data.get('Hotel Choice') || null,
+            include_flights: data.get('International Flights Needed') === 'Yes',
+            group_special_requests: data.get('Special Requests') || '',
+            lead_source: 'Destination Booking Page',
+            destinations: tripTitle ? [tripTitle] : [],
+            status: 'New',
+            manual_entry: true
+          })
+        });
+      } catch(err) { /* Formspree succeeded; Supabase failure is non-blocking */ }
+      document.getElementById('booking-form-wrap').innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:1.5rem;margin-bottom:12px;">❖</div><p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;color:#141414;margin:0 0 8px;">Request received!</p><p style="font-family:\'DM Sans\',sans-serif;font-size:.85rem;color:#5a5a5a;margin:0;">Our team will reach out shortly to confirm your trip and availability.</p></div>';
+    } else { throw new Error(); }
+  } catch {
+    btn.textContent = 'Submit request';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+}
+  const data = new FormData(form);
+  const btn = form.querySelector('button[type=submit]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if (res.ok) {
       document.getElementById('booking-form-wrap').innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:1.5rem;margin-bottom:12px;">✦</div><p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;color:#141414;margin:0 0 8px;">Request received!</p><p style="font-family:\'DM Sans\',sans-serif;font-size:.85rem;color:#5a5a5a;margin:0;">Our team will reach out shortly to confirm your trip and availability.</p></div>';
     } else { throw new Error(); }
   } catch {
@@ -1937,6 +1987,7 @@ async function submitBookingForm(e) {
     <button onclick="closeBookingModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;color:#5a5a5a;cursor:pointer;line-height:1;">✕</button>
     <div id="booking-form-wrap">
       <p style="font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:3.5px;text-transform:uppercase;color:#d79a3d;margin:0 0 5px;">Reserve my trip</p>
+      <p style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:400;color:#141414;margin:0 0 2px;font-style:italic;">Da Nang, Hoi An & Hue Imperial City</p>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:#141414;margin:0 0 4px;">Let's lock in your dates</h3>
       <p style="font-family:'DM Sans',sans-serif;font-size:.8rem;color:#5a5a5a;font-weight:300;margin:0 0 14px;">Share a few details and our team will confirm availability and finalize your itinerary with you.</p>
       <!-- Replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
@@ -1993,8 +2044,9 @@ async function submitBookingForm(e) {
         #booking-form-wrap .bk-cal-summary { font-family:'DM Sans',sans-serif; font-size:.78rem; color:#5a5a5a; padding:0 16px 12px; }
         #booking-form-wrap .bk-cal-summary strong { color:#141414; font-weight:500; }
       </style>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="submitBookingForm(event)">
-        <input type="hidden" name="Trip" value="Vietnam – Da Nang · Hoi An & Hue Imperial City">
+      <form action="https://formspree.io/f/xykqjdqv" method="POST" onsubmit="submitBookingForm(event)">
+        <input type="hidden" name="Trip" value="Da Nang, Hoi An & Hue Imperial City">
+        <input type="hidden" name="Source" value="Destination Booking Page">
         <div class="bk-field">
           <label>Your name</label>
           <input type="text" name="Name" required placeholder="e.g. Maria Santos">
