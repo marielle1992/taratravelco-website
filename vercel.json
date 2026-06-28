@@ -12,6 +12,15 @@
     { "source": "/travelguides", "destination": "/taratravelco-travelguidelist.html" },
     { "source": "/destinations", "destination": "/taratravel-destinations-list.html" },
     { "source": "/Media/(.*)", "destination": "/Media/$1" },
+    { "source": "/4d3n-da-nang-golf", "destination": "/destinations/4d3n-da-nang-golf.html" },
+    { "source": "/5d4n-da-nang-hoi-an", "destination": "/destinations/5d4n-da-nang-hoi-an.html" },
+    { "source": "/5d4n-da-nang-hoi-an-hue", "destination": "/destinations/5d4n-da-nang-hoi-an-hue.html" },
+    { "source": "/6d5n-da-nang-hoi-an-hue", "destination": "/destinations/6d5n-da-nang-hoi-an-hue.html" },
+    { "source": "/4d3n-ho-chi-minh", "destination": "/destinations/4d3n-ho-chi-minh.html" },
+    { "source": "/6d5n-ho-chi-minh-phu-quoc", "destination": "/destinations/6d5n-ho-chi-minh-phu-quoc.html" },
+    { "source": "/5d4n-sapa-hanoi", "destination": "/destinations/5d4n-sapa-hanoi.html" },
+    { "source": "/6d5n-sapa-hanoi-ha-long-bay", "destination": "/destinations/6d5n-sapa-hanoi-ha-long-bay.html" },
+    { "source": "/6d5n-sapa-hanoi-ninh-binh", "destination": "/destinations/6d5n-sapa-hanoi-ninh-binh.html" },
     { "source": "/((?!Media/).*)", "destination": "/index.html" }
   ]
 }
