@@ -11,6 +11,7 @@
     { "source": "/aboutus", "destination": "/taratravelco-about.html" },
     { "source": "/travelguides", "destination": "/taratravelco-travelguidelist.html" },
     { "source": "/destinations", "destination": "/taratravel-destinations-list.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/Media/(.*)", "destination": "/Media/$1" },
+    { "source": "/((?!Media/).*)", "destination": "/index.html" }
   ]
 }
