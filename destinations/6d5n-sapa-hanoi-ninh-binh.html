@@ -636,19 +636,19 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <div class="highlight-list">
         <div class="highlight-item">
           <div class="h-top">
-            <img class="h-icon" src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Activities/Instagrammable.svg" alt="">
+            <img class="h-icon" src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Activities/Photography Session.svg" alt="">
           </div>
           <p class="h-line">Ninh Binh — Vietnam's most spectacular inland landscape, known as Ha Long Bay on land</p>
         </div>
         <div class="highlight-item">
           <div class="h-top">
-            <img class="h-icon" src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Activities/Train Street.svg" alt="">
+            <img class="h-icon" src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Activities/Hai Van Pass Train.svg" alt="">
           </div>
           <p class="h-line">Fansipan — cable car to Indochina's highest peak, towering above the rice terraces</p>
         </div>
         <div class="highlight-item">
           <div class="h-top">
-            <img class="h-icon" src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Activities/Coffee Making.svg" alt="">
+            <img class="h-icon" src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Activities/Cooking Class.svg" alt="">
           </div>
           <p class="h-line">Cat Cat Village — trekking through H'mong minority culture and mountain scenery</p>
         </div>
@@ -1001,11 +1001,11 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
       <h2 class="sec-title">Make it <em>more yours</em></h2>
       <div class="addon-list">
         <div class="addon-item">
-          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Renowned Golf.svg" alt=""></div>
+          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Golf.svg" alt=""></div>
           <div class="addon-title">A Round of Golf</div>
         </div>
         <div class="addon-item">
-          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Coffee Making.svg" alt=""></div>
+          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Cooking Class.svg" alt=""></div>
           <div class="addon-title">Cooking Class</div>
         </div>
         <div class="addon-item">
@@ -1013,7 +1013,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
           <div class="addon-title">Romantic Dinner</div>
         </div>
         <div class="addon-item">
-          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Instagrammable.svg" alt=""></div>
+          <div class="addon-icon-wrap"><img src="Media/Booking Page/Activities/Photography Session.svg" alt=""></div>
           <div class="addon-title">Photography Session</div>
         </div>
         <div class="addon-item">
@@ -1953,21 +1953,6 @@ async function submitBookingForm(e) {
         });
       } catch(err) { /* Formspree succeeded; Supabase failure is non-blocking */ }
       document.getElementById('booking-form-wrap').innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:1.5rem;margin-bottom:12px;">❖</div><p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;color:#141414;margin:0 0 8px;">Request received!</p><p style="font-family:\'DM Sans\',sans-serif;font-size:.85rem;color:#5a5a5a;margin:0;">Our team will reach out shortly to confirm your trip and availability.</p></div>';
-    } else { throw new Error(); }
-  } catch {
-    btn.textContent = 'Submit request';
-    btn.disabled = false;
-    alert('Something went wrong. Please try again.');
-  }
-}
-  const data = new FormData(form);
-  const btn = form.querySelector('button[type=submit]');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-  try {
-    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
-    if (res.ok) {
-      document.getElementById('booking-form-wrap').innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:1.5rem;margin-bottom:12px;">✦</div><p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;color:#141414;margin:0 0 8px;">Request received!</p><p style="font-family:\'DM Sans\',sans-serif;font-size:.85rem;color:#5a5a5a;margin:0;">Our team will reach out shortly to confirm your trip and availability.</p></div>';
     } else { throw new Error(); }
   } catch {
     btn.textContent = 'Submit request';
