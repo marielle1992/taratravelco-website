@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>5-Day Private Tour: Da Nang, Hoi An &amp; Hue Imperial City — Tará Travel Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --gold:      #d79a3d;
+  --gold-deep: #d79a3d;
+  --gold-soft: #f5e0b8;
+  --cream:     #FFFFFF;
+  --cream-2:   #FFFFFF;
+  --ink:       #141414;
+  --ink-soft:  #5a5a5a;
+  --navy:      #141414;
+  --dark:      #122840;
+  --white:     #FAF5F0;
+  --maxw:      1200px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:clip; width:100%; }
+body { font-family:'DM Sans',sans-serif; color:var(--ink); background:var(--cream); -webkit-font-smoothing:antialiased; overflow-x:clip; width:100%; }
+html.nav-locked { overflow:hidden; height:100%; }
+body.nav-locked { position:fixed; width:100%; overflow:hidden; touch-action:none; }
+/* Desktop-only scroll lock (used for the hotel "About this stay" panel on
+   desktop): plain overflow:hidden, no position:fixed, so it doesn't disturb
+   position:sticky elements like the page-nav tab bar. */
+html.desktop-scroll-locked, body.desktop-scroll-locked { overflow:hidden; }
+h1,h2,h3,h4 { font-family:'Playfair Display',serif; color:var(--navy); }
+img { max-width:100%; display:block; }
+a { color:inherit; text-decoration:none; }
+ul { list-style:none; }
+
+/* BUTTONS */
+.btn-lux { display:inline-flex; align-items:center; gap:10px; font-family:'DM Sans',sans-serif; font-weight:400; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; padding:15px 36px; border:1px solid rgba(20,20,20,.4); background:transparent; color:var(--ink); cursor:pointer; position:relative; overflow:hidden; transition:color .35s; }
+.btn-lux::after { content:''; position:absolute; inset:0; background:var(--ink); transform:scaleX(0); transform-origin:left; transition:transform .4s cubic-bezier(.77,0,.175,1); z-index:0; }
+.btn-lux:hover::after { transform:scaleX(1); }
+.btn-lux span { position:relative; z-index:1; transition:color .35s; }
+.btn-lux:hover span { color:#fff; }
+.btn-solid { background:var(--gold); color:#fff; border-color:var(--gold); }
+.btn-solid span { color:#fff; }
+.btn-solid::after { background:var(--gold-deep); }
+
+/* NAV */
+header.nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:30px 0; transition:padding .4s, background .4s, border-color .4s; border-bottom:none; background:transparent; }
+/* Keep the top nav bar visible above the hotel panel's dark overlay (the
+   overlay only darkens the page content behind it, not the header). */
+header.nav.above-modal { z-index:1200; }
+header.nav.scrolled { padding:16px 0; background:var(--cream); backdrop-filter:blur(14px); border-bottom:none; }
+.nav-inner { display:flex; align-items:center; max-width:1120px; margin:0 auto; padding:0 52px; }
+.nav-logo-center { text-align:left; flex-shrink:0; }
+@media (min-width:761px) { .nav-logo-center { margin-right:44px; } }
+.logo-lux { font-family:'Playfair Display',serif; font-weight:500; font-size:1.5rem; letter-spacing:8px; text-transform:uppercase; color:#fff; transition:color .3s; }
+header.nav.scrolled .logo-lux { color:#141414; }
+.logo-lux .nav-logo-img { display: block; height: 38px; width: auto; }
+.nav-left { display:flex; align-items:center; flex-wrap:nowrap; }
+@media (min-width:761px) { .nav-left { gap:26px; margin-left:auto; } }
+.nav-links { display:flex; align-items:center; gap:0; max-width:0; margin-right:0; overflow:hidden; opacity:0; flex-wrap:nowrap; transform:translateX(16px); transition:max-width .42s cubic-bezier(.77,0,.175,1), opacity .3s ease, transform .42s cubic-bezier(.77,0,.175,1), gap .42s, margin-right .42s; }
+.nav-links.open { max-width:640px; opacity:1; transform:translateX(0); gap:26px; margin-right:20px; }
+.mobile-nav-panel, .nav-overlay { display:none; }
+.nav-links a { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.95rem; letter-spacing:.01em; text-transform:none; display:inline-flex; flex-direction:column; align-items:center; color:rgba(255,255,255,.85); transition:color .2s; position:relative; white-space:nowrap; flex-shrink:0; }
+.nav-links a::before { content:attr(data-text); font-weight:500; height:0; overflow:hidden; visibility:hidden; display:block; pointer-events:none; }
+.nav-links a:hover { color:#fff; font-weight:400; }
+header.nav.scrolled .nav-links a { color:var(--ink-soft); }
+header.nav.scrolled .nav-links a:hover { color:var(--ink); }
+.nav-cta { font-family:'DM Sans',sans-serif; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:#fff; padding:12px 28px; border:1px solid rgba(255,255,255,.5); border-radius:0; position:relative; overflow:hidden; transition:color .35s, border-color .35s; white-space:nowrap; flex-shrink:0; text-decoration:none; }
+.nav-cta::after { content:''; position:absolute; inset:0; background:var(--ink); transform:scaleX(0); transform-origin:left; transition:transform .4s cubic-bezier(.77,0,.175,1); z-index:0; }
+.nav-cta span { position:relative; z-index:1; }
+.nav-cta:hover { color:#fff; border-color:var(--ink); }
+.nav-cta:hover::after { transform:scaleX(1); }
+header.nav.scrolled .nav-cta { color:var(--ink); border-color:rgba(20,20,20,.4); }
+header.nav.scrolled .nav-cta:hover { color:#fff; }
+.nav-right { display:flex; align-items:center; gap:24px; justify-content:flex-end; flex-wrap:nowrap; }
+.hamburger { display:block; background:none; border:none; cursor:pointer; padding:8px; z-index:120; }
+.hamburger span { display:block; width:22px; height:1px; background:#fff; margin:6px 0; transition:.3s; }
+header.nav.scrolled .hamburger span { background:var(--ink); }
+.nav-back, .nav-share-btn { display:none; background:none; border:none; cursor:pointer; padding:8px; color:#fff; align-items:center; justify-content:center; transition:color .3s; }
+.nav-back svg, .nav-share-btn svg { width:20px; height:20px; stroke:currentColor; fill:none; }
+header.nav.scrolled .nav-back, header.nav.scrolled .nav-share-btn { color:var(--ink); }
+
+/* HERO GALLERY */
+.hero-gallery { position:relative; width:100%; aspect-ratio:16/7; min-height:260px; max-height:80vh; overflow:hidden; }
+.hero-slides { display:flex; height:100%; transition:transform .85s cubic-bezier(.77,0,.175,1); }
+.hero-slide { flex-shrink:0; width:100%; height:100%; }
+.hero-slide-bg { width:100%; height:100%; background-size:cover; background-position:center; transition:transform 9s ease-out; }
+.hero-slide-bg.zoomed { transform:scale(1.07); }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(18,40,64,.2) 0%,rgba(18,40,64,.08) 45%,rgba(18,40,64,.65) 100%); pointer-events:none; }
+.hero-dots { display:none; }
+.hero-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.4); border:1px solid rgba(255,255,255,.55); cursor:pointer; transition:.3s; }
+.hero-dot.active { background:var(--gold); border-color:var(--gold); transform:scale(1.25); }
+
+/* PAGE LAYOUT */
+.page-layout { max-width:1120px; margin:0 auto; padding:0 52px 120px; display:grid; grid-template-columns:1fr 288px; gap:52px; align-items:start; }
+.content-col { min-width:0; }
+.sidebar-col { position:sticky; top:130px; padding-top:50px; }
+
+/* BREADCRUMB */
+.breadcrumb { padding:72px 0 0; font-family:'DM Sans',sans-serif; font-size:.85rem; color:var(--ink-soft); }
+.breadcrumb a { color:var(--gold); transition:color .2s; }
+.breadcrumb a:hover { color:var(--gold-deep); }
+.breadcrumb .sep { margin:0 8px; opacity:.4; }
+
+/* TRIP HEADER */
+.trip-header { padding:50px 0 0; }
+.trip-label { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.trip-label .pipe { color:rgba(215,154,61,.35); }
+.trip-title { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(1.85rem,3.2vw,2.75rem); line-height:1.1; color:var(--navy); margin-bottom:14px; }
+.trip-title em { font-style:normal; color:var(--navy); }
+.trip-meta { display:flex; flex-wrap:wrap; gap:6px 20px; margin-bottom:16px; }
+.trip-meta-item { display:flex; align-items:center; gap:7px; font-family:'DM Sans',sans-serif; font-size:.92rem; color:var(--ink-soft); }
+.trip-meta-item svg { width:14px; height:14px; stroke:var(--gold); fill:none; flex-shrink:0; }
+.trip-tagline { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.85; color:var(--ink-soft); padding-bottom:0; }
+
+/* PAGE NAV */
+.page-nav { background:#FFFFFF; position:fixed; top:65px; left:0; right:0; width:100%; z-index:49; padding:0; pointer-events:none; opacity:0; transform:translateY(-110%); transition:transform .32s cubic-bezier(.4,0,.2,1), opacity .32s ease; box-shadow:0 3px 10px rgba(0,0,0,.04); border-top:1px solid rgba(20,20,20,.06); }
+.page-nav.nav-visible { transform:translateY(0); opacity:1; pointer-events:auto; }
+.page-nav-inner { display:flex; overflow-x:auto; scrollbar-width:none; justify-content:space-between; max-width:1120px; margin:0 auto; width:100%; padding:0 calc(52px + 288px + 52px) 0 52px; box-sizing:border-box; }
+.page-nav-inner::-webkit-scrollbar { display:none; }
+.page-nav-tab { font-family:'DM Sans',sans-serif; font-size:.9rem; letter-spacing:.3px; text-transform:none; font-weight:300; color:var(--ink-soft); padding:15px 20px; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; cursor:pointer; transition:.2s; flex:0 0 auto; text-align:center; }
+.page-nav-inner .page-nav-tab:first-child { padding-left:0; }
+.page-nav-tab:hover { color:var(--gold); }
+.page-nav-tab.active { color:var(--gold); border-bottom:3px solid var(--gold); }
+
+/* SECTION HELPERS */
+.sec-label { font-family:'DM Sans',sans-serif; font-size:.75rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.sec-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.675rem; line-height:1.1; color:var(--navy); margin-bottom:16px; }
+.sec-title em { font-style:italic; color:var(--gold); }
+.lux-reveal { opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.215,.61,.355,1),transform .9s cubic-bezier(.215,.61,.355,1); }
+.lux-reveal.in { opacity:1; transform:none; }
+
+/* DESTINATION PHOTO */
+.dest-photo { width:100%; height:420px; background-size:cover; background-position:center; border-radius:0; margin-top:24px; overflow:hidden; }
+
+/* HIGHLIGHTS */
+.highlights-sec { padding:48px 0; }
+.highlight-list { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px; }
+.highlight-item { padding:12px 0; background:transparent; display:flex; align-items:center; gap:12px; }
+.h-icon { width:95px; height:95px; flex-shrink:0; object-fit:contain; }
+.h-city { display:none; }
+.h-line { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; color:#141414; line-height:1.5; }
+@media(max-width:640px) { .highlight-list { grid-template-columns:1fr; gap:2px; } .highlight-item { padding:8px 0; } }
+
+/* ITINERARY — TIMELINE */
+.itinerary-sec { padding:48px 0; }
+.tl-list { position:relative; margin-top:32px; padding-left:36px; }
+.tl-item:not(:last-child)::after { content:''; position:absolute; left:-20.5px; top:22px; height:calc(100% + 12px); width:1px; background:var(--gold); }
+.tl-item { position:relative; margin-bottom:12px; }
+.tl-item:last-child .tl-body-wrap { border-bottom:none; }
+.tl-dot { position:absolute; left:-25px; top:16px; width:10px; height:10px; border-radius:50%; background:var(--gold); border:2px solid #fff; box-shadow:0 0 0 1.5px var(--gold); z-index:2; transition:background .2s; }
+.tl-item.open .tl-dot { background:var(--gold); box-shadow:0 0 0 2px var(--gold); }
+.tl-hd { display:flex; align-items:center; justify-content:space-between; padding:14px 0 14px 36px; margin-left:-36px; cursor:pointer; user-select:none; }
+.tl-hd:hover .tl-day-title { color:var(--gold-deep); }
+.tl-dot { cursor:pointer; }
+.tl-day-label { font-family:'DM Sans',sans-serif; font-size:.74rem; letter-spacing:2.5px; text-transform:uppercase; color:#141414; font-weight:600; margin-bottom:3px; }
+.tl-day-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.2rem; color:#141414; transition:color .2s; line-height:1.25; }
+.tl-day-meta { display:flex; gap:14px; flex-wrap:wrap; margin-top:5px; }
+.tl-meta-it { display:flex; align-items:center; gap:2px; font-family:'DM Sans',sans-serif; font-size:14.4px; font-weight:300; color:#666; }
+.tl-meta-it svg { width:12px; height:12px; stroke:var(--gold); fill:none; }
+.tl-meta-it img { width:14px; height:14px; object-fit:contain; flex-shrink:0; }
+.tl-toggle { font-size:1rem; color:var(--gold); flex-shrink:0; padding-left:16px; transition:transform .28s; }
+.tl-item.open .tl-toggle { transform:rotate(180deg); }
+.tl-arr { display:inline-block; font-size:.7rem; transition:transform .3s; }
+.tl-item.open .tl-arr { transform:rotate(180deg); }
+.tl-body-wrap { border-bottom:1px solid rgba(20,20,20,.12); }
+.tl-body { max-height:0; overflow:hidden; transition:max-height 2.2s ease; }
+.tl-item.open .tl-body { max-height:900px; }
+.tl-inner { padding:20px 0 28px; }
+.tl-img { width:100%; height:340px; background-size:cover; background-position:center; border-radius:0; margin-bottom:18px; background-color:var(--cream-2); }
+.tl-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.55; color:rgba(20,20,20,.6); margin-bottom:16px; }
+.tl-stops { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
+.tl-stop { font-family:'DM Sans',sans-serif; font-size:.84rem; color:var(--gold-deep); background:rgba(215,154,61,.12); border:none; border-radius:0; padding:6px 11px; display:inline-flex; align-items:center; gap:6px; }
+.tl-stop::before { content:''; display:inline-block; width:12px; height:12px; flex-shrink:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d79a3d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-size:contain; }
+@media(max-width:640px) { .tl-list { padding-left:28px; } }
+
+/* INCLUDED / EXCLUDED */
+.included-sec { padding:48px 0; }
+.inc-pill-wrap { display:flex; margin-bottom:28px; }
+.inc-pill { display:flex; background:rgba(20,20,20,.08); border-radius:999px; padding:4px; gap:2px; }
+.inc-pill-btn { font-family:'DM Sans',sans-serif; font-size:.82rem; font-weight:500; color:var(--ink-soft); padding:8px 22px; border-radius:999px; cursor:pointer; border:none; background:transparent; transition:background .2s, color .2s; white-space:nowrap; }
+.inc-pill-btn.active { background:var(--navy); color:#fff; }
+.inc-pill-btn .pill-check { margin-right:5px; font-size:.78rem; }
+.inc-panel { display:none; }
+.inc-panel.active { display:block; }
+.inc-acc-item { border-bottom:1px solid rgba(20,20,20,.05); }
+.inc-acc-hd { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; margin:0 -16px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:300; color:var(--ink); user-select:none; }
+.inc-acc-arr { font-size:1rem; color:var(--gold); transition:transform .25s; }
+.inc-acc-item.open .inc-acc-arr { transform:rotate(180deg); }
+.inc-acc-body { max-height:0; overflow:hidden; transition:max-height 2.2s ease; }
+.inc-acc-item.open .inc-acc-body { max-height:300px; }
+.inc-items { display:flex; flex-direction:column; gap:7px; padding:0 0 14px 4px; }
+.inc-it { display:flex; align-items:flex-start; gap:10px; font-family:'DM Sans',sans-serif; font-size:.95rem; font-weight:300; color:var(--ink-soft); line-height:1.6; }
+.ic-y { color:var(--gold-deep); flex-shrink:0; font-size:.78rem; margin-top:3px; }
+.ic-n { color:#b0392b; flex-shrink:0; font-size:.78rem; margin-top:3px; }
+
+/* ADD-ONS */
+.addons-sec { padding:48px 0; }
+.addon-list { display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:22px; }
+.addon-item { display:flex; align-items:center; gap:8px; padding:14px 16px 14px 0; }
+@media(max-width:600px) { .addon-list { grid-template-columns:1fr 1fr; } }
+.addon-icon-wrap { width:52px; height:52px; border-radius:0; background:var(--cream-2); border:1px solid rgba(215,154,61,.03); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.4rem; }
+.addon-icon-wrap img { width:39px; height:39px; object-fit:contain; }
+.addon-text { flex:1; }
+.addon-title { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1rem; color:var(--navy); margin-bottom:3px; }
+.addon-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.82rem; color:var(--ink-soft); line-height:1.55; }
+.addons-note { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; color:var(--ink-soft); line-height:1.75; margin-top:20px; font-style:italic; }
+
+/* YOU MIGHT LIKE THIS */
+.similar-sec { padding:48px 0; }
+.similar-list { display:flex; gap:18px; margin-top:22px; overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:8px; scrollbar-width:none; } .similar-list::-webkit-scrollbar { display:none; }
+.similar-card { display:block; text-decoration:none; flex:0 0 280px; scroll-snap-align:start; }
+.similar-img { width:100%; height:110px; background-size:cover; background-position:center; }
+.similar-body { padding:12px 0 16px; }
+.similar-eyebrow { font-family:'DM Sans',sans-serif; font-size:.68rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.similar-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1rem; line-height:1.3; color:var(--navy); }
+.similar-card { opacity:1; filter:none; transition:opacity .25s,filter .25s; }
+.similar-nav { display:flex; gap:9px; margin-top:18px; }
+.similar-nav-dash { width:24px; height:.5px; background:rgba(20,20,20,.3); transition:background .25s ease,width .25s ease,height .25s ease; cursor:pointer; }
+.similar-nav-dash.is-active { width:32px; height:1px; background:var(--gold); }
+@media(max-width:640px) { .similar-card { flex:0 0 82%; } .similar-img { height:140px; } .similar-card.is-dim { opacity:.45; filter:grayscale(60%); } }
+
+/* ACCOMMODATION */
+.accom-sec { padding:48px 0; }
+.accom-list { display:flex; flex-direction:column; gap:8px; margin-top:24px; }
+.accom-card { display:flex; gap:0; background:#fff; border:1px solid rgba(20,20,20,.12); border-radius:0; overflow:hidden; }
+.accom-img { width:140px; flex-shrink:0; background-size:cover; background-position:center; align-self:stretch; }
+.accom-body { padding:10px 14px; display:flex; flex-direction:column; justify-content:center; gap:5px; flex:1; }
+.accom-stars-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.accom-stars { color:var(--gold); font-size:.9rem; letter-spacing:1px; line-height:1; }
+.accom-name { font-family:'Playfair Display',serif; font-weight:400; font-size:1.1rem; color:var(--navy); line-height:1.15; }
+.accom-location { font-family:'DM Sans',sans-serif; font-weight:500; font-size:.8rem; color:var(--gold); display:flex; align-items:center; gap:5px; line-height:1; }
+.accom-location svg { width:11px; height:11px; stroke:var(--gold); fill:none; flex-shrink:0; }
+.accom-highlights { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; color:var(--ink-soft); line-height:1.3; }
+.accom-highlights .sep { color:var(--gold); font-weight:600; margin:0 2px; }
+.accom-btn { display:inline-block; font-family:'DM Sans',sans-serif; font-size:.78rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); border:1px solid rgba(20,20,20,.4); border-radius:0; padding:6px 16px; background:transparent; cursor:pointer; transition:border-color .2s,color .2s; text-decoration:none; align-self:flex-start; }
+.accom-btn:hover { border-color:var(--gold); color:var(--gold); }
+.accom-badge { display:inline-flex; align-items:center; gap:3px; font-family:'DM Sans',sans-serif; font-size:.65rem; font-weight:400; color:var(--ink-soft); letter-spacing:.2px; }
+.accom-badge::before { content:'✦'; color:var(--gold); font-size:.55rem; flex-shrink:0; }
+.accom-note { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; color:var(--ink-soft); line-height:1.75; margin-top:20px; font-style:italic; }
+
+/* HOTEL MODAL */
+.hotel-overlay { position:fixed; inset:0; background:rgba(18,40,64,.5); z-index:1010; opacity:0; pointer-events:none; transition:opacity .35s ease; }
+.hotel-overlay.open { opacity:1; pointer-events:all; }
+.hotel-panel { position:fixed; bottom:0; left:0; right:0; background:#fff; border-radius:0; z-index:1011; max-height:85vh; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; transform:translateY(100%); transition:transform .4s cubic-bezier(.32,.72,0,1); }
+.hotel-panel.open { transform:translateY(0); }
+.hotel-panel-inner { padding:0 0 48px; }
+.hotel-panel-handle { width:40px; height:4px; background:rgba(20,20,20,.12); border-radius:999px; margin:14px auto 0; }
+.hotel-panel-hd { padding:20px 28px 16px; border-bottom:1px solid rgba(20,20,20,.12); }
+.hotel-panel-stars { color:var(--gold); font-size:.85rem; margin-bottom:5px; }
+.hotel-panel-name { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--navy); font-weight:400; margin-bottom:3px; }
+.hotel-panel-loc { font-family:'DM Sans',sans-serif; font-size:.82rem; color:var(--ink-soft); font-weight:300; }
+.hotel-panel-close { position:absolute; top:18px; right:20px; width:34px; height:34px; border-radius:50%; border:1px solid rgba(20,20,20,.15); background:#fff; cursor:pointer; font-size:1rem; color:var(--ink-soft); display:flex; align-items:center; justify-content:center; }
+.mshare-overlay { position:fixed; inset:0; background:rgba(18,40,64,.5); z-index:500; opacity:0; pointer-events:none; transition:opacity .35s ease; }
+.mshare-overlay.open { opacity:1; pointer-events:all; }
+.mshare-panel { position:fixed; bottom:0; left:0; right:0; background:#fff; border-radius:0; z-index:501; max-height:80vh; overflow-y:auto; transform:translateY(100%); transition:transform .4s cubic-bezier(.32,.72,0,1); padding:0 0 calc(20px + env(safe-area-inset-bottom)); }
+.mshare-panel.open { transform:translateY(0); }
+.mshare-panel-handle { width:40px; height:4px; background:rgba(20,20,20,.12); border-radius:999px; margin:14px auto 0; }
+.mshare-panel-title { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--navy); font-weight:400; text-align:center; padding:14px 20px 6px; }
+.mshare-list { padding:6px 16px 0; display:flex; flex-direction:column; gap:2px; }
+.mshare-list a { display:flex; align-items:center; gap:14px; padding:13px 12px; border-radius:0; text-decoration:none; color:var(--navy); font-family:'DM Sans',sans-serif; font-size:.92rem; font-weight:500; transition:background .15s; }
+.mshare-list a:active { background:#f5f0ea; }
+.hotel-photos { display:flex; gap:10px; overflow-x:auto; padding:20px 28px 4px; scrollbar-width:none; }
+.hotel-photos::-webkit-scrollbar { display:none; }
+.hotel-photo { flex:0 0 240px; height:160px; border-radius:0; background-size:cover; background-position:center; background-color:var(--cream-2); }
+.hotel-details { padding:20px 28px 0; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.hotel-detail-chip { background:var(--cream); border:1px solid rgba(20,20,20,.12); border-radius:0; padding:10px 13px; }
+.hotel-detail-chip .hdc-lbl { font-family:'DM Sans',sans-serif; font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:3px; }
+.hotel-detail-chip .hdc-val { font-family:'DM Sans',sans-serif; font-size:.82rem; color:var(--ink); }
+.hotel-panel-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.8; color:var(--ink-soft); padding:16px 28px 0; }
+
+/* FAQ */
+.faq-sec { padding:48px 0; }
+.faq-list { display:flex; flex-direction:column; margin-top:24px; }
+.faq-item { border-bottom:1px solid rgba(20,20,20,.05); }
+.faq-item:first-child { border-top:1px solid rgba(20,20,20,.05); }
+.faq-q { width:100%; background:none; border:none; cursor:pointer; padding:20px 0; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:300; color:var(--navy); display:flex; justify-content:space-between; align-items:center; gap:14px; text-align:left; transition:color .2s; }
+.faq-q .ic { font-size:1rem; color:var(--gold); flex-shrink:0; transition:transform .28s; font-style:normal; font-family:'DM Sans',sans-serif; border:none; width:auto; height:auto; display:inline; }
+.faq-item.open .faq-q .ic { transform:rotate(180deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .32s ease; }
+.faq-a p { padding:0 0 20px; font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.85; color:var(--ink-soft); }
+
+/* BOOKING WIDGET */
+.booking-widget { background:#fff; border:1px solid rgba(20,20,20,.12); border-radius:0; overflow:visible; }
+.bw-header { background:#fff; padding:20px 22px; border-radius:0; border-bottom:1px solid rgba(20,20,20,.12); }
+.bw-lbl { font-family:'DM Sans',sans-serif; font-size:.6rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:3px; }
+.bw-price { font-family:'Playfair Display',serif; font-size:1.45rem; color:#141414; line-height:1.2; }
+.bw-price-per { font-family:'DM Sans',sans-serif; font-size:.77rem; font-weight:300; color:rgba(20,20,20,.55); margin-top:3px; }
+.bw-body { padding:20px 22px; }
+.bw-inc { display:flex; flex-direction:column; gap:9px; margin-bottom:20px; }
+.bw-inc-it { display:flex; align-items:center; gap:9px; font-family:'DM Sans',sans-serif; font-size:.8rem; color:var(--ink-soft); }
+.bw-inc-it svg { width:14px; height:14px; stroke:var(--gold); fill:none; flex-shrink:0; }
+.bw-div { height:1px; background:rgba(215,154,61,.12); margin:16px 0; }
+.bw-cta { width:100%; display:block; text-align:center; font-family:'DM Sans',sans-serif; font-weight:400; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; background:var(--gold); color:#fff; padding:15px; border:none; border-radius:0; cursor:pointer; position:relative; overflow:hidden; transition:color .35s; }
+.bw-cta::after { content:''; position:absolute; inset:0; background:var(--gold-deep); transform:scaleX(0); transform-origin:left; transition:transform .4s cubic-bezier(.77,0,.175,1); z-index:0; }
+.bw-cta:hover span { color:#fff !important; }
+.bw-cta:hover::after { transform:scaleX(1); }
+.bw-cta span { position:relative; z-index:1; }
+.bw-badges { display:flex; flex-direction:column; gap:8px; margin-top:16px; }
+.bw-badge { display:flex; align-items:center; gap:8px; font-family:'DM Sans',sans-serif; font-size:.73rem; color:var(--ink-soft); font-weight:300; }
+.bw-badge svg { width:13px; height:13px; stroke:var(--gold); fill:none; flex-shrink:0; }
+
+/* BOOKING CONFIDENCE */
+.bw-confidence { margin-top:14px; padding:14px 16px; border:1px solid rgba(215,154,61,.15); border-radius:0; background:var(--cream); }
+.bw-conf-title { font-family:'DM Sans',sans-serif; font-size:.62rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.bw-conf-item { font-family:'DM Sans',sans-serif; font-size:.78rem; font-weight:300; color:var(--ink-soft); margin-bottom:5px; display:flex; align-items:flex-start; gap:7px; line-height:1.55; }
+.bw-conf-item::before { content:'✓'; color:var(--gold); flex-shrink:0; }
+.bw-share { display:flex; align-items:center; justify-content:center; gap:0; padding:14px 0 2px; border-top:1px solid rgba(215,154,61,.1); margin-top:14px; }
+.bw-share a, .bw-share-btn { font-family:'DM Sans',sans-serif; font-size:.78rem; color:var(--ink-soft); text-decoration:none; background:transparent; border:none; cursor:pointer; padding:0 14px; transition:color .2s; white-space:nowrap; }
+.bw-share a:hover, .bw-share-btn:hover { color:var(--gold); }
+.bw-share-sep { width:1px; height:12px; background:rgba(20,20,20,.2); flex-shrink:0; }
+
+/* TRUST */
+.trust-sec { background:rgba(20,20,20,.0175); padding:70px 0; }
+.trust-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
+.trust-sec .sec-label { color:var(--gold); }
+.trust-sec .sec-title { color:var(--ink); }
+.trust-sec .sec-title em { color:var(--gold); }
+.trust-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px; }
+.trust-card { background:#fff; border-radius:0; padding:28px 22px 26px; display:flex; flex-direction:column; align-items:flex-start; gap:0; transition:transform .25s ease; }
+.trust-card:hover { transform:translateY(-3px); }
+.trust-icon { width:56px; height:56px; margin:0 0 14px; display:grid; place-items:center; font-size:1.6rem; flex-shrink:0; line-height:1; }
+.trust-icon img { width:100%; height:100%; object-fit:contain; filter:grayscale(100%) brightness(1.4) contrast(.85); opacity:.82; }
+.trust-text { display:flex; flex-direction:column; gap:6px; }
+.trust-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.15rem; color:var(--ink); margin:0; }
+.trust-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); margin:0; }
+
+/* PRIVATE CTA */
+.private-cta { background:var(--cream-2); padding:70px 0; }
+.private-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center; }
+.private-text .sec-title { margin-bottom:14px; }
+.private-text p { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.85; color:var(--ink-soft); margin-bottom:26px; }
+.private-img { height:320px; border-radius:0; background-size:cover; background-position:center; background-color:var(--cream-2); }
+
+
+/* HERO CTA */
+
+/* MID-PAGE CTA BANNER */
+.midpage-cta { background:var(--navy); border-radius:0; padding:28px 32px; display:flex; align-items:center; gap:24px; margin:48px 0; }
+@media(max-width:560px) { .midpage-cta { flex-direction:column; align-items:flex-start; } }
+.midpage-cta-body { flex:1; }
+.midpage-cta-title { font-family:'Playfair Display',serif; font-size:1.2rem; color:#fff; font-weight:400; margin-bottom:5px; }
+.midpage-cta-title em { color:var(--gold-soft); font-style:italic; }
+.midpage-cta-sub { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.82rem; color:rgba(255,255,255,.6); line-height:1.6; }
+.midpage-cta-btn { background:var(--gold); color:#fff; font-family:'DM Sans',sans-serif; font-size:.82rem; font-weight:500; border:none; border-radius:0; padding:13px 24px; cursor:pointer; white-space:nowrap; transition:background .2s; flex-shrink:0; }
+.midpage-cta-btn:hover { background:var(--gold-deep); }
+
+/* FOOTER */
+footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top:1px solid rgba(0,0,0,.12); }
+.foot-wrap { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
+.foot-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:64px; margin-bottom:64px; }
+.foot-logo { font-family:'Playfair Display',serif; font-size:1.7rem; letter-spacing:8px; text-transform:uppercase; font-weight:400; color:#141414; margin-bottom:22px; display:block; height:34px; width:auto; }
+.foot-p { font-weight:300; font-size:.94rem; color:rgba(20,20,20,.6); line-height:1.85; max-width:290px; }
+.foot h4 { font-family:'DM Sans',sans-serif; font-size:.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:26px; font-weight:500; }
+.foot ul { list-style:none; }
+.foot ul li { margin-bottom:13px; }
+.foot ul li a { font-weight:300; font-size:.92rem; color:rgba(20,20,20,.6); transition:color .2s; }
+.foot ul li a:hover { color:var(--gold); }
+.foot-socials { display:flex; gap:12px; margin-top:30px; }
+.foot-socials a { width:36px; height:36px; border:1px solid rgba(20,20,20,.12); display:grid; place-items:center; transition:.25s; }
+.foot-socials a:hover { border-color:var(--gold); }
+.foot-socials svg { width:15px; height:15px; fill:rgba(20,20,20,.5); transition:fill .25s; }
+.foot-socials a:hover svg { fill:var(--gold); }
+.foot-trust-row { border-top:1px solid rgba(20,20,20,.12); padding:28px 0 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+.foot-trust-badges { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.foot-trust-badge { display:flex; align-items:center; gap:7px; font-family:'DM Sans',sans-serif; font-size:.75rem; font-weight:300; color:rgba(20,20,20,.5); letter-spacing:.02em; }
+.foot-trust-badge svg { flex-shrink:0; opacity:.45; }
+.foot-trust-privacy { font-family:'DM Sans',sans-serif; font-size:.72rem; font-weight:300; color:rgba(20,20,20,.4); letter-spacing:.02em; }
+.foot-bottom { border-top:1px solid rgba(20,20,20,.12); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'DM Sans',sans-serif; font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:rgba(20,20,20,.4); }
+@media(max-width:760px) {
+  .foot-grid { grid-template-columns:1fr; gap:44px; }
+  /* Mobile footer only shows the logo/tagline/socials column — link
+     columns, trust strip, and bottom bar are hidden to match the homepage. */
+  .foot-grid > div:not(:first-child),
+  .foot-trust-row,
+  .foot-bottom {
+    display: none !important;
+  }
+  .foot-grid { margin-bottom: 0; }
+  /* Extra bottom padding so the social icons row clears the fixed
+     #float-cta bar (two stacked rows + safe-area inset on mobile). */
+  footer.foot { padding-bottom: 130px; }
+}
+
+/* RESPONSIVE */
+/* Float CTA — desktop hidden (sidebar handles it), mobile only */
+@media(min-width:861px) {
+  #float-cta { display:none !important; }
+}
+
+@media(max-width:1024px) {
+  .nav-inner,.page-layout,.trust-inner,.private-inner,.foot-wrap { padding-left:36px; padding-right:36px; }
+  .page-nav-inner { padding:0 36px; justify-content:space-between; }
+}
+@media(max-width:860px) {
+  .page-layout { grid-template-columns:1fr; gap:0; max-width:640px; }
+  .sidebar-col { display:none; }
+  .accom-card { flex:0 0 240px; }
+  .trust-cards { grid-template-columns:1fr 1fr; }
+  .private-inner { grid-template-columns:1fr; gap:32px; }
+  .private-img { height:220px; }
+}
+@media(max-width:640px) {
+  /* === GLOBAL MOBILE CONTAINMENT === */
+  .nav-inner,.page-layout,.trust-inner,.private-inner,.foot-wrap { padding-left:16px; padding-right:16px; }
+  .page-layout { padding-bottom:90px; max-width:100%; width:100%; }
+  img, video, iframe { max-width:100%; height:auto; }
+
+  /* === TRUST / OUR PROMISE === */
+  .trust-sec { padding:48px 0; }
+  .trust-cards { gap:10px; margin-top:22px; }
+  .trust-card { padding:16px; gap:10px; }
+  .trust-text { gap:0; }
+  .trust-title { font-size:1rem; }
+  .trust-desc { font-size:.925rem; line-height:1.5; }
+
+  /* === NAV — mobile side panel === */
+  /* Hide the desktop inline-expand links entirely on mobile; a dedicated,
+     DOM-level-sibling-of-<body> panel below is used instead so it can never
+     get trapped inside an ancestor's box (fixed-position containing-block
+     gotchas with filter/backdrop-filter/transform on parents). */
+  .nav-links { display:none !important; }
+  .nav-overlay {
+    display:block;
+    position:fixed; inset:0; background:rgba(18,40,64,.55);
+    opacity:0; pointer-events:none; transition:opacity .35s ease;
+    z-index:1000;
+  }
+  .nav-overlay.open { opacity:1; pointer-events:auto; }
+  .mobile-nav-panel {
+    position:fixed; top:0; right:0; bottom:0; left:auto;
+    width:min(78vw,300px); height:100%;
+    background:#FFFFFF;
+    display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+    padding:90px 32px 32px;
+    transform:translateX(110%);
+    transition:transform .4s cubic-bezier(.77,0,.175,1);
+    z-index:1001;
+  }
+  .mobile-nav-panel.open { transform:translateX(0); }
+  .mobile-nav-panel a {
+    display:block; width:100%;
+    color:#141414; font-family:'DM Sans',sans-serif;
+    font-size:1.05rem;
+    padding:14px 0; border-bottom:1px solid rgba(20,20,20,.1);
+  }
+  .mobile-nav-panel a:hover { color:var(--gold-deep); }
+  .mobile-nav-panel a.mobile-nav-cta {
+    margin-top: 24px; border: 1px solid rgba(20,20,20,.4); border-bottom: 1px solid rgba(20,20,20,.4);
+    border-radius:0; text-align: center;
+    color: var(--ink); font-weight: 400; letter-spacing: .14em; text-transform: uppercase; font-size: .8rem;
+    transition: background .25s, color .25s;
+  }
+  .mobile-nav-panel a.mobile-nav-cta:hover { background: var(--ink); color: #fff; }
+  .nav-cta { display:none !important; }
+  .hamburger { display:block !important; flex-shrink:0; min-width:40px; min-height:40px; }
+  .nav-back, .nav-share-btn { display:flex !important; flex-shrink:0; }
+  .nav-right { flex-wrap:nowrap; }
+  .nav-share-btn { margin-right:2px; }
+  .nav-inner { display:flex !important; align-items:center; justify-content:flex-start !important; }
+  .nav-left { order:1; }
+  .nav-logo-center { order:2; text-align:left !important; font-size:1.2rem !important; letter-spacing:5px !important; margin-left:4px; }
+  .nav-right { order:3; margin-left:auto !important; }
+
+  /* === HERO === */
+  .hero-gallery { aspect-ratio:5/4; }
+
+  /* === PAGE NAV === */
+  .page-nav { top:58px; }
+  .page-nav-inner { padding:0 16px; gap:6px; }
+  .page-nav-inner { justify-content:flex-start; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .page-nav-tab { flex:0 0 auto; padding:22px 16px 13px; font-size:.88rem; letter-spacing:.2px; }
+  .page-nav-inner .page-nav-tab:first-child { padding-left:0; }
+  .page-nav::after { content:''; position:absolute; top:0; right:0; bottom:0; width:40px; background:linear-gradient(to right,transparent,#FFFFFF); pointer-events:none; z-index:1; }
+
+  /* === TRIP HEADER === */
+  .trip-title { font-size:clamp(1.5rem,6.5vw,2rem); word-break:break-word; }
+  .trip-tagline { word-break:break-word; padding-bottom:0; margin-bottom:0; font-size:.925rem; }
+
+  /* === SECTIONS === */
+  .sec-title { word-break:break-word; font-size:1.675rem; }
+  .lux-reveal { opacity:1 !important; transform:none !important; }
+  .dest-photo { height:320px; }
+
+  /* === HIGHLIGHTS === */
+  .highlight-list { grid-template-columns:1fr; }
+
+  /* === ITINERARY === */
+  .tl-list { padding-left:26px; overflow:hidden; }
+  .tl-hd { padding-left:0; margin-left:0; }
+  .tl-item:not(:last-child)::after { left:-13.5px; width:1px; }
+  .tl-dot { left:-18px; width:10px; height:10px; box-shadow:0 0 0 1.5px var(--gold); border:2px solid #fff; }
+  .tl-img { height:260px; }
+
+  /* === INCLUSIONS === */
+  .inc-pill-wrap { justify-content:center; }
+  .inc-pill { width:100%; justify-content:center; }
+  .inc-pill-btn { flex:1; text-align:center; }
+  .inc-panel.active { grid-template-columns:1fr; }
+  .inc-acc-hd { margin:0; padding:14px 0; word-break:break-word; }
+
+  /* === ACCOMMODATION === */
+  .accom-list { width:100%; flex-direction:column; overflow:visible; }
+  .accom-card { width:100%; flex:unset; max-height:unset !important; height:auto !important; flex-direction:row; }
+  .accom-img { width:38%; min-height:130px; height:auto !important; flex-shrink:0; }
+  .accom-body { height:auto !important; overflow:visible; padding:12px; }
+  .accom-stars-row { flex-direction:column; align-items:flex-start; gap:2px; }
+
+  /* === ADD-ONS === */
+  .addon-list { grid-template-columns:1fr 1fr; }
+  .addon-icon-wrap { flex-shrink:0; }
+  .addon-title { font-size:.82rem; }
+
+  /* === FAQ === */
+  .faq-q, .faq-a { word-break:break-word; overflow-wrap:break-word; }
+
+  /* === TRUST / OUR PROMISE === */
+  .trust-cards { grid-template-columns:1fr 1fr; }
+
+  /* === HOTEL MODAL === */
+  .hotel-panel-hd { padding:16px 18px 12px; }
+  .hotel-panel-desc { padding:12px 18px 0; }
+  .hotel-photos { padding:16px 18px 4px; }
+  .hotel-details { grid-template-columns:1fr 1fr; padding:14px 18px 0; }
+
+  /* === FOOTER === */
+  .foot-grid { grid-template-columns:1fr; gap:36px; }
+  .foot-bottom { flex-direction:column; gap:4px; }
+
+  /* === FLOAT CTA mobile === */
+  #float-cta {
+    left:0 !important; right:0 !important; bottom:0 !important;
+    transform:none !important; border-radius:0 !important;
+    border:none !important; border-top:1px solid rgba(20,20,20,.12) !important;
+    padding:10px 16px calc(8px + env(safe-area-inset-bottom)) !important; gap:10px !important; width:100% !important;
+    background:rgba(255,255,255,.97) !important; backdrop-filter:blur(12px);
+    box-shadow:0 -2px 12px rgba(0,0,0,.08), 0 20px 0 0 rgba(255,255,255,.97) !important;
+  }
+  #float-cta > span { display:none; }
+  #float-cta .cta-btn { flex:1 !important; text-align:center !important; padding:11px 0 !important; font-size:.85rem !important; border-radius:0 !important; }
+  #float-cta button.cta-btn { font-weight:400 !important; letter-spacing:.12em !important; text-transform:uppercase !important; }
+  #float-cta .cta-secondary-row { margin-top:0 !important; padding-top:8px !important; }
+  #enquire-menu { left:16px !important; right:16px !important; transform:none !important; min-width:unset !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo-lux nav-logo-center"><svg class="nav-logo-img" width="348" height="171" viewBox="11 96 348 171" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tará Travel Co."><g transform="matrix(1, 0, 0, 1, 11, 96)"><g fill="currentColor" fill-opacity="1"><g transform="translate(0.919477, 137.54365)"><path d="M 78.890625 -100.703125 L 78.890625 -97.96875 L 47.78125 -97.96875 L 47.78125 0.15625 L 36.390625 0.15625 L 36.390625 -97.96875 L 5.296875 -97.96875 L 5.296875 -100.703125 Z M 78.890625 -100.703125 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(78.196356, 137.54365)"><path d="M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(173.269628, 137.54365)"><path d="M 78.25 0.15625 L 63.8125 0.15625 L 26.609375 -46.65625 L 19.234375 -46.65625 L 19.234375 0.15625 L 7.703125 0.15625 L 7.703125 -100.703125 C 7.703125 -100.703125 8.898438 -100.703125 11.296875 -100.703125 C 13.703125 -100.703125 16.613281 -100.703125 20.03125 -100.703125 C 23.457031 -100.703125 26.851562 -100.703125 30.21875 -100.703125 C 33.59375 -100.703125 36.238281 -100.703125 38.15625 -100.703125 C 40.1875 -100.703125 42.992188 -100.40625 46.578125 -99.8125 C 50.160156 -99.226562 53.769531 -98.078125 57.40625 -96.359375 C 61.039062 -94.648438 64.113281 -92.113281 66.625 -88.75 C 69.132812 -85.382812 70.390625 -80.972656 70.390625 -75.515625 C 70.390625 -70.285156 69.425781 -65.957031 67.5 -62.53125 C 65.582031 -59.113281 63.070312 -56.363281 59.96875 -54.28125 C 56.863281 -52.195312 53.601562 -50.617188 50.1875 -49.546875 C 46.769531 -48.472656 43.5625 -47.722656 40.5625 -47.296875 Z M 19.234375 -97.96875 L 19.234375 -49.390625 L 27.90625 -49.390625 C 37.3125 -49.390625 44.738281 -51.207031 50.1875 -54.84375 C 55.632812 -58.476562 58.359375 -64.726562 58.359375 -73.59375 C 58.359375 -82.46875 56.035156 -88.75 51.390625 -92.4375 C 46.742188 -96.125 40.300781 -97.96875 32.0625 -97.96875 Z M 19.234375 -97.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(250.065536, 137.54365)"><path d="M 53.078125 -112.234375 L 73.4375 -137.25 L 62.859375 -137.25 L 50.828125 -112.234375 Z M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g></g></svg></a>
+    <div class="nav-left">
+      <button class="nav-back" id="navBack" aria-label="Back" onclick="window.location.href='/destinations'"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <nav class="nav-links" id="navLinks">
+        <a href="/" data-text="How it works">How it works</a>
+        <a href="/travelguides" data-text="Travel Guide">Travel Guide</a>
+        <a href="/destinations" data-text="Destinations">Destinations</a>
+        <a href="/aboutus" data-text="About Us">About Us</a>
+        <a href="/aboutus" data-text="Contact">Contact</a>
+      </nav>
+      <a href="#" onclick="openBookingModal(event)" class="nav-cta"><span>Plan my trip</span></a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-share-btn" id="navShareBtn" aria-label="Share" onclick="mobileShare(event)"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="navOverlay" onclick="closeNavMenu()"></div>
+<nav class="mobile-nav-panel" id="mobileNavPanel">
+  <a href="/">How it works</a>
+  <a href="/travelguides">Travel Guide</a>
+  <a href="/destinations">Destinations</a>
+  <a href="/aboutus">About Us</a>
+  <a href="/aboutus">Contact</a>
+  <a href="#" onclick="openBookingModal(event)" class="mobile-nav-cta">Plan my trip</a>
+</nav>
+
+<!-- HERO GALLERY -->
+<div class="hero-gallery" id="heroGallery">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide"><div class="hero-slide-bg zoomed" id="slide0" style="background-image:url('Media/Ready-made Trips/Webp/Hoi An Ancient Town Walk.webp')"></div></div>
+    <div class="hero-slide"><div class="hero-slide-bg" id="slide1" style="background-image:url('Media/Ready-made Trips/Webp/Hue Imperial City (4).webp')"></div></div>
+    <div class="hero-slide"><div class="hero-slide-bg" id="slide2" style="background-image:url('Media/Ready-made Trips/Webp/Ba Na Hills Church.webp')"></div></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+  </div>
+</div>
+
+<!-- PAGE LAYOUT -->
+<div class="page-layout">
+
+  <!-- CONTENT COLUMN -->
+  <div class="content-col">
+
+    <!-- TRIP HEADER -->
+    <div class="trip-header">
+      <div class="trip-label"><a href="/destinations" style="color:var(--gold);text-decoration:none;">Destinations</a><span class="pipe">&gt;</span><span>Central</span></div>
+      <h1 class="trip-title">Da Nang, Hoi An &amp; <em>Hue Imperial City</em></h1>
+      <div class="trip-meta">
+        <div class="trip-meta-item">
+          <svg stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round"/></svg>
+          5 days / 4 nights
+        </div>
+      </div>
+      <p class="trip-tagline">Two UNESCO World Heritage Sites, one legendary train journey through the clouds, and the most rewarding coastal city in Vietnam — all in five days with your own private guide.</p>
+    </div>
+
+    <!-- PAGE NAV -->
+    <div class="page-nav" id="pageNav">
+      <div class="page-nav-inner">
+        <div class="page-nav-tab active" data-target="highlights">Highlights</div>
+        <div class="page-nav-tab" data-target="itinerary">Itinerary</div>
+        <div class="page-nav-tab" data-target="accommodation">Stay</div>
+        <div class="page-nav-tab" data-target="included">Inclusions</div>
+        <div class="page-nav-tab" data-target="addons">Add-ons</div>
+        <div class="page-nav-tab" data-target="faq">FAQ</div>
+        <div class="page-nav-tab" data-target="perks">Perks</div>
+        <div class="page-nav-tab" data-target="tailor-made">Tailor-made</div>
+      </div>
+    </div>
+
+    <div class="dest-photo lux-reveal" style="background-image:url('Media/Ready-made Trips/Webp/Hoi An Japanese Bridge.webp')"></div>
+
+    <!-- HIGHLIGHTS -->
+    <section class="highlights-sec lux-reveal" id="highlights">
+      <div class="sec-label">Trip Highlights</div>
+      <h2 class="sec-title">Why you'll <em>love this trip</em></h2>
+      <div class="highlight-list">
+        <div class="highlight-item">
+          <div class="h-top">
+            <img class="h-icon" src="../Media/Icons/Unesco Heritage.png" alt="">
+          </div>
+          <p class="h-line">Two UNESCO World Heritage Sites — Hoi An Ancient Town &amp; Hue Imperial Citadel</p>
+        </div>
+        <div class="highlight-item">
+          <div class="h-top">
+            <img class="h-icon" src="../Media/Icons/Hai Van Pass Train.png" alt="">
+          </div>
+          <p class="h-line">The Hai Van Pass train — one of the world's greatest scenic rail journeys</p>
+        </div>
+        <div class="highlight-item">
+          <div class="h-top">
+            <img class="h-icon" src="../Media/Icons/Golden Bridge.png" alt="">
+          </div>
+          <p class="h-line">Ba Na Hills — Golden Bridge, French Village, and Fantasy Park at 1,400m</p>
+        </div>
+        <div class="highlight-item">
+          <div class="h-top">
+            <img class="h-icon" src="../Media/Icons/Photography Session.png" alt="">
+          </div>
+          <p class="h-line">Khai Dinh Royal Tomb &amp; Thien Mu Pagoda on the Perfume River</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="itinerary-sec lux-reveal" id="itinerary">
+      <div class="sec-label">Day by Day</div>
+      <h2 class="sec-title">Your <em>journey</em></h2>
+      <div class="tl-list">
+
+        <!-- DAY 1 -->
+        <div class="tl-item" id="tl1">
+          <div class="tl-dot" onclick="toggleDay('tl1')"></div>
+          <div class="tl-hd" onclick="toggleDay('tl1')">
+            <div>
+              <div class="tl-day-label">Day 1</div>
+              <div class="tl-day-title">Arrival in Da Nang &amp; City Tour</div>
+              <div class="tl-day-meta">
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Airport transfer.svg" alt="">Airport pickup</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Flexible Pickup.svg" alt="">Afternoon tour</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Stay.svg" alt="">Da Nang</div>
+              </div>
+            </div>
+            <div class="tl-toggle">▾</div>
+          </div>
+          <div class="tl-body-wrap">
+            <div class="tl-body">
+              <div class="tl-inner">
+                <div class="tl-img" style="background-image:url('Media/Ready-made Trips/Webp/Da Nang Arrival.webp')"></div>
+                <p class="tl-desc">Arrive at Da Nang International Airport and go straight into the city with your private guide. Visit Linh Ung Pagoda on Son Tra Marina, the towering Lady Buddha overlooking the sea. Climb the Marble Mountains with their ancient caves and hilltop views. Walk past the Pink Church and browse Han Market before ending at the Dragon Bridge for the evening light show.</p>
+                <div class="tl-stops">
+                  <span class="tl-stop">Linh Ung Pagoda</span>
+                  <span class="tl-stop">Son Tra Marina</span>
+                  <span class="tl-stop">Marble Mountains</span>
+                  <span class="tl-stop">Dragon Bridge</span>
+                  <span class="tl-stop">Pink Church</span>
+                  <span class="tl-stop">Han Market</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DAY 2 -->
+        <div class="tl-item" id="tl2">
+          <div class="tl-dot" onclick="toggleDay('tl2')"></div>
+          <div class="tl-hd" onclick="toggleDay('tl2')">
+            <div>
+              <div class="tl-day-label">Day 2</div>
+              <div class="tl-day-title">Hai Van Pass Train &amp; Hue Imperial City</div>
+              <div class="tl-day-meta">
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Flexible Pickup.svg" alt="">Full day</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Meals.svg" alt="">Breakfast, local lunch</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Stay.svg" alt="">Da Nang</div>
+              </div>
+            </div>
+            <div class="tl-toggle">▾</div>
+          </div>
+          <div class="tl-body-wrap">
+            <div class="tl-body">
+              <div class="tl-inner">
+                <div class="tl-img" style="background-image:url('Media/Ready-made Trips/Webp/Hai Van Pass Train.webp')"></div>
+                <p class="tl-desc">Board a scenic train from Da Nang station and wind through the legendary Hai Van Pass — clifftops above the sea with views that stop mid-sentence. Arrive at Lang Co Station and continue to Hue, Vietnam's former imperial capital. Visit the royal Khai Dinh Tomb, the tranquil Incense Village, Thien Mu Pagoda on the Perfume River, and the sprawling Citadel. Browse Dong Ba Market before returning to Da Nang.</p>
+                <div class="tl-stops">
+                  <span class="tl-stop">Da Nang Train Station</span>
+                  <span class="tl-stop">Hai Van Pass</span>
+                  <span class="tl-stop">Lang Co Train Station</span>
+                  <span class="tl-stop">Khai Dinh Tomb</span>
+                  <span class="tl-stop">Incense Village</span>
+                  <span class="tl-stop">Thien Mu Pagoda</span>
+                  <span class="tl-stop">The Citadel</span>
+                  <span class="tl-stop">Dong Ba Market</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DAY 3 -->
+        <div class="tl-item" id="tl3">
+          <div class="tl-dot" onclick="toggleDay('tl3')"></div>
+          <div class="tl-hd" onclick="toggleDay('tl3')">
+            <div>
+              <div class="tl-day-label">Day 3</div>
+              <div class="tl-day-title">Hoi An Ancient Town</div>
+              <div class="tl-day-meta">
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Flexible Pickup.svg" alt="">Full day</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Meals.svg" alt="">Breakfast</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Stay.svg" alt="">Da Nang</div>
+              </div>
+            </div>
+            <div class="tl-toggle">▾</div>
+          </div>
+          <div class="tl-body-wrap">
+            <div class="tl-body">
+              <div class="tl-inner">
+                <div class="tl-img" style="background-image:url('Media/Ready-made Trips/Webp/Hoi An Ancient Town Walk.webp')"></div>
+                <p class="tl-desc">Drive south to Hoi An for a day that slows right down. Start with a Coconut Village basket boat ride through the narrow water-palm canals. Then spend the afternoon in the UNESCO Ancient Town — the Japanese Covered Bridge, silk shops, and lantern vendors of Nguyen Thai Hoc Street. As the sun sets, board a lantern boat on the Thu Bon River.</p>
+                <div class="tl-stops">
+                  <span class="tl-stop">Coconut Village Basket Boat</span>
+                  <span class="tl-stop">Hoi An Ancient Town</span>
+                  <span class="tl-stop">Japanese Bridge</span>
+                  <span class="tl-stop">Thu Bon River</span>
+                  <span class="tl-stop">Lantern Boat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DAY 4 -->
+        <div class="tl-item" id="tl4">
+          <div class="tl-dot" onclick="toggleDay('tl4')"></div>
+          <div class="tl-hd" onclick="toggleDay('tl4')">
+            <div>
+              <div class="tl-day-label">Day 4</div>
+              <div class="tl-day-title">Ba Na Hills</div>
+              <div class="tl-day-meta">
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Flexible Pickup.svg" alt="">Full day</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Meals.svg" alt="">Breakfast, buffet lunch</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Stay.svg" alt="">Da Nang</div>
+              </div>
+            </div>
+            <div class="tl-toggle">▾</div>
+          </div>
+          <div class="tl-body-wrap">
+            <div class="tl-body">
+              <div class="tl-inner">
+                <div class="tl-img" style="background-image:url('Media/Ready-made Trips/Webp/Ba Na Hills Golden Bridge.webp')"></div>
+                <p class="tl-desc">Ride the cable car up to Ba Na Hills Resort — 1,400m above sea level — and spend the day in the clouds. Walk the iconic Golden Bridge, explore the French Village and Jardin d'amour, and enjoy Fantasy Park (included). A buffet lunch is served at the resort.</p>
+                <div class="tl-stops">
+                  <span class="tl-stop">Ba Na Hills Cable Car</span>
+                  <span class="tl-stop">Golden Bridge</span>
+                  <span class="tl-stop">Jardin d'amour</span>
+                  <span class="tl-stop">French Village</span>
+                  <span class="tl-stop">Fantasy Park</span>
+                  <span class="tl-stop">Pop Mart</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- DAY 5 -->
+        <div class="tl-item" id="tl5">
+          <div class="tl-dot" onclick="toggleDay('tl5')"></div>
+          <div class="tl-hd" onclick="toggleDay('tl5')">
+            <div>
+              <div class="tl-day-label">Day 5</div>
+              <div class="tl-day-title">Departure Day</div>
+              <div class="tl-day-meta">
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Meals.svg" alt="">Breakfast</div>
+                <div class="tl-meta-it"><img src="https://taratravelco-website.vercel.app/Media/Booking%20Page/Itinerary/Airport transfer.svg" alt="">Airport drop-off</div>
+              </div>
+            </div>
+            <div class="tl-toggle">▾</div>
+          </div>
+          <div class="tl-body-wrap">
+            <div class="tl-body">
+              <div class="tl-inner">
+                <div class="tl-img" style="background-image:url('Media/Ready-made Trips/Webp/Da Nang Departure.webp')"></div>
+                <p class="tl-desc">A leisurely final morning in Da Nang. Your private driver will take you to Da Nang International Airport for your departure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- YOU MIGHT LIKE THIS -->
+    <section class="similar-sec lux-reveal">
+      <div class="sec-label">You might like this</div>
+      <h2 class="sec-title">Alternative <em>Trips</em></h2>
+                  <div class="similar-list">
+        <a class="similar-card" href="/4d3n-da-nang-golf">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/BRG Nicklaus Course 1.webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">4 Days 3 Nights</div>
+            <div class="similar-title">Da Nang Golf &amp; Ba Na Hills</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/5d4n-da-nang-hoi-an">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Ba Na Hills (2).webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">5 Days 4 Nights</div>
+            <div class="similar-title">Da Nang &amp; Hoi An Ancient Town</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/6d5n-da-nang-hoi-an-hue">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Hai Van Pass Train.webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">6 Days 5 Nights</div>
+            <div class="similar-title">Da Nang, Hoi An, Hue &amp; Ba Na Hills</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/5d4n-sapa-hanoi">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Fansipan Summit.webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">5 Days 4 Nights</div>
+            <div class="similar-title">Sapa Rice Terraces &amp; Hanoi</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/6d5n-sapa-hanoi-ninh-binh">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Hang Mua Summit.webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">6 Days 5 Nights</div>
+            <div class="similar-title">Sapa, Hanoi &amp; Ninh Binh</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/6d5n-sapa-hanoi-ha-long-bay">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Ha Long Bay (2).webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">6 Days 5 Nights</div>
+            <div class="similar-title">Sapa, Hanoi &amp; Ha Long Bay</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/4d3n-ho-chi-minh">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Saigon Post Office.webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">4 Days 3 Nights</div>
+            <div class="similar-title">Ho Chi Minh City (Saigon)</div>
+          </div>
+        </a>
+        <a class="similar-card" href="/6d5n-ho-chi-minh-phu-quoc">
+          <div class="similar-img" style="background-image:url('Media/Ready-made Trips/Webp/Independence Palace.webp')"></div>
+          <div class="similar-body">
+            <div class="similar-eyebrow">6 Days 5 Nights</div>
+            <div class="similar-title">Ho Chi Minh City, Mekong Delta &amp; Phu Quoc</div>
+          </div>
+        </a>
+      </div>
+      <div class="similar-nav" id="similarNav"></div>
+    </section>
+
+    <section class="accom-sec lux-reveal" id="accommodation">
+      <div class="sec-label">Where you'll stay</div>
+      <h2 class="sec-title">Our <em>handpicked hotels</em></h2>
+      <div class="accom-list">
+
+        <div class="accom-card">
+          <div class="accom-img" style="background-image:url('https://taratravelco-website.vercel.app/Media/Hotels/Central/Golden%20Lotus%20Luxury%20Hotel%20(Da%20Nang)/double-room.webp')"></div>
+          <div class="accom-body">
+            <div class="accom-stars-row"><div class="accom-stars">★★★★☆</div><div class="accom-badge">Best for groups &amp; friends</div></div>
+            <div class="accom-name">Golden Lotus Luxury Hotel</div>
+            <div class="accom-location"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>My An Beach, Da Nang</div>
+            <div class="accom-highlights">2-min walk to beach<span class="sep">·</span>Rooftop pool<span class="sep">·</span>Spa &amp; afternoon tea</div>
+            <button class="accom-btn" onclick="openHotelPanel('golden')">About this stay</button>
+          </div>
+        </div>
+
+        <div class="accom-card">
+          <div class="accom-img" style="background-image:url('https://taratravelco-website.vercel.app/Media/Hotels/Central/TMS%20Hotel%20Da%20Nang/double-room-oceanfront.webp')"></div>
+          <div class="accom-body">
+            <div class="accom-stars-row"><div class="accom-stars">★★★★★</div><div class="accom-badge">Best for families &amp; couples</div></div>
+            <div class="accom-name">TMS Hotel Da Nang Beach</div>
+            <div class="accom-location"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>My Khe Beach, Da Nang</div>
+            <div class="accom-highlights">Beachfront<span class="sep">·</span>Rooftop pool<span class="sep">·</span>Kids' indoor playground<span class="sep">·</span>Spa &amp; sauna</div>
+            <button class="accom-btn" onclick="openHotelPanel('tms')">About this stay</button>
+          </div>
+        </div>
+
+      </div>
+      <p class="accom-note">Hotels are subject to availability. If our top choice is fully booked, we'll secure a similar alternative and let you know.</p>
+    </section>
+
+    <!-- GETTING THERE -->
+    <section class="included-sec lux-reveal" id="included">
+      <div class="sec-label">What's Covered</div>
+      <h2 class="sec-title">Included &amp; <em>not included</em></h2>
+      <div class="inc-pill-wrap">
+        <div class="inc-pill">
+          <button class="inc-pill-btn inc-yes active" onclick="switchIncTab(this,'incPanel1')"><span class="pill-check">✓</span>Included</button>
+          <button class="inc-pill-btn" onclick="switchIncTab(this,'incPanel2')"><span class="pill-check">✗</span>Not included</button>
+        </div>
+      </div>
+      <div class="inc-panel active" id="incPanel1">
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Transfers &amp; Transport <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-y">✓</span>Private airport pickup and drop-off</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Private air-conditioned car and driver for all day trips</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Car fuel, toll, and parking fees</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Hai Van Pass train tickets (Da Nang → Lang Co)</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Guides <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-y">✓</span>Licensed English-speaking local guide on all scheduled trips</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Driver and tour guide fees</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Activities <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-y">✓</span>Entrance tickets to all listed attractions</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Coconut Village: basket boat ride</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Hoi An Ancient Town: lantern boat ride</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Local lunch in Hue (Day 4)</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Accommodation <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-y">✓</span>Hotel stay with daily breakfast included</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Meals <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-y">✓</span>Daily hotel breakfast</div>
+            <div class="inc-it"><span class="ic-y">✓</span>Local lunch in Hue (Day 4)</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Other <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-y">✓</span>Taxes and all applicable fees</div>
+            <div class="inc-it"><span class="ic-y">✓</span>One bottled water per person on each day trip</div>
+          </div></div>
+        </div>
+      </div>
+      <div class="inc-panel" id="incPanel2">
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Flights <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-n">✕</span>International flights to/from Da Nang</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Meals <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-n">✕</span>Lunches (except Day 4 in Hue)</div>
+            <div class="inc-it"><span class="ic-n">✕</span>All dinners (budget approx. $8–18/day)</div>
+            <div class="inc-it"><span class="ic-n">✕</span>Drinks and snacks</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Travel essentials <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-n">✕</span>Travel insurance (required — see FAQ)</div>
+            <div class="inc-it"><span class="ic-n">✕</span>Vietnam visa fees (check requirements for your nationality)</div>
+          </div></div>
+        </div>
+        <div class="inc-acc-item">
+          <div class="inc-acc-hd" onclick="toggleInc(this.parentElement)">Personal expenses <span class="inc-acc-arr">▾</span></div>
+          <div class="inc-acc-body"><div class="inc-items">
+            <div class="inc-it"><span class="ic-n">✕</span>Optional activities beyond what's listed</div>
+            <div class="inc-it"><span class="ic-n">✕</span>Personal shopping and souvenirs</div>
+            <div class="inc-it"><span class="ic-n">✕</span>Anything not explicitly mentioned in the inclusions</div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="addons-sec lux-reveal" id="addons">
+      <div class="sec-label">Optional Extras</div>
+      <h2 class="sec-title">Make it <em>more yours</em></h2>
+      <div class="addon-list">
+        <div class="addon-item">
+          <div class="addon-icon-wrap"><img src="../Media/Icons/Golf.png" alt=""></div>
+          <div class="addon-title">A Round of Golf</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon-wrap"><img src="../Media/Icons/Cooking Class.png" alt=""></div>
+          <div class="addon-title">Cooking Class</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon-wrap"><img src="../Media/Icons/Romantic Dinner.png" alt=""></div>
+          <div class="addon-title">Romantic Dinner</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon-wrap"><img src="../Media/Icons/Photography Session.png" alt=""></div>
+          <div class="addon-title">Photography Session</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon-wrap"><img src="../Media/Icons/Team Building.png" alt=""></div>
+          <div class="addon-title">Beach Team Building</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-icon-wrap"><img src="../Media/Icons/Gala Night.png" alt=""></div>
+          <div class="addon-title">Corporate Gala Night</div>
+        </div>
+      </div>
+      <p class="addons-note">Have something else in mind? Let us know, and we'll seamlessly weave it into your itinerary.</p>
+    </section>
+
+    <section class="faq-sec lux-reveal" id="faq">
+      <div class="sec-label">Questions</div>
+      <h2 class="sec-title">Frequently <em>asked</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">Can I customise the itinerary? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>That's exactly what we're here for. Every Tará trip is built around you — your pace, your interests, your group. The itinerary above is a starting point. We can add days, swap attractions, extend your stay, or build something completely different. Just tell us what you're dreaming of.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">How physically demanding is this trip? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>Light to moderate. The Marble Mountains involve climbing steep steps. The Hue day is mostly walking at sightseeing pace. The train journey is relaxed. No fitness training needed.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">What is the minimum group size? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>We recommend a minimum of 4 people for the best pricing. That said, we can accommodate smaller groups — couples and solo travellers are welcome. Just enquire and we'll give you an honest quote for your group size.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">How does pricing work? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>Pricing depends on your group size, travel dates, and specific preferences (hotel category, any add-ons). Since every trip is tailor-made, we don't publish a fixed price — send us an enquiry and we'll put together a personalised quote within 48 hours. No obligation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">What flights should I book? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>Fly into Da Nang International Airport (DAD). Arrive before late afternoon on Day 1.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">Do I need a Vietnam visa? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>Philippine passport holders can enter Vietnam visa-free for up to 30 days. For other nationalities, an e-visa is available online. We recommend checking the latest entry requirements with your local embassy or the official Vietnam Immigration website before you travel.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this.parentElement)">Is travel insurance required? <i class="ic">▾</i></button>
+          <div class="faq-a"><p>Yes — we require all travellers to have travel insurance that includes medical coverage and trip cancellation. If you need help choosing a policy, we're happy to recommend options that work well for trips to Vietnam.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /content-col -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-col">
+    <div class="booking-widget">
+      <div class="bw-header" style="padding:16px 22px;">
+        <div class="bw-price" style="font-size:1.28rem;font-weight:400;line-height:1.3;">Everything taken care of</div>
+        <div class="bw-price-per" style="color:rgba(20,20,20,.55);font-size:.82rem;font-weight:300;margin-top:5px;">Just tell us your dates & group size</div>
+      </div>
+      <div class="bw-body">
+        <div class="bw-inc">
+          <div class="bw-inc-it">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            Private car and drivers
+          </div>
+          <div class="bw-inc-it">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            Licensed private guide
+          </div>
+          <div class="bw-inc-it">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            Airport transfers included
+          </div>
+          <div class="bw-inc-it">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            Choice of 4 or 5-star hotels
+          </div>
+          <div class="bw-inc-it">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            All entrance fees covered
+          </div>
+          <div class="bw-inc-it">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+            Fully customisable itinerary
+          </div>
+        </div>
+        <button class="bw-cta" id="sidebar-enquire-btn" style="background:transparent;color:var(--ink);border:1px solid rgba(20,20,20,.4);" onclick="toggleSidebarEnquire()"><span style="color:var(--ink);">Ask us first</span></button>
+        <div id="sidebar-enquire-menu" style="display:flex;flex-direction:column;gap:4px;margin-top:0;background:#fff;border:1px solid rgba(20,20,20,.1);border-radius:0;padding:0;overflow:hidden;max-height:0;opacity:0;pointer-events:none;transition:max-height .75s cubic-bezier(.4,0,.2,1),opacity .75s ease,margin-top .75s ease,padding .75s ease;">
+          <a href="https://m.me/taratravelco" target="_blank" style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+            Message on Messenger
+          </a>
+          <a href="https://wa.me/84394093181" target="_blank" style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="mailto:hello@taratravel.co" style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            Send an Email
+          </a>
+        </div>
+        <a href="#" onclick="openBookingModal(event)" class="bw-cta" style="display:block;text-decoration:none;margin-top:6px;"><span>Reserve my trip</span></a>
+        <div class="bw-share">
+          <div style="position:relative;">
+            <a href="#" id="bw-share-btn" onclick="toggleShareMenu(event)" class="bw-share-btn">↗ Share</a>
+            <div id="bw-share-menu" style="position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(20,20,20,.1);border-radius:0;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,.10);width:200px;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(6px);transition:opacity .25s ease,transform .25s ease;z-index:99;">
+              <a href="#" onclick="shareToWhatsApp(event)" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <a href="#" onclick="shareToMessenger(event)" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+                Messenger
+              </a>
+              <a href="#" onclick="shareToFacebook(event)" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+                Facebook
+              </a>
+              <a href="#" onclick="shareToIG(event)" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="1.8"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#e1306c"/><stop offset="100%" stop-color="#833ab4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#e1306c" stroke="none"/></svg>
+                Instagram
+              </a>
+              <a href="#" onclick="shareToTikTok(event)" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#000"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.84 1.56V6.8a4.85 4.85 0 01-1.07-.11z"/></svg>
+                TikTok
+              </a>
+              <a href="#" onclick="copyPageLink(event)" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'" id="copy-link-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                <span id="copy-link-label">Copy link</span>
+              </a>
+            </div>
+          </div>
+          <div class="bw-share-sep"></div>
+          <a href="#" onclick="openEmailModal(event)">✉ Email to myself</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-layout -->
+
+<!-- TRUST SECTION -->
+<section class="trust-sec" id="perks">
+  <div class="trust-inner">
+    <div class="sec-label">What You Get</div>
+    <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
+    <div class="trust-cards">
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.svg" alt="Flexible Itineraries" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Flexible Itineraries</div><div class="trust-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.svg" alt="Group Perks" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Group Perks</div><div class="trust-desc">Travelling with family or friends? The more of you, the more we can tailor.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.svg" alt="Free Rebooking" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Free Rebooking</div><div class="trust-desc">Plans change. Move your dates without losing your itinerary or starting over.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.svg" alt="Private Car &amp; Driver" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Private Car &amp; Driver</div><div class="trust-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.svg" alt="Licensed Local Guide" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Licensed Local Guide</div><div class="trust-desc">Real insight from people who live here — not a script, not a rush.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.svg" alt="Complimentary Breakfast" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Complimentary Breakfast</div><div class="trust-desc">Every stay we book starts the day right — breakfast is always included.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.svg" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">Flexible Check-in &amp; Out</div><div class="trust-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</div></div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.svg" alt="24/7 Support" loading="lazy"></div>
+        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE GROUPS -->
+<section class="private-cta" id="tailor-made">
+  <div class="private-inner">
+    <div class="private-text">
+      <div class="sec-label">Want Something Different?</div>
+      <h2 class="sec-title">We can build<br><em>any trip you imagine</em></h2>
+      <p>Add Ba Na Hills and the Golden Bridge, extend with a second night in Hoi An, or combine this with Hanoi or Ho Chi Minh City for a longer Vietnam journey.</p>
+      <a href="#" class="btn-lux"><span>Start planning</span></a>
+    </div>
+    <div class="private-img" style="background-image:url('https://taratravel.co/wp-content/uploads/2025/06/Hoi-An-by-Night-by-Tara-Travel-Co-2.webp')"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <svg class="foot-logo" width="348" height="171" viewBox="11 96 348 171" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tará Travel Co."><g transform="matrix(1, 0, 0, 1, 11, 96)"><g fill="currentColor" fill-opacity="1"><g transform="translate(0.919477, 137.54365)"><path d="M 78.890625 -100.703125 L 78.890625 -97.96875 L 47.78125 -97.96875 L 47.78125 0.15625 L 36.390625 0.15625 L 36.390625 -97.96875 L 5.296875 -97.96875 L 5.296875 -100.703125 Z M 78.890625 -100.703125 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(78.196356, 137.54365)"><path d="M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(173.269628, 137.54365)"><path d="M 78.25 0.15625 L 63.8125 0.15625 L 26.609375 -46.65625 L 19.234375 -46.65625 L 19.234375 0.15625 L 7.703125 0.15625 L 7.703125 -100.703125 C 7.703125 -100.703125 8.898438 -100.703125 11.296875 -100.703125 C 13.703125 -100.703125 16.613281 -100.703125 20.03125 -100.703125 C 23.457031 -100.703125 26.851562 -100.703125 30.21875 -100.703125 C 33.59375 -100.703125 36.238281 -100.703125 38.15625 -100.703125 C 40.1875 -100.703125 42.992188 -100.40625 46.578125 -99.8125 C 50.160156 -99.226562 53.769531 -98.078125 57.40625 -96.359375 C 61.039062 -94.648438 64.113281 -92.113281 66.625 -88.75 C 69.132812 -85.382812 70.390625 -80.972656 70.390625 -75.515625 C 70.390625 -70.285156 69.425781 -65.957031 67.5 -62.53125 C 65.582031 -59.113281 63.070312 -56.363281 59.96875 -54.28125 C 56.863281 -52.195312 53.601562 -50.617188 50.1875 -49.546875 C 46.769531 -48.472656 43.5625 -47.722656 40.5625 -47.296875 Z M 19.234375 -97.96875 L 19.234375 -49.390625 L 27.90625 -49.390625 C 37.3125 -49.390625 44.738281 -51.207031 50.1875 -54.84375 C 55.632812 -58.476562 58.359375 -64.726562 58.359375 -73.59375 C 58.359375 -82.46875 56.035156 -88.75 51.390625 -92.4375 C 46.742188 -96.125 40.300781 -97.96875 32.0625 -97.96875 Z M 19.234375 -97.96875 "/></g></g><g fill="currentColor" fill-opacity="1"><g transform="translate(250.065536, 137.54365)"><path d="M 53.078125 -112.234375 L 73.4375 -137.25 L 62.859375 -137.25 L 50.828125 -112.234375 Z M 83.859375 0.15625 L 66.546875 -40.40625 L 27.265625 -40.40625 L 9.296875 0.15625 L 5.609375 0.15625 L 51.3125 -102.625 L 52.265625 -102.625 L 96.203125 0.15625 Z M 28.546875 -42.96875 L 65.421875 -42.96875 L 47.296875 -85.296875 Z M 28.546875 -42.96875 "/></g></g></g></svg>
+        <p class="foot-p">We create tailor-made trips in Vietnam — designed around the way you love to travel.</p>
+        <div class="foot-socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.3s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.3-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 01-1-2.8h-3v12.3a2.5 2.5 0 11-2.5-2.5c.2 0 .5 0 .7.1V9.8a5.6 5.6 0 00-.7 0 5.6 5.6 0 105.6 5.6V9.3a7.3 7.3 0 004.3 1.4V7.7a4.3 4.3 0 01-3.4-1.9z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Travel Guide</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Email Us</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Trust strip -->
+    <div class="foot-trust-row">
+      <div class="foot-trust-badges">
+        <div class="foot-trust-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Your details are safe with us
+        </div>
+        <div class="foot-trust-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+          No payment required to plan
+        </div>
+        <div class="foot-trust-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          We respond within 24 hours
+        </div>
+      </div>
+      <div class="foot-trust-privacy">We never share your information with third parties.</div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Tará Travel Co. All rights reserved.</span>
+      <span>Made with care for travelers, not tourists.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div id="float-cta" style="position:fixed;bottom:28px;right:28px;z-index:999;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;background:#fff;border:1px solid rgba(20,20,20,.15);border-radius:0;padding:14px 18px 12px;box-shadow:0 2px 12px rgba(0,0,0,.08);opacity:0;pointer-events:none;transition:opacity .4s ease;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:.82rem;color:#5a5a5a;font-weight:400;">Have questions?</span>
+  <button onclick="toggleEnquireMenu(event)" class="cta-btn" style="font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--ink);background:transparent;border:1px solid rgba(20,20,20,.4);border-radius:0;padding:7px 16px;cursor:pointer;transition:background .2s,color .2s;">Ask us First</button>
+  <a href="#" onclick="openBookingModal(event)" class="cta-btn" style="font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--gold);border:1px solid var(--gold);border-radius:0;padding:7px 16px;text-decoration:none;transition:background .2s;">Reserve my trip</a>
+  <div class="cta-secondary-row" style="flex:1 1 100%;display:flex;align-items:center;justify-content:center;gap:0;border-top:1px solid rgba(20,20,20,.1);margin-top:8px;padding-top:8px;">
+    <button onclick="mobileShare(event)" style="font-family:'DM Sans',sans-serif;font-size:.78rem;color:#5a5a5a;background:transparent;border:none;cursor:pointer;padding:0 14px;transition:color .2s;">↗ Share</button>
+    <div style="width:1px;height:12px;background:rgba(20,20,20,.2);flex-shrink:0;"></div>
+    <a href="#" onclick="openEmailModal(event)" style="font-family:'DM Sans',sans-serif;font-size:.78rem;color:#5a5a5a;text-decoration:none;padding:0 14px;transition:color .2s;">✉ Email to myself</a>
+  </div>
+  <!-- Enquire pop-up menu -->
+  <div id="enquire-menu" style="position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid rgba(20,20,20,.15);border-radius:0;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,.12);display:none;flex-direction:column;gap:6px;min-width:180px;">
+    <a href="https://m.me/taratravelco" target="_blank" style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+      Messenger
+    </a>
+    <a href="https://wa.me/84394093181" target="_blank" style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="mailto:hello@taratravel.co" style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:0;text-decoration:none;color:#141414;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:background .15s;" onmouseover="this.style.background='#f5f0ea'" onmouseout="this.style.background='transparent'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      Send an Email
+    </a>
+  </div>
+</div>
+
+<script>
+
+/* NAV scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* Hamburger */
+let navScrollY = 0;
+function lockBodyScroll() {
+  if (isMobileNav()) {
+    /* Mobile: freeze via position:fixed + remembered scrollY. Needed because
+       plain overflow:hidden doesn't reliably stop iOS Safari's rubber-band
+       scroll. */
+    navScrollY = window.scrollY;
+    document.documentElement.classList.add('nav-locked');
+    document.body.classList.add('nav-locked');
+    document.body.style.top = -navScrollY + 'px';
+  } else {
+    /* Desktop: a simple overflow:hidden is enough and — critically — doesn't
+       change body's position, so it doesn't break position:sticky elements
+       (like the page-nav tab bar) the way the position:fixed mobile technique
+       does. No scroll-position bookkeeping needed either, since overflow:hidden
+       doesn't move the existing scroll offset. */
+    document.documentElement.classList.add('desktop-scroll-locked');
+    document.body.classList.add('desktop-scroll-locked');
+  }
+}
+function unlockBodyScroll() {
+  if (isMobileNav()) {
+    document.documentElement.classList.remove('nav-locked');
+    document.body.classList.remove('nav-locked');
+    document.body.style.top = '';
+    /* Browsers clamp scrollTop to 0 while the body is frozen via
+       position:fixed, so it must be restored on unlock. Force an instant
+       (non-smooth) jump so it doesn't look like the page is "autoscrolling" —
+       html has scroll-behavior:smooth globally, which would otherwise animate
+       this restore and look like an unwanted scroll. */
+    const prevBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, navScrollY);
+    document.documentElement.style.scrollBehavior = prevBehavior;
+  } else {
+    document.documentElement.classList.remove('desktop-scroll-locked');
+    document.body.classList.remove('desktop-scroll-locked');
+  }
+}
+const isMobileNav = () => window.matchMedia('(max-width:640px)').matches;
+document.getElementById('hamburger').addEventListener('click', function() {
+  if (isMobileNav()) {
+    const opening = !document.getElementById('mobileNavPanel').classList.contains('open');
+    document.getElementById('navOverlay').classList.toggle('open');
+    document.getElementById('mobileNavPanel').classList.toggle('open');
+    if (opening) lockBodyScroll(); else unlockBodyScroll();
+  } else {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+});
+function closeNavMenu() {
+  document.getElementById('navOverlay').classList.remove('open');
+  document.getElementById('mobileNavPanel').classList.remove('open');
+  if (isMobileNav()) unlockBodyScroll();
+}
+
+/* Tapping the open mobile nav panel a 2nd time closes it (1st tap = open
+   via hamburger, 2nd tap anywhere on the panel = close — no need for a
+   fast double-tap). */
+document.getElementById('mobileNavPanel').addEventListener('click', closeNavMenu);
+
+/* Hero gallery */
+let heroIdx = 0;
+const totalSlides = 3;
+const slidesEl = document.getElementById('heroSlides');
+const dotsEl = document.getElementById('heroDots');
+
+function goToSlide(n) {
+  heroIdx = (n + totalSlides) % totalSlides;
+  slidesEl.style.transform = `translateX(-${heroIdx * 100}%)`;
+  dotsEl.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === heroIdx));
+  document.querySelectorAll('.hero-slide-bg').forEach((s, i) => {
+    s.classList.toggle('zoomed', i === heroIdx);
+  });
+}
+dotsEl.querySelectorAll('.hero-dot').forEach((d, i) => d.addEventListener('click', () => goToSlide(i)));
+setInterval(() => goToSlide(heroIdx + 1), 5000);
+
+/* Day accordion */
+function toggleDay(id) {
+  const item = document.getElementById(id);
+  const body = item.querySelector('.tl-body');
+  body.style.transition = 'max-height 1s ease';
+  const isOpen = item.classList.contains('open');
+  item.classList.toggle('open');
+  if (isOpen) {
+    setTimeout(() => {
+      const top = item.getBoundingClientRect().top + window.scrollY - 130;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }, 200);
+  }
+}
+
+/* Click anywhere in open accordion body to close */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.tl-desc').forEach(p => {
+    const text = p.textContent.trim();
+    const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z"“])/);
+    p.innerHTML = sentences.map(s => `<span style="display:block;margin-bottom:10px;">${s}</span>`).join('');
+  });
+  document.querySelectorAll('.tl-body-wrap').forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      const item = wrap.closest('.tl-item');
+      if (item && item.classList.contains('open')) toggleDay(item.id);
+    });
+  });
+  document.querySelectorAll('.faq-a').forEach(body => {
+    body.addEventListener('click', () => {
+      const item = body.closest('.faq-item');
+      if (item && item.classList.contains('open')) toggleFaq(item);
+    });
+  });
+  document.querySelectorAll('.inc-acc-body').forEach(body => {
+    body.addEventListener('click', () => {
+      const item = body.closest('.inc-acc-item');
+      if (item && item.classList.contains('open')) toggleInc(item);
+    });
+  });
+});
+
+/* Inclusions accordion */
+function toggleInc(item) {
+  const isOpen = item.classList.contains('open');
+  const body = item.querySelector('.inc-acc-body');
+  body.style.transition = 'max-height 1s ease';
+  item.classList.toggle('open');
+  body.style.maxHeight = isOpen ? '0' : body.scrollHeight + 'px';
+}
+
+/* Included tabs */
+function switchIncTab(btn, panelId) {
+  btn.closest('.inc-pill').querySelectorAll('.inc-pill-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  btn.closest('.included-sec').querySelectorAll('.inc-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+}
+
+
+/* FAQ accordion */
+function toggleFaq(item) {
+  const a = item.querySelector('.faq-a');
+  a.style.transition = 'max-height 1s ease';
+  item.classList.toggle('open');
+  a.style.maxHeight = item.classList.contains('open') ? a.scrollHeight + 'px' : '0';
+}
+document.querySelectorAll('.faq-item.open .faq-a').forEach(a => {
+  a.style.maxHeight = a.scrollHeight + 'px';
+});
+
+/* Floating CTA */
+(function(){
+  const cta = document.getElementById('float-cta');
+  const hero = document.querySelector('.hero-gallery');
+  if (!cta || !hero) return;
+  const isMobile = () => window.innerWidth <= 640;
+  const obs = new IntersectionObserver(entries => {
+    const heroVisible = entries[0].isIntersecting;
+    if (heroVisible) {
+      cta.classList.remove('visible');
+      cta.style.opacity = '0';
+      cta.style.pointerEvents = 'none';
+    } else {
+      cta.classList.add('visible');
+      if (isMobile()) {
+        cta.style.opacity = '1';
+        cta.style.pointerEvents = 'auto';
+      }
+    }
+  }, { threshold: 0.1 });
+  obs.observe(hero);
+})();
+
+function toggleSidebarEnquire() {
+  const menu = document.getElementById('sidebar-enquire-menu');
+  const isOpen = menu.style.maxHeight && menu.style.maxHeight !== '0px' && menu.style.maxHeight !== '';
+  if (isOpen) {
+    menu.style.maxHeight = '0';
+    menu.style.opacity = '0';
+    menu.style.pointerEvents = 'none';
+    menu.style.marginTop = '0';
+    menu.style.padding = '0';
+  } else {
+    menu.style.maxHeight = '220px';
+    menu.style.opacity = '1';
+    menu.style.pointerEvents = 'auto';
+    menu.style.marginTop = '8px';
+    menu.style.padding = '8px';
+  }
+}
+function toggleEnquireMenu(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('enquire-menu');
+  const isOpen = menu.style.display === 'flex';
+  menu.style.display = isOpen ? 'none' : 'flex';
+}
+document.addEventListener('click', function() {
+  const menu = document.getElementById('enquire-menu');
+  if (menu) menu.style.display = 'none';
+});
+
+/* Page nav: show when hero fully scrolled out, hide when back */
+(function(){
+  const nav = document.getElementById('pageNav');
+  const hero = document.querySelector('.hero-gallery');
+  if (!nav || !hero) return;
+
+  function update(animate) {
+    const heroGone = hero.getBoundingClientRect().bottom <= 0;
+    if (!animate) nav.style.transition = 'none';
+    nav.classList.toggle('nav-visible', heroGone);
+    if (!animate) requestAnimationFrame(() => { nav.style.transition = ''; });
+  }
+
+  update(false); // instant snap on load/refresh — no slide animation
+  window.addEventListener('scroll', () => update(true), { passive: true });
+})();
+
+/* Page nav active state on scroll */
+const sections = ['highlights','itinerary','accommodation','included','addons','faq','perks','tailor-made'];
+const navTabs = document.querySelectorAll('.page-nav-tab');
+function scrollTabIntoView(tab) {
+  const inner = document.querySelector('.page-nav-inner');
+  if (!inner || !tab) return;
+  const targetScroll = tab.offsetLeft - (inner.offsetWidth / 2) + (tab.offsetWidth / 2);
+  inner.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+}
+function updateNav() {
+  let current = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 160) current = id;
+  });
+  navTabs.forEach(t => {
+    const isActive = t.dataset.target === current;
+    if (isActive && !t.classList.contains('active')) scrollTabIntoView(t);
+    t.classList.toggle('active', isActive);
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+navTabs.forEach(t => t.addEventListener('click', () => {
+  const el = document.getElementById(t.dataset.target);
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.scrollY - 130;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}));
+
+/* Reveal on scroll */
+const reveals = document.querySelectorAll('.lux-reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+reveals.forEach(r => revealObs.observe(r));
+setTimeout(() => { reveals.forEach(r => r.classList.add('in')); }, 800);
+setTimeout(() => { reveals.forEach(r => r.classList.add('in')); }, 2500);
+
+/* Dim peeking "you might like this" cards until scrolled into full view */
+const similarCards = document.querySelectorAll('.similar-card');
+if (similarCards.length) {
+  const similarObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      e.target.classList.toggle('is-dim', e.intersectionRatio < 0.85);
+    });
+  }, { root: document.querySelector('.similar-list'), threshold: [0, 0.25, 0.5, 0.75, 0.85, 1] });
+  similarCards.forEach(c => similarObs.observe(c));
+}
+
+/* Nav dashes below "Alternative Itineraries" — mobile-only scroll indicator,
+   mirrors the dash pattern used on the homepage reviews carousel */
+const similarListEl = document.querySelector('.similar-list');
+const similarNavEl = document.getElementById('similarNav');
+if (similarListEl && similarNavEl && similarCards.length) {
+  const similarDashes = [];
+  similarCards.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'similar-nav-dash' + (i === 0 ? ' is-active' : '');
+    d.addEventListener('click', () => {
+      const card = similarCards[i];
+      if (card) similarListEl.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    });
+    similarNavEl.appendChild(d);
+    similarDashes.push(d);
+  });
+  function updateSimilarNav() {
+    const first = similarCards[0];
+    const step = first ? first.getBoundingClientRect().width + 12 : 0;
+    const idx = step ? Math.round(similarListEl.scrollLeft / step) : 0;
+    const clamped = Math.max(0, Math.min(similarCards.length - 1, idx));
+    similarDashes.forEach((d, i) => d.classList.toggle('is-active', i === clamped));
+  }
+  similarListEl.addEventListener('scroll', updateSimilarNav, { passive: true });
+  window.addEventListener('resize', updateSimilarNav);
+}
+
+/* Auto-open Day 1 when Day 3 scrolls into view, with a short delay */
+const tl1 = document.getElementById('tl1');
+const tl3 = document.getElementById('tl3');
+if (tl1 && tl3) {
+  const tlObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => { tl1.classList.add('open'); }, 400);
+        tlObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  tlObs.observe(tl3);
+}
+</script>
+
+<!-- MOBILE SHARE SHEET -->
+<div class="mshare-overlay" id="mshareOverlay" onclick="closeMobileSharePanel()"></div>
+<div class="mshare-panel" id="msharePanel" ondblclick="closeMobileSharePanel()">
+  <div class="mshare-panel-handle" onclick="closeMobileSharePanel()" style="cursor:pointer;"></div>
+  <div class="mshare-panel-title" onclick="closeMobileSharePanel()" style="cursor:pointer;">Share this itinerary</div>
+  <div class="mshare-list">
+    <a href="#" onclick="shareToWhatsApp(event)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="#" onclick="shareToMessenger(event)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.908 1.438 5.504 3.688 7.2V22l3.37-1.853c.9.25 1.854.385 2.942.385 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.008 12.44l-2.55-2.72-4.976 2.72 5.474-5.808 2.612 2.72 4.914-2.72-5.474 5.808z"/></svg>
+      Messenger
+    </a>
+    <a href="#" onclick="shareToFacebook(event)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      Facebook
+    </a>
+    <a href="#" onclick="shareToIG(event)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad-m)" stroke-width="1.8"><defs><linearGradient id="ig-grad-m" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#e1306c"/><stop offset="100%" stop-color="#833ab4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#e1306c" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a href="#" onclick="shareToTikTok(event)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.84 1.56V6.8a4.85 4.85 0 01-1.07-.11z"/></svg>
+      TikTok
+    </a>
+    <a href="#" onclick="copyPageLink(event)" id="mshare-copy-link-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d79a3d" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      <span id="mshare-copy-link-label">Copy link</span>
+    </a>
+    <a href="#" onclick="openEmailModal(event); closeMobileSharePanel();">
+      ✉&nbsp; Email to myself
+    </a>
+  </div>
+</div>
+
+<!-- HOTEL MODAL -->
+<div class="hotel-overlay" id="hotelOverlay" onclick="closeHotelPanel()"></div>
+<div class="hotel-panel" id="hotelPanel">
+  <div class="hotel-panel-inner">
+    <div class="hotel-panel-handle"></div>
+    <div class="hotel-panel-hd" style="position:relative;">
+      <div class="hotel-panel-stars" id="hpStars"></div>
+      <div class="hotel-panel-name" id="hpName"></div>
+      <div class="hotel-panel-loc" id="hpLoc"></div>
+      <button class="hotel-panel-close" onclick="closeHotelPanel()">✕</button>
+    </div>
+    <div class="hotel-photos" id="hpPhotos"></div>
+    <p class="hotel-panel-desc" id="hpDesc"></p>
+    <div class="hotel-details" id="hpDetails"></div>
+  </div>
+</div>
+
+<script>
+const hotelData = {
+  radisson: {
+    stars: '★★★★★',
+    name: 'Radisson Hotel Da Nang',
+    loc: 'My Khe Beach, Da Nang',
+    desc: 'A beachfront five-star sitting right on My Khe Beach with sweeping sea views. Known for its 21st-floor infinity pool, full-service spa, and spacious rooms with private balconies overlooking the ocean.',
+    photos: [
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp'
+    ],
+    details: [
+      { lbl:'Location', val:'Beachfront' },
+      { lbl:'Pool', val:'Infinity pool, 21st floor' },
+      { lbl:'Spa', val:'Full-service spa & sauna' },
+      { lbl:'Breakfast', val:'Included daily' }
+    ]
+  },
+  tms: {
+    stars: '★★★★★',
+    name: 'TMS Hotel Da Nang Beach',
+    loc: 'My An Beach, Da Nang',
+    desc: 'A family-friendly five-star directly across from My An Beach. Its rooftop infinity pool on the 25th floor is one of the highest in Da Nang, with panoramic views stretching to the sea and sky.',
+    photos: [
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp'
+    ],
+    details: [
+      { lbl:'Location', val:'Across the beach' },
+      { lbl:'Pool', val:'Rooftop infinity, 25th floor' },
+      { lbl:'Spa', val:'Mélangé Spa & yoga classes' },
+      { lbl:'Breakfast', val:'Included daily' }
+    ]
+  },
+  golden: {
+    stars: '★★★★',
+    name: 'Golden Lotus Luxury Hotel',
+    loc: 'My An Beach, Da Nang',
+    desc: 'A boutique four-star steps from My An Beach, known for its warm service, rooftop pool, and complimentary afternoon tea. A quieter, more intimate alternative to the larger beach hotels.',
+    photos: [
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
+      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp'
+    ],
+    details: [
+      { lbl:'Location', val:'2-min walk to beach' },
+      { lbl:'Pool', val:'Rooftop pool' },
+      { lbl:'Perk', val:'Complimentary afternoon tea' },
+      { lbl:'Breakfast', val:'Buffet included daily' }
+    ]
+  }
+};
+
+function openHotelPanel(id) {
+  const h = hotelData[id];
+  document.getElementById('hpStars').textContent = h.stars;
+  document.getElementById('hpName').textContent = h.name;
+  document.getElementById('hpLoc').textContent = h.loc;
+  document.getElementById('hpDesc').textContent = h.desc;
+  document.getElementById('hpPhotos').innerHTML = h.photos.map(p =>
+    `<div class="hotel-photo" style="background-image:url('${p}')"></div>`
+  ).join('');
+  document.getElementById('hpDetails').innerHTML = h.details.map(d =>
+    `<div class="hotel-detail-chip"><div class="hdc-lbl">${d.lbl}</div><div class="hdc-val">${d.val}</div></div>`
+  ).join('');
+  document.getElementById('hotelOverlay').classList.add('open');
+  document.getElementById('hotelPanel').classList.add('open');
+  document.getElementById('nav').classList.add('above-modal');
+  lockBodyScroll();
+}
+
+function closeHotelPanel() {
+  document.getElementById('hotelOverlay').classList.remove('open');
+  document.getElementById('hotelPanel').classList.remove('open');
+  document.getElementById('nav').classList.remove('above-modal');
+  unlockBodyScroll();
+}
+
+/* Mobile share sheet — shows the same WhatsApp/Messenger/Facebook/Instagram/TikTok/Copy link list as desktop */
+function mobileShare(e) {
+  if (e) e.preventDefault();
+  const panel = document.getElementById('msharePanel');
+  if (panel.classList.contains('open')) { closeMobileSharePanel(); return; }
+  document.getElementById('mshareOverlay').classList.add('open');
+  panel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileSharePanel() {
+  document.getElementById('mshareOverlay').classList.remove('open');
+  document.getElementById('msharePanel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* Share menu */
+function toggleShareMenu(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const menu = document.getElementById('bw-share-menu');
+  const isOpen = menu.style.opacity === '1';
+  if (isOpen) {
+    menu.style.opacity = '0';
+    menu.style.transform = 'translateX(-50%) translateY(6px)';
+    menu.style.pointerEvents = 'none';
+  } else {
+    menu.style.opacity = '1';
+    menu.style.transform = 'translateX(-50%) translateY(0)';
+    menu.style.pointerEvents = 'auto';
+  }
+}
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('bw-share-menu');
+  if (menu && !menu.contains(e.target) && e.target.id !== 'bw-share-btn') {
+    menu.style.opacity = '0';
+    menu.style.transform = 'translateX(-50%) translateY(6px)';
+    menu.style.pointerEvents = 'none';
+  }
+});
+function shareToWhatsApp(e) { e.preventDefault(); window.open('https://wa.me/?text=' + encodeURIComponent('Check out this Vietnam itinerary by Tará Travel Co: ' + location.href), '_blank'); }
+function shareToMessenger(e) { e.preventDefault(); window.open('https://www.facebook.com/dialog/send?link=' + encodeURIComponent(location.href) + '&app_id=291494419107518&redirect_uri=' + encodeURIComponent(location.href), '_blank'); }
+function shareToFacebook(e) { e.preventDefault(); window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href), '_blank'); }
+function shareToIG(e) { e.preventDefault(); copyPageLink(e); alert('Link copied! Open Instagram and paste it in your story or bio.'); }
+function shareToTikTok(e) { e.preventDefault(); copyPageLink(e); alert('Link copied! Open TikTok and paste it in your bio or video caption.'); }
+function copyPageLink(e) {
+  e.preventDefault();
+  navigator.clipboard.writeText(location.href).then(() => {
+    ['copy-link-label', 'mshare-copy-link-label'].forEach(id => {
+      const label = document.getElementById(id);
+      if (label) { label.textContent = 'Copied!'; setTimeout(() => label.textContent = 'Copy link', 2000); }
+    });
+  });
+}
+
+/* Email modal */
+function openEmailModal(e) {
+  e.preventDefault();
+  document.getElementById('email-modal-overlay').style.opacity = '1';
+  document.getElementById('email-modal-overlay').style.pointerEvents = 'auto';
+  document.body.style.overflow = 'hidden';
+}
+function closeEmailModal() {
+  document.getElementById('email-modal-overlay').style.opacity = '0';
+  document.getElementById('email-modal-overlay').style.pointerEvents = 'none';
+  document.body.style.overflow = '';
+}
+async function submitEmailForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const btn = form.querySelector('button[type=submit]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if (res.ok) {
+      document.getElementById('email-form-wrap').innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:1.5rem;margin-bottom:12px;">✦</div><p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;color:#141414;margin:0 0 8px;">We\'ll be in touch soon!</p><p style="font-family:\'DM Sans\',sans-serif;font-size:.85rem;color:#5a5a5a;margin:0;">Check your inbox — we\'re sending the itinerary over now.</p></div>';
+    } else { throw new Error(); }
+  } catch {
+    btn.textContent = 'Send itinerary';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+}
+
+/* Booking modal */
+function openBookingModal(e) {
+  if (e) e.preventDefault();
+  document.getElementById('booking-modal-overlay').style.opacity = '1';
+  document.getElementById('booking-modal-overlay').style.pointerEvents = 'auto';
+  document.body.style.overflow = 'hidden';
+}
+function closeBookingModal() {
+  document.getElementById('booking-modal-overlay').style.opacity = '0';
+  document.getElementById('booking-modal-overlay').style.pointerEvents = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+
+/* Pax counter */
+(function() {
+  let pax = 2;
+  const val = document.getElementById('bkPaxVal');
+  const input = document.getElementById('bkPaxInput');
+  document.getElementById('bkPaxPlus').addEventListener('click', () => { pax++; val.textContent = pax; input.value = pax; });
+  document.getElementById('bkPaxMinus').addEventListener('click', () => { if (pax > 2) { pax--; val.textContent = pax; input.value = pax; } else { alert('Minimum of 2 pax.'); } });
+})();
+
+/* Travel start date — single-month calendar */
+(function() {
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const today = new Date(); today.setHours(0,0,0,0);
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+  let selected = null;
+  const daysEl = document.getElementById('bkCalDays');
+  const titleEl = document.getElementById('bkCalTitle');
+  const dateInput = document.getElementById('bkDateInput');
+  const displayInput = document.getElementById('bkDateDisplay');
+  const popover = document.getElementById('bkCalPopover');
+  function isoFmt(d) { return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+  function openPopover() { popover.style.display = 'block'; }
+  function closePopover() { popover.style.display = 'none'; }
+  function build() {
+    if (!daysEl) return;
+    titleEl.textContent = MONTHS[viewMonth].toUpperCase() + ' ' + viewYear;
+    daysEl.innerHTML = '';
+    const first = new Date(viewYear, viewMonth, 1).getDay();
+    const total = new Date(viewYear, viewMonth + 1, 0).getDate();
+    for (let i = 0; i < first; i++) { const e = document.createElement('div'); e.className = 'bk-cal-day bk-cal-empty'; daysEl.appendChild(e); }
+    for (let d = 1; d <= total; d++) {
+      const date = new Date(viewYear, viewMonth, d);
+      const cell = document.createElement('div'); cell.className = 'bk-cal-day'; cell.textContent = d;
+      if (date < today) { cell.classList.add('bk-cal-past'); }
+      else {
+        if (selected && date.getTime() === selected.getTime()) cell.classList.add('bk-cal-sel');
+        cell.addEventListener('click', () => {
+          selected = date;
+          dateInput.value = isoFmt(date);
+          displayInput.value = selected.getDate() + ' ' + MONTHS_SHORT[selected.getMonth()] + ' ' + selected.getFullYear();
+          build();
+          closePopover();
+        });
+      }
+      daysEl.appendChild(cell);
+    }
+  }
+  document.getElementById('bkCalPrev').addEventListener('click', (e) => { e.stopPropagation(); viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } build(); });
+  document.getElementById('bkCalNext').addEventListener('click', (e) => { e.stopPropagation(); viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } build(); });
+  displayInput.addEventListener('click', (e) => { e.stopPropagation(); popover.style.display === 'block' ? closePopover() : openPopover(); });
+  popover.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('click', () => closePopover());
+  build();
+})();
+
+}); // end DOMContentLoaded
+
+async function submitBookingForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  if (!document.getElementById('bkDateInput').value) {
+    alert('Please choose a travel start date.');
+    return;
+  }
+  const data = new FormData(form);
+  const btn = form.querySelector('button[type=submit]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+    if (res.ok) {
+      // Create lead in Supabase
+      try {
+        const fullName = (data.get('Name') || '').trim();
+        const nameParts = fullName.split(' ');
+        const firstName = nameParts[0] || fullName;
+        const lastName = nameParts.slice(1).join(' ') || '';
+        const pax = parseInt(data.get('Number of Pax') || '2', 10);
+        const dateVal = data.get('Travel Start Date') || null;
+        const tripTitle = data.get('Trip') || '';
+        await fetch('https://nwsphnyzoabmadftgmrw.supabase.co/rest/v1/leads', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53c3Bobnl6b2FibWFkZnRnbXJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5OTE5NzUsImV4cCI6MjA5NjU2Nzk3NX0.HPmELFGp9IOmsV0wAMh_ok6p1NwJFaA2rNoa6QAapTA',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53c3Bobnl6b2FibWFkZnRnbXJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5OTE5NzUsImV4cCI6MjA5NjU2Nzk3NX0.HPmELFGp9IOmsV0wAMh_ok6p1NwJFaA2rNoa6QAapTA',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            first_name: firstName,
+            last_name: lastName,
+            email: data.get('Email') || '',
+            contact_no: (data.get('Country Code') || '') + ' ' + (data.get('Contact Number') || ''),
+            adults: pax,
+            total_travelers: pax,
+            trip_start_date: dateVal || null,
+            hotel_type: data.get('Hotel Choice') || null,
+            include_flights: data.get('International Flights Needed') === 'Yes',
+            group_special_requests: data.get('Special Requests') || '',
+            lead_source: 'Destination Booking Page',
+            destinations: tripTitle ? [tripTitle] : [],
+            status: 'New',
+            manual_entry: true
+          })
+        });
+      } catch(err) { /* Formspree succeeded; Supabase failure is non-blocking */ }
+      document.getElementById('booking-form-wrap').innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:1.5rem;margin-bottom:12px;">❖</div><p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;color:#141414;margin:0 0 8px;">Request received!</p><p style="font-family:\'DM Sans\',sans-serif;font-size:.85rem;color:#5a5a5a;margin:0;">Our team will reach out shortly to confirm your trip and availability.</p></div>';
+    } else { throw new Error(); }
+  } catch {
+    btn.textContent = 'Submit request';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
+}
+</script>
+
+<!-- EMAIL CAPTURE MODAL -->
+<div id="email-modal-overlay" onclick="if(event.target===this)closeEmailModal()" style="position:fixed;inset:0;background:rgba(18,40,64,.45);z-index:1100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;">
+  <div style="background:#fff;border-radius:0;padding:36px 32px;max-width:420px;width:100%;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.15);">
+    <button onclick="closeEmailModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;color:#5a5a5a;cursor:pointer;line-height:1;">✕</button>
+    <div id="email-form-wrap">
+      <p style="font-family:'DM Sans',sans-serif;font-size:.65rem;letter-spacing:3.5px;text-transform:uppercase;color:#d79a3d;margin:0 0 8px;">Save this itinerary</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:#141414;margin:0 0 6px;">We'll email it to you</h3>
+      <p style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:#5a5a5a;font-weight:300;margin:0 0 24px;">Enter your details below and we'll send you this itinerary along with our availability.</p>
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="submitEmailForm(event)">
+        <input type="hidden" name="Trip" value="Vietnam – Da Nang · Hoi An & Hue Imperial City">
+        <div style="margin-bottom:14px;">
+          <label style="font-family:'DM Sans',sans-serif;font-size:.78rem;color:#5a5a5a;display:block;margin-bottom:5px;">Your name</label>
+          <input type="text" name="Name" required placeholder="e.g. Maria Santos" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#141414;border:1px solid rgba(20,20,20,.2);border-radius:0;padding:10px 14px;box-sizing:border-box;outline:none;background:#faf5f0;">
+        </div>
+        <div style="margin-bottom:22px;">
+          <label style="font-family:'DM Sans',sans-serif;font-size:.78rem;color:#5a5a5a;display:block;margin-bottom:5px;">Email address</label>
+          <input type="email" name="Email" required placeholder="you@email.com" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.88rem;color:#141414;border:1px solid rgba(20,20,20,.2);border-radius:0;padding:10px 14px;box-sizing:border-box;outline:none;background:#faf5f0;">
+        </div>
+        <button type="submit" style="width:100%;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;color:#fff;background:#141414;border:none;border-radius:0;padding:14px;cursor:pointer;transition:background .2s;">Send me this itinerary</button>
+        <p style="font-family:'DM Sans',sans-serif;font-size:.72rem;color:#5a5a5a;text-align:center;margin:12px 0 0;font-weight:300;">No spam. Just your itinerary and our genuine reply.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING REQUEST MODAL -->
+<div id="booking-modal-overlay" onclick="if(event.target===this)closeBookingModal()" style="position:fixed;inset:0;background:rgba(18,40,64,.45);z-index:1100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:20px;">
+  <div style="background:#fff;border-radius:0;padding:26px 28px;max-width:460px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.15);">
+    <button onclick="closeBookingModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;color:#5a5a5a;cursor:pointer;line-height:1;">✕</button>
+    <div id="booking-form-wrap">
+      <p style="font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:3.5px;text-transform:uppercase;color:#d79a3d;margin:0 0 5px;">Reserve my trip</p>
+      <p style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:400;color:#141414;margin:0 0 2px;font-style:italic;">Da Nang, Hoi An & Hue Imperial City</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:#141414;margin:0 0 4px;">Let's lock in your dates</h3>
+      <p style="font-family:'DM Sans',sans-serif;font-size:.8rem;color:#5a5a5a;font-weight:300;margin:0 0 14px;">Share a few details and our team will confirm availability and finalize your itinerary with you.</p>
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+      <style>
+        #booking-form-wrap .bk-field { margin-bottom:10px; }
+        #booking-form-wrap label { font-family:'DM Sans',sans-serif; font-weight:500; font-size:.82rem; color:#141414; display:block; margin-bottom:5px; }
+        #booking-form-wrap input[type=text], #booking-form-wrap input[type=tel], #booking-form-wrap input[type=email], #booking-form-wrap input[type=number], #booking-form-wrap input[type=date], #booking-form-wrap select, #booking-form-wrap textarea {
+          width:100%; padding:9px 13px; border:1px solid rgba(215,154,61,.28); border-radius:0;
+          font-family:'DM Sans',sans-serif; font-size:.88rem; font-weight:300; color:#141414;
+          background:#fff; outline:none; transition:border-color .2s; box-sizing:border-box; -webkit-appearance:none;
+        }
+        #booking-form-wrap input:focus, #booking-form-wrap textarea:focus, #booking-form-wrap select:focus { border-color:#d79a3d; }
+        #booking-form-wrap textarea { resize:vertical; min-height:48px; }
+        #booking-form-wrap .bk-two-col { display:flex; gap:36px; align-items:flex-start; }
+        #booking-form-wrap .bk-two-col .bk-field { flex:1; min-width:0; }
+        #booking-form-wrap .bk-counter, #booking-form-wrap input#bkDateDisplay { height:42px; box-sizing:border-box; }
+        #booking-form-wrap .bk-phone-row { display:flex; gap:8px; }
+        #booking-form-wrap .bk-phone-row select { width:auto; min-width:104px; flex-shrink:0; padding:9px 8px; cursor:pointer; }
+        #booking-form-wrap .bk-phone-row input { flex:1; }
+        #booking-form-wrap .bk-chip-row { display:flex; gap:8px; }
+        #booking-form-wrap .bk-chip { flex:1; position:relative; }
+        #booking-form-wrap .bk-chip input { position:absolute; opacity:0; width:0; height:0; }
+        #booking-form-wrap .bk-chip span {
+          display:flex; align-items:center; justify-content:center; gap:6px;
+          border:1px solid rgba(215,154,61,.28); border-radius:999px; padding:7px 0;
+          font-family:'DM Sans',sans-serif; font-size:.8rem; font-weight:500; color:#5a5a5a;
+          background:#fff; cursor:pointer; transition:.2s;
+        }
+        #booking-form-wrap .bk-chip input:checked + span { border-color:#d79a3d; background:#fffdf7; color:#141414; }
+        #booking-form-wrap .bk-submit {
+          width:100%; font-family:'DM Sans',sans-serif; font-size:.9rem; font-weight:500; color:#fff;
+          background:#d79a3d; border:none; border-radius:0; padding:11px; cursor:pointer;
+          position:relative; overflow:hidden; transition:background .2s;
+        }
+        #booking-form-wrap .bk-submit:hover { background:#d79a3d; }
+        #booking-form-wrap .bk-counter { display:flex; align-items:center; justify-content:space-between; border:1px solid rgba(215,154,61,.28); border-radius:0; padding:8px 14px; }
+        #booking-form-wrap .bk-counter button { background:none; border:none; padding:0; width:22px; height:22px; color:#d79a3d; font-size:1.1rem; line-height:1; cursor:pointer; transition:.2s; }
+        #booking-form-wrap .bk-counter button:hover { color:#d79a3d; }
+        #booking-form-wrap .bk-counter .bk-counter-val { font-family:'DM Sans',sans-serif; font-size:.92rem; font-weight:500; color:#141414; min-width:24px; text-align:center; }
+        #booking-form-wrap .bk-cal { border:1px solid rgba(215,154,61,.28); border-radius:0; overflow:hidden; background:#fff; }
+        #booking-form-wrap .bk-cal-hd { display:flex; align-items:center; justify-content:space-between; padding:8px 14px; border-bottom:1px solid rgba(215,154,61,.15); }
+        #booking-form-wrap .bk-cal-nav { background:none; border:1px solid rgba(215,154,61,.35); border-radius:0; width:28px; height:28px; cursor:pointer; color:#d79a3d; font-size:.9rem; transition:.2s; flex-shrink:0; }
+        #booking-form-wrap .bk-cal-nav:hover { background:#d79a3d; color:#fff; }
+        #booking-form-wrap .bk-cal-title { font-family:'DM Sans',sans-serif; font-weight:500; font-size:.82rem; letter-spacing:1.2px; text-transform:uppercase; color:#141414; }
+        #booking-form-wrap .bk-cal-body { padding:12px 14px 14px; }
+        #booking-form-wrap .bk-cal-dow { display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:4px; }
+        #booking-form-wrap .bk-cal-dow span { font-family:'DM Sans',sans-serif; font-size:.7rem; font-weight:500; color:#5a5a5a; text-align:center; padding:3px 0; }
+        #booking-form-wrap .bk-cal-days { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+        #booking-form-wrap .bk-cal-day { font-family:'DM Sans',sans-serif; font-size:.82rem; font-weight:300; text-align:center; padding:6px 2px; cursor:pointer; border-radius:0; color:#141414; transition:background .15s,color .15s; }
+        #booking-form-wrap .bk-cal-day:hover:not(.bk-cal-empty):not(.bk-cal-past) { background:rgba(215,154,61,.15); }
+        #booking-form-wrap .bk-cal-day.bk-cal-empty { cursor:default; }
+        #booking-form-wrap .bk-cal-day.bk-cal-past { color:rgba(20,20,20,.25); cursor:default; }
+        #booking-form-wrap .bk-cal-day.bk-cal-sel { background:#d79a3d; color:#fff; font-weight:500; }
+        #booking-form-wrap .bk-cal-summary { font-family:'DM Sans',sans-serif; font-size:.78rem; color:#5a5a5a; padding:0 16px 12px; }
+        #booking-form-wrap .bk-cal-summary strong { color:#141414; font-weight:500; }
+      </style>
+      <form action="https://formspree.io/f/xykqjdqv" method="POST" onsubmit="submitBookingForm(event)">
+        <input type="hidden" name="Trip" value="Da Nang, Hoi An & Hue Imperial City">
+        <input type="hidden" name="Source" value="Destination Booking Page">
+        <div class="bk-field">
+          <label>Your name</label>
+          <input type="text" name="Name" required placeholder="e.g. Maria Santos">
+        </div>
+        <div class="bk-field">
+          <label>Contact number</label>
+          <div class="bk-phone-row">
+            <select name="Country Code">
+              <option value="+63">🇵🇭 +63</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+64">🇳🇿 +64</option>
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+62">🇮🇩 +62</option>
+              <option value="+66">🇹🇭 +66</option>
+              <option value="+84">🇻🇳 +84</option>
+              <option value="+852">🇭🇰 +852</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+82">🇰🇷 +82</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+34">🇪🇸 +34</option>
+            </select>
+            <input type="tel" name="Contact Number" required placeholder="XXX XXX XXXX">
+          </div>
+        </div>
+        <div class="bk-two-col">
+          <div class="bk-field">
+            <label>Number of pax</label>
+            <div class="bk-counter">
+              <button type="button" id="bkPaxMinus" aria-label="Decrease">−</button>
+              <span class="bk-counter-val" id="bkPaxVal">2</span>
+              <button type="button" id="bkPaxPlus" aria-label="Increase">+</button>
+            </div>
+            <input type="hidden" name="Number of Pax" id="bkPaxInput" value="2">
+          </div>
+          <div class="bk-field" style="position:relative;">
+            <label>Approx start date</label>
+            <input type="text" id="bkDateDisplay" readonly placeholder="Select a date" autocomplete="off" style="cursor:pointer;">
+            <div class="bk-cal" id="bkCalPopover" style="display:none;position:absolute;top:100%;left:0;right:0;z-index:10;margin-top:6px;box-shadow:0 12px 32px rgba(0,0,0,.12);">
+              <div class="bk-cal-hd">
+                <button type="button" class="bk-cal-nav" id="bkCalPrev">&#8592;</button>
+                <div class="bk-cal-title" id="bkCalTitle"></div>
+                <button type="button" class="bk-cal-nav" id="bkCalNext">&#8594;</button>
+              </div>
+              <div class="bk-cal-body">
+                <div class="bk-cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+                <div class="bk-cal-days" id="bkCalDays"></div>
+              </div>
+            </div>
+            <input type="hidden" name="Travel Start Date" id="bkDateInput" required>
+          </div>
+        </div>
+        <div class="bk-two-col">
+          <div class="bk-field">
+            <label>Hotel</label>
+            <div class="bk-chip-row">
+              <label class="bk-chip"><input type="radio" name="Hotel Choice" value="4-star" required><span>4-star</span></label>
+              <label class="bk-chip"><input type="radio" name="Hotel Choice" value="5-star" required><span>5-star</span></label>
+            </div>
+          </div>
+          <div class="bk-field">
+            <label>International Flights</label>
+            <div class="bk-chip-row">
+              <label class="bk-chip"><input type="radio" name="International Flights Needed" value="Yes" required><span>Yes</span></label>
+              <label class="bk-chip"><input type="radio" name="International Flights Needed" value="No" required><span>No</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="bk-field">
+          <label>Add-ons or any requests?</label>
+          <textarea name="Special Requests" rows="2" required placeholder="Dietary needs, celebrations, accessibility, room preferences… (type &quot;None&quot; if not applicable)"></textarea>
+        </div>
+        <div class="bk-field" style="margin-bottom:14px;">
+          <label>Email address</label>
+          <input type="email" name="Email" required placeholder="you@email.com">
+        </div>
+        <button type="submit" class="bk-submit">Submit request</button>
+        <p style="font-family:'DM Sans',sans-serif;font-size:.7rem;color:#5a5a5a;text-align:center;margin:8px 0 0;font-weight:300;">No payment required now — we'll confirm details with you first.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
