@@ -352,25 +352,25 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 
 <!-- HERO SLIDER — 3 most popular itineraries (one per region) -->
 <section class="bloglist-hero">
-  <a class="hero-slide is-active" href="/6d5n-sapa-hanoi-ha-long-bay" style="background-image:url('https://taratravelco-website.vercel.app/Media/Ready-made%20Trips/North/6D5N%20Sapa%2C%20Hanoi%2C%20Ha%20Long%20Bay/Day%205%20-%20Ha%20Long%20Bay.webp')">
+  <a class="hero-slide is-active" href="/6d5n-sapa-hanoi-ha-long-bay" style="background-image:url('Media/Ready-made Trips/Webp/Ha Long Bay (2).webp')">
     <div class="hero-slide-content">
-      <div class="hero-slide-eyebrow">North Vietnam</div>
+      <div class="hero-slide-eyebrow">Top Destination</div>
       <h2 class="hero-slide-title">Sapa, Hanoi &amp; <em>Ha Long Bay</em></h2>
-      <span class="hero-slide-link">View the itinerary</span>
+      <span class="hero-slide-link">View Trip</span>
     </div>
   </a>
-  <a class="hero-slide" href="/6d5n-da-nang-hoi-an-hue" style="background-image:url('https://taratravelco-website.vercel.app/Media/Ready-made%20Trips/Central/6D5N%20Da%20Nang%2C%20Hoi%20An%2C%20Hue/Day%205%20-%20Ba%20Na%20Hills.webp')">
+  <a class="hero-slide" href="/6d5n-da-nang-hoi-an-hue" style="background-image:url('Media/Ready-made Trips/Webp/Hue Imperial City.webp')">
     <div class="hero-slide-content">
-      <div class="hero-slide-eyebrow">Central Vietnam</div>
+      <div class="hero-slide-eyebrow">Top Destination</div>
       <h2 class="hero-slide-title">Da Nang, Hoi An &amp; <em>Hue Imperial City</em></h2>
-      <span class="hero-slide-link">View the itinerary</span>
+      <span class="hero-slide-link">View Trip</span>
     </div>
   </a>
-  <a class="hero-slide" href="/6d5n-ho-chi-minh-phu-quoc" style="background-image:url('https://taratravelco-website.vercel.app/Media/Ready-made%20Trips/South/6D5N%20Ho%20Chi%20Minh%2C%20Phu%20Quoc/Day%205%20-%20Phu%20Quoc.webp')">
+  <a class="hero-slide" href="/6d5n-ho-chi-minh-phu-quoc" style="background-image:url('Media/Ready-made Trips/Webp/Phu Quoc (4).webp')">
     <div class="hero-slide-content">
-      <div class="hero-slide-eyebrow">South Vietnam</div>
+      <div class="hero-slide-eyebrow">Top Destination</div>
       <h2 class="hero-slide-title">Saigon, Mekong Delta &amp; <em>Phu Quoc Island</em></h2>
-      <span class="hero-slide-link">View the itinerary</span>
+      <span class="hero-slide-link">View Trip</span>
     </div>
   </a>
 </section>
@@ -795,5 +795,26 @@ if (pdestListEl) {
 }
 </script>
 
+
+  /* Touch swipe for hero */
+  (function() {
+    const hero = document.querySelector('.bloglist-hero');
+    if (!hero) return;
+    let startX = 0;
+    hero.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    hero.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('#heroDots .hero-dot');
+        let idx = Array.from(slides).findIndex(s => s.classList.contains('is-active'));
+        slides[idx].classList.remove('is-active');
+        dots[idx] && dots[idx].classList.remove('is-active');
+        idx = (idx + (diff > 0 ? 1 : -1) + slides.length) % slides.length;
+        slides[idx].classList.add('is-active');
+        dots[idx] && dots[idx].classList.add('is-active');
+      }
+    }, { passive: true });
+  })();
 </body>
 </html>

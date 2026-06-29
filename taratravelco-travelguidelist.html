@@ -796,5 +796,26 @@ if (loadMoreGuidesBtn && moreGuidesGrid) {
 }
 </script>
 
+
+  /* Touch swipe for hero */
+  (function() {
+    const hero = document.querySelector('.bloglist-hero');
+    if (!hero) return;
+    let startX = 0;
+    hero.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    hero.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('#heroDots .hero-dot');
+        let idx = Array.from(slides).findIndex(s => s.classList.contains('is-active'));
+        slides[idx].classList.remove('is-active');
+        dots[idx] && dots[idx].classList.remove('is-active');
+        idx = (idx + (diff > 0 ? 1 : -1) + slides.length) % slides.length;
+        slides[idx].classList.add('is-active');
+        dots[idx] && dots[idx].classList.add('is-active');
+      }
+    }, { passive: true });
+  })();
 </body>
 </html>

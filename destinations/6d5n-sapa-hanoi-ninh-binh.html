@@ -2228,5 +2228,17 @@ async function submitBookingForm(e) {
   </div>
 </div>
 
+
+  /* Touch swipe for hero */
+  (function() {
+    const slidesEl = document.getElementById('heroSlides');
+    if (!slidesEl) return;
+    let startX = 0;
+    slidesEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    slidesEl.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goToSlide(heroIdx + (diff > 0 ? 1 : -1));
+    }, { passive: true });
+  })();
 </body>
 </html>
