@@ -26,7 +26,7 @@ html { scroll-behavior:smooth; overflow-x:clip; width:100%; }
 body { font-family:'DM Sans',sans-serif; color:var(--ink); background:var(--cream); -webkit-font-smoothing:antialiased; overflow-x:clip; width:100%; }
 html.nav-locked { overflow:hidden; height:100%; }
 body.nav-locked { position:fixed; width:100%; overflow:hidden; touch-action:none; }
-/* Desktop-only scroll lock (used for the hotel "About this stay" panel on
+/* Desktop-only scroll lock (used for the hotel "See Images" panel on
    desktop): plain overflow:hidden, no position:fixed, so it doesn't disturb
    position:sticky elements like the page-nav tab bar. */
 html.desktop-scroll-locked, body.desktop-scroll-locked { overflow:hidden; }
@@ -269,7 +269,7 @@ header.nav.scrolled .nav-back, header.nav.scrolled .nav-share-btn { color:var(--
 .hotel-detail-chip { background:var(--cream); border:1px solid rgba(20,20,20,.12); border-radius:0; padding:10px 13px; }
 .hotel-detail-chip .hdc-lbl { font-family:'DM Sans',sans-serif; font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:3px; }
 .hotel-detail-chip .hdc-val { font-family:'DM Sans',sans-serif; font-size:.82rem; color:var(--ink); }
-.hotel-panel-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.8; color:var(--ink-soft); padding:16px 28px 0; }
+.hotel-panel-desc { display:none; font-family:'DM Sans',sans-serif; font-weight:300; font-size:.925rem; line-height:1.8; color:var(--ink-soft); padding:16px 28px 0; }
 
 /* FAQ */
 .faq-sec { padding:48px 0; }
@@ -919,7 +919,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
             <div class="accom-name">Golden Lotus Luxury Hotel</div>
             <div class="accom-location"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>My An Beach, Da Nang</div>
             <div class="accom-highlights">2-min walk to beach<span class="sep">·</span>Rooftop pool<span class="sep">·</span>Spa &amp; afternoon tea</div>
-            <button class="accom-btn" onclick="openHotelPanel('golden')">About this stay</button>
+            <button class="accom-btn" onclick="openHotelPanel('golden')">See Images</button>
           </div>
         </div>
 
@@ -930,7 +930,7 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
             <div class="accom-name">TMS Hotel Da Nang Beach</div>
             <div class="accom-location"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>My Khe Beach, Da Nang</div>
             <div class="accom-highlights">Beachfront<span class="sep">·</span>Rooftop pool<span class="sep">·</span>Kids' indoor playground<span class="sep">·</span>Spa &amp; sauna</div>
-            <button class="accom-btn" onclick="openHotelPanel('tms')">About this stay</button>
+            <button class="accom-btn" onclick="openHotelPanel('tms')">See Images</button>
           </div>
         </div>
 
@@ -1713,9 +1713,18 @@ const hotelData = {
     loc: 'My Khe Beach, Da Nang',
     desc: 'A beachfront five-star sitting right on My Khe Beach with sweeping sea views. Known for its 21st-floor infinity pool, full-service spa, and spacious rooms with private balconies overlooking the ocean.',
     photos: [
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp'
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/exterior.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/lobby.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/double-room-1.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/double-room-2.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/twin-room.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/family-room.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/triple-room.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/bathroom.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/pool.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/restaurant-1.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/restaurant-2.webp',
+      '../Media/Hotels/Central/Radisson Hotel (Da Nang)/breakfast.webp'
     ],
     details: [
       { lbl:'Location', val:'Beachfront' },
@@ -1730,9 +1739,18 @@ const hotelData = {
     loc: 'My An Beach, Da Nang',
     desc: 'A family-friendly five-star directly across from My An Beach. Its rooftop infinity pool on the 25th floor is one of the highest in Da Nang, with panoramic views stretching to the sea and sky.',
     photos: [
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp'
+      '../Media/Hotels/Central/TMS Hotel Da Nang/exterior.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/hotel-1.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/hotel-2.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/double-room-oceanfront.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/grand-suite.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/suite-city-view.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/suite-partial-ocean.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/family-suite.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/restaurant-1.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/savour-restaurant.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/magic-lounge.webp',
+      '../Media/Hotels/Central/TMS Hotel Da Nang/breakfast.webp'
     ],
     details: [
       { lbl:'Location', val:'Across the beach' },
@@ -1747,9 +1765,15 @@ const hotelData = {
     loc: 'My An Beach, Da Nang',
     desc: 'A boutique four-star steps from My An Beach, known for its warm service, rooftop pool, and complimentary afternoon tea. A quieter, more intimate alternative to the larger beach hotels.',
     photos: [
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp',
-      'https://taratravel.co/wp-content/uploads/2025/06/Son-Tra-Marina-by-Tara-Travel-Co-2.webp'
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/cms-105.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/cms-106.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/double-room.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/twin-room.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/room-3.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/room-4.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/room-5.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/pool.webp',
+      '../Media/Hotels/Central/Golden Lotus Luxury Hotel (Da Nang)/restaurant.webp'
     ],
     details: [
       { lbl:'Location', val:'2-min walk to beach' },
@@ -1765,7 +1789,6 @@ function openHotelPanel(id) {
   document.getElementById('hpStars').textContent = h.stars;
   document.getElementById('hpName').textContent = h.name;
   document.getElementById('hpLoc').textContent = h.loc;
-  document.getElementById('hpDesc').textContent = h.desc;
   document.getElementById('hpPhotos').innerHTML = h.photos.map(p =>
     `<div class="hotel-photo" style="background-image:url('${p}')"></div>`
   ).join('');
