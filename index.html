@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+// Prevent browser's native anchor scroll for #TailorMadeForm (causes glitch)
+if (window.location.hash === '#TailorMadeForm') {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+  document.addEventListener('DOMContentLoaded', function() {
+    var h2 = document.getElementById('TailorMadeForm');
+    var nav = document.querySelector('header.nav');
+    if (!h2) return;
+    var navH = nav ? nav.offsetHeight : 0;
+    var top = h2.getBoundingClientRect().top + window.scrollY - navH;
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo({ top: top });
+    requestAnimationFrame(function() { document.documentElement.style.scrollBehavior = ''; });
+    history.replaceState(null, '', '#TailorMadeForm');
+  });
+}
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tará Travel Co. — Tailor-made Trips in Vietnam</title>
@@ -5549,10 +5566,6 @@ showStep(1);
     var navH = nav.offsetHeight;
     var top = h2.getBoundingClientRect().top + window.scrollY - navH;
     window.scrollTo({ top: top, behavior: behavior || 'smooth' });
-  }
-  // Handle initial page load with hash
-  if (window.location.hash === '#TailorMadeForm') {
-    window.addEventListener('load', function() { scrollToForm('instant'); });
   }
   // Handle clicks on any #TailorMadeForm links
   document.addEventListener('click', function(e) {
