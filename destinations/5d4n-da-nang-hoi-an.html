@@ -313,19 +313,51 @@ header.nav.scrolled .nav-back, header.nav.scrolled .nav-share-btn { color:var(--
 .bw-share-sep { width:1px; height:12px; background:rgba(20,20,20,.2); flex-shrink:0; }
 
 /* TRUST */
-.trust-sec { background:rgba(20,20,20,.0175); padding:70px 0; }
-.trust-inner { max-width:var(--maxw); margin:0 auto; padding:0 52px; }
-.trust-sec .sec-label { color:var(--gold); }
-.trust-sec .sec-title { color:var(--ink); }
-.trust-sec .sec-title em { color:var(--gold); }
-.trust-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px; }
-.trust-card { background:#fff; border-radius:0; padding:28px 22px 26px; display:flex; flex-direction:column; align-items:flex-start; gap:0; transition:transform .25s ease; }
-.trust-card:hover { transform:translateY(-3px); }
-.trust-icon { width:56px; height:56px; margin:0 0 14px; display:grid; place-items:center; font-size:1.6rem; flex-shrink:0; line-height:1; }
-.trust-icon img { width:100%; height:100%; object-fit:contain; filter:grayscale(100%) brightness(1.4) contrast(.85); opacity:.82; }
-.trust-text { display:flex; flex-direction:column; gap:6px; }
-.trust-title { font-family:'Playfair Display',serif; font-weight:400; font-size:1.15rem; color:var(--ink); margin:0; }
-.trust-desc { font-family:'DM Sans',sans-serif; font-weight:300; font-size:.88rem; line-height:1.6; color:rgba(20,20,20,.6); margin:0; }
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 52px; }
+.benefits-lux { background: rgba(20,20,20,.0175); padding: 70px 0; }
+.benefits-head { max-width: 560px; margin: 0 auto 40px; text-align: center; }
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.benefit-card {
+  background: #fff;
+  border-radius: 0;
+  padding: 28px 22px 26px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform .25s ease;
+}
+.benefit-card:hover { transform: translateY(-3px); }
+.benefit-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 0 14px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.benefit-icon img { width: 100%; height: 100%; object-fit: contain; }
+.benefit-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.benefit-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: .88rem;
+  line-height: 1.6;
+  color: rgba(20,20,20,.6);
+  margin: 0;
+}
 
 /* PRIVATE CTA */
 .private-cta { background:var(--cream-2); padding:70px 0; }
@@ -391,30 +423,23 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 }
 
 @media(max-width:1024px) {
-  .nav-inner,.page-layout,.trust-inner,.private-inner,.foot-wrap { padding-left:36px; padding-right:36px; }
+  .private-inner,.foot-wrap { padding-left:36px; padding-right:36px; }
   .page-nav-inner { padding:0 36px; justify-content:space-between; }
 }
 @media(max-width:860px) {
   .page-layout { grid-template-columns:1fr; gap:0; max-width:640px; }
   .sidebar-col { display:none; }
   .accom-card { flex:0 0 240px; }
-  .trust-cards { grid-template-columns:1fr 1fr; }
   .private-inner { grid-template-columns:1fr; gap:32px; }
   .private-img { height:220px; }
 }
 @media(max-width:640px) {
   /* === GLOBAL MOBILE CONTAINMENT === */
-  .nav-inner,.page-layout,.trust-inner,.private-inner,.foot-wrap { padding-left:16px; padding-right:16px; }
+  .private-inner,.foot-wrap { padding-left:16px; padding-right:16px; }
   .page-layout { padding-bottom:90px; max-width:100%; width:100%; }
   img, video, iframe { max-width:100%; height:auto; }
 
   /* === TRUST / OUR PROMISE === */
-  .trust-sec { padding:48px 0; }
-  .trust-cards { gap:10px; margin-top:22px; }
-  .trust-card { padding:16px; gap:10px; }
-  .trust-text { gap:0; }
-  .trust-title { font-size:1rem; }
-  .trust-desc { font-size:.925rem; line-height:1.5; }
 
   /* === NAV — mobile side panel === */
   /* Hide the desktop inline-expand links entirely on mobile; a dedicated,
@@ -517,7 +542,6 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   .faq-q, .faq-a { word-break:break-word; overflow-wrap:break-word; }
 
   /* === TRUST / OUR PROMISE === */
-  .trust-cards { grid-template-columns:1fr 1fr; }
 
   /* === HOTEL MODAL === */
   .hotel-panel-hd { padding:16px 18px 12px; }
@@ -544,6 +568,15 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
   #float-cta .cta-secondary-row { margin-top:0 !important; padding-top:8px !important; }
   #enquire-menu { left:16px !important; right:16px !important; transform:none !important; min-width:unset !important; }
 }
+  @media (max-width: 1100px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 900px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) {
+    .benefits-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .benefits-lux { padding: 56px 0; }
+    .benefit-card { padding: 16px; gap: 10px; }
+    .benefit-title { font-size: 1rem; margin-bottom: 6px; }
+    .benefit-desc { font-size: .925rem; line-height: 1.5; }
+  }
 </style>
 </head>
 <body>
@@ -1154,42 +1187,52 @@ footer.foot { background:#FFFFFF; color:#141414; padding:88px 0 36px; border-top
 </div><!-- /page-layout -->
 
 <!-- TRUST SECTION -->
-<section class="trust-sec" id="perks">
-  <div class="trust-inner">
-    <div class="sec-label">What You Get</div>
-    <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
-    <div class="trust-cards">
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Itineraries.svg" alt="Flexible Itineraries" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Flexible Itineraries</div><div class="trust-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</div></div>
+<section class="benefits-lux" id="perks">
+  <div class="wrap">
+    <div class="benefits-head">
+      <div class="sec-label">What You Get</div>
+      <h2 class="sec-title">Every trip is <em>tailor-made</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Flexible Itineraries.webp" alt="Flexible Itineraries" loading="lazy"></div>
+        <div class="benefit-title">Flexible Itineraries</div>
+        <p class="benefit-desc">Add an extra night, swap a stop, upgrade a hotel — your trip bends to you, not the other way around.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Group Perks.svg" alt="Group Perks" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Group Perks</div><div class="trust-desc">Travelling with family or friends? The more of you, the more we can tailor.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Group Perks.webp" alt="Group Perks" loading="lazy"></div>
+        <div class="benefit-title">Group Perks</div>
+        <p class="benefit-desc">Travelling with family or friends? The more of you, the more we can tailor.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Free Rebooking.svg" alt="Free Rebooking" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Free Rebooking</div><div class="trust-desc">Plans change. Move your dates without losing your itinerary or starting over.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Free Rebooking.webp" alt="Free Rebooking" loading="lazy"></div>
+        <div class="benefit-title">Free Rebooking</div>
+        <p class="benefit-desc">Plans change. Move your dates without losing your itinerary or starting over.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Private Car &amp; Driver.svg" alt="Private Car &amp; Driver" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Private Car &amp; Driver</div><div class="trust-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Private Car &amp; Driver.webp" alt="Private Car &amp; Driver" loading="lazy"></div>
+        <div class="benefit-title">Private Car &amp; Driver</div>
+        <p class="benefit-desc">Skip the taxis and bus transfers. Every day moves at your pace, door to door.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Licensed Local Guide.svg" alt="Licensed Local Guide" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Licensed Local Guide</div><div class="trust-desc">Real insight from people who live here — not a script, not a rush.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Licensed Local Guide.webp" alt="Licensed Local Guide" loading="lazy"></div>
+        <div class="benefit-title">Licensed Local Guide</div>
+        <p class="benefit-desc">Real insight from people who live here — not a script, not a rush.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Complimentary Breakfast.svg" alt="Complimentary Breakfast" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Complimentary Breakfast</div><div class="trust-desc">Every stay we book starts the day right — breakfast is always included.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Complimentary Breakfast.webp" alt="Complimentary Breakfast" loading="lazy"></div>
+        <div class="benefit-title">Complimentary Breakfast</div>
+        <p class="benefit-desc">Every stay we book starts the day right — breakfast is always included.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/Flexible Check-in &amp; Out.svg" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">Flexible Check-in &amp; Out</div><div class="trust-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/Flexible Check-in &amp; Out.webp" alt="Flexible Check-in &amp; Out" loading="lazy"></div>
+        <div class="benefit-title">Flexible Check-in &amp; Out</div>
+        <p class="benefit-desc">Early arrival, late departure — your schedule sets the time, not the front desk.</p>
       </div>
-      <div class="trust-card">
-        <div class="trust-icon"><img src="Media/Homepage/What you get/24_7 Support.svg" alt="24/7 Support" loading="lazy"></div>
-        <div class="trust-text"><div class="trust-title">24/7 Support</div><div class="trust-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</div></div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><img src="../Media/Homepage/What you get/24_7 Support.webp" alt="24/7 Support" loading="lazy"></div>
+        <div class="benefit-title">24/7 Support</div>
+        <p class="benefit-desc">Reach us directly on Messenger or Viber, any time before or during your trip.</p>
       </div>
     </div>
   </div>
