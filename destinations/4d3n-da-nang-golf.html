@@ -2177,7 +2177,7 @@ async function submitBookingForm(e) {
 </div>
 
 
-  /* Touch swipe for hero */
+<script>  /* Touch swipe for hero */
   (function() {
     const slidesEl = document.getElementById('heroSlides');
     if (!slidesEl) return;
@@ -2188,5 +2188,6 @@ async function submitBookingForm(e) {
       if (Math.abs(diff) > 40) goToSlide(heroIdx + (diff > 0 ? 1 : -1));
     }, { passive: true });
   })();
+</script>
 </body>
 </html>
